@@ -1,6 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Python 四舍五入就用 round() ？</title>
+    <url>/2020/02/23/Python-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E5%B0%B1%E7%94%A8-round-%EF%BC%9F/</url>
+    <content><![CDATA[<html><head></head><body><p>对于整数来说没有问题。对于浮点数，结果可能是不准确的。</p>
+<a id="more"></a>
+
+<h2 id="整数"><a href="#整数" class="headerlink" title="整数"></a>整数</h2><p>整数四舍五入是可以用 round() 的，不过很少有资料提及，直到我看到：</p>
+<blockquote>
+<p><strong>“传递给 round() 的参数 ndigits 可以是负数，在这种情况下会相应地取整到十位、百位、千位等”</strong></p>
+<p><em>——《Python Cookbook 中文版第 3 版》 P83</em></p>
+</blockquote>
+<p>使用 round() 若只传入一个参数，则默认四舍五入保留到个位；若传入第二个参数为 -1，则保留到十位，以此类推。Python 3 环境中示例如下：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">>>> round(123456, -1)</span><br><span class="line">123460</span><br><span class="line">>>> round(123456, -2)</span><br><span class="line">123500</span><br><span class="line">>>> round(123456, -3)</span><br><span class="line">123000</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h2><p>浮点数不要用 round() 进行四舍五入，因为结果可能根本不是你想要的。</p>
+<h3 id="原因一"><a href="#原因一" class="headerlink" title="原因一"></a>原因一</h3><p>按照官方文档给出的规则，当 N.5（N 为整数）形式的浮点数四舍五入时：</p>
+<blockquote>
+<p><strong>“取整操作会取到离该值最接近的那个偶数上”</strong><br><em>——《Python Cookbook 中文版第 3 版》 P83</em></p>
+</blockquote>
+<p>Python 3 环境中示例如下：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">>>> round(0.5)</span><br><span class="line">0</span><br><span class="line">>>> round(1.5)</span><br><span class="line">2</span><br><span class="line">>>> round(2.5)</span><br><span class="line">2</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="原因二"><a href="#原因二" class="headerlink" title="原因二"></a>原因二</h3><p>我们都知道，计算机存储的任何数据其实都是二进制流，也就是一串 0 和 1。整数在计算机内是可以精确存储的，而大多数浮点数则不然。因为大多数浮点数若用二进制表示，会变得很长甚至无限长，计算机需要将其截断才能存储，这样就丢失了精度。所以，浮点数在精度丢失后再用 round() 四舍五入，得到的结果可能会出人意料。官方文档也给出了示例，Python 3 环境中如下：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">>>> round(2.675, 2)</span><br><span class="line">2.67</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>因此，整数的四舍五入可以用 round()，浮点数不要用。那我用什么？参考文献的第 3 条给出了详细回答。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
+<li><a href="https://docs.python.org/zh-cn/3/library/functions.html?highlight=round#round" target="_blank" rel="noopener">官方中文文档：round(number[, ndigits])</a></li>
+<li><a href="https://www.runoob.com/note/17214" target="_blank" rel="noopener">Python round 四舍五入分析讨论</a></li>
+<li><a href="https://www.cnblogs.com/anpengapple/p/6507271.html" target="_blank" rel="noopener">python中关于round函数的小坑</a></li>
+</ol>
+</body></html>]]></content>
+      <categories>
+        <category>Python</category>
+        <category>Traps</category>
+      </categories>
+      <tags>
+        <tag>Python 语法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2020/02/11/hello-world/</url>
     <content><![CDATA[<html><head></head><body><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://shuxiaoyuan.github.io/"/>
-  <updated>2020-02-14T12:38:41.858Z</updated>
+  <updated>2020-02-23T14:38:56.633Z</updated>
   <id>https://shuxiaoyuan.github.io/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Python 四舍五入就用 round() ？</title>
+    <link href="https://shuxiaoyuan.github.io/2020/02/23/Python-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E5%B0%B1%E7%94%A8-round-%EF%BC%9F/"/>
+    <id>https://shuxiaoyuan.github.io/2020/02/23/Python-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E5%B0%B1%E7%94%A8-round-%EF%BC%9F/</id>
+    <published>2020-02-23T08:59:27.000Z</published>
+    <updated>2020-02-23T14:38:56.633Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;对于整数来说没有问题。对于浮点数，结果可能是不准确的。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="https://shuxiaoyuan.github.io/categories/Python/"/>
+    
+      <category term="Traps" scheme="https://shuxiaoyuan.github.io/categories/Python/Traps/"/>
+    
+    
+      <category term="Python 语法" scheme="https://shuxiaoyuan.github.io/tags/Python-%E8%AF%AD%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hello World</title>
     <link href="https://shuxiaoyuan.github.io/2020/02/11/hello-world/"/>
     <id>https://shuxiaoyuan.github.io/2020/02/11/hello-world/</id>
     <published>2020-02-11T02:18:13.304Z</published>
-    <updated>2020-02-14T12:38:41.858Z</updated>
+    <updated>2020-02-23T08:13:24.727Z</updated>
     
     <summary type="html">
     
