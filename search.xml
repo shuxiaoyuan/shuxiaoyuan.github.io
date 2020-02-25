@@ -6,7 +6,7 @@
     <content><![CDATA[<html><head></head><body><p>网上一查很多资料都说 Python 内置的 round() 是用于四舍五入的函数，其实它包含着很大的坑，本文将会说明。</p>
 <a id="more"></a>
 
-<p>先来几个正常的例子熟悉下用法：</p>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>先来几个正常的例子熟悉下用法：</p>
 <figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># Python 3.7.0</span></span><br><span class="line">>>> round(1.6)</span><br><span class="line">2</span><br><span class="line">>>> round(1.66, 1)</span><br><span class="line">1.7</span><br><span class="line">>>> round(1.666, 2)</span><br><span class="line">1.67</span><br></pre></td></tr></tbody></table></figure>
 
 <p>再上几个打脸的例子：</p>
