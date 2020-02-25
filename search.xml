@@ -12,7 +12,7 @@
 <p>再上几个打脸的例子：</p>
 <figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># Python 3.7.0</span></span><br><span class="line">>>> round(0.5)</span><br><span class="line">0</span><br><span class="line">>>> round(2.5)</span><br><span class="line">2</span><br></pre></td></tr></tbody></table></figure>
 
-<p>纳尼？小数部分的 0.5 为啥被舍掉了，不应该“五入”进一吗？查阅<a href="https://docs.python.org/3/library/functions.html?highlight=round#round" target="_blank" rel="noopener">官方文档</a>可知， round 函数有两个参数，依次是：</p>
+<p>纳尼？小数部分的 0.5 为啥被舍掉了，不应该“五入”进一吗？查阅官方文档可知， round 函数有两个参数，依次是：</p>
 <ul>
 <li>number: 整数或浮点数</li>
 <li>ndigits（可选）：整数。若被省略或为 None 则函数返回整数，否则函数返回值的类型与 number 相同。</li>
@@ -39,15 +39,17 @@
 
 <p>如果你想：我对判断进位的数是 5 的情况特殊处理，还是可以达到四舍五入的目的的。那么请再看下面的示例：</p>
 <figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># Python 3.7.0</span></span><br><span class="line">>>> round(2.675, 2)</span><br><span class="line">2.67</span><br></pre></td></tr></tbody></table></figure>
-<p>Excuse me??? 不是说 5 的前一位是奇数的话要进一么，怎么又不对了？难道是 Python 的 Bug ？ Python 官方文档说这不算 Bug ，而是浮点数固有的精度丢失问题。我们都知道，计算机存储的任何数据其实都是二进制流，也就是一串 0 和 1。整数在计算机内是可以精确存储的，而大多数浮点数则不然。因为大多数浮点数若用二进制表示，会变得很长甚至无限长，计算机需要将其截断才能存储，这样就丢失了精度。就拿 2.675 来说，它转为二进制后为：</p>
+<p>Excuse me??? 不是说 5 的前一位是奇数的话要进一么，怎么又不对了？难道是 Python 的 Bug ？ Python 官方文档说这不算 Bug ，而是浮点数固有的精度丢失问题。我们都知道，计算机存储的任何数据其实都是二进制流，也就是一串 0 和 1。整数在计算机内是可以精确存储的，而大多数浮点数则不然。因为大多数浮点数若用二进制表示，会变得很长甚至无限长，计算机需要将其截断才能存储，这样就丢失了精度。就拿 2.675 来说，它转为二进制后为：10.1010110011001100（小数点后保留十六位），如下图所示：</p>
 <img src="/2020/02/24/Python-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E7%94%A8-round-%EF%BC%9F/decimal2binary.png" class title="2.675 转为二进制">
 
+<p>我们把这个二进制串再转回十进制，就变成了：2.67498779296875 ，如下图所示：</p>
+<img src="/2020/02/24/Python-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E7%94%A8-round-%EF%BC%9F/binary2decimal.png" class title="二进制转回十进制">
 
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>了解到 round() 的坑之后，你还敢用它来四舍五入么？那么有没有现成的替代方案呢？参考文献第 4 篇文章中有讨论，感兴趣的话可以去看一看。</p>
+<p>所以， round(2.675, 2) 的结果就成了 2.67 。更详细的说明可以查阅参考文献 2 。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>了解到 round() 的坑之后，你还敢用它来四舍五入么？那么有没有现成的替代方案呢？参考文献 4 中有讨论，感兴趣的话可以去看一看。</p>
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
-<li><a href="https://docs.python.org/3/library/functions.html?highlight=round#round" target="_blank" rel="noopener">round() 官方文档</a></li>
-<li><a href="https://docs.python.org/zh-cn/3/library/functions.html?highlight=round#round" target="_blank" rel="noopener">round() 官方中文文档</a></li>
+<li><a href="https://docs.python.org/3/library/functions.html?highlight=round#round" target="_blank" rel="noopener">round() 官方文档</a> | <a href="https://docs.python.org/zh-cn/3/library/functions.html?highlight=round#round" target="_blank" rel="noopener">round() 官方中文文档</a></li>
+<li><a href="https://docs.python.org/3/tutorial/floatingpoint.html#tut-fp-issues" target="_blank" rel="noopener">官方文档对于浮点数精度丢失的说明</a> | <a href="https://docs.python.org/zh-cn/3/tutorial/floatingpoint.html#tut-fp-issues" target="_blank" rel="noopener">官方中文文档对于浮点数精度丢失的说明</a></li>
 <li><a href="https://www.runoob.com/note/17214" target="_blank" rel="noopener">Python round 四舍五入分析讨论</a></li>
 <li><a href="https://www.cnblogs.com/anpengapple/p/6507271.html" target="_blank" rel="noopener">python中关于round函数的小坑</a></li>
 </ol>
@@ -57,8 +59,8 @@
         <category>Traps</category>
       </categories>
       <tags>
-        <tag>Python 语法</tag>
         <tag>Python round()</tag>
+        <tag>Python 语法</tag>
         <tag>Python 的坑</tag>
       </tags>
   </entry>
