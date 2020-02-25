@@ -152,7 +152,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">1</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">3</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -214,7 +214,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shuxiaoyuan.github.io/2020/02/23/Python-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E5%B0%B1%E7%94%A8-round-%EF%BC%9F/">
+    <link itemprop="mainEntityOfPage" href="https://shuxiaoyuan.github.io/2020/02/24/Python-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E7%94%A8-round-%EF%BC%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -228,7 +228,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/02/23/Python-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E5%B0%B1%E7%94%A8-round-%EF%BC%9F/" class="post-title-link" itemprop="url">Python 四舍五入就用 round() ？</a>
+            <a href="/2020/02/24/Python-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E7%94%A8-round-%EF%BC%9F/" class="post-title-link" itemprop="url">Python 四舍五入用 round() ？</a>
         </h1>
 
         <div class="post-meta">
@@ -237,10 +237,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-02-23 16:59:27 / 修改时间：22:38:56" itemprop="dateCreated datePublished" datetime="2020-02-23T16:59:27+08:00">2020-02-23</time>
+              <time title="创建时间：2020-02-24 21:38:33" itemprop="dateCreated datePublished" datetime="2020-02-24T21:38:33+08:00">2020-02-24</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-25 22:42:53" itemprop="dateModified" datetime="2020-02-25T22:42:53+08:00">2020-02-25</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -260,7 +266,7 @@
             </span>
 
           
-            <span id="/2020/02/23/Python-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E5%B0%B1%E7%94%A8-round-%EF%BC%9F/" class="post-meta-item leancloud_visitors" data-flag-title="Python 四舍五入就用 round() ？" title="阅读次数">
+            <span id="/2020/02/24/Python-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E7%94%A8-round-%EF%BC%9F/" class="post-meta-item leancloud_visitors" data-flag-title="Python 四舍五入用 round() ？" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -275,8 +281,8 @@
       </span>
       <span class="post-meta-item-text">评论数：</span>
     
-    <a title="valine" href="/2020/02/23/Python-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E5%B0%B1%E7%94%A8-round-%EF%BC%9F/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/02/23/Python-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E5%B0%B1%E7%94%A8-round-%EF%BC%9F/" itemprop="commentCount"></span>
+    <a title="valine" href="/2020/02/24/Python-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E7%94%A8-round-%EF%BC%9F/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/02/24/Python-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E7%94%A8-round-%EF%BC%9F/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -286,7 +292,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>865</span>
+              <span>1.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -305,10 +311,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>对于整数来说没有问题。对于浮点数，结果可能是不准确的。</p>
+          <p>网上一查很多资料都说 Python 内置的 round() 是用于四舍五入的函数，其实它包含着很大的坑，本文将会说明。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/02/23/Python-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E5%B0%B1%E7%94%A8-round-%EF%BC%9F/#more" rel="contents">
+              <a class="btn" href="/2020/02/24/Python-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E7%94%A8-round-%EF%BC%9F/#more" rel="contents">
                 阅读全文 »
               </a>
             </div>
@@ -516,7 +522,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -562,7 +568,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">1k</span>
+    <span title="站点总字数">2k</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div>

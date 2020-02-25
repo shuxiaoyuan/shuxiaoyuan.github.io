@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://shuxiaoyuan.github.io/"/>
-  <updated>2020-02-23T14:38:56.633Z</updated>
+  <updated>2020-02-25T14:42:53.273Z</updated>
   <id>https://shuxiaoyuan.github.io/</id>
   
   <author>
@@ -17,15 +17,15 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Python 四舍五入就用 round() ？</title>
-    <link href="https://shuxiaoyuan.github.io/2020/02/23/Python-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E5%B0%B1%E7%94%A8-round-%EF%BC%9F/"/>
-    <id>https://shuxiaoyuan.github.io/2020/02/23/Python-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E5%B0%B1%E7%94%A8-round-%EF%BC%9F/</id>
-    <published>2020-02-23T08:59:27.000Z</published>
-    <updated>2020-02-23T14:38:56.633Z</updated>
+    <title>Python 四舍五入用 round() ？</title>
+    <link href="https://shuxiaoyuan.github.io/2020/02/24/Python-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E7%94%A8-round-%EF%BC%9F/"/>
+    <id>https://shuxiaoyuan.github.io/2020/02/24/Python-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E7%94%A8-round-%EF%BC%9F/</id>
+    <published>2020-02-24T13:38:33.000Z</published>
+    <updated>2020-02-25T14:42:53.273Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;对于整数来说没有问题。对于浮点数，结果可能是不准确的。&lt;/p&gt;
+      &lt;p&gt;网上一查很多资料都说 Python 内置的 round() 是用于四舍五入的函数，其实它包含着很大的坑，本文将会说明。&lt;/p&gt;
     
     </summary>
     
@@ -36,6 +36,10 @@
     
     
       <category term="Python 语法" scheme="https://shuxiaoyuan.github.io/tags/Python-%E8%AF%AD%E6%B3%95/"/>
+    
+      <category term="Python round()" scheme="https://shuxiaoyuan.github.io/tags/Python-round/"/>
+    
+      <category term="Python 的坑" scheme="https://shuxiaoyuan.github.io/tags/Python-%E7%9A%84%E5%9D%91/"/>
     
   </entry>
   
