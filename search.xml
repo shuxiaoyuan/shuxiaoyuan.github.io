@@ -1,9 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>运算符 &amp;#37; 是取余还是取模？</title>
+    <url>/2020/03/24/%E8%BF%90%E7%AE%97%E7%AC%A6-37-%E6%98%AF%E5%8F%96%E4%BD%99%E8%BF%98%E6%98%AF%E5%8F%96%E6%A8%A1%EF%BC%9F/</url>
+    <content><![CDATA[<html><head></head><body><p>“运算符 % 不就是用来取余的嘛，而且各语言通用啊。”<br>“在 C/C++ 、Java 等语言中确实是这样，但在 Python 中，它是取模运算符。”<br>“等等，取余和取模…有什么区别？？”</p>
+<a id="more"></a>
+
+<h2 id="取余和取模的区别"><a href="#取余和取模的区别" class="headerlink" title="取余和取模的区别"></a>取余和取模的区别</h2><p>对于正整数来说，取余和取模得到的结果是相同的：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">7 rem 4 = 3 (7对4取余得到的结果是3)</span><br><span class="line">7 mod 4 = 3 (7对4取模得到的结果也是3)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>但是，若有一个为负数，则结果如下：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">-7 rem 4 = -3</span><br><span class="line">-7 mod 4 = 1</span><br></pre></td></tr></tbody></table></figure>
+
+<p>那么，计算过程是怎样的呢？<br>对于整数 a，b 来说，取余运算和取模运算的计算过程都分为两步：</p>
+<ol>
+<li>求整数商： c = a / b</li>
+<li>计算模或者余数： r = a - c * b</li>
+</ol>
+<p><strong>取余运算和取模运算在第 1 步不同: 在计算商时，取余运算会向 0 方向舍入；而取模运算会向负无穷方向舍入。</strong></p>
+<p>就拿上面的例子来说，按第 1 步计算 -7 / 4 的整数商时，我们知道结果要么是 -1 要么是 -2 。若取余，则商为 -1，第 2 步得到结果为 -3，若取模，则商为 -2，第 2 步得到结果为 1。</p>
+<p>这就是取余和取模的区别。</p>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符 %"></a>运算符 %</h2><p>搞清楚取余和取模的区别后，再来说一下运算符 % 到底是取余还是取模。</p>
+<p>其实结论在文章开头就已经给出了，% 在 C/C++ 、Java 等语言中是取余运算符，而在 Python 中是取模运算符。至于其他语言，可以代入上面 -7 % 4 的例子输出一下结果就能知道。</p>
+<p>对于我们常用的正整数之间运算，取余和取模的结果是相同的，可以放心地使用 % 。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li><a href="https://baike.baidu.com/item/%E5%8F%96%E6%A8%A1%E8%BF%90%E7%AE%97" target="_blank" rel="noopener">取模运算-百度百科</a></li>
+</ul>
+</body></html>]]></content>
+      <categories>
+        <category>IT</category>
+        <category>踩坑</category>
+      </categories>
+      <tags>
+        <tag>踩坑</tag>
+        <tag>运算符</tag>
+        <tag>取余和取模</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python 四舍五入用 round() ？</title>
     <url>/2020/02/24/Python-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E7%94%A8-round-%EF%BC%9F/</url>
-    <content><![CDATA[<html><head></head><body><p>网上一查很多资料都说 Python 内置的 round() 是用于四舍五入的函数，其实它包含着很大的坑，本文将会说明。</p>
+    <content><![CDATA[<html><head></head><body><p>网上一查很多资料都说 Python 内置的 <code>round()</code> 是用于四舍五入的函数，其实它包含着很大的坑，本文将会说明。</p>
 <a id="more"></a>
 
 <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>先上几个正常的例子熟悉下用法：</p>
@@ -12,7 +49,7 @@
 <p>再上几个打脸的例子：</p>
 <figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># Python 3.7.0</span></span><br><span class="line">>>> round(0.5)</span><br><span class="line">0</span><br><span class="line">>>> round(2.5)</span><br><span class="line">2</span><br></pre></td></tr></tbody></table></figure>
 
-<p>纳尼？小数部分的 0.5 为啥被舍掉了，不应该“五入”进一吗？查阅官方文档可知， round 函数有两个参数，依次是：</p>
+<p>纳尼？小数部分的 0.5 为啥被舍掉了，不应该“五入”进一吗？查阅官方文档可知， <code>round()</code> 函数有两个参数，依次是：</p>
 <ul>
 <li>number: 整数或浮点数</li>
 <li>ndigits（可选）：整数。若被省略或为 None 则函数返回整数，否则函数返回值的类型与 number 相同。</li>
@@ -23,15 +60,15 @@
 </blockquote>
 <p>翻译过来不就是四舍五入的意思吗？仔细往下看文档，特殊场景下不是的：</p>
 <blockquote>
-<p>if two multiples are equally close, rounding is done toward the even choice.</p>
+<p>if two multiples are equally close, rounding is done toward the <strong>even</strong> choice.</p>
 </blockquote>
 <p>这句话书上的解释是：</p>
 <blockquote>
-<p><strong>“当某个值恰好等于两个整数间的一半时，取整操作会取到离该值最接近的那个偶数上”</strong><br><em>——《Python Cookbook 中文版第 3 版》 P83</em></p>
+<p>“当某个值恰好等于两个整数间的一半时，取整操作会取到离该值最接近的那个偶数上”<br><em>——《Python Cookbook 中文版第 3 版》 P83</em></p>
 </blockquote>
-<p>这下明白了吧，判断进位的数恰好是 5 的情况，要看 5 的前一位是奇数还是偶数，如果是奇数，则进一，例如 round(1.5) 的结果是 2 ；如果是偶数，则不会进一，而是直接把 5 舍掉，例如 round(2.5) 的结果也是 2 。以上举的几个例子都是浮点数，不过仔细看文档和书上对 round() 第二个参数 ndigits 的说明，会发现：</p>
+<p>也就是说，判断进位的数恰好是 5 的情况，要看 5 的前一位是奇数还是偶数，如果是奇数，则进一，例如 <code>round(1.5)</code> 的结果是 2 ；如果是偶数，则不会进一，而是直接把 5 舍掉，例如 <code>round(2.5)</code> 的结果也是 2 。以上举的几个例子都是浮点数，不过仔细看文档和书上对 <code>round()</code> 函数第二个参数 ndigits 的说明，会发现：</p>
 <blockquote>
-<p><strong>“传递给 round() 的参数 ndigits 可以是负数，在这种情况下会相应地取整到十位、百位、千位等”</strong></p>
+<p>“传递给 <code>round()</code> 的参数 ndigits 可以是负数，在这种情况下会相应地取整到十位、百位、千位等”</p>
 <p><em>——《Python Cookbook 中文版第 3 版》 P83</em></p>
 </blockquote>
 <p>也就是说，给第二个参数 ndigits 传入 -1， 会取整到十位，传入 -2，会取整到百位，以此类推。以取整到十位为例，示例如下：</p>
@@ -45,8 +82,11 @@
 <p>我们把计算机存储 2.675 的这个二进制串再转回十进制，就变成了：<strong>2.674</strong>98779296875 ，如下图所示：</p>
 <img src="/2020/02/24/Python-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E7%94%A8-round-%EF%BC%9F/binary2decimal.png" class title="二进制转回十进制">
 
-<p>所以， round(2.675, 2) 的结果就成了 2.67 。更详细的说明可以查阅参考文献 2 。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>了解到 round() 的坑之后，你还敢用它来四舍五入么？那么有没有替代方案呢？参考文献 4 中有讨论，感兴趣的话可以去看一看。</p>
+<p>所以， <code>round(2.675, 2)</code> 的结果就成了 2.67 。更详细的说明可以看<a href="#参考文献">参考文献</a>的第 2 条。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>Python 四舍五入不可以用 <code>round()</code> 函数</li>
+<li>关于替代方案可以看<a href="#参考文献">参考文献</a>的第 4 条</li>
+</ul>
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
 <li><a href="https://docs.python.org/3/library/functions.html?highlight=round#round" target="_blank" rel="noopener">英文版：round() 官方文档</a> | <a href="https://docs.python.org/zh-cn/3/library/functions.html?highlight=round#round" target="_blank" rel="noopener">中文版：round() 官方文档</a></li>
 <li><a href="https://docs.python.org/3/tutorial/floatingpoint.html#tut-fp-issues" target="_blank" rel="noopener">英文版：官方文档对于浮点数精度丢失的说明</a> | <a href="https://docs.python.org/zh-cn/3/tutorial/floatingpoint.html#tut-fp-issues" target="_blank" rel="noopener">中文版：官方文档对于浮点数精度丢失的说明</a></li>
@@ -55,13 +95,13 @@
 </ol>
 </body></html>]]></content>
       <categories>
+        <category>IT</category>
         <category>Python</category>
-        <category>Traps</category>
+        <category>踩坑</category>
       </categories>
       <tags>
-        <tag>Python round()</tag>
-        <tag>Python 语法</tag>
-        <tag>Python 的坑</tag>
+        <tag>四舍五入</tag>
+        <tag>踩坑</tag>
       </tags>
   </entry>
   <entry>

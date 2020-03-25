@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://shuxiaoyuan.github.io/"/>
-  <updated>2020-03-02T11:08:14.289Z</updated>
+  <updated>2020-03-25T04:40:54.753Z</updated>
   <id>https://shuxiaoyuan.github.io/</id>
   
   <author>
@@ -17,29 +17,56 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Python 四舍五入用 round() ？</title>
-    <link href="https://shuxiaoyuan.github.io/2020/02/24/Python-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E7%94%A8-round-%EF%BC%9F/"/>
-    <id>https://shuxiaoyuan.github.io/2020/02/24/Python-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E7%94%A8-round-%EF%BC%9F/</id>
-    <published>2020-02-24T13:38:33.000Z</published>
-    <updated>2020-03-02T11:08:14.289Z</updated>
+    <title>运算符 &amp;#37; 是取余还是取模？</title>
+    <link href="https://shuxiaoyuan.github.io/2020/03/24/%E8%BF%90%E7%AE%97%E7%AC%A6-37-%E6%98%AF%E5%8F%96%E4%BD%99%E8%BF%98%E6%98%AF%E5%8F%96%E6%A8%A1%EF%BC%9F/"/>
+    <id>https://shuxiaoyuan.github.io/2020/03/24/%E8%BF%90%E7%AE%97%E7%AC%A6-37-%E6%98%AF%E5%8F%96%E4%BD%99%E8%BF%98%E6%98%AF%E5%8F%96%E6%A8%A1%EF%BC%9F/</id>
+    <published>2020-03-24T11:01:47.000Z</published>
+    <updated>2020-03-25T04:40:54.753Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;网上一查很多资料都说 Python 内置的 round() 是用于四舍五入的函数，其实它包含着很大的坑，本文将会说明。&lt;/p&gt;
+      &lt;p&gt;“运算符 % 不就是用来取余的嘛，而且各语言通用啊。”&lt;br&gt;“在 C/C++ 、Java 等语言中确实是这样，但在 Python 中，它是取模运算符。”&lt;br&gt;“等等，取余和取模…有什么区别？？”&lt;/p&gt;
     
     </summary>
     
     
-      <category term="Python" scheme="https://shuxiaoyuan.github.io/categories/Python/"/>
+      <category term="IT" scheme="https://shuxiaoyuan.github.io/categories/IT/"/>
     
-      <category term="Traps" scheme="https://shuxiaoyuan.github.io/categories/Python/Traps/"/>
+      <category term="踩坑" scheme="https://shuxiaoyuan.github.io/categories/IT/%E8%B8%A9%E5%9D%91/"/>
     
     
-      <category term="Python round()" scheme="https://shuxiaoyuan.github.io/tags/Python-round/"/>
+      <category term="踩坑" scheme="https://shuxiaoyuan.github.io/tags/%E8%B8%A9%E5%9D%91/"/>
     
-      <category term="Python 语法" scheme="https://shuxiaoyuan.github.io/tags/Python-%E8%AF%AD%E6%B3%95/"/>
+      <category term="运算符" scheme="https://shuxiaoyuan.github.io/tags/%E8%BF%90%E7%AE%97%E7%AC%A6/"/>
     
-      <category term="Python 的坑" scheme="https://shuxiaoyuan.github.io/tags/Python-%E7%9A%84%E5%9D%91/"/>
+      <category term="取余和取模" scheme="https://shuxiaoyuan.github.io/tags/%E5%8F%96%E4%BD%99%E5%92%8C%E5%8F%96%E6%A8%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python 四舍五入用 round() ？</title>
+    <link href="https://shuxiaoyuan.github.io/2020/02/24/Python-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E7%94%A8-round-%EF%BC%9F/"/>
+    <id>https://shuxiaoyuan.github.io/2020/02/24/Python-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E7%94%A8-round-%EF%BC%9F/</id>
+    <published>2020-02-24T13:38:33.000Z</published>
+    <updated>2020-03-25T04:36:20.695Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;网上一查很多资料都说 Python 内置的 &lt;code&gt;round()&lt;/code&gt; 是用于四舍五入的函数，其实它包含着很大的坑，本文将会说明。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="IT" scheme="https://shuxiaoyuan.github.io/categories/IT/"/>
+    
+      <category term="Python" scheme="https://shuxiaoyuan.github.io/categories/IT/Python/"/>
+    
+      <category term="踩坑" scheme="https://shuxiaoyuan.github.io/categories/IT/Python/%E8%B8%A9%E5%9D%91/"/>
+    
+    
+      <category term="四舍五入" scheme="https://shuxiaoyuan.github.io/tags/%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5/"/>
+    
+      <category term="踩坑" scheme="https://shuxiaoyuan.github.io/tags/%E8%B8%A9%E5%9D%91/"/>
     
   </entry>
   
