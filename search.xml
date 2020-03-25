@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>-7 除以 4 的整数商是 -1 还是 -2 ？</title>
+    <url>/2020/03/25/7-%E9%99%A4%E4%BB%A5-4-%E7%9A%84%E6%95%B4%E6%95%B0%E5%95%86%E6%98%AF-1-%E8%BF%98%E6%98%AF-2-%EF%BC%9F/</url>
+    <content><![CDATA[<html><head></head><body><p>在 C/C++ 、Java 中结果为 -1，在 Python 中结果为 -2。为什么会这样？</p>
+<a id="more"></a>
+
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>我们都知道，在 C/C++ 、Java 中，运算符 <code>/</code> 两边若都为整数，则结果也会是整数。例如：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># C/C++ 、Java</span></span><br><span class="line">>>> 7 / 4 = 1</span><br></pre></td></tr></tbody></table></figure>
+
+<p>但在 Python 中，运算符 <code>/</code> 的结果是浮点数，要想得到整数商，需要用到“地板除运算符”：<code>//</code>。 </p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># Python 3.7.0</span></span><br><span class="line">>>> 7 / 4 = 1.75</span><br><span class="line">>>> 8 / 4 = 2.0</span><br><span class="line">>>> 7 // 4 = 1</span><br><span class="line">>>> 8 // 4 = 2</span><br></pre></td></tr></tbody></table></figure>
+
+<p>对于异号的整数相除，C/C++、Java 和 Python 的结果也是不一样的：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># C/C++ 、Java</span></span><br><span class="line">>>> -7 / 4 = -1</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># Python 3.7.0</span></span><br><span class="line">>>> -7 // 4 = -2</span><br></pre></td></tr></tbody></table></figure>
+
+<p>可以看到，在计算异号相除的整数商时，C/C++、Java 会向 0 方向舍入；而 Python 会向负无穷方向舍入。</p>
+<p>其实这也是造成它们的运算符 <code>%</code> 结果也不一样的原因。详细请看我的另一篇博文：<a href="/2020/03/24/运算符-37-是取余还是取模？/">运算符 % 是取余还是取模？</a></p>
+</body></html>]]></content>
+      <categories>
+        <category>IT</category>
+        <category>踩坑</category>
+      </categories>
+      <tags>
+        <tag>踩坑</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>运算符 &amp;#37; 是取余还是取模？</title>
     <url>/2020/03/24/%E8%BF%90%E7%AE%97%E7%AC%A6-37-%E6%98%AF%E5%8F%96%E4%BD%99%E8%BF%98%E6%98%AF%E5%8F%96%E6%A8%A1%EF%BC%9F/</url>
     <content><![CDATA[<html><head></head><body><p>“运算符 % 不就是用来取余的嘛，而且各语言通用啊。”<br>“在 C/C++ 、Java 等语言中确实是这样，但在 Python 中，它是取模运算符。”<br>“等等，取余和取模…有什么区别？？”</p>
@@ -100,8 +128,8 @@
         <category>踩坑</category>
       </categories>
       <tags>
-        <tag>四舍五入</tag>
         <tag>踩坑</tag>
+        <tag>四舍五入</tag>
       </tags>
   </entry>
   <entry>

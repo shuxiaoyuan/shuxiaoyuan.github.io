@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://shuxiaoyuan.github.io/"/>
-  <updated>2020-03-25T04:40:54.753Z</updated>
+  <updated>2020-03-25T11:52:18.623Z</updated>
   <id>https://shuxiaoyuan.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>-7 除以 4 的整数商是 -1 还是 -2 ？</title>
+    <link href="https://shuxiaoyuan.github.io/2020/03/25/7-%E9%99%A4%E4%BB%A5-4-%E7%9A%84%E6%95%B4%E6%95%B0%E5%95%86%E6%98%AF-1-%E8%BF%98%E6%98%AF-2-%EF%BC%9F/"/>
+    <id>https://shuxiaoyuan.github.io/2020/03/25/7-%E9%99%A4%E4%BB%A5-4-%E7%9A%84%E6%95%B4%E6%95%B0%E5%95%86%E6%98%AF-1-%E8%BF%98%E6%98%AF-2-%EF%BC%9F/</id>
+    <published>2020-03-25T11:38:35.000Z</published>
+    <updated>2020-03-25T11:52:18.623Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在 C/C++ 、Java 中结果为 -1，在 Python 中结果为 -2。为什么会这样？&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="IT" scheme="https://shuxiaoyuan.github.io/categories/IT/"/>
+    
+      <category term="踩坑" scheme="https://shuxiaoyuan.github.io/categories/IT/%E8%B8%A9%E5%9D%91/"/>
+    
+    
+      <category term="踩坑" scheme="https://shuxiaoyuan.github.io/tags/%E8%B8%A9%E5%9D%91/"/>
+    
+  </entry>
   
   <entry>
     <title>运算符 &amp;#37; 是取余还是取模？</title>
@@ -64,9 +87,9 @@
       <category term="踩坑" scheme="https://shuxiaoyuan.github.io/categories/IT/Python/%E8%B8%A9%E5%9D%91/"/>
     
     
-      <category term="四舍五入" scheme="https://shuxiaoyuan.github.io/tags/%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5/"/>
-    
       <category term="踩坑" scheme="https://shuxiaoyuan.github.io/tags/%E8%B8%A9%E5%9D%91/"/>
+    
+      <category term="四舍五入" scheme="https://shuxiaoyuan.github.io/tags/%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5/"/>
     
   </entry>
   
