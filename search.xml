@@ -78,7 +78,7 @@
 <p>再上几个打脸的例子：</p>
 <figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># Python 3.7.0</span></span><br><span class="line">>>> round(0.5)</span><br><span class="line">0</span><br><span class="line">>>> round(2.5)</span><br><span class="line">2</span><br></pre></td></tr></tbody></table></figure>
 
-<p>纳尼？小数部分的 0.5 为啥被舍掉了，不应该“五入”进一吗？查阅官方文档可知， <code>round()</code> 函数有两个参数，依次是：</p>
+<p>纳尼？小数部分的 0.5 为啥被舍掉了，不应该“五入”进一吗？查阅<a href="#1">官方文档</a>可知， <code>round()</code> 函数有两个参数，依次是：</p>
 <ul>
 <li>number: 整数或浮点数</li>
 <li>ndigits（可选）：整数。若被省略或为 None 则函数返回整数，否则函数返回值的类型与 number 相同。</li>
@@ -111,16 +111,16 @@
 <p>我们把计算机存储 2.675 的这个二进制串再转回十进制，就变成了：<strong>2.674</strong>98779296875 ，如下图所示：</p>
 <img src="/2020/02/24/Python-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E7%94%A8-round-%EF%BC%9F/binary2decimal.png" class title="二进制转回十进制">
 
-<p>所以， <code>round(2.675, 2)</code> 的结果就成了 2.67 。更详细的说明可以看<a href="#参考文献">参考文献</a>的第 2 条。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
-<li>Python 四舍五入不可以用 <code>round()</code> 函数</li>
-<li>关于替代方案可以看<a href="#参考文献">参考文献</a>的第 4 条</li>
-</ul>
+<p>所以， <code>round(2.675, 2)</code> 的结果就成了 2.67 。更详细的说明可以看<a href="#2">参考文献 2</a></p>
+<h2 id="替代方案"><a href="#替代方案" class="headerlink" title="替代方案"></a>替代方案</h2><p>既然 Python 四舍五入不可以用 <code>round()</code>，那有没有替代方案呢？<br>当然有， <code>decimal</code> 模块就是用于浮点数的精确运算的，其中就包括四舍五入。用法示例如下：</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> decimal <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用当前上下文的一个副本，退出 with 语句时会恢复之前的上下文</span></span><br><span class="line"><span class="keyword">with</span> localcontext() <span class="keyword">as</span> ctx:</span><br><span class="line">    ctx.prec = <span class="number">3</span>                    <span class="comment"># 设置精度（整数和小数部分加起来的位数）</span></span><br><span class="line">    ctx.rounding = ROUND_HALF_UP    <span class="comment"># 设置舍入方式为四舍五入</span></span><br><span class="line">    print(Decimal(<span class="string">'2.675'</span>) + <span class="number">0</span>)     <span class="comment"># 后面 + 0 是因为精度和舍入仅在运算期间发挥作用</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>运行这段代码，输出结果为 2.68<br>关于 <code>decimal</code> 模块的详细用法和相关问题，可以看<a href="#3">参考文献 3</a></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Python 四舍五入不可以用 <code>round()</code>，需要用到 <code>decimal</code> 模块。</p>
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
-<li><a href="https://docs.python.org/3/library/functions.html?highlight=round#round" target="_blank" rel="noopener">英文版：round() 官方文档</a> | <a href="https://docs.python.org/zh-cn/3/library/functions.html?highlight=round#round" target="_blank" rel="noopener">中文版：round() 官方文档</a></li>
-<li><a href="https://docs.python.org/3/tutorial/floatingpoint.html#tut-fp-issues" target="_blank" rel="noopener">英文版：官方文档对于浮点数精度丢失的说明</a> | <a href="https://docs.python.org/zh-cn/3/tutorial/floatingpoint.html#tut-fp-issues" target="_blank" rel="noopener">中文版：官方文档对于浮点数精度丢失的说明</a></li>
-<li><a href="https://www.runoob.com/note/17214" target="_blank" rel="noopener">Python round 四舍五入分析讨论</a></li>
-<li><a href="https://www.cnblogs.com/anpengapple/p/6507271.html" target="_blank" rel="noopener">python中关于round函数的小坑</a></li>
+<li><a name="1"></a><a href="https://docs.python.org/zh-cn/3/library/functions.html?highlight=round#round" target="_blank" rel="noopener">round() 官方文档</a></li>
+<li><a name="2"></a><a href="https://docs.python.org/zh-cn/3/tutorial/floatingpoint.html#tut-fp-issues" target="_blank" rel="noopener">官方文档对于浮点数精度丢失的说明</a></li>
+<li><a name="3"></a><a href="https://docs.python.org/zh-cn/3.7/library/decimal.html" target="_blank" rel="noopener">官方文档：decimal — 十进制定点和浮点运算</a></li>
 </ol>
 </body></html>]]></content>
       <categories>
