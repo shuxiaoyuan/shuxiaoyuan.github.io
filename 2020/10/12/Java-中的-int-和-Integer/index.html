@@ -52,7 +52,7 @@
 <meta property="og:description" content="总结在使用 Java 的 int 和 Integer 时可能会遇到的一些意想不到的问题。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-10-12T03:14:54.000Z">
-<meta property="article:modified_time" content="2020-11-17T14:18:02.750Z">
+<meta property="article:modified_time" content="2020-12-01T13:43:07.215Z">
 <meta property="article:author" content="书缘">
 <meta property="article:tag" content="踩坑">
 <meta name="twitter:card" content="summary">
@@ -247,7 +247,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-17 22:18:02" itemprop="dateModified" datetime="2020-11-17T22:18:02+08:00">2020-11-17</time>
+                <time title="修改时间：2020-12-01 21:43:07" itemprop="dateModified" datetime="2020-12-01T21:43:07+08:00">2020-12-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -300,7 +300,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>587</span>
+              <span>588</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -322,7 +322,7 @@
         <p>总结在使用 Java 的 int 和 Integer 时可能会遇到的一些意想不到的问题。</p>
 <a id="more"></a>
 
-<h2 id="问题一：整型溢出"><a href="#问题一：整型溢出" class="headerlink" title="问题一：整型溢出"></a>问题一：整型溢出</h2><p>int 能表示的整数范围为：<strong>-2147483648 ~ 2147483647</strong>，超出这个范围就会造成溢出。<br>因此，我们在做常见的加减乘除等运算时会注意这一问题，但是要警惕某些方法也可能造成溢出：</p>
+<h2 id="问题一：整型溢出"><a href="#问题一：整型溢出" class="headerlink" title="问题一：整型溢出"></a>问题一：整型溢出</h2><p>int 能表示的整数范围为：<strong>-2147483648 ~ 2147483647</strong>，超出这个范围就会造成溢出。因此，我们在做常见的加减乘除等运算时会注意这一问题，但是要警惕某些方法也可能造成溢出：</p>
 <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(Math.abs(-<span class="number">2147483648</span>));  <span class="comment">// 输出结果：-2147483648</span></span><br></pre></td></tr></tbody></table></figure>
 
 <h2 id="问题二：自动拆箱导致的空指针错误"><a href="#问题二：自动拆箱导致的空指针错误" class="headerlink" title="问题二：自动拆箱导致的空指针错误"></a>问题二：自动拆箱导致的空指针错误</h2><p>以下为简单示例，实际代码中包装类型进行拆箱操作时要考虑为 null 的情况。</p>
@@ -331,7 +331,7 @@
 <h2 id="问题三：Java-虚拟机的常量池会缓存-128-127-之间的-Integer-对象"><a href="#问题三：Java-虚拟机的常量池会缓存-128-127-之间的-Integer-对象" class="headerlink" title="问题三：Java 虚拟机的常量池会缓存 [-128, 127] 之间的 Integer 对象"></a>问题三：Java 虚拟机的常量池会缓存 [-128, 127] 之间的 Integer 对象</h2><p>如果我们用这个范围内的数给 Integer 对象直接赋值，而不是 new 一个 Integer 对象，则会出现以下结果：</p>
 <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Integer i1 = <span class="number">127</span>;</span><br><span class="line">Integer i2 = <span class="number">127</span>;</span><br><span class="line">System.out.println(i1 == i2);   <span class="comment">// 输出 true</span></span><br><span class="line"></span><br><span class="line">Integer i3 = <span class="number">128</span>;</span><br><span class="line">Integer i4 = <span class="number">128</span>;</span><br><span class="line">System.out.println(i3 == i4);   <span class="comment">// 输出 false</span></span><br></pre></td></tr></tbody></table></figure>
 
-<p>其实是 Java 在编译期间自动装箱，[-128, 127] 以内返回同一个缓存对象<br>另外，<code>Integer.valueOf()</code> 在这个范围内也会返回缓存对象。</p>
+<p>其实是 Java 在编译期间自动装箱，[-128, 127] 以内返回同一个缓存对象。另外，<code>Integer.valueOf()</code> 在这个范围内也会返回缓存对象。</p>
 
     </div>
 
@@ -539,7 +539,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">21k</span>
+    <span title="站点总字数">24k</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div>

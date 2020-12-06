@@ -18,7 +18,30 @@
 </ul>
 <h3 id="第-5-章-插叙：进程-API"><a href="#第-5-章-插叙：进程-API" class="headerlink" title="第 5 章 插叙：进程 API"></a>第 5 章 插叙：进程 API</h3><p>本章讲了 UNIX 系统的三个系统调用：<code>fork()</code>、<code>exec()</code> 和 <code>wait()</code>。</p>
 <h3 id="第-6-章-机制：受限直接执行"><a href="#第-6-章-机制：受限直接执行" class="headerlink" title="第 6 章 机制：受限直接执行"></a>第 6 章 机制：受限直接执行</h3><p>本章讲了用户模式和内核模式、进程切换、保存和恢复上下文。</p>
-<h3 id="第-7-章-进程调度：介绍"><a href="#第-7-章-进程调度：介绍" class="headerlink" title="第 7 章 进程调度：介绍"></a>第 7 章 进程调度：介绍</h3></body></html>]]></content>
+<h3 id="第-7-章-进程调度：介绍"><a href="#第-7-章-进程调度：介绍" class="headerlink" title="第 7 章 进程调度：介绍"></a>第 7 章 进程调度：介绍</h3><p>本章开始对任务有几项假设，然后采用逐渐放宽假设的方式由浅入深讨论各种情况下的调度算法思想。</p>
+<p>以周转时间为指标，有下列三种调度算法：</p>
+<ul>
+<li>先进先出（First In First Out, FIFO）或先到先服务（First Come First Served, FCFS）</li>
+<li>最短任务优先（Shortest Job First, SJF）</li>
+<li>最短完成时间优先（Shortest Time-to-Completion First, STCF）或最短完成时间优先（Preemptive Shortest Job First, PSJF）</li>
+</ul>
+<p>以响应时间为指标：</p>
+<ul>
+<li>轮转（Round-Robin, RR）</li>
+</ul>
+<h3 id="第-8-章-调度：多级反馈队列"><a href="#第-8-章-调度：多级反馈队列" class="headerlink" title="第 8 章 调度：多级反馈队列"></a>第 8 章 调度：多级反馈队列</h3><p>MLFQ（multi-level feedback queue）规则：</p>
+<ul>
+<li>规则 1：如果 A 的优先级 > B 的优先级，运行 A（不运行 B）。</li>
+<li>规则 2：如果 A 的优先级 = B 的优先级，轮转运行 A 和 B。</li>
+<li>规则 3：工作进入系统时，放在最高优先级（最上层队列）。</li>
+<li>规则 4：一旦工作用完了其在某一层中的时间配额（无论中间主动放弃了多少次 CPU），就降低其优先级（移入低一级队列）。</li>
+<li>规则 5：经过一段时间 S，就将系统中所有工作重新加入最高优先级队列。</li>
+</ul>
+<h3 id="第-9-章-调度：比例份额"><a href="#第-9-章-调度：比例份额" class="headerlink" title="第 9 章 调度：比例份额"></a>第 9 章 调度：比例份额</h3><p>本章讲了彩票调度（lottery scheduling），其实现类似于我的 Blackjack 随机发牌算法实现。<br>另外一种是步长调度，思想也很简单：按步长增加进度，每次选进度最低的进程运行。<br>但这两种都没有作为 CPU 调度程序被广泛使用。一是因为它们不适合 I/O ，二是很难确定每个进程的“票数”。</p>
+<h3 id="第-10-章-多处理器调度（高级）"><a href="#第-10-章-多处理器调度（高级）" class="headerlink" title="第 10 章 多处理器调度（高级）"></a>第 10 章 多处理器调度（高级）</h3><ul>
+<li>本章介绍了多处理器调度的不同方法。其中单队列的方式（SQMS）比较容易构建，负载均衡较好，但在扩展性和缓存亲和度方面有着固有的缺陷。多队列的方式（MQMS）有很好的扩展性和缓存亲和度，但实现负载均衡却很困难，也更复杂。</li>
+</ul>
+<h3 id="第-13-章-抽象：地址空间"><a href="#第-13-章-抽象：地址空间" class="headerlink" title="第 13 章 抽象：地址空间"></a>第 13 章 抽象：地址空间</h3></body></html>]]></content>
       <categories>
         <category>读书笔记</category>
         <category>IT</category>
@@ -34,11 +57,11 @@
 <a id="more"></a>
 
 <h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><p><a href="https://horstmann.com/corejava/bugs10.html" target="_blank" rel="noopener">勘误表</a></p>
-<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>重看这本书一是为了查漏补缺，二是扫清那些不熟悉的知识点。对于已经非常熟悉的部分，就不做笔记了。</p>
-<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h2 id="第-1-章-Java-程序设计概述"><a href="#第-1-章-Java-程序设计概述" class="headerlink" title="第 1 章 Java 程序设计概述"></a>第 1 章 Java 程序设计概述</h2><ul>
+<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>重看这本书一是为了查漏补缺，二是扫清那些不熟悉的知识点。对于已经非常熟悉的部分，就不做笔记了。另外卷 I 第 10~13 章讲的是 Java GUI 和 applet 的知识，用不到，没有看。卷 II 只需要看 IO 和流式 API 等章节，其余可以用到再查。</p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h2 id="卷-I-基础知识"><a href="#卷-I-基础知识" class="headerlink" title="卷 I 基础知识"></a>卷 I 基础知识</h2><h3 id="第-1-章-Java-程序设计概述"><a href="#第-1-章-Java-程序设计概述" class="headerlink" title="第 1 章 Java 程序设计概述"></a>第 1 章 Java 程序设计概述</h3><ul>
 <li>即时编译（JIT）使得现在的的 Java 代码运行速度与 C++ 相差无几，有些情况下甚至更快。</li>
 </ul>
-<h2 id="第-3-章-Java-的基本程序设计结构"><a href="#第-3-章-Java-的基本程序设计结构" class="headerlink" title="第 3 章 Java 的基本程序设计结构"></a>第 3 章 Java 的基本程序设计结构</h2><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><ul>
+<h3 id="第-3-章-Java-的基本程序设计结构"><a href="#第-3-章-Java-的基本程序设计结构" class="headerlink" title="第 3 章 Java 的基本程序设计结构"></a>第 3 章 Java 的基本程序设计结构</h3><h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><ul>
 <li><p>Java 整型范围与运行 Java 代码的机器无关。</p>
 </li>
 <li><p>长整型数值有一个后缀 L 或 l，例如 4000000000L。十六进制数值有一个前缀 0x 或 0X，例如 0xCAFE。八进制有一个前缀 0，例如 010 对应十进制的 8。八进制表示法比较容易混淆，所以建议最好不要使用八进制常数。</p>
@@ -57,35 +80,93 @@
 <p>  这一条其实我也没太弄懂，关于 Java Unicode、码点、代码单元等相关知识，用到再查。</p>
 </li>
 </ul>
-<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><ul>
+<h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><ul>
 <li><p>尽管 $ 是一个合法的 Java 字符，但不要在你自己的代码中使用这个字符。它只用在 Java 编译器或其他工具生成的名字中。</p>
 </li>
 <li><p>在 Java 中，变量的声明尽可能地靠近变量第一次使用的地方，这是一种良好的程序编写风格。</p>
 </li>
 </ul>
-<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><ul>
+<h4 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h4><ul>
 <li><p>如果两个操作数中有一个是 double 类型，另一个操作数就会转换为 double 类型。否则，如果其中一个操作数是 float 类型，另一个操作数将会转换为 float 类型。否则，如果其中一个操作数是 long 类型，另一个操作数将会转换为 long 类型。否则，两个操作数都将被转换为 int 类型。</p>
+<p>  <strong>注意：自动类型转换规则包括三目运算！！</strong></p>
 </li>
 <li><p>如果运算符得到一个值，其类型与左侧操作数的类型不同，就会发生强制类型转换。例如，如果 x 是一个 int，则 <code>x += 3.5;</code> 是合法的，将把 x 设置为 <code>(int)(x + 3.5)</code>。</p>
 </li>
 <li><p><code>>>></code> 运算符会用 0 填充高位，这与 <code>>></code> 不同，它会用符号位填充高位。不存在 <code><<<</code> 运算符。移位运算符的右操作数要完成模 32 的运算（除非左操作数是 long 类型，在这种情况下需要对右操作数模 64）。例如，1 << 35 的值等同于 1 << 3 ，结果为 8。</p>
 </li>
 </ul>
-<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p>P49 讲了码点和代码单元的知识，但基本用不到，不要踩这个坑就行。</p>
-<h3 id="控制流程"><a href="#控制流程" class="headerlink" title="控制流程"></a>控制流程</h3><ul>
+<h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><p>P49 讲了码点和代码单元的知识，但基本用不到，不要踩这个坑就行。</p>
+<h4 id="控制流程"><a href="#控制流程" class="headerlink" title="控制流程"></a>控制流程</h4><ul>
 <li><p>在循环中，检测两个浮点数是否相等需要格外小心。循环：<code>for(double x = 0; x != 10; x += 0.1)</code> 可能永远不会结束。由于舍入的误差，最终可能得不到精确值。因为 0.1 无法精确地用二进制表示，所以，x 将从 9.999 999 999 999 98 跳到 10.099 999 999 999 98</p>
 </li>
 <li><p>许多程序员容易混淆 break 和 continue 语句。这些语句完全是可选的，即不使用它们也可以表达同样的逻辑含义。</p>
 </li>
 </ul>
-<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><ul>
+<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><ul>
 <li><p>数组长度不要求是常量：<code>new int[n]</code> 会创建一个长度为 n 的数组。</p>
 </li>
 <li><p><strong>在 Java 中，允许数组长度为 0。在编写一个结果为数组的方法时，如果碰巧结果为空，则这种语法形式就显得非常有用。此时可以创建一个长度为 0 的数组：<code>new elementType[0]</code>。注意，数组长度为 0 与 null 不同。</strong></p>
 </li>
 </ul>
 <p>P83 讲了如何从 m 个数中随机取 n 个的实现。</p>
-<h2 id="第-4-章-对象与类"><a href="#第-4-章-对象与类" class="headerlink" title="第 4 章 对象与类"></a>第 4 章 对象与类</h2></body></html>]]></content>
+<h3 id="第-4-章-对象与类"><a href="#第-4-章-对象与类" class="headerlink" title="第 4 章 对象与类"></a>第 4 章 对象与类</h3><h4 id="使用预定义类"><a href="#使用预定义类" class="headerlink" title="使用预定义类"></a>使用预定义类</h4><ul>
+<li>标准 Java 类库分别包含了两个类：一个是用来表示时间点的 Date 类；另一个是用来表示大家熟悉的日历表示法的 LocalDate 类。</li>
+</ul>
+<p>更改器方法（mutator method）和访问器方法（accessor method）区别。</p>
+<h4 id="用户自定义类"><a href="#用户自定义类" class="headerlink" title="用户自定义类"></a>用户自定义类</h4><p>尽量不要返回类中可变的成员变量，这样会破坏类的封装性。如果需要返回一个可变数据域的拷贝，就应该使用 clone。</p>
+<ul>
+<li>如果类中的每个方法都不会改变其对象，这种类就是不可变的类。</li>
+</ul>
+<h3 id="第-5-章-继承"><a href="#第-5-章-继承" class="headerlink" title="第 5 章 继承"></a>第 5 章 继承</h3><h4 id="类、超类和子类"><a href="#类、超类和子类" class="headerlink" title="类、超类和子类"></a>类、超类和子类</h4><ul>
+<li><p>有些人认为 super 与 this 引用的是类似的概念，实际上，这样比较并不太恰当。这是因为 super 不是一个对象的引用，不能将 super 赋给另一个对象变量，它只是一个指示编译器调用超类方法的特殊关键字。</p>
+</li>
+<li><p>一个对象变量可以指示多种实际类型的现象被称为多态（polymorphism）。在运行时能够自动地选择调用哪个方法的现象称为动态绑定（dynamic binding）。</p>
+</li>
+</ul>
+<h4 id="Object：所有类的超类"><a href="#Object：所有类的超类" class="headerlink" title="Object：所有类的超类"></a>Object：所有类的超类</h4><p>为了防备 equals() 方法调用者可能为 null 的情况，需要使用 Objects.equals() 方法。<br>同样，还有 Objects.hashCode() 方法</p>
+<p>这里还讲了重写 equals() 方法需要注意的细节，比如该用 instanceof 还是 getClass() 的问题。《Effective Java》里有关于重写 equals() 方法和 hashCode() 方法的详细介绍。</p>
+<h4 id="泛型数组列表"><a href="#泛型数组列表" class="headerlink" title="泛型数组列表"></a>泛型数组列表</h4><ul>
+<li>一旦能够确认数组列表的大小不再发生变化，就可以调用 trimToSize 方法。这个方法将存储区域的大小调整为当前元素数量所需要的存储空间数目。垃圾回收器将回收多余的存储空间。</li>
+<li>一旦整理了数组列表的大小，添加新元素就需要花时间再次移动存储块，所以应该在确认不会添加任何元素时，再调用 trimToSize。</li>
+</ul>
+<h4 id="对象包装器与自动装箱"><a href="#对象包装器与自动装箱" class="headerlink" title="对象包装器与自动装箱"></a>对象包装器与自动装箱</h4><ul>
+<li><p>对象包装器类是不可变的，即一旦构造了包装器，就不允许更改包装在其中的值。同时，对象包装器类还是 final，因此不能定义它们的子类。</p>
+</li>
+<li><p>如果在一个条件表达式中混合使用 Integer 和 Double 类型，Integer 值就会拆箱，提升为 double，再装箱为 Double：</p>
+  <figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line">Integer n = <span class="number">1</span>;</span><br><span class="line">Double x = <span class="number">2.0</span>;</span><br><span class="line">System.out.println(<span class="keyword">true</span> ? n : x); <span class="comment">// 输出 1.0</span></span><br></pre></td></tr></tbody></table></figure>
+
+</li>
+</ul>
+<h4 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h4><ul>
+<li>能够分析类能力的程序称为反射（reflective）。</li>
+<li>使用反射的主要人员是工具构造者，而不是应用程序员。</li>
+</ul>
+<h3 id="第-6-章-接口、lambda-表达式与内部类"><a href="#第-6-章-接口、lambda-表达式与内部类" class="headerlink" title="第 6 章 接口、lambda 表达式与内部类"></a>第 6 章 接口、lambda 表达式与内部类</h3><h4 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h4><p>接口声明方法不必声明 public，因为接口的所有方法都自动地是 public，但在接口的实现类里必须将方法声明为 public。</p>
+<p>compareTo() 方法如果使用两整数相减的实现，要确保减法运算不会溢出，否则，调用静态 Integer.compare() 方法。而如果是两个很接近的浮点数，它们的差经过四舍五入后有可能变成 0，应该调用 Double.compare() 方法。</p>
+<p>关于父类 x 和子类 y ，如果它们各自实现了自己的 compareTo() 方法，调用 x.compareTo(y) 没问题，但调用 y.compareTo(x) 时，若在方法内将 x 转换为 y 类型可能会报 ClassCastException 所以，这种情况有两种解决方案：第一种是利用 getClass() 判断两者是否是同一类型，不同的话属于非法比较，直接抛出异常；第二种是在 x 中实现一个子类也通用的 compareTo() 方法，并声明为 final 类型。</p>
+<p>Java 语言规范建议不要书写接口中 publi static final 这样的多余关键字。</p>
+<ul>
+<li><p>实际上，接口可以提供多重继承的大多数好处，同时还能避免多重继承的复杂性和低效性。</p>
+</li>
+<li><p>在 Java API 中，，你会看到很多接口都有相应的伴随类，这个伴随类中实现了相应接口的部分或所有方法，如 Collection/AbstractCollection 或 MouseListener/MouseAdapter。在 Java SE 8 中，这个技术已经过时。现在可以直接在接口中实现方法。</p>
+</li>
+</ul>
+<p>另外，默认方法也可以使得在 Java 老接口里定义新的默认方法，这样老的接口实现代码不必改动。</p>
+<p>解决默认方法冲突：<br>(1) 超类优先。如果超类提供了一个具体方法，同名而且有相同参数类型的默认方法会被忽略。<br>(2) 接口冲突。如果一个超接口提供了一个默认方法，另一个接口提供了一个同名而且参数类型（不论是否是默认参数）相同的方法，则子接口或实现类必须覆盖这个方法来解决冲突。</p>
+<h4 id="接口示例"><a href="#接口示例" class="headerlink" title="接口示例"></a>接口示例</h4><p>要对一个 String 数组按 String 长度排序，不能利用 String 自己实现的 compareTo() 方法，需要自己创建一个 Comparator 对象实现按字符串长度的比较方法，然后传入 Arrays.sort()。</p>
+<p>Cloneable 接口只是一个标记接口（标记接口不包含任何方法；它唯一的作用就是允许在类型查询中使用 instanceof）</p>
+<h4 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h4><ul>
+<li><p>内部类中声明的所有静态域都必须是 final，并且用一个编译时常量来初始化。原因很简单，我们希望一个静态域只能有一个实例，不过对于每个外部对象，会分别有一个单独的内部实例。如果这个域不是常量，它可能不是唯一的。内部类不能有 static 方法。Java 语言规范对这个限制没有做任何解释。（按理来说）也可以允许有静态方法，<del>但</del>只<del>能</del>（让它）访问外围类的静态域和方法。（但是）<del>显然</del>，Java 设计者认为相对于这种复杂性来说，它带来的好处有些得不偿失。（注：括号内容和删除线是我加的，原文翻译不通顺）</p>
+</li>
+<li><p>多年来，Java 程序员习惯的做法是用匿名内部类实现事件监听器和其他回调。如今最好还是使用 lambda 表达式。</p>
+</li>
+<li><p>在内部类不需要访问外围类对象的时候，应该使用静态内部类。</p>
+</li>
+</ul>
+<h4 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h4><ul>
+<li>克隆和代理是库设计者和工具构造者感兴趣的高级技术，对应用程序员来说，它们并不十分重要。</li>
+</ul>
+<h3 id="第-7-章-异常、断言和日志"><a href="#第-7-章-异常、断言和日志" class="headerlink" title="第 7 章 异常、断言和日志"></a>第 7 章 异常、断言和日志</h3></body></html>]]></content>
       <categories>
         <category>读书笔记</category>
         <category>IT</category>
@@ -97,7 +178,7 @@
   <entry>
     <title>《Head First 设计模式》读书笔记</title>
     <url>/2020/10/30/%E3%80%8AHead-First-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<html><head></head><body><p>《Head First 设计模式》读书笔记</p>
+    <content><![CDATA[<html><head></head><body><p>《Head First 设计模式》读书笔记，已完结。</p>
 <a id="more"></a>
 
 <h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><p><a href="https://www.wickedlysmart.com/head-first-design-patterns/" target="_blank" rel="noopener">官网</a><br><a href="https://github.com/bethrobson/Head-First-Design-Patterns" target="_blank" rel="noopener">github 源码仓库</a></p>
@@ -130,7 +211,7 @@
 </blockquote>
 </li>
 </ul>
-<h3 id="本章总结"><a href="#本章总结" class="headerlink" title="本章总结"></a>本章总结</h3><p>要设计一个 Duck 抽象基类，它的子类有绿头鸭、橡皮鸭、模型鸭等。<br>因为不管什么鸭子，都会游泳（书中确实是这样举例的。。），所以可以在 Duck 类里写具体实现 <code>swim()</code> 方法。<br>但不同鸭子有不同外观表现，所以，<code>display()</code> 是抽象方法，不同子类对它有不同实现。<br>由于模型鸭不会叫，橡皮鸭叫声是吱吱声。而只有绿头鸭会飞。<br>所以鸭子叫方法 <code>quark()</code> 和鸭子飞方法 <code>fly()</code> 不能放在 Duck 基类中，不然很多不会叫不会飞的鸭子子类也不得不实现它。<br>那么，设计一个 Quarkable 和 Flyable 接口，让有这些行为的子类实现它们呢？<br>这样的问题是，对这两个接口的实现没办法复用。表现行为相同的类会写出一样的实现代码。<br><strong>所以，可以写出对 Quarkable 和 Flyable 接口的不同实现类，让 Duck 类持有这两个接口，</strong><br><strong>将 Duck 类的叫和飞方法委托给这两个接口去实现，让 Duck 类的子类去选择到底使用这两个接口的哪个具体实现类。</strong></p>
+<h3 id="本章总结"><a href="#本章总结" class="headerlink" title="本章总结"></a>本章总结</h3><p>要设计一个 Duck 抽象基类，它的子类有绿头鸭、橡皮鸭、模型鸭等。因为不管什么鸭子，都会游泳（书中确实是这样举例的。。），所以可以在 Duck 类里写具体实现 <code>swim()</code> 方法。但不同鸭子有不同外观表现，所以，<code>display()</code> 是抽象方法，不同子类对它有不同实现。由于模型鸭不会叫，橡皮鸭叫声是吱吱声。而只有绿头鸭会飞。所以鸭子叫方法 <code>quark()</code> 和鸭子飞方法 <code>fly()</code> 不能放在 Duck 基类中，不然很多不会叫不会飞的鸭子子类也不得不实现它。那么，设计一个 Quarkable 和 Flyable 接口，让有这些行为的子类实现它们呢？这样的问题是，对这两个接口的实现没办法复用。表现行为相同的类会写出一样的实现代码。<strong>所以，可以写出对 Quarkable 和 Flyable 接口的不同实现类，让 Duck 类持有这两个接口，将 Duck 类的叫和飞方法委托给这两个接口去实现，让 Duck 类的子类去选择到底使用这两个接口的哪个具体实现类。</strong></p>
 <h2 id="观察者（Observer）模式"><a href="#观察者（Observer）模式" class="headerlink" title="观察者（Observer）模式"></a>观察者（Observer）模式</h2><h3 id="原文摘抄-1"><a href="#原文摘抄-1" class="headerlink" title="原文摘抄"></a>原文摘抄</h3><ul>
 <li><p>P51</p>
 <blockquote>
@@ -139,7 +220,7 @@
 </li>
 <li><p>P71</p>
 <blockquote>
-<p><em>首先，因为 Observable 是一个“类”，你必须设计一个类继承它。如果某类想同时具有 Observable 类和另一个超类的行为，</em><br><em>就会陷入两难，毕竟 Java 不支持多重继承。再者，因为没有 Observable 接口，所以你无法建立自己的实现，</em><br><em>和 Java 内置的 Observer API 搭配使用，也无法将 java.util 的实现换成另一套做法的实现，比方说，</em><br><em>如果你看看 Observable API，你会发现 setChanged() 方法被保护起来了（被定义成 protected）。</em><br><em>那又怎么样呢？这意味着，除非你继承自 Observable，否则你无法创建 Observable 实例并组合到你自己的对象中来。</em><br><em>这个设计违反了第二个设计原则：“多用组合，少用继承”。</em></p>
+<p><em>首先，因为 Observable 是一个“类”，你必须设计一个类继承它。如果某类想同时具有 Observable 类和另一个超类的行为，就会陷入两难，毕竟 Java 不支持多重继承。再者，因为没有 Observable 接口，所以你无法建立自己的实现，和 Java 内置的 Observer API 搭配使用，也无法将 java.util 的实现换成另一套做法的实现，比方说，如果你看看 Observable API，你会发现 setChanged() 方法被保护起来了（被定义成 protected）。那又怎么样呢？这意味着，除非你继承自 Observable，否则你无法创建 Observable 实例并组合到你自己的对象中来。这个设计违反了第二个设计原则：“多用组合，少用继承”。</em></p>
 </blockquote>
 <p>  这里指出了 java.util.Observable 的设计缺陷，值得一看。<a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1281319577321505" target="_blank" rel="noopener">廖雪峰的教程</a>里也不推荐用这两个类实现观察者模式。<br>  P72~P73 举例 JDK 在 Swing 中用到了观察者模式，不过现在很少有人用 Swing，所以代码不看也罢。</p>
 </li>
@@ -148,7 +229,7 @@
 <h2 id="装饰者模式"><a href="#装饰者模式" class="headerlink" title="装饰者模式"></a>装饰者模式</h2><h3 id="原文摘抄-2"><a href="#原文摘抄-2" class="headerlink" title="原文摘抄"></a>原文摘抄</h3><ul>
 <li><p>P87</p>
 <blockquote>
-<p><em>在选择需要被扩展的代码部分时要小心。每个地方都采用开放-关闭原则，是一种浪费，也没必要，</em><br><em>还会导致代码变得复杂且难以理解。</em></p>
+<p><em>在选择需要被扩展的代码部分时要小心。每个地方都采用开放-关闭原则，是一种浪费，也没必要，还会导致代码变得复杂且难以理解。</em></p>
 </blockquote>
 </li>
 <li><p>P91</p>
@@ -162,11 +243,11 @@
 </blockquote>
 </li>
 </ul>
-<h3 id="本章总结-2"><a href="#本章总结-2" class="headerlink" title="本章总结"></a>本章总结</h3><p>业务场景：给咖啡加不同的调料（如牛奶、摩卡、奶泡等），计算最终的价格。<br>如果把所有调料组合都创建一个咖啡类，那类要爆炸。<br>如果用变量给每种调料标明价格，然后通过判断有没有加这种调料来计算最终价格，<br>那每加一种调料都要改动原有代码，不符合“对扩展开放，对修改封闭”的原则。<br>装饰者模式实现方式：<strong>各种调料都继承自咖啡类，构造函数需要传入咖啡类引用，</strong><br><strong>然后在重写的计算价格方法里，首先调用咖啡类引用的计算价格方法，再加上本调料类的价格。</strong><br>这样想加哪种调料就用哪种调料类包装，而且同一种调料可以包装若干次，<br>即使新增调料，也只需添加一个类，无需修改原有代码。</p>
+<h3 id="本章总结-2"><a href="#本章总结-2" class="headerlink" title="本章总结"></a>本章总结</h3><p>业务场景：给咖啡加不同的调料（如牛奶、摩卡、奶泡等），计算最终的价格。如果把所有调料组合都创建一个咖啡类，那类要爆炸。如果用变量给每种调料标明价格，然后通过判断有没有加这种调料来计算最终价格，那每加一种调料都要改动原有代码，不符合“对扩展开放，对修改封闭”的原则。<br>装饰者模式实现方式：<strong>各种调料都继承自咖啡类，构造函数需要传入咖啡类引用，然后在重写的计算价格方法里，首先调用咖啡类引用的计算价格方法，再加上本调料类的价格。</strong>这样想加哪种调料就用哪种调料类包装，而且同一种调料可以包装若干次，即使新增调料，也只需添加一个类，无需修改原有代码。</p>
 <h2 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h2><h3 id="原文摘抄-3"><a href="#原文摘抄-3" class="headerlink" title="原文摘抄"></a>原文摘抄</h3><ul>
 <li><p>P134</p>
 <blockquote>
-<p><strong>工厂方法模式</strong> <em>定义了一个创建对象的接口，但由子类决定要实例化的类是哪一个，</em><br><em>工厂方法让类把实例化推迟到子类</em></p>
+<p><strong>工厂方法模式</strong> <em>定义了一个创建对象的接口，但由子类决定要实例化的类是哪一个，工厂方法让类把实例化推迟到子类</em></p>
 </blockquote>
 </li>
 <li><p>P143</p>
@@ -177,7 +258,7 @@
 <li><em>不要让类派生自具体类</em></li>
 <li><em>不要覆盖基类中已实现的方法</em></li>
 </ul>
-<p><em>应该尽量达到这个原则，而不是随时随地都要遵循这个原则。深入体验这些方针，将这些方针内化成你思考的一部分，</em><br><em>那么在设计时，你将知道何时有足够的里有违反这样的原则</em></p>
+<p><em>应该尽量达到这个原则，而不是随时随地都要遵循这个原则。深入体验这些方针，将这些方针内化成你思考的一部分，那么在设计时，你将知道何时有足够的理由违反这样的原则</em></p>
 </blockquote>
 </li>
 <li><p>P156</p>
@@ -200,12 +281,12 @@
 </li>
 <li><p>P184</p>
 <blockquote>
-<p><em>问：难道我不能创建一个类，把所有的方法和变量都定义为静态的，把类直接当做一个单件？</em><br><em>答：如果你的类自给自足，而且不依赖于复杂的初始化，那么你可以这么做。</em><br><em>但是，因为静态初始化的控制权是在 Java 手上，这么做可能导致混乱，特别是当有许多类牵涉其中的时候。</em><br><em>这么做常常会造成一些微妙的、不容易发现的<strong>和初始化的次序有关的 bug</strong>。</em><br><em>除非你有绝对的必要使用类的单件，否则还是建议使用对象的单件，比较保险。</em></p>
+<p><em>问：难道我不能创建一个类，把所有的方法和变量都定义为静态的，把类直接当做一个单件？</em><br><em>答：如果你的类自给自足，而且不依赖于复杂的初始化，那么你可以这么做。但是，因为静态初始化的控制权是在 Java 手上，这么做可能导致混乱，特别是当有许多类牵涉其中的时候。这么做常常会造成一些微妙的、不容易发现的<strong>和初始化的次序有关的 bug</strong>。除非你有绝对的必要使用类的单件，否则还是建议使用对象的单件，比较保险。</em></p>
 </blockquote>
 </li>
 <li><p>P184</p>
 <blockquote>
-<p><em>每个类加载器都定义了一个命名空间，如果有两个以上的类加载器，不同的类加载器可能会加载同一个类，</em><br><em>从整个程序来看，同一个类会被加载多次。如果这样的事情发生在单件上，就会产生多个单件并存的怪异现象。</em><br><em>所以，如果聂程序有多个类加载器又同时使用了单件模式，请小心。</em><br><em>有一个解决办法：自行指定类加载器，并指定同一个类加载器。</em></p>
+<p><em>每个类加载器都定义了一个命名空间，如果有两个以上的类加载器，不同的类加载器可能会加载同一个类，从整个程序来看，同一个类会被加载多次。如果这样的事情发生在单件上，就会产生多个单件并存的怪异现象。所以，如果聂程序有多个类加载器又同时使用了单件模式，请小心。有一个解决办法：自行指定类加载器，并指定同一个类加载器。</em></p>
 </blockquote>
 </li>
 </ul>
@@ -218,20 +299,20 @@
 </li>
 <li><p>P214</p>
 <blockquote>
-<p><em>NoCommand 对象是一个空对象（null object）的例子。当你不想返回一个有意义的对象时，空对象就很有用。</em><br><em>客户也可以将处理 null 的责任转移给空对象。举例来说，遥控器不可能一出厂就设置了有意义的命令对象，</em><br><em>所以提供了 NoCommand 对象作为代用品，当调用它的 execute() 方法时，这种对象设么事情都不做。</em><br><em>在许多设计模式中，都会看到空对象的使用。甚至有些时候，空对象本身也被视为是一种设计模式。</em></p>
+<p><em>NoCommand 对象是一个空对象（null object）的例子。当你不想返回一个有意义的对象时，空对象就很有用。客户也可以将处理 null 的责任转移给空对象。举例来说，遥控器不可能一出厂就设置了有意义的命令对象，所以提供了 NoCommand 对象作为代用品，当调用它的 execute() 方法时，这种对象设么事情都不做。在许多设计模式中，都会看到空对象的使用。甚至有些时候，空对象本身也被视为是一种设计模式。</em></p>
 </blockquote>
 </li>
 <li><p>P227</p>
 <blockquote>
-<p><em>问：接受者有必要存在吗？为何命令对象不直接实现 execute() 方法的细节？</em><br><em>答：一般来说，我们尽量设计“傻瓜”命令对象，它只懂得调用一个接收者的一个行为。然而，</em><br><em>有许多“聪明”命令对象会实现许多逻辑，直接完成一个请求。当然你可以设计聪明的命令对象，</em><br><em>只是这样一来，调用者和接收者之间的解耦程度是比不上“傻瓜”命令对象的，</em><br><em>而且，你也不能把接收者当做参数传给命令。</em></p>
+<p><em>问：接受者有必要存在吗？为何命令对象不直接实现 execute() 方法的细节？</em><br><em>答：一般来说，我们尽量设计“傻瓜”命令对象，它只懂得调用一个接收者的一个行为。然而，有许多“聪明”命令对象会实现许多逻辑，直接完成一个请求。当然你可以设计聪明的命令对象，只是这样一来，调用者和接收者之间的解耦程度是比不上“傻瓜”命令对象的，而且，你也不能把接收者当做参数传给命令。</em></p>
 </blockquote>
 <p>  让命令对象和接收者对象解耦，可以通过传参给命令对象传入不同的接收者。<br>  本页也提到了 undo() 方法可以通过维护一个栈来实现撤销多次记录。</p>
 </li>
 <li><p>P227</p>
 <blockquote>
-<p><em>问：我可以创建一个 PartyCommand，然后在它的 execute() 方法中调用其他的命令，</em><br><em>利用这种做法实现 Party 模式（Party Mode）吗？</em><br><em>答：你可以这么做。然而，这等于把 Party 模式“硬编码”到 PartyCommand 中。为什么要这么麻烦呢？</em><br><em>利用宏命令，你可以动态地决定 PartyCommand 是由那些命令组成，所以宏命令在使用上更灵活。</em><br><em>一般来说，宏命令的做法更优雅，也需要较少的新代码。</em></p>
+<p><em>问：我可以创建一个 PartyCommand，然后在它的 execute() 方法中调用其他的命令，利用这种做法实现 Party 模式（Party Mode）吗？</em><br><em>答：你可以这么做。然而，这等于把 Party 模式“硬编码”到 PartyCommand 中。为什么要这么麻烦呢？利用宏命令，你可以动态地决定 PartyCommand 是由那些命令组成，所以宏命令在使用上更灵活。一般来说，宏命令的做法更优雅，也需要较少的新代码。</em></p>
 </blockquote>
-<p>  所谓宏命令，就是一个命令类，里面维护了一个命令数组，构造函数需要传入一个命令数组引用给它赋值，<br>  这个宏命令类的 execute() 方法就是遍历这个数组里的所有命令然后依次执行。<br>  这样具体执行哪些命令就可以由调用者决定，如果把 execute() 写死成固定的几个命令执行，<br>  那就不够灵活了。以上就是这个问答的意思。</p>
+<p>  所谓宏命令，就是一个命令类，里面维护了一个命令数组，构造函数需要传入一个命令数组引用给它赋值，这个宏命令类的 execute() 方法就是遍历这个数组里的所有命令然后依次执行。这样具体执行哪些命令就可以由调用者决定，如果把 execute() 写死成固定的几个命令执行，那就不够灵活了。以上就是这个问答的意思。</p>
 </li>
 </ul>
 <p>后面 P228~P229 举例说明命令模式的应用：工作队列、日程安排、线程池、日志请求和事务系统等，了解一下就可以。</p>
@@ -248,8 +329,8 @@
 </li>
 <li><p>P242</p>
 <blockquote>
-<p><em>问：一个适配器需要做多少“适配”的工作？如果我需要实现一个很大的目标接口，似乎有“很多”工作要做。</em><br><em>答：的确是如此。实现一个适配器所需要进行的工作，的确和目标接口的大小成正比。如果不用适配器，</em><br><em>你就必须改写客户端的代码来调用这个新的接口，将会花许多力气来做大量的调查工作和代码改写工作。</em><br><em>相比之下，提供一个适配器类，将所有的改变封装在一个类中，是比较好的做法。</em></p>
-<p><em>问：万一我的系统中新旧并存，旧的部分期望旧的厂商接口，但我们却已经使用新厂商的接口编写了这一部分，</em><br><em>这个时候该怎么办？这里使用适配器，那里却使用未包装的接口，这实在是让人感到混乱。</em><br><em>如果我只是固守着旧的代码，完全不要管适配器，这样子会不会好一些？</em><br><em>答：不需要如此。可以创建一个双向的适配器，支持两边的接口。想创建一个双向的适配器，</em><br><em>就必须实现所涉及的两个接口，这样，这个适配器可以当做旧的接口，或者当做新的接口使用。</em></p>
+<p><em>问：一个适配器需要做多少“适配”的工作？如果我需要实现一个很大的目标接口，似乎有“很多”工作要做。</em><br><em>答：的确是如此。实现一个适配器所需要进行的工作，的确和目标接口的大小成正比。如果不用适配器，你就必须改写客户端的代码来调用这个新的接口，将会花许多力气来做大量的调查工作和代码改写工作。相比之下，提供一个适配器类，将所有的改变封装在一个类中，是比较好的做法。</em></p>
+<p><em>问：万一我的系统中新旧并存，旧的部分期望旧的厂商接口，但我们却已经使用新厂商的接口编写了这一部分，这个时候该怎么办？这里使用适配器，那里却使用未包装的接口，这实在是让人感到混乱。如果我只是固守着旧的代码，完全不要管适配器，这样子会不会好一些？</em><br><em>答：不需要如此。可以创建一个双向的适配器，支持两边的接口。想创建一个双向的适配器，就必须实现所涉及的两个接口，这样，这个适配器可以当做旧的接口，或者当做新的接口使用。</em></p>
 </blockquote>
 </li>
 <li><p>P243</p>
@@ -258,7 +339,7 @@
 </blockquote>
 </li>
 </ul>
-<p>P244 提到在支持多重继承的语言中，可以让适配器类同时继承自目标类和被适配类来实现。<br>第一种使用组合来实现的叫对象适配器，第二种通过多继承来实现的叫类适配器。</p>
+<p>P244 提到在支持多重继承的语言中，可以让适配器类同时继承自目标类和被适配类来实现。第一种使用组合来实现的叫对象适配器，第二种通过多继承来实现的叫类适配器。</p>
 <ul>
 <li>P264<blockquote>
 <p><strong>外观模式</strong> <em>提供了一个统一的接口，用来访问子系统中的一群接口。</em><br><em>外观定义了一个高层接口，让子系统更容易使用。</em></p>
@@ -266,22 +347,22 @@
 </li>
 </ul>
 <p>书中还提到可以为一个子系统实现多个外观，而且可以把子系统接口暴露给客户，方便他们直接调用底层。</p>
-<h3 id="本章总结-6"><a href="#本章总结-6" class="headerlink" title="本章总结"></a>本章总结</h3><p>适配器模式将一个或多个接口转换成另一个接口，外观模式是用一个接口来简化一堆比较复杂的接口，相当于“一键XX”<br>这俩其实都是在目标接口里持有要被转换接口的引用，调用其方法实现。</p>
+<h3 id="本章总结-6"><a href="#本章总结-6" class="headerlink" title="本章总结"></a>本章总结</h3><p>适配器模式将一个或多个接口转换成另一个接口，外观模式是用一个接口来简化一堆比较复杂的接口，相当于“一键XX”。这俩其实都是在目标接口里持有要被转换接口的引用，调用其方法实现。</p>
 <h2 id="模板方法模式"><a href="#模板方法模式" class="headerlink" title="模板方法模式"></a>模板方法模式</h2><h3 id="原文摘抄-7"><a href="#原文摘抄-7" class="headerlink" title="原文摘抄"></a>原文摘抄</h3><ul>
 <li><p>P289</p>
 <blockquote>
-<p><strong>模板方法模式</strong> <em>在一个方法中定义一个算法的骨架，而将一些步骤延迟到子类中。</em><br><em>模板方法使得子类可以在不改变算法结构的情况下，重新定义算法中的某些步骤。</em></p>
+<p><strong>模板方法模式</strong> <em>在一个方法中定义一个算法的骨架，而将一些步骤延迟到子类中。模板方法使得子类可以在不改变算法结构的情况下，重新定义算法中的某些步骤。</em></p>
 </blockquote>
 </li>
 <li><p>P295</p>
 <blockquote>
-<p><em>问：当我创建一个模板方法时，怎么才能知道什么时候该使用抽象方法，什么时候使用钩子呢？</em><br><em>答：当你的子类“必须”提供算法中某个方法或步骤的实现时，就使用抽象方法。</em><br><em>如果算法的这个部分是可选的，就用钩子。如果是钩子的话，子类可以选择实现这个钩子，但并不强制这么做。</em></p>
+<p><em>问：当我创建一个模板方法时，怎么才能知道什么时候该使用抽象方法，什么时候使用钩子呢？</em><br><em>答：当你的子类“必须”提供算法中某个方法或步骤的实现时，就使用抽象方法。如果算法的这个部分是可选的，就用钩子。如果是钩子的话，子类可以选择实现这个钩子，但并不强制这么做。</em></p>
 </blockquote>
 </li>
 <li><p>P298</p>
 <blockquote>
-<p><em>问：好莱坞原则和依赖倒置原则（第 4 章）之间的关系如何？</em><br><em>依赖倒置原则教我们尽量避免使用具体类，而多使用抽象。而好莱坞原则是用在创建框架或组件上的一种技巧，</em><br><em>好让底层组件能够被挂钩进计算中，而且又不会让高层组件依赖低层组件。两者的目标都是在于解耦，</em><br><em>但是依赖倒置原则更加注重如何在设计中避免依赖。好莱坞原则教我们一个技巧，创建一个有弹性的设计，</em><br><em>允许低层结构能够互相操作，而又防止其他类太过依赖它们。</em></p>
-<p><em>问：低层组件不可以调用高层组件中的方法吗？</em><br><em>答：并不尽然。事实上，低层组件在结束时，常常会调用从超类中继承来的方法。我们所要做的是，</em><br><em>避免让高层和低层组件之间有明显的环状依赖。</em></p>
+<p><em>问：好莱坞原则和依赖倒置原则（第 4 章）之间的关系如何？</em><br><em>答：依赖倒置原则教我们尽量避免使用具体类，而多使用抽象。而好莱坞原则是用在创建框架或组件上的一种技巧，好让底层组件能够被挂钩进计算中，而且又不会让高层组件依赖低层组件。两者的目标都是在于解耦，但是依赖倒置原则更加注重如何在设计中避免依赖。好莱坞原则教我们一个技巧，创建一个有弹性的设计，允许低层结构能够互相操作，而又防止其他类太过依赖它们。</em></p>
+<p><em>问：低层组件不可以调用高层组件中的方法吗？</em><br><em>答：并不尽然。事实上，低层组件在结束时，常常会调用从超类中继承来的方法。我们所要做的是，避免让高层和低层组件之间有明显的环状依赖。</em></p>
 </blockquote>
 </li>
 </ul>
@@ -295,12 +376,12 @@
 </li>
 <li><p>P356</p>
 <blockquote>
-<p><strong>组合模式</strong> <em>允许你将对象组合成树形结构来表现“整体/部分”层次结构。</em><br><em>组合能让客户以一致的方式处理个别对象以及对象组合。</em></p>
+<p><strong>组合模式</strong> <em>允许你将对象组合成树形结构来表现“整体/部分”层次结构。组合能让客户以一致的方式处理个别对象以及对象组合。</em></p>
 </blockquote>
 </li>
 <li><p>P357</p>
 <blockquote>
-<p><em>组合模式让我们能用树形方式创建对象的结构，树里面包含了组合以及个别的对象。</em><br><em>使用组合结构，我们能把相同的操作应用在组合和个别对象上。换句话说，</em><br><em>在大多数情况下，我们可以忽略对象组合和个别对象之间的差别。</em></p>
+<p><em>组合模式让我们能用树形方式创建对象的结构，树里面包含了组合以及个别的对象。使用组合结构，我们能把相同的操作应用在组合和个别对象上。换句话说，在大多数情况下，我们可以忽略对象组合和个别对象之间的差别。</em></p>
 </blockquote>
 </li>
 </ul>
@@ -312,7 +393,7 @@
 </blockquote>
 </li>
 </ul>
-<h3 id="本章总结-9"><a href="#本章总结-9" class="headerlink" title="本章总结"></a>本章总结</h3><p>状态模式和策略模式的类图一样，然而两者的意图是不同的。策略模式把行为封装成类，<br>然后使用组合使得持有它不同实例的类表现出不同的行为。而状态模式则是持有不同状态类的实例，<br>由状态来控制行为，不同状态下会表现出不同的行为。</p>
+<h3 id="本章总结-9"><a href="#本章总结-9" class="headerlink" title="本章总结"></a>本章总结</h3><p>状态模式和策略模式的类图一样，然而两者的意图是不同的。策略模式把行为封装成类，然后使用组合使得持有它不同实例的类表现出不同的行为。而状态模式则是持有不同状态类的实例，由状态来控制行为，不同状态下会表现出不同的行为。</p>
 <h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2><h3 id="原文摘抄-10"><a href="#原文摘抄-10" class="headerlink" title="原文摘抄"></a>原文摘抄</h3><ul>
 <li>P460<blockquote>
 <p><strong>代理模式</strong> <em>为另一个对象提供一个替身或占位符以控制对这个对象的访问。</em></p>
@@ -331,10 +412,10 @@
 <blockquote>
 <p><strong>我们从一大堆 Quackable 开始…</strong></p>
 <p><strong>有一只鹅出现了，它希望自己像一个 Quackable。</strong><br><em>所以我们利用适配器模式，将鹅适配成 Quackable。现在你就可以调用鹅适配器的 quack() 方法来让鹅咯咯叫。</em></p>
-<p><strong>然后，呱呱叫学家决定要计算呱呱叫声的次数。</strong><br><em>所以我们使用装饰者模式，添加了一个名为 QuackCounter 的装饰者。它用来追踪 quack() 被调用的次数，</em><br><em>并将调用委托给它所装饰的 Quackable 对象。</em></p>
-<p><strong>但是呱呱叫学家担心他们忘了加上 QuackCounter 装饰者。</strong><br><em>所以我们使用抽象工厂模式创建鸭子。从此以后，当他们需要鸭子时，就直接跟工厂要，</em><br><em>工厂会给他们装饰过的鸭子。（别忘了，如果他们想取得没装饰的鸭子，用另一个鸭子工厂就可以！）</em></p>
-<p><strong>又是鸭子，又是鹅，又是 Quackable 的…我们有管理上的困扰。</strong><br><em>所以我们需要使用组合模式，将许多 Quackable 集结成一个群。这个模式也允许群中有群，</em><br><em>以便让呱呱叫学家来管理鸭子家族。我们在实现中通过使用 ArrayList 中的 Java.util 的迭代器而使用了迭代器模式。</em></p>
-<p><strong>当任何呱呱叫声响起时，呱呱叫学家都希望能被告知。</strong><br><em>所以我们使用观察者模式，让呱呱叫学家注册成为观察者。现在，当呱呱声响起时，呱呱叫学家就会被通知了。</em><br><em>在这个实现中，我们再度用到了迭代器。呱呱叫学家不仅可以当某个鸭子的观察者，甚至可以当一整群的观察者。</em></p>
+<p><strong>然后，呱呱叫学家决定要计算呱呱叫声的次数。</strong><br><em>所以我们使用装饰者模式，添加了一个名为 QuackCounter 的装饰者。它用来追踪 quack() 被调用的次数，并将调用委托给它所装饰的 Quackable 对象。</em></p>
+<p><strong>但是呱呱叫学家担心他们忘了加上 QuackCounter 装饰者。</strong><br><em>所以我们使用抽象工厂模式创建鸭子。从此以后，当他们需要鸭子时，就直接跟工厂要，工厂会给他们装饰过的鸭子。（别忘了，如果他们想取得没装饰的鸭子，用另一个鸭子工厂就可以！）</em></p>
+<p><strong>又是鸭子，又是鹅，又是 Quackable 的…我们有管理上的困扰。</strong><br><em>所以我们需要使用组合模式，将许多 Quackable 集结成一个群。这个模式也允许群中有群，以便让呱呱叫学家来管理鸭子家族。我们在实现中通过使用 ArrayList 中的 Java.util 的迭代器而使用了迭代器模式。</em></p>
+<p><strong>当任何呱呱叫声响起时，呱呱叫学家都希望能被告知。</strong><br><em>所以我们使用观察者模式，让呱呱叫学家注册成为观察者。现在，当呱呱声响起时，呱呱叫学家就会被通知了。在这个实现中，我们再度用到了迭代器。呱呱叫学家不仅可以当某个鸭子的观察者，甚至可以当一整群的观察者。</em></p>
 </blockquote>
 </li>
 </ul>
@@ -382,22 +463,22 @@
   <entry>
     <title>《Java 并发编程实战》读书笔记</title>
     <url>/2020/10/14/%E3%80%8AJava-%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<html><head></head><body><p>《Java 并发编程实战》读书笔记</p>
+    <content><![CDATA[<html><head></head><body><p>《Java 并发编程实战》读书笔记，待更新…</p>
 <a id="more"></a>
 
 <h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><p><a href="https://jcip.net/" target="_blank" rel="noopener">官方网站</a>（包含了勘误表、书中源码等文档和资源）<br>这篇<a href="https://book.douban.com/review/9875717/" target="_blank" rel="noopener">豆瓣书评</a>提到了本书的优缺点，蛮不错的，可以一看。</p>
 <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h2 id="第-1-章-简介"><a href="#第-1-章-简介" class="headerlink" title="第 1 章 简介"></a>第 1 章 简介</h2><ul>
 <li><p>P5</p>
 <blockquote>
-<p><em>虽然递增运算 <code>someVariable++</code> 看上去是单个操作，但事实上它包含三个独立的操作：读取 value，将 value 加 1，</em><br><em>并将计算结果写入 value。</em></p>
+<p><em>虽然递增运算 <code>someVariable++</code> 看上去是单个操作，但事实上它包含三个独立的操作：读取 value，将 value 加 1，并将计算结果写入 value。</em></p>
 </blockquote>
-<p>  这里讲到了一个操作的原子性。原子操作是不可再分割的操作，要么执行，要么不执行。<br>而 <code>someVariable++</code> 是一个复合操作，包含了三个原子操作。</p>
+<p>  这里讲到了一个操作的原子性。原子操作是不可再分割的操作，要么执行，要么不执行。而 <code>someVariable++</code> 是一个复合操作，包含了三个原子操作。</p>
 </li>
 </ul>
 <h2 id="第一部分-基础知识"><a href="#第一部分-基础知识" class="headerlink" title="第一部分 基础知识"></a>第一部分 基础知识</h2><h3 id="第-2-章-线程安全性"><a href="#第-2-章-线程安全性" class="headerlink" title="第 2 章 线程安全性"></a>第 2 章 线程安全性</h3><ul>
 <li><p>P12</p>
 <blockquote>
-<p><em>但在编写并发应用程序时，一种正确的编程方法就是：首先使代码正确运行，然后再提高代码速度。即便如此，</em><br><em>最好也只是当性能测试结果和应用需求告诉你必须提高性能，以及测量结果表明这种优化在实际环境中确实能带来性能提升时，才进行优化。</em></p>
+<p><em>但在编写并发应用程序时，一种正确的编程方法就是：首先使代码正确运行，然后再提高代码速度。即便如此，最好也只是当性能测试结果和应用需求告诉你必须提高性能，以及测量结果表明这种优化在实际环境中确实能带来性能提升时，才进行优化。</em></p>
 </blockquote>
 <p>  Donald Knuth 也说过“过早优化是万恶之源”（premature optimization is the root of all evil）。</p>
 </li>
@@ -405,13 +486,13 @@
 <h3 id="第-3-章-对象的共享"><a href="#第-3-章-对象的共享" class="headerlink" title="第 3 章 对象的共享"></a>第 3 章 对象的共享</h3><ul>
 <li><p>P29</p>
 <blockquote>
-<p><em>Java 内存模型要求，变量的读取操作和写入操作都必须是原子操作，但对于非 volatile 类型的 long 和 double 变量，</em><br><em>JVM 允许将 64 位的读操作或写操作分解为两个 32 位的操作。</em></p>
+<p><em>Java 内存模型要求，变量的读取操作和写入操作都必须是原子操作，但对于非 volatile 类型的 long 和 double 变量，JVM 允许将 64 位的读操作或写操作分解为两个 32 位的操作。</em></p>
 </blockquote>
-<p>  关于这一点，廖雪峰 Java 教程的这一节：<a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1306580844806178" target="_blank" rel="noopener">线程同步</a> 文章最后小结前的部分也有讲到。<br>而且讲的更清晰易懂。</p>
+<p>  关于这一点，廖雪峰 Java 教程的这一节：<a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1306580844806178" target="_blank" rel="noopener">线程同步</a> 文章最后小结前的部分也有讲到。而且讲的更清晰易懂。</p>
 </li>
 <li><p>P31</p>
 <blockquote>
-<p><em>当把变量声明为 volatile 类型后，编译器与运行时都会注意到这个变量是共享的，因此不会将该变量上的操作与其他内存操作一起重排序。</em><br><em>volatile 变量不会被缓存在寄存器或者对其他处理器不可见的地方，因此在读取 volatile 类型的变量时总会返回最新写入的值。</em></p>
+<p><em>当把变量声明为 volatile 类型后，编译器与运行时都会注意到这个变量是共享的，因此不会将该变量上的操作与其他内存操作一起重排序。volatile 变量不会被缓存在寄存器或者对其他处理器不可见的地方，因此在读取 volatile 类型的变量时总会返回最新写入的值。</em></p>
 </blockquote>
 <p>  volatile 是确保<strong>可见性</strong>的，并不能保证操作的<strong>原子性</strong>，这点要搞清楚。<br>  可见性：当一个线程修改了某个共享变量的值，其他线程能够立刻看到修改后的值。<br>  加锁机制是既可以确保可见性又可以确保原子性的。<br>  详细请看廖雪峰 Java 教程这篇 <a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1306580767211554" target="_blank" rel="noopener">中断线程</a> 文章最后小结前的部分。</p>
 </li>
@@ -432,13 +513,13 @@
 </li>
 <li><p>P38 底部注释</p>
 <blockquote>
-<p><em>从技术上看，不可变对象并不需要将其所有的域都声明为 final 类型，例如 String 就是这种情况，</em><br><em>这就要对类的良性数据竞争（Benign Data Race）情况做精确分析，因此需要深入理解 Java 内存模型。</em><br><em>（注意：String 会将散列值的计算推迟到第一次调用 hash Code 时进行，并将计算得到的散列值缓存到非 final 类型的域中，</em><br><em>但这种方式之所以可行，是因为这个域有一个非默认的值，并且在每次计算中都得到相同的结果[因为基于一个不可变的状态]。</em><br><em>自己在编写代码时不要这么做。）</em></p>
+<p><em>从技术上看，不可变对象并不需要将其所有的域都声明为 final 类型，例如 String 就是这种情况，这就要对类的良性数据竞争（Benign Data Race）情况做精确分析，因此需要深入理解 Java 内存模型。（注意：String 会将散列值的计算推迟到第一次调用 hash Code 时进行，并将计算得到的散列值缓存到非 final 类型的域中，但这种方式之所以可行，是因为这个域有一个非默认的值，并且在每次计算中都得到相同的结果[因为基于一个不可变的状态]。自己在编写代码时不要这么做。）</em></p>
 </blockquote>
 <p>  这里讲到了 String 类的不可变性，String 类中的 <code>hash</code> 字段虽然是非 final 的，但还是可以保证其不变性。</p>
 </li>
 <li><p>P42</p>
 <blockquote>
-<p><em>由于不可变对象是一种非常重要的对象，因此 Java 内存模型为不可变对象的共享提供了一种特殊的初始化安全性保证。</em><br><em>另一方面，即使在发布不可变对象的引用时没有使用同步，也仍然可以安全地访问该对象。</em></p>
+<p><em>由于不可变对象是一种非常重要的对象，因此 Java 内存模型为不可变对象的共享提供了一种特殊的初始化安全性保证。另一方面，即使在发布不可变对象的引用时没有使用同步，也仍然可以安全地访问该对象。</em></p>
 </blockquote>
 <p>  这种 Java 内存模型为不可变对象提供的特殊初始化安全性保证机制，书中这里没有详细讲解，也许在《深入理解 Java 虚拟机》里会有。</p>
 </li>
@@ -450,26 +531,26 @@
 </ul>
 <h3 id="第-4-章-对象的组合"><a href="#第-4-章-对象的组合" class="headerlink" title="第 4 章 对象的组合"></a>第 4 章 对象的组合</h3><ul>
 <li>P51<blockquote>
-<p><em>在许多类中都使用了 Java 监视器模式，例如 Vector 和 Hashtable。</em><br><em>Java 监视器模式的主要优势就在于它的简单性。</em></p>
+<p><em>在许多类中都使用了 Java 监视器模式，例如 Vector 和 Hashtable。Java 监视器模式的主要优势就在于它的简单性。</em></p>
 </blockquote>
 </li>
 </ul>
 <h3 id="第-5-章-基础构建模块"><a href="#第-5-章-基础构建模块" class="headerlink" title="第 5 章 基础构建模块"></a>第 5 章 基础构建模块</h3><ul>
 <li><p>P70</p>
 <blockquote>
-<p><em>容器的 hashCode 和 equals 等方法也会间接地执行迭代操作，当容器作为另一个容器的元素或键值时，</em><br><em>就会出现这种情况。同样，containsAll、removeAll 和 retainAll 等方法，以及把容器作为参数的构造函数，</em><br><em>都会对容器进行迭代。所有这些间接的迭代操作都可能抛出 ConcurrentModificationException。</em></p>
+<p><em>容器的 hashCode 和 equals 等方法也会间接地执行迭代操作，当容器作为另一个容器的元素或键值时，就会出现这种情况。同样，containsAll、removeAll 和 retainAll 等方法，以及把容器作为参数的构造函数，都会对容器进行迭代。所有这些间接的迭代操作都可能抛出 ConcurrentModificationException。</em></p>
 </blockquote>
-<p>  还有书上举例的对容器打印时调用的 toString 函数，也会对容器进行迭代<br>  （这里<a href="https://jcip.net/errata.html" target="_blank" rel="noopener">勘误表</a>p.83 有补充，不过我没太看懂。。）</p>
+<p>  还有书上举例的对容器打印时调用的 toString 函数，也会对容器进行迭代（这里<a href="https://jcip.net/errata.html" target="_blank" rel="noopener">勘误表</a>p.83 有补充，不过我没太看懂。。）</p>
 </li>
 <li><p>P71</p>
 <blockquote>
-<p><em>ConcurrentHashMap 并不是将每个方法都在同一个锁上同步并使得每次只能有一个线程访问容器，</em><br><em>而是使用一种粒度更细的加锁机制来实现更大程度的共享，这种机制称为分段锁（Lock Striping，请参见 11.4.3 节）。</em><br><em>在这种机制中，任意数量的读取线程可以并发地访问 Map，执行读取操作的线程和执行写入操作的线程可以并发地访问 Map，</em><br><em>并且一定数量的写入线程可以并发地修改 Map。ConcurrentHashMap 带来的结果是，</em><br><em>在并发访问环境下将实现更高的吞吐量，而在单线程环境中只损失非常小的性能。</em></p>
+<p><em>ConcurrentHashMap 并不是将每个方法都在同一个锁上同步并使得每次只能有一个线程访问容器，而是使用一种粒度更细的加锁机制来实现更大程度的共享，这种机制称为分段锁（Lock Striping，请参见 11.4.3 节）。在这种机制中，任意数量的读取线程可以并发地访问 Map，执行读取操作的线程和执行写入操作的线程可以并发地访问 Map，并且一定数量的写入线程可以并发地修改 Map。ConcurrentHashMap 带来的结果是，在并发访问环境下将实现更高的吞吐量，而在单线程环境中只损失非常小的性能。</em></p>
 </blockquote>
-<p>  书中这段对 ConcurrentHashMap 的特点概括非常精彩，提到了它在并发环境下的设计权衡：用处很小的 size 和 isEmpty 返回<br>  的值不一定准确，因为它们的返回值总在不断变化，但是换取了 get、put、containsKey 和 remove 等更重要操作的性能优化。</p>
+<p>  书中这段对 ConcurrentHashMap 的特点概括非常精彩，提到了它在并发环境下的设计权衡：用处很小的 size 和 isEmpty 返回的值不一定准确，因为它们的返回值总在不断变化，但是换取了 get、put、containsKey 和 remove 等更重要操作的性能优化。</p>
 </li>
 <li><p>P74</p>
 <blockquote>
-<p><em>开发人员总会假设消费者处理工作的速率能赶上生产者生成工作项的速率，因此通常不会为工作队列的大小设置边界，</em><br><em>但这将导致在之后需要重新设计系统架构。因此，应该尽早地通过阻塞对了在设计中构建资源管理机制——</em><br><em>这件事情做得越早，就越容易。在许多情况下，阻塞队列能使这项工作更加简单，如果阻塞队列并不完全符合设计需求，</em><br><em>那么还可以通过信号量（Semaphore）来创建其他的阻塞数据结构（请参见 5.5.3 节）。</em></p>
+<p><em>开发人员总会假设消费者处理工作的速率能赶上生产者生成工作项的速率，因此通常不会为工作队列的大小设置边界，但这将导致在之后需要重新设计系统架构。因此，应该尽早地通过阻塞对了在设计中构建资源管理机制——这件事情做得越早，就越容易。在许多情况下，阻塞队列能使这项工作更加简单，如果阻塞队列并不完全符合设计需求，那么还可以通过信号量（Semaphore）来创建其他的阻塞数据结构（请参见 5.5.3 节）。</em></p>
 </blockquote>
 </li>
 <li><p>P77</p>
@@ -480,7 +561,7 @@
 </li>
 <li><p>P79</p>
 <blockquote>
-<p><em>等待直到某个操作的所有参与者（例如，在多玩家游戏中的所有玩家）都就绪再继续执行。在这种情况中，</em><br><em>当所有玩家都准备就绪时，闭锁将到达结束状态。</em></p>
+<p><em>等待直到某个操作的所有参与者（例如，在多玩家游戏中的所有玩家）都就绪再继续执行。在这种情况中，当所有玩家都准备就绪时，闭锁将到达结束状态。</em></p>
 </blockquote>
 <p>  比如王者打匹配要等所有玩家都确认之后才会进入选择英雄界面？</p>
 </li>
@@ -488,14 +569,14 @@
 <blockquote>
 <p><em>栅栏与闭锁的关键区别在于，所有线程必须同时到达栅栏位置，才能继续执行。闭锁用于等待事件，而栅栏用于等待其他线程。</em></p>
 </blockquote>
-<p>  闭锁用于所有线程等待一个外部事件的发生；栅栏则是所有线程相互等待，直到所有线程都到达某一点时才打开栅栏，<br>  然后线程可以继续执行。<a href="https://blog.csdn.net/x329357842/article/details/53239351" target="_blank" rel="noopener">参考来源</a></p>
+<p>  闭锁用于所有线程等待一个外部事件的发生；栅栏则是所有线程相互等待，直到所有线程都到达某一点时才打开栅栏，然后线程可以继续执行。<a href="https://blog.csdn.net/x329357842/article/details/53239351" target="_blank" rel="noopener">参考来源</a></p>
 </li>
 </ul>
-<h2 id="第二部分-结构化并发应用程序"><a href="#第二部分-结构化并发应用程序" class="headerlink" title="第二部分 结构化并发应用程序"></a>第二部分 结构化并发应用程序</h2><p>本部分包括之后的部分，看书的时候大概能看懂，但由于是实践部分，所以要在实际代码中回来反复看反复印证。<br>而且，很多细节，没有实际代码用到，体会不到。</p>
+<h2 id="第二部分-结构化并发应用程序"><a href="#第二部分-结构化并发应用程序" class="headerlink" title="第二部分 结构化并发应用程序"></a>第二部分 结构化并发应用程序</h2><p>本部分包括之后的部分，看书的时候大概能看懂，但由于是实践部分，所以要在实际代码中回来反复看反复印证。而且，很多细节，没有实际代码用到，体会不到。</p>
 <h3 id="第-6-章-任务执行"><a href="#第-6-章-任务执行" class="headerlink" title="第 6 章 任务执行"></a>第 6 章 任务执行</h3><ul>
 <li><p>P97</p>
 <blockquote>
-<p><em>改变 Executor 实现或配置所带来的影响要远远小于改变任务提交方式带来的影响。通常，Executor 的配置是一次性的，</em><br>》<em>因此在部署阶段可以完成，而提交任务的代码却会不断地扩散到整个程序中，增加了修改的难度。</em></p>
+<p><em>改变 Executor 实现或配置所带来的影响要远远小于改变任务提交方式带来的影响。通常，Executor 的配置是一次性的，因此在部署阶段可以完成，而提交任务的代码却会不断地扩散到整个程序中，增加了修改的难度。</em></p>
 </blockquote>
 </li>
 <li><p>P98</p>
@@ -505,7 +586,7 @@
 </li>
 <li><p>P99 底部注释</p>
 <blockquote>
-<p><em>但在足够长的时间内，如果任务到达的速度总是超过任务执行的速度，那么服务器仍有可能（只是更不易）耗尽内存，</em><br><em>因为等待执行的 Runnable 队列将不断增长。</em></p>
+<p><em>但在足够长的时间内，如果任务到达的速度总是超过任务执行的速度，那么服务器仍有可能（只是更不易）耗尽内存，因为等待执行的 Runnable 队列将不断增长。</em></p>
 </blockquote>
 <p>  P101 讲了 Timer 类需要注意的坑点，以后用的到的话可以看一看。</p>
 </li>
@@ -575,7 +656,7 @@
 <p>以下为 <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#split-java.lang.String-int-" target="_blank" rel="noopener">split() 官方文档</a> 给出的示例：</p>
 <figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line">String str = <span class="string">"boo:and:foo"</span>;</span><br><span class="line">System.out.println(Arrays.toString(str.split(<span class="string">":"</span>, <span class="number">2</span>)));	    <span class="comment">// 输出结果：[boo, and:foo]</span></span><br><span class="line">System.out.println(Arrays.toString(str.split(<span class="string">":"</span>, <span class="number">5</span>)));	    <span class="comment">// 输出结果：[boo, and, foo]</span></span><br><span class="line">System.out.println(Arrays.toString(str.split(<span class="string">":"</span>, -<span class="number">2</span>)));    <span class="comment">// 输出结果：[boo, and, foo]</span></span><br><span class="line">System.out.println(Arrays.toString(str.split(<span class="string">"o"</span>, <span class="number">5</span>)));	    <span class="comment">// 输出结果：[b, , :and:f, , ]</span></span><br><span class="line">System.out.println(Arrays.toString(str.split(<span class="string">"o"</span>, -<span class="number">2</span>)));    <span class="comment">// 输出结果：[b, , :and:f, , ]</span></span><br><span class="line">System.out.println(Arrays.toString(str.split(<span class="string">"o"</span>, <span class="number">0</span>)));	    <span class="comment">// 输出结果：[b, , :and:f]</span></span><br></pre></td></tr></tbody></table></figure>
 
-<p>另外，第一个参数 <code>regex</code> 是一个正则表达式字符串，某些特殊字符需要进行转义<br>如下所示，每行代码输出结果均为：<code>[a, b]</code></p>
+<p>另外，第一个参数 <code>regex</code> 是一个正则表达式字符串，某些特殊字符需要进行转义。如下所示，每行代码输出结果均为：<code>[a, b]</code></p>
 <figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line">System.out.println(Arrays.toString(<span class="string">"a.b"</span>.split(<span class="string">"\\."</span>)));</span><br><span class="line">System.out.println(Arrays.toString(<span class="string">"a$b"</span>.split(<span class="string">"\\$"</span>)));</span><br><span class="line">System.out.println(Arrays.toString(<span class="string">"a|b"</span>.split(<span class="string">"\\|"</span>)));</span><br><span class="line">System.out.println(Arrays.toString(<span class="string">"a*b"</span>.split(<span class="string">"\\*"</span>)));</span><br><span class="line">System.out.println(Arrays.toString(<span class="string">"a^b"</span>.split(<span class="string">"\\^"</span>)));</span><br><span class="line">System.out.println(Arrays.toString(<span class="string">"a\\b"</span>.split(<span class="string">"\\\\"</span>)));  <span class="comment">// '\b' 是特殊字符，'\' 需要写成 "\\"</span></span><br></pre></td></tr></tbody></table></figure></body></html>]]></content>
       <categories>
         <category>IT</category>
@@ -609,7 +690,7 @@
     <content><![CDATA[<html><head></head><body><p>总结在使用 Java 的 int 和 Integer 时可能会遇到的一些意想不到的问题。</p>
 <a id="more"></a>
 
-<h2 id="问题一：整型溢出"><a href="#问题一：整型溢出" class="headerlink" title="问题一：整型溢出"></a>问题一：整型溢出</h2><p>int 能表示的整数范围为：<strong>-2147483648 ~ 2147483647</strong>，超出这个范围就会造成溢出。<br>因此，我们在做常见的加减乘除等运算时会注意这一问题，但是要警惕某些方法也可能造成溢出：</p>
+<h2 id="问题一：整型溢出"><a href="#问题一：整型溢出" class="headerlink" title="问题一：整型溢出"></a>问题一：整型溢出</h2><p>int 能表示的整数范围为：<strong>-2147483648 ~ 2147483647</strong>，超出这个范围就会造成溢出。因此，我们在做常见的加减乘除等运算时会注意这一问题，但是要警惕某些方法也可能造成溢出：</p>
 <figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line">System.out.println(Math.abs(-<span class="number">2147483648</span>));  <span class="comment">// 输出结果：-2147483648</span></span><br></pre></td></tr></tbody></table></figure>
 
 <h2 id="问题二：自动拆箱导致的空指针错误"><a href="#问题二：自动拆箱导致的空指针错误" class="headerlink" title="问题二：自动拆箱导致的空指针错误"></a>问题二：自动拆箱导致的空指针错误</h2><p>以下为简单示例，实际代码中包装类型进行拆箱操作时要考虑为 null 的情况。</p>
@@ -618,7 +699,7 @@
 <h2 id="问题三：Java-虚拟机的常量池会缓存-128-127-之间的-Integer-对象"><a href="#问题三：Java-虚拟机的常量池会缓存-128-127-之间的-Integer-对象" class="headerlink" title="问题三：Java 虚拟机的常量池会缓存 [-128, 127] 之间的 Integer 对象"></a>问题三：Java 虚拟机的常量池会缓存 [-128, 127] 之间的 Integer 对象</h2><p>如果我们用这个范围内的数给 Integer 对象直接赋值，而不是 new 一个 Integer 对象，则会出现以下结果：</p>
 <figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line">Integer i1 = <span class="number">127</span>;</span><br><span class="line">Integer i2 = <span class="number">127</span>;</span><br><span class="line">System.out.println(i1 == i2);   <span class="comment">// 输出 true</span></span><br><span class="line"></span><br><span class="line">Integer i3 = <span class="number">128</span>;</span><br><span class="line">Integer i4 = <span class="number">128</span>;</span><br><span class="line">System.out.println(i3 == i4);   <span class="comment">// 输出 false</span></span><br></pre></td></tr></tbody></table></figure>
 
-<p>其实是 Java 在编译期间自动装箱，[-128, 127] 以内返回同一个缓存对象<br>另外，<code>Integer.valueOf()</code> 在这个范围内也会返回缓存对象。</p>
+<p>其实是 Java 在编译期间自动装箱，[-128, 127] 以内返回同一个缓存对象。另外，<code>Integer.valueOf()</code> 在这个范围内也会返回缓存对象。</p>
 </body></html>]]></content>
       <categories>
         <category>IT</category>
@@ -638,13 +719,13 @@
 <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>首先熟悉下用法（省略类和包名等）：</p>
 <figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line">System.out.println(<span class="string">"IT"</span>.toLowerCase());                     <span class="comment">// 输出结果为：it</span></span><br></pre></td></tr></tbody></table></figure>
 
-<p>查阅 <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#toLowerCase--" target="_blank" rel="noopener">toLowerCase() 官方文档</a> ，发现它实际调用的是 toLowerCase(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html#getDefault--" target="_blank" rel="noopener">Locale.getDefault()</a>)<br>而如果你的程序不幸运行在了土耳其语言环境下，则会出现以下情况：</p>
+<p>查阅 <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#toLowerCase--" target="_blank" rel="noopener">toLowerCase() 官方文档</a> ，发现它实际调用的是 toLowerCase(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html#getDefault--" target="_blank" rel="noopener">Locale.getDefault()</a>)，而如果你的程序不幸运行在了土耳其语言环境下，则会出现以下情况：</p>
 <figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line">Locale locale = Locale.forLanguageTag(<span class="string">"tr-TR"</span>);             <span class="comment">// 手动设置 locale 为土耳其</span></span><br><span class="line"><span class="comment">// Locale locale = new Locale("tr", "TR");                  // 两种设置方式是一样的</span></span><br><span class="line">System.out.println(<span class="string">"IT"</span>.toLowerCase(locale));               <span class="comment">// 输出结果为：ıt</span></span><br><span class="line">System.out.println(<span class="string">"IT"</span>.toLowerCase(locale).equals(<span class="string">"it"</span>));  <span class="comment">// 输出结果为：false</span></span><br></pre></td></tr></tbody></table></figure>
 
-<p>仔细看，输出结果 <strong>“it”</strong> 的 <strong>“i”</strong> 少了头上的一点，所以 <code>equals()</code> 的比较结果肯定为 false<br>这是因为，不同语言环境下的字符集可能是不一样的。<br><strong>因此，不带参数的 <code>toLowerCase()</code> 可以用于文本显示，不能用于逻辑判定。</strong><br>如果涉及到逻辑判定，可以使用带参数的 <code>toLowerCase(Locale locale)</code>，给它指定一个语言环境：</p>
+<p>仔细看，输出结果 <strong>“it”</strong> 的 <strong>“i”</strong> 少了头上的一点，所以 <code>equals()</code> 的比较结果肯定为 false。这是因为，不同语言环境下的字符集可能是不一样的。<strong>因此，不带参数的 <code>toLowerCase()</code> 可以用于文本显示，不能用于逻辑判定。</strong>如果涉及到逻辑判定，可以使用带参数的 <code>toLowerCase(Locale locale)</code>，给它指定一个语言环境：</p>
 <figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line">System.out.println(<span class="string">"IT"</span>.toLowerCase(Locale.US));            <span class="comment">// 输出结果为：it</span></span><br></pre></td></tr></tbody></table></figure>
 
-<p>这样就能保证得到的结果是确定的，不会根据当前地区语言环境发生变化。<br>类似的方法还有 <code>toUpperCase()</code>，原理是一样的，不再赘述。</p>
+<p>这样就能保证得到的结果是确定的，不会根据当前地区语言环境发生变化。类似的方法还有 <code>toUpperCase()</code>，原理是一样的，不再赘述。</p>
 </body></html>]]></content>
       <categories>
         <category>IT</category>
@@ -672,8 +753,7 @@
 
 <figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># Python 3.7.0</span></span><br><span class="line">>>> -7 // 4 = -2</span><br></pre></td></tr></tbody></table></figure>
 
-<p>可以看到，在计算异号相除的整数商时，C/C++、Java 会向 0 方向舍入；而 Python 会向负无穷方向舍入。</p>
-<p>其实这也是造成它们的运算符 <code>%</code> 结果也不一样的原因。详细请看我的另一篇博文：<a href="/2020/03/24/运算符-37-是取余还是取模？/">运算符 % 是取余还是取模？</a></p>
+<p>可以看到，在计算异号相除的整数商时，C/C++、Java 会向 0 方向舍入；而 Python 会向负无穷方向舍入。其实这也是造成它们的运算符 <code>%</code> 结果也不一样的原因。详细请看我的另一文章：<a href="/2020/03/24/运算符-37-是取余还是取模？/">运算符 % 是取余还是取模？</a></p>
 </body></html>]]></content>
       <categories>
         <category>IT</category>
