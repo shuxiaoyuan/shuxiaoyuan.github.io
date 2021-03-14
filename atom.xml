@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://shuxiaoyuan.github.io/"/>
-  <updated>2020-12-06T14:26:25.301Z</updated>
+  <updated>2021-03-14T12:53:54.951Z</updated>
   <id>https://shuxiaoyuan.github.io/</id>
   
   <author>
@@ -17,11 +17,57 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>《深入理解Java虚拟机第3版》读书笔记</title>
+    <link href="https://shuxiaoyuan.github.io/2021/01/14/%E3%80%8A%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC3%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    <id>https://shuxiaoyuan.github.io/2021/01/14/%E3%80%8A%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC3%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</id>
+    <published>2021-01-14T14:13:35.000Z</published>
+    <updated>2021-03-14T12:53:54.951Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;《深入理解Java虚拟机第3版》读书笔记，持续更新中…&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="读书笔记" scheme="https://shuxiaoyuan.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="IT" scheme="https://shuxiaoyuan.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/IT/"/>
+    
+    
+      <category term="读书笔记" scheme="https://shuxiaoyuan.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《计算机网络：自顶向下方法（第7版）》读书笔记</title>
+    <link href="https://shuxiaoyuan.github.io/2021/01/14/%E3%80%8A%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E6%96%B9%E6%B3%95%EF%BC%88%E7%AC%AC7%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    <id>https://shuxiaoyuan.github.io/2021/01/14/%E3%80%8A%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E6%96%B9%E6%B3%95%EF%BC%88%E7%AC%AC7%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</id>
+    <published>2021-01-14T14:10:31.000Z</published>
+    <updated>2021-01-14T14:11:16.709Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;《计算机网络：自顶向下方法（第7版）》读书笔记，待更新…&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="读书笔记" scheme="https://shuxiaoyuan.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="IT" scheme="https://shuxiaoyuan.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/IT/"/>
+    
+    
+      <category term="读书笔记" scheme="https://shuxiaoyuan.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>《操作系统导论》读书笔记</title>
     <link href="https://shuxiaoyuan.github.io/2020/11/25/%E3%80%8A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     <id>https://shuxiaoyuan.github.io/2020/11/25/%E3%80%8A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</id>
     <published>2020-11-25T14:24:49.000Z</published>
-    <updated>2020-12-06T14:26:25.301Z</updated>
+    <updated>2021-01-20T13:34:30.653Z</updated>
     
     <summary type="html">
     
@@ -44,11 +90,11 @@
     <link href="https://shuxiaoyuan.github.io/2020/11/23/%E3%80%8AJava-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%EF%BC%88%E7%AC%AC10%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     <id>https://shuxiaoyuan.github.io/2020/11/23/%E3%80%8AJava-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%EF%BC%88%E7%AC%AC10%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</id>
     <published>2020-11-23T03:36:45.000Z</published>
-    <updated>2020-12-06T13:44:25.032Z</updated>
+    <updated>2021-01-13T13:38:40.804Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;《Java 核心技术（第10版）》读书笔记，持续更新中…&lt;/p&gt;
+      &lt;p&gt;《Java 核心技术（第10版）》读书笔记，已大概完结。&lt;/p&gt;
     
     </summary>
     
@@ -163,7 +209,7 @@
     <link href="https://shuxiaoyuan.github.io/2020/10/12/Java-%E8%AF%AD%E6%B3%95%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/"/>
     <id>https://shuxiaoyuan.github.io/2020/10/12/Java-%E8%AF%AD%E6%B3%95%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/</id>
     <published>2020-10-12T06:37:45.000Z</published>
-    <updated>2020-10-28T14:11:11.346Z</updated>
+    <updated>2020-12-08T15:13:59.632Z</updated>
     
     <summary type="html">
     
