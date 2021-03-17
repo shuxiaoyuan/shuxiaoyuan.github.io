@@ -44,20 +44,20 @@
   };
 </script>
 
-  <meta name="description" content="总结在使用 Java 的 int 和 Integer 时可能会遇到的一些意想不到的问题。">
+  <meta name="description" content="《Effective Java 第3版》读书笔记，持续更新中…">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java 中的 int 和 Integer">
-<meta property="og:url" content="https://shuxiaoyuan.github.io/2020/10/12/Java-%E4%B8%AD%E7%9A%84-int-%E5%92%8C-Integer/">
+<meta property="og:title" content="《Effective Java 第3版》读书笔记">
+<meta property="og:url" content="https://shuxiaoyuan.github.io/2021/03/14/%E3%80%8AEffective-Java-%E7%AC%AC3%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
 <meta property="og:site_name" content="书缘的博客">
-<meta property="og:description" content="总结在使用 Java 的 int 和 Integer 时可能会遇到的一些意想不到的问题。">
+<meta property="og:description" content="《Effective Java 第3版》读书笔记，持续更新中…">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-10-12T03:14:54.000Z">
-<meta property="article:modified_time" content="2020-12-01T13:43:07.215Z">
+<meta property="article:published_time" content="2021-03-14T13:08:34.000Z">
+<meta property="article:modified_time" content="2021-03-17T14:16:14.990Z">
 <meta property="article:author" content="书缘">
-<meta property="article:tag" content="踩坑">
+<meta property="article:tag" content="读书笔记">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://shuxiaoyuan.github.io/2020/10/12/Java-%E4%B8%AD%E7%9A%84-int-%E5%92%8C-Integer/">
+<link rel="canonical" href="https://shuxiaoyuan.github.io/2021/03/14/%E3%80%8AEffective-Java-%E7%AC%AC3%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
 
 
 <script id="page-configurations">
@@ -69,7 +69,7 @@
   };
 </script>
 
-  <title>Java 中的 int 和 Integer | 书缘的博客</title>
+  <title>《Effective Java 第3版》读书笔记 | 书缘的博客</title>
   
 
 
@@ -217,7 +217,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shuxiaoyuan.github.io/2020/10/12/Java-%E4%B8%AD%E7%9A%84-int-%E5%92%8C-Integer/">
+    <link itemprop="mainEntityOfPage" href="https://shuxiaoyuan.github.io/2021/03/14/%E3%80%8AEffective-Java-%E7%AC%AC3%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -230,7 +230,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Java 中的 int 和 Integer
+          《Effective Java 第3版》读书笔记
         </h1>
 
         <div class="post-meta">
@@ -240,14 +240,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-10-12 11:14:54" itemprop="dateCreated datePublished" datetime="2020-10-12T11:14:54+08:00">2020-10-12</time>
+              <time title="创建时间：2021-03-14 21:08:34" itemprop="dateCreated datePublished" datetime="2021-03-14T21:08:34+08:00">2021-03-14</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-01 21:43:07" itemprop="dateModified" datetime="2020-12-01T21:43:07+08:00">2020-12-01</time>
+                <time title="修改时间：2021-03-17 22:16:14" itemprop="dateModified" datetime="2021-03-17T22:16:14+08:00">2021-03-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -255,26 +255,20 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/IT/" itemprop="url" rel="index">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/IT/" itemprop="url" rel="index">
                     <span itemprop="name">IT</span>
-                  </a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/IT/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/IT/Java/%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/" itemprop="url" rel="index">
-                    <span itemprop="name">基本类型</span>
                   </a>
                 </span>
             </span>
 
           
-            <span id="/2020/10/12/Java-%E4%B8%AD%E7%9A%84-int-%E5%92%8C-Integer/" class="post-meta-item leancloud_visitors" data-flag-title="Java 中的 int 和 Integer" title="阅读次数">
+            <span id="/2021/03/14/%E3%80%8AEffective-Java-%E7%AC%AC3%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="post-meta-item leancloud_visitors" data-flag-title="《Effective Java 第3版》读书笔记" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -289,8 +283,8 @@
       </span>
       <span class="post-meta-item-text">评论数：</span>
     
-    <a title="valine" href="/2020/10/12/Java-%E4%B8%AD%E7%9A%84-int-%E5%92%8C-Integer/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/10/12/Java-%E4%B8%AD%E7%9A%84-int-%E5%92%8C-Integer/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/03/14/%E3%80%8AEffective-Java-%E7%AC%AC3%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/03/14/%E3%80%8AEffective-Java-%E7%AC%AC3%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -300,7 +294,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>588</span>
+              <span>852</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -319,20 +313,35 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>总结在使用 Java 的 int 和 Integer 时可能会遇到的一些意想不到的问题。</p>
+        <p>《Effective Java 第3版》读书笔记，持续更新中…</p>
 <a id="more"></a>
 
-<h2 id="问题一：整型溢出"><a href="#问题一：整型溢出" class="headerlink" title="问题一：整型溢出"></a>问题一：整型溢出</h2><p>int 能表示的整数范围为：<strong>-2147483648 ~ 2147483647</strong>，超出这个范围就会造成溢出。因此，我们在做常见的加减乘除等运算时会注意这一问题，但是要警惕某些方法也可能造成溢出：</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(Math.abs(-<span class="number">2147483648</span>));  <span class="comment">// 输出结果：-2147483648</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="问题二：自动拆箱导致的空指针错误"><a href="#问题二：自动拆箱导致的空指针错误" class="headerlink" title="问题二：自动拆箱导致的空指针错误"></a>问题二：自动拆箱导致的空指针错误</h2><p>以下为简单示例，实际代码中包装类型进行拆箱操作时要考虑为 null 的情况。</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Integer integer = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">int</span> i = integer;</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="问题三：Java-虚拟机的常量池会缓存-128-127-之间的-Integer-对象"><a href="#问题三：Java-虚拟机的常量池会缓存-128-127-之间的-Integer-对象" class="headerlink" title="问题三：Java 虚拟机的常量池会缓存 [-128, 127] 之间的 Integer 对象"></a>问题三：Java 虚拟机的常量池会缓存 [-128, 127] 之间的 Integer 对象</h2><p>如果我们用这个范围内的数给 Integer 对象直接赋值，而不是 new 一个 Integer 对象，则会出现以下结果：</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Integer i1 = <span class="number">127</span>;</span><br><span class="line">Integer i2 = <span class="number">127</span>;</span><br><span class="line">System.out.println(i1 == i2);   <span class="comment">// 输出 true</span></span><br><span class="line"></span><br><span class="line">Integer i3 = <span class="number">128</span>;</span><br><span class="line">Integer i4 = <span class="number">128</span>;</span><br><span class="line">System.out.println(i3 == i4);   <span class="comment">// 输出 false</span></span><br></pre></td></tr></tbody></table></figure>
-
-<p>其实是 Java 在编译期间自动装箱，[-128, 127] 以内返回同一个缓存对象。另外，<code>Integer.valueOf()</code> 在这个范围内也会返回缓存对象。</p>
-
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><p><a href="https://pan.baidu.com/s/1hdEoFrC2VcWIER8P-g1wtQ" target="_blank" rel="noopener">百度网盘资源链接</a>(包含第2版和第3版的中英文 pdf 电子书)提取码：zunh</p>
+<p><a href="https://www.iteye.com/blog/yulimin-2432638" target="_blank" rel="noopener">勘误表</a></p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h2 id="第-2-章-创建和销毁对象"><a href="#第-2-章-创建和销毁对象" class="headerlink" title="第 2 章 创建和销毁对象"></a>第 2 章 创建和销毁对象</h2><h3 id="第-1-条：用静态工厂方法代替构造器"><a href="#第-1-条：用静态工厂方法代替构造器" class="headerlink" title="第 1 条：用静态工厂方法代替构造器"></a>第 1 条：用静态工厂方法代替构造器</h3><h4 id="原文摘抄"><a href="#原文摘抄" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li>P9<blockquote>
+<p><em>静态工厂和公有构造器都各有用处，我们需要理解它们各自的长处。静态工厂经常更加合适，因此切忌第一反应就是提供公有的构造器，而不先考虑静态工厂。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结"><a href="#本条总结" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了静态工厂方法相比于公有构造器的五大优势和两个缺点，还提到了享元模式。</p>
+<h3 id="第-2-条：遇到多个构造器参数时要考虑使用构建器"><a href="#第-2-条：遇到多个构造器参数时要考虑使用构建器" class="headerlink" title="第 2 条：遇到多个构造器参数时要考虑使用构建器"></a>第 2 条：遇到多个构造器参数时要考虑使用构建器</h3><h4 id="原文摘抄-1"><a href="#原文摘抄-1" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li>P15<blockquote>
+<p><em>如果类的构造器或者静态工厂中具有多个参数，设计这种类时，Builder 模式就是一种不错的选择。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-1"><a href="#本条总结-1" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了当一个类中有多个参数时，这个类的构建方式，提到了重叠构造器、JavaBeans 模式，并分析了它们的缺点。</p>
+<h3 id="第-3-条：用私有构造器或者枚举类型强化-Singleton-属性"><a href="#第-3-条：用私有构造器或者枚举类型强化-Singleton-属性" class="headerlink" title="第 3 条：用私有构造器或者枚举类型强化 Singleton 属性"></a>第 3 条：用私有构造器或者枚举类型强化 Singleton 属性</h3><h4 id="原文摘抄-2"><a href="#原文摘抄-2" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li>P17<blockquote>
+<p><em>如果 Singleton 必须扩展一个超类，而不是扩展 Enum 的时候，则不宜使用这个方法（虽然可以声明枚举去实现接口）。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-2"><a href="#本条总结-2" class="headerlink" title="本条总结"></a>本条总结</h4><p>单例模式的各种实现已经很熟悉了，但还是有很多需要注意的细节问题。比如本条中提到的通过反射机制调用私有构造器，可以采用在构造器中创建实例的时候判断持有的实例引用不为空则抛出异常的方式。另外防止序列化创建新的实例，本条中提到了 transient 关键字还有 readResolve 方法，这个没有接触过，有机会再看。</p>
+<h3 id="第-4-条：通过私有构造器强化不可实例化的能力"><a href="#第-4-条：通过私有构造器强化不可实例化的能力" class="headerlink" title="第 4 条：通过私有构造器强化不可实例化的能力"></a>第 4 条：通过私有构造器强化不可实例化的能力</h3><h4 id="本条总结-3"><a href="#本条总结-3" class="headerlink" title="本条总结"></a>本条总结</h4><p>只包含静态方法和静态域的类，据我理解也就是所谓的工具类，如 java.lang.Math、java.util.Collections 等。这些类也可以聚集与之相关的 final 类的静态方法，因为 final 类没有子类。</p>
+<p>从 Java 8 开始，可以把这些方法组织到一个接口里。<br>如果是组织到一个类中，那么你肯定不希望这个类被实例化，具体做法就是给这个类写一个私有的构造器，并在里面抛出 AssertionError()，并写好注释。</p>
+<h3 id="第-5-条：优先考虑依赖注入来引用资源"><a href="#第-5-条：优先考虑依赖注入来引用资源" class="headerlink" title="第 5 条：优先考虑依赖注入来引用资源"></a>第 5 条：优先考虑依赖注入来引用资源</h3>
     </div>
 
     
@@ -367,7 +376,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://shuxiaoyuan.github.io/2020/10/12/Java-%E4%B8%AD%E7%9A%84-int-%E5%92%8C-Integer/" title="Java 中的 int 和 Integer">https://shuxiaoyuan.github.io/2020/10/12/Java-中的-int-和-Integer/</a>
+    <a href="https://shuxiaoyuan.github.io/2021/03/14/%E3%80%8AEffective-Java-%E7%AC%AC3%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" title="《Effective Java 第3版》读书笔记">https://shuxiaoyuan.github.io/2021/03/14/《Effective-Java-第3版》读书笔记/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -378,7 +387,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E8%B8%A9%E5%9D%91/" rel="tag"># 踩坑</a>
+              <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag"># 读书笔记</a>
           </div>
 
         
@@ -387,13 +396,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/10/10/Java-toLowerCase-%E8%AF%AD%E8%A8%80%E9%97%AE%E9%A2%98/" rel="prev" title="Java toLowerCase() 语言问题">
-      <i class="fa fa-chevron-left"></i> Java toLowerCase() 语言问题
+    <a href="/2021/01/14/%E3%80%8A%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC3%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="prev" title="《深入理解Java虚拟机第3版》读书笔记">
+      <i class="fa fa-chevron-left"></i> 《深入理解Java虚拟机第3版》读书笔记
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/10/12/Java-%E8%AF%AD%E6%B3%95%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/" rel="next" title="Java 语法问题汇总">
-      Java 语法问题汇总 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -454,7 +460,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题一：整型溢出"><span class="nav-number">1.</span> <span class="nav-text">问题一：整型溢出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题二：自动拆箱导致的空指针错误"><span class="nav-number">2.</span> <span class="nav-text">问题二：自动拆箱导致的空指针错误</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题三：Java-虚拟机的常量池会缓存-128-127-之间的-Integer-对象"><span class="nav-number">3.</span> <span class="nav-text">问题三：Java 虚拟机的常量池会缓存 [-128, 127] 之间的 Integer 对象</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#资源"><span class="nav-number">1.</span> <span class="nav-text">资源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">2.</span> <span class="nav-text">目录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第-2-章-创建和销毁对象"><span class="nav-number">2.1.</span> <span class="nav-text">第 2 章 创建和销毁对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第-1-条：用静态工厂方法代替构造器"><span class="nav-number">2.1.1.</span> <span class="nav-text">第 1 条：用静态工厂方法代替构造器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-2-条：遇到多个构造器参数时要考虑使用构建器"><span class="nav-number">2.1.2.</span> <span class="nav-text">第 2 条：遇到多个构造器参数时要考虑使用构建器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-1"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-1"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-3-条：用私有构造器或者枚举类型强化-Singleton-属性"><span class="nav-number">2.1.3.</span> <span class="nav-text">第 3 条：用私有构造器或者枚举类型强化 Singleton 属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-2"><span class="nav-number">2.1.3.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-2"><span class="nav-number">2.1.3.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-4-条：通过私有构造器强化不可实例化的能力"><span class="nav-number">2.1.4.</span> <span class="nav-text">第 4 条：通过私有构造器强化不可实例化的能力</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-3"><span class="nav-number">2.1.4.1.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-5-条：优先考虑依赖注入来引用资源"><span class="nav-number">2.1.5.</span> <span class="nav-text">第 5 条：优先考虑依赖注入来引用资源</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

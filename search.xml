@@ -1,9 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>《Effective Java 第3版》读书笔记</title>
+    <url>/2021/03/14/%E3%80%8AEffective-Java-%E7%AC%AC3%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<html><head></head><body><p>《Effective Java 第3版》读书笔记，持续更新中…</p>
+<a id="more"></a>
+
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><p><a href="https://pan.baidu.com/s/1hdEoFrC2VcWIER8P-g1wtQ" target="_blank" rel="noopener">百度网盘资源链接</a>(包含第2版和第3版的中英文 pdf 电子书)提取码：zunh</p>
+<p><a href="https://www.iteye.com/blog/yulimin-2432638" target="_blank" rel="noopener">勘误表</a></p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h2 id="第-2-章-创建和销毁对象"><a href="#第-2-章-创建和销毁对象" class="headerlink" title="第 2 章 创建和销毁对象"></a>第 2 章 创建和销毁对象</h2><h3 id="第-1-条：用静态工厂方法代替构造器"><a href="#第-1-条：用静态工厂方法代替构造器" class="headerlink" title="第 1 条：用静态工厂方法代替构造器"></a>第 1 条：用静态工厂方法代替构造器</h3><h4 id="原文摘抄"><a href="#原文摘抄" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li>P9<blockquote>
+<p><em>静态工厂和公有构造器都各有用处，我们需要理解它们各自的长处。静态工厂经常更加合适，因此切忌第一反应就是提供公有的构造器，而不先考虑静态工厂。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结"><a href="#本条总结" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了静态工厂方法相比于公有构造器的五大优势和两个缺点，还提到了享元模式。</p>
+<h3 id="第-2-条：遇到多个构造器参数时要考虑使用构建器"><a href="#第-2-条：遇到多个构造器参数时要考虑使用构建器" class="headerlink" title="第 2 条：遇到多个构造器参数时要考虑使用构建器"></a>第 2 条：遇到多个构造器参数时要考虑使用构建器</h3><h4 id="原文摘抄-1"><a href="#原文摘抄-1" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li>P15<blockquote>
+<p><em>如果类的构造器或者静态工厂中具有多个参数，设计这种类时，Builder 模式就是一种不错的选择。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-1"><a href="#本条总结-1" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了当一个类中有多个参数时，这个类的构建方式，提到了重叠构造器、JavaBeans 模式，并分析了它们的缺点。</p>
+<h3 id="第-3-条：用私有构造器或者枚举类型强化-Singleton-属性"><a href="#第-3-条：用私有构造器或者枚举类型强化-Singleton-属性" class="headerlink" title="第 3 条：用私有构造器或者枚举类型强化 Singleton 属性"></a>第 3 条：用私有构造器或者枚举类型强化 Singleton 属性</h3><h4 id="原文摘抄-2"><a href="#原文摘抄-2" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li>P17<blockquote>
+<p><em>如果 Singleton 必须扩展一个超类，而不是扩展 Enum 的时候，则不宜使用这个方法（虽然可以声明枚举去实现接口）。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-2"><a href="#本条总结-2" class="headerlink" title="本条总结"></a>本条总结</h4><p>单例模式的各种实现已经很熟悉了，但还是有很多需要注意的细节问题。比如本条中提到的通过反射机制调用私有构造器，可以采用在构造器中创建实例的时候判断持有的实例引用不为空则抛出异常的方式。另外防止序列化创建新的实例，本条中提到了 transient 关键字还有 readResolve 方法，这个没有接触过，有机会再看。</p>
+<h3 id="第-4-条：通过私有构造器强化不可实例化的能力"><a href="#第-4-条：通过私有构造器强化不可实例化的能力" class="headerlink" title="第 4 条：通过私有构造器强化不可实例化的能力"></a>第 4 条：通过私有构造器强化不可实例化的能力</h3><h4 id="本条总结-3"><a href="#本条总结-3" class="headerlink" title="本条总结"></a>本条总结</h4><p>只包含静态方法和静态域的类，据我理解也就是所谓的工具类，如 java.lang.Math、java.util.Collections 等。这些类也可以聚集与之相关的 final 类的静态方法，因为 final 类没有子类。</p>
+<p>从 Java 8 开始，可以把这些方法组织到一个接口里。<br>如果是组织到一个类中，那么你肯定不希望这个类被实例化，具体做法就是给这个类写一个私有的构造器，并在里面抛出 AssertionError()，并写好注释。</p>
+<h3 id="第-5-条：优先考虑依赖注入来引用资源"><a href="#第-5-条：优先考虑依赖注入来引用资源" class="headerlink" title="第 5 条：优先考虑依赖注入来引用资源"></a>第 5 条：优先考虑依赖注入来引用资源</h3></body></html>]]></content>
+      <categories>
+        <category>读书笔记</category>
+        <category>IT</category>
+      </categories>
+      <tags>
+        <tag>读书笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>《深入理解Java虚拟机第3版》读书笔记</title>
     <url>/2021/01/14/%E3%80%8A%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC3%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<html><head></head><body><p>《深入理解Java虚拟机第3版》读书笔记，持续更新中…</p>
+    <content><![CDATA[<html><head></head><body><p>《深入理解Java虚拟机第3版》读书笔记，待更新…</p>
 <a id="more"></a>
 
 <h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><p><a href="https://github.com/fenixsoft/jvm_book" target="_blank" rel="noopener">勘误表</a></p>
@@ -35,7 +75,7 @@
   <entry>
     <title>《操作系统导论》读书笔记</title>
     <url>/2020/11/25/%E3%80%8A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<html><head></head><body><p>《操作系统导论》读书笔记，持续更新中…</p>
+    <content><![CDATA[<html><head></head><body><p>《操作系统导论》读书笔记，待更新…</p>
 <a id="more"></a>
 
 <h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><p><a href="https://pan.baidu.com/s/1X-5RY-rHLoROZtq5juMdRA" target="_blank" rel="noopener">百度网盘资源链接</a>（包含书中代码和本书英文原版 pdf ）提取码：ffhc<br><a href="http://pages.cs.wisc.edu/~remzi/OSTEP/" target="_blank" rel="noopener">官网</a><br><a href="https://github.com/remzi-arpacidusseau/ostep-code" target="_blank" rel="noopener">GitHub</a></p>
