@@ -31,7 +31,30 @@
 <h4 id="本条总结-2"><a href="#本条总结-2" class="headerlink" title="本条总结"></a>本条总结</h4><p>单例模式的各种实现已经很熟悉了，但还是有很多需要注意的细节问题。比如本条中提到的通过反射机制调用私有构造器，可以采用在构造器中创建实例的时候判断持有的实例引用不为空则抛出异常的方式。另外防止序列化创建新的实例，本条中提到了 transient 关键字还有 readResolve 方法，这个没有接触过，有机会再看。</p>
 <h3 id="第-4-条：通过私有构造器强化不可实例化的能力"><a href="#第-4-条：通过私有构造器强化不可实例化的能力" class="headerlink" title="第 4 条：通过私有构造器强化不可实例化的能力"></a>第 4 条：通过私有构造器强化不可实例化的能力</h3><h4 id="本条总结-3"><a href="#本条总结-3" class="headerlink" title="本条总结"></a>本条总结</h4><p>只包含静态方法和静态域的类，据我理解也就是所谓的工具类，如 java.lang.Math、java.util.Collections 等。这些类也可以聚集与之相关的 final 类的静态方法，因为 final 类没有子类。</p>
 <p>从 Java 8 开始，可以把这些方法组织到一个接口里。<br>如果是组织到一个类中，那么你肯定不希望这个类被实例化，具体做法就是给这个类写一个私有的构造器，并在里面抛出 AssertionError()，并写好注释。</p>
-<h3 id="第-5-条：优先考虑依赖注入来引用资源"><a href="#第-5-条：优先考虑依赖注入来引用资源" class="headerlink" title="第 5 条：优先考虑依赖注入来引用资源"></a>第 5 条：优先考虑依赖注入来引用资源</h3></body></html>]]></content>
+<h3 id="第-5-条：优先考虑依赖注入来引用资源"><a href="#第-5-条：优先考虑依赖注入来引用资源" class="headerlink" title="第 5 条：优先考虑依赖注入来引用资源"></a>第 5 条：优先考虑依赖注入来引用资源</h3><h4 id="原文摘抄-3"><a href="#原文摘抄-3" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P18</p>
+<blockquote>
+<p><em>静态工具类和 Singleton 类不适合于需要引用底层资源的类。</em></p>
+</blockquote>
+</li>
+<li><p>P18</p>
+<blockquote>
+<p><em>当创建一个新的实例时，就将该资源传到构造器中。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-4"><a href="#本条总结-4" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了依赖注入模式，还顺带讲了 Java 8 的 Supplier<t> 接口，以及工厂模式在此模式下的应用。</t></p>
+<h3 id="第-6-条：避免创建不必要的对象"><a href="#第-6-条：避免创建不必要的对象" class="headerlink" title="第 6 条：避免创建不必要的对象"></a>第 6 条：避免创建不必要的对象</h3><h4 id="原文摘抄-4"><a href="#原文摘抄-4" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li>P22<blockquote>
+<p><em>要优先使用基本类型而不是装箱基本类型，要当心无意识的自动装箱。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-5"><a href="#本条总结-5" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了在 <code>String s = new String("abc")</code> 中，”abc” 本来就是一个 String 实例，不如直接重用方式写成 <code>String s = "abc"</code>。</p>
+<p>然后讲了正则表达式匹配创建 Pattern 实例的成本很高，因为需要将正则表达式编译成一个有限状态机。所以应该用变量将这个实例缓存起来，在用到的时候复用。另外不要使用延迟初始化，这样每次调用都会判定是否初始化，反而会降低性能。</p>
+<p>本章还讲了适配器模式和 Map 接口的 keySet 方法，但我没太 get 到作者想表达的意思。</p>
+<p>后面讲到要避免频繁自动装箱引起的不必要的性能损耗。</p>
+</body></html>]]></content>
       <categories>
         <category>读书笔记</category>
         <category>IT</category>
