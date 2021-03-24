@@ -68,7 +68,21 @@
 </ul>
 <h4 id="本条总结-6"><a href="#本条总结-6" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条以自己实现的栈为例，当栈弹出元素时，应该立刻将其赋值为 null，否则这些元素可能既访问不到又不会被垃圾回收，从而造成内存泄漏。</p>
 <p>本章还提到了几个弱引用相关的集合，例如 WeakHashMap、LinkedHashMap。</p>
-</body></html>]]></content>
+<h3 id="第-8-条：避免使用终结方法和清除方法"><a href="#第-8-条：避免使用终结方法和清除方法" class="headerlink" title="第 8 条：避免使用终结方法和清除方法"></a>第 8 条：避免使用终结方法和清除方法</h3><h4 id="原文摘抄-6"><a href="#原文摘抄-6" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li>P29<blockquote>
+<p><em>总而言之，除非是作为安全网，或者是为了终止非关键的本地资源，否则请不要使用清除方法，对于在 Java 9 之前的发行版本，则尽量不要使用终结方法。若使用了终结方法或者清除方法，则要注意它的不确定性和性能后果。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-7"><a href="#本条总结-7" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条说了挺多但其实只有一点，别用这俩方法！别用这俩方法！别用这俩方法！</p>
+<h3 id="第-9-条：try-with-resources-优先于-try-finally"><a href="#第-9-条：try-with-resources-优先于-try-finally" class="headerlink" title="第 9 条：try-with-resources 优先于 try-finally"></a>第 9 条：try-with-resources 优先于 try-finally</h3><h4 id="原文摘抄-7"><a href="#原文摘抄-7" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li>P32<blockquote>
+<p><em>结论很明显：在处理必须关闭的资源时，始终要优先考虑用 try-with-resources，而不是用 try-finally。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-8"><a href="#本条总结-8" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了使用 try-finally 在遇到多个资源时写法的复杂、finally 中 close 可能会抛出异常然后覆盖 try 中的异常等缺点。然后给出了优先使用 try-with-resources 的结论。</p>
+<h2 id="第-3-章-对于所有对象都通用的方法"><a href="#第-3-章-对于所有对象都通用的方法" class="headerlink" title="第 3 章 对于所有对象都通用的方法"></a>第 3 章 对于所有对象都通用的方法</h2><h3 id="第-10-条：覆盖-equals-时请遵守通用约定"><a href="#第-10-条：覆盖-equals-时请遵守通用约定" class="headerlink" title="第 10 条：覆盖 equals 时请遵守通用约定"></a>第 10 条：覆盖 equals 时请遵守通用约定</h3></body></html>]]></content>
       <categories>
         <category>读书笔记</category>
         <category>IT</category>
