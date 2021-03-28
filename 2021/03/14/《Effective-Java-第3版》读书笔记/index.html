@@ -52,7 +52,7 @@
 <meta property="og:description" content="《Effective Java 第3版》读书笔记，持续更新中…">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-14T13:08:34.000Z">
-<meta property="article:modified_time" content="2021-03-24T13:35:08.783Z">
+<meta property="article:modified_time" content="2021-03-28T07:34:04.270Z">
 <meta property="article:author" content="书缘">
 <meta property="article:tag" content="读书笔记">
 <meta name="twitter:card" content="summary">
@@ -247,7 +247,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-24 21:35:08" itemprop="dateModified" datetime="2021-03-24T21:35:08+08:00">2021-03-24</time>
+                <time title="修改时间：2021-03-28 15:34:04" itemprop="dateModified" datetime="2021-03-28T15:34:04+08:00">2021-03-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -294,14 +294,14 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.9k</span>
+              <span>2.8k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 ≈</span>
-              <span>3 分钟</span>
+              <span>5 分钟</span>
             </span>
 
         </div>
@@ -392,7 +392,64 @@
 </li>
 </ul>
 <h4 id="本条总结-8"><a href="#本条总结-8" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了使用 try-finally 在遇到多个资源时写法的复杂、finally 中 close 可能会抛出异常然后覆盖 try 中的异常等缺点。然后给出了优先使用 try-with-resources 的结论。</p>
-<h2 id="第-3-章-对于所有对象都通用的方法"><a href="#第-3-章-对于所有对象都通用的方法" class="headerlink" title="第 3 章 对于所有对象都通用的方法"></a>第 3 章 对于所有对象都通用的方法</h2><h3 id="第-10-条：覆盖-equals-时请遵守通用约定"><a href="#第-10-条：覆盖-equals-时请遵守通用约定" class="headerlink" title="第 10 条：覆盖 equals 时请遵守通用约定"></a>第 10 条：覆盖 equals 时请遵守通用约定</h3>
+<h2 id="第-3-章-对于所有对象都通用的方法"><a href="#第-3-章-对于所有对象都通用的方法" class="headerlink" title="第 3 章 对于所有对象都通用的方法"></a>第 3 章 对于所有对象都通用的方法</h2><h3 id="第-10-条：覆盖-equals-时请遵守通用约定"><a href="#第-10-条：覆盖-equals-时请遵守通用约定" class="headerlink" title="第 10 条：覆盖 equals 时请遵守通用约定"></a>第 10 条：覆盖 equals 时请遵守通用约定</h3><h4 id="原文摘抄-8"><a href="#原文摘抄-8" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P33</p>
+<blockquote>
+<p><em>最容易避免这类问题的办法就是不覆盖 equals 方法，在这种情况下，类的每个实例都只与它自身相等。如果满足了以下任何一个条件，这就是所期望的结果：</em></p>
+<ul>
+<li><em>类的每个实例本质上都是唯一的。</em></li>
+<li><em>类没有必要提供“逻辑相等（logical equality）的测试功能。”</em></li>
+<li><em>超类已经覆盖率 equals，超类的行为对于这个类也是合适的。</em></li>
+<li><em>类是私有的，或者是包级私有的，可以确定它的 equals 方法永远不会被调用。</em></li>
+</ul>
+</blockquote>
+</li>
+<li><p>P34</p>
+<blockquote>
+<p><em>equals 方法实现了等价关系（equivalence relation），其属性如下：</em></p>
+<ul>
+<li><em>自反性</em></li>
+<li><em>对称性</em></li>
+<li><em>传递性</em></li>
+<li><em>一致性</em></li>
+<li><em>对于任何非 null 的引用值 x，x.equals(null) 必须返回 false</em></li>
+</ul>
+</blockquote>
+</li>
+<li><p>P36</p>
+<blockquote>
+<p><em>一旦违反了 equals 约定，当其他对象面对你的对象时，你完全不知道这些对象的行为会怎么样。</em></p>
+</blockquote>
+</li>
+<li><p>P38</p>
+<blockquote>
+<p><em>我们无法在扩展可实例化的类的同时，既能增加新的组件，同时又保留 equals 约定，除非愿意放弃面向对象的抽象所带来的优势。</em></p>
+</blockquote>
+</li>
+<li><p>P41</p>
+<blockquote>
+<p><em>结合所有这些要求，得出了以下实现高质量 equals 方法的诀窍：</em></p>
+<ol>
+<li><em>使用 == 操作符检查，“参数是否为这个对象的引用”。</em></li>
+<li><em>使用 instanceof 操作符检查“参数是否为正确的类型”。</em></li>
+<li><em>把参数转换成正确的类型。</em></li>
+<li><em>对于该类中的每个“关键”（significant）域，检查参数中的域是否与该对象中对应的域相匹配。</em></li>
+</ol>
+</blockquote>
+</li>
+<li><p>P43</p>
+<blockquote>
+<p><em>覆盖 equals 时总要覆盖 hashCode。</em><br><em>不要企图让 equals 方法过于智能。</em><br><em>不要将 equals 声明中的 Object 对象替换为其他的类型。</em></p>
+</blockquote>
+</li>
+<li><p>P44</p>
+<blockquote>
+<p><em>总而言之，不要轻易覆盖 equals 方法，除非迫不得已。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-9"><a href="#本条总结-9" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了覆盖 equals 方法要注意的点，并提到了 Google 开源的 AutoValue 框架可以自动生成。另外还提到了 java.sql.Timestamp 对 java.util.Date 进行了扩展，并增加了 nanoseconds 域，它的 equals 方法实现违反了对称性。还提到了 java.net.URL 的 equals 方法违反了一致性。</p>
+
     </div>
 
     
@@ -511,7 +568,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#资源"><span class="nav-number">1.</span> <span class="nav-text">资源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">2.</span> <span class="nav-text">目录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第-2-章-创建和销毁对象"><span class="nav-number">2.1.</span> <span class="nav-text">第 2 章 创建和销毁对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第-1-条：用静态工厂方法代替构造器"><span class="nav-number">2.1.1.</span> <span class="nav-text">第 1 条：用静态工厂方法代替构造器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-2-条：遇到多个构造器参数时要考虑使用构建器"><span class="nav-number">2.1.2.</span> <span class="nav-text">第 2 条：遇到多个构造器参数时要考虑使用构建器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-1"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-1"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-3-条：用私有构造器或者枚举类型强化-Singleton-属性"><span class="nav-number">2.1.3.</span> <span class="nav-text">第 3 条：用私有构造器或者枚举类型强化 Singleton 属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-2"><span class="nav-number">2.1.3.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-2"><span class="nav-number">2.1.3.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-4-条：通过私有构造器强化不可实例化的能力"><span class="nav-number">2.1.4.</span> <span class="nav-text">第 4 条：通过私有构造器强化不可实例化的能力</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-3"><span class="nav-number">2.1.4.1.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-5-条：优先考虑依赖注入来引用资源"><span class="nav-number">2.1.5.</span> <span class="nav-text">第 5 条：优先考虑依赖注入来引用资源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-3"><span class="nav-number">2.1.5.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-4"><span class="nav-number">2.1.5.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-6-条：避免创建不必要的对象"><span class="nav-number">2.1.6.</span> <span class="nav-text">第 6 条：避免创建不必要的对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-4"><span class="nav-number">2.1.6.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-5"><span class="nav-number">2.1.6.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-7-条：消除过期的对象引用"><span class="nav-number">2.1.7.</span> <span class="nav-text">第 7 条：消除过期的对象引用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-5"><span class="nav-number">2.1.7.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-6"><span class="nav-number">2.1.7.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-8-条：避免使用终结方法和清除方法"><span class="nav-number">2.1.8.</span> <span class="nav-text">第 8 条：避免使用终结方法和清除方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-6"><span class="nav-number">2.1.8.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-7"><span class="nav-number">2.1.8.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-9-条：try-with-resources-优先于-try-finally"><span class="nav-number">2.1.9.</span> <span class="nav-text">第 9 条：try-with-resources 优先于 try-finally</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-7"><span class="nav-number">2.1.9.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-8"><span class="nav-number">2.1.9.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第-3-章-对于所有对象都通用的方法"><span class="nav-number">2.2.</span> <span class="nav-text">第 3 章 对于所有对象都通用的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第-10-条：覆盖-equals-时请遵守通用约定"><span class="nav-number">2.2.1.</span> <span class="nav-text">第 10 条：覆盖 equals 时请遵守通用约定</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#资源"><span class="nav-number">1.</span> <span class="nav-text">资源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">2.</span> <span class="nav-text">目录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第-2-章-创建和销毁对象"><span class="nav-number">2.1.</span> <span class="nav-text">第 2 章 创建和销毁对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第-1-条：用静态工厂方法代替构造器"><span class="nav-number">2.1.1.</span> <span class="nav-text">第 1 条：用静态工厂方法代替构造器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-2-条：遇到多个构造器参数时要考虑使用构建器"><span class="nav-number">2.1.2.</span> <span class="nav-text">第 2 条：遇到多个构造器参数时要考虑使用构建器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-1"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-1"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-3-条：用私有构造器或者枚举类型强化-Singleton-属性"><span class="nav-number">2.1.3.</span> <span class="nav-text">第 3 条：用私有构造器或者枚举类型强化 Singleton 属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-2"><span class="nav-number">2.1.3.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-2"><span class="nav-number">2.1.3.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-4-条：通过私有构造器强化不可实例化的能力"><span class="nav-number">2.1.4.</span> <span class="nav-text">第 4 条：通过私有构造器强化不可实例化的能力</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-3"><span class="nav-number">2.1.4.1.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-5-条：优先考虑依赖注入来引用资源"><span class="nav-number">2.1.5.</span> <span class="nav-text">第 5 条：优先考虑依赖注入来引用资源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-3"><span class="nav-number">2.1.5.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-4"><span class="nav-number">2.1.5.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-6-条：避免创建不必要的对象"><span class="nav-number">2.1.6.</span> <span class="nav-text">第 6 条：避免创建不必要的对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-4"><span class="nav-number">2.1.6.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-5"><span class="nav-number">2.1.6.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-7-条：消除过期的对象引用"><span class="nav-number">2.1.7.</span> <span class="nav-text">第 7 条：消除过期的对象引用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-5"><span class="nav-number">2.1.7.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-6"><span class="nav-number">2.1.7.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-8-条：避免使用终结方法和清除方法"><span class="nav-number">2.1.8.</span> <span class="nav-text">第 8 条：避免使用终结方法和清除方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-6"><span class="nav-number">2.1.8.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-7"><span class="nav-number">2.1.8.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-9-条：try-with-resources-优先于-try-finally"><span class="nav-number">2.1.9.</span> <span class="nav-text">第 9 条：try-with-resources 优先于 try-finally</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-7"><span class="nav-number">2.1.9.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-8"><span class="nav-number">2.1.9.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第-3-章-对于所有对象都通用的方法"><span class="nav-number">2.2.</span> <span class="nav-text">第 3 章 对于所有对象都通用的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第-10-条：覆盖-equals-时请遵守通用约定"><span class="nav-number">2.2.1.</span> <span class="nav-text">第 10 条：覆盖 equals 时请遵守通用约定</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-8"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-9"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -596,7 +653,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">30k</span>
+    <span title="站点总字数">31k</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div>

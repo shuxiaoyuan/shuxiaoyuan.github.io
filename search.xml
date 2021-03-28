@@ -82,7 +82,64 @@
 </li>
 </ul>
 <h4 id="本条总结-8"><a href="#本条总结-8" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了使用 try-finally 在遇到多个资源时写法的复杂、finally 中 close 可能会抛出异常然后覆盖 try 中的异常等缺点。然后给出了优先使用 try-with-resources 的结论。</p>
-<h2 id="第-3-章-对于所有对象都通用的方法"><a href="#第-3-章-对于所有对象都通用的方法" class="headerlink" title="第 3 章 对于所有对象都通用的方法"></a>第 3 章 对于所有对象都通用的方法</h2><h3 id="第-10-条：覆盖-equals-时请遵守通用约定"><a href="#第-10-条：覆盖-equals-时请遵守通用约定" class="headerlink" title="第 10 条：覆盖 equals 时请遵守通用约定"></a>第 10 条：覆盖 equals 时请遵守通用约定</h3></body></html>]]></content>
+<h2 id="第-3-章-对于所有对象都通用的方法"><a href="#第-3-章-对于所有对象都通用的方法" class="headerlink" title="第 3 章 对于所有对象都通用的方法"></a>第 3 章 对于所有对象都通用的方法</h2><h3 id="第-10-条：覆盖-equals-时请遵守通用约定"><a href="#第-10-条：覆盖-equals-时请遵守通用约定" class="headerlink" title="第 10 条：覆盖 equals 时请遵守通用约定"></a>第 10 条：覆盖 equals 时请遵守通用约定</h3><h4 id="原文摘抄-8"><a href="#原文摘抄-8" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P33</p>
+<blockquote>
+<p><em>最容易避免这类问题的办法就是不覆盖 equals 方法，在这种情况下，类的每个实例都只与它自身相等。如果满足了以下任何一个条件，这就是所期望的结果：</em></p>
+<ul>
+<li><em>类的每个实例本质上都是唯一的。</em></li>
+<li><em>类没有必要提供“逻辑相等（logical equality）的测试功能。”</em></li>
+<li><em>超类已经覆盖率 equals，超类的行为对于这个类也是合适的。</em></li>
+<li><em>类是私有的，或者是包级私有的，可以确定它的 equals 方法永远不会被调用。</em></li>
+</ul>
+</blockquote>
+</li>
+<li><p>P34</p>
+<blockquote>
+<p><em>equals 方法实现了等价关系（equivalence relation），其属性如下：</em></p>
+<ul>
+<li><em>自反性</em></li>
+<li><em>对称性</em></li>
+<li><em>传递性</em></li>
+<li><em>一致性</em></li>
+<li><em>对于任何非 null 的引用值 x，x.equals(null) 必须返回 false</em></li>
+</ul>
+</blockquote>
+</li>
+<li><p>P36</p>
+<blockquote>
+<p><em>一旦违反了 equals 约定，当其他对象面对你的对象时，你完全不知道这些对象的行为会怎么样。</em></p>
+</blockquote>
+</li>
+<li><p>P38</p>
+<blockquote>
+<p><em>我们无法在扩展可实例化的类的同时，既能增加新的组件，同时又保留 equals 约定，除非愿意放弃面向对象的抽象所带来的优势。</em></p>
+</blockquote>
+</li>
+<li><p>P41</p>
+<blockquote>
+<p><em>结合所有这些要求，得出了以下实现高质量 equals 方法的诀窍：</em></p>
+<ol>
+<li><em>使用 == 操作符检查，“参数是否为这个对象的引用”。</em></li>
+<li><em>使用 instanceof 操作符检查“参数是否为正确的类型”。</em></li>
+<li><em>把参数转换成正确的类型。</em></li>
+<li><em>对于该类中的每个“关键”（significant）域，检查参数中的域是否与该对象中对应的域相匹配。</em></li>
+</ol>
+</blockquote>
+</li>
+<li><p>P43</p>
+<blockquote>
+<p><em>覆盖 equals 时总要覆盖 hashCode。</em><br><em>不要企图让 equals 方法过于智能。</em><br><em>不要将 equals 声明中的 Object 对象替换为其他的类型。</em></p>
+</blockquote>
+</li>
+<li><p>P44</p>
+<blockquote>
+<p><em>总而言之，不要轻易覆盖 equals 方法，除非迫不得已。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-9"><a href="#本条总结-9" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了覆盖 equals 方法要注意的点，并提到了 Google 开源的 AutoValue 框架可以自动生成。另外还提到了 java.sql.Timestamp 对 java.util.Date 进行了扩展，并增加了 nanoseconds 域，它的 equals 方法实现违反了对称性。还提到了 java.net.URL 的 equals 方法违反了一致性。</p>
+</body></html>]]></content>
       <categories>
         <category>读书笔记</category>
         <category>IT</category>
