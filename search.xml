@@ -170,6 +170,39 @@
 </li>
 </ul>
 <h4 id="本条总结-11"><a href="#本条总结-11" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了覆盖 toString 方法要注意的点。</p>
+<h3 id="第-13-条：谨慎地覆盖-clone"><a href="#第-13-条：谨慎地覆盖-clone" class="headerlink" title="第 13 条：谨慎地覆盖 clone"></a>第 13 条：谨慎地覆盖 clone</h3><h4 id="原文摘抄-11"><a href="#原文摘抄-11" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P51</p>
+<blockquote>
+<p><em>事实上，实现 Cloneable 接口的类是为了提供一个功能适当的公有的 clone 方法。</em></p>
+</blockquote>
+</li>
+<li><p>P52</p>
+<blockquote>
+<p><em>不可变的类永远都不应该提供 clone 方法。</em></p>
+</blockquote>
+</li>
+<li><p>P53</p>
+<blockquote>
+<p><em>实际上，clone 方法就是另一个构造器；必须确保它不会伤害到原始的对象，并确保正确地创建被克隆对象中的约束条件（invariant）。</em><br><em>在数组上调用 clone 返回的数组，其编译时的类型与被克隆数组的类型相同。<strong>这是复制数组的最佳习惯做法</strong>，事实上，数组是 clone 方法唯一吸引人的用法。</em><br><em>Cloneable 架构与引用可变对象的 final 域的正常用法是不相兼容的。</em></p>
+</blockquote>
+</li>
+<li><p>P56</p>
+<blockquote>
+<p><em>公有的 clone 方法应该省略 throws 声明。</em></p>
+</blockquote>
+</li>
+<li><p>P57</p>
+<blockquote>
+<p><em>所有实现了 Cloneable 接口的类都应该覆盖 clone 方法。</em><br><em>对象拷贝的更好的办法是提供一个拷贝构造器（copy constructor）或拷贝工厂（copy factory）。</em></p>
+</blockquote>
+</li>
+<li><p>P58</p>
+<blockquote>
+<p><em>总之，复制功能最好由构造器或者工厂提供。这条规则最绝对例外的是数组，最好利用 clone 方法复制数组。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-12"><a href="#本条总结-12" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条详细讲了 Cloneable 接口、Object 类里的 clone 方法。一般只需要记住，复制对象用构造器或工厂，复制数组用 clone 方法。</p>
 </body></html>]]></content>
       <categories>
         <category>读书笔记</category>
