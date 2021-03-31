@@ -138,7 +138,38 @@
 </blockquote>
 </li>
 </ul>
-<h4 id="本条总结-9"><a href="#本条总结-9" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了覆盖 equals 方法要注意的点，并提到了 Google 开源的 AutoValue 框架可以自动生成。另外还提到了 java.sql.Timestamp 对 java.util.Date 进行了扩展，并增加了 nanoseconds 域，它的 equals 方法实现违反了对称性。还提到了 java.net.URL 的 equals 方法违反了一致性。</p>
+<h4 id="本条总结-9"><a href="#本条总结-9" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了覆盖 equals 方法要注意的点，并提到了 Google 开源的 AutoValue 框架或者 IDE 可以自动生成。另外还提到了 java.sql.Timestamp 对 java.util.Date 进行了扩展，并增加了 nanoseconds 域，它的 equals 方法实现违反了对称性。还提到了 java.net.URL 的 equals 方法违反了一致性。</p>
+<h3 id="第-11-条：覆盖-equals-时总要覆盖-hashCode"><a href="#第-11-条：覆盖-equals-时总要覆盖-hashCode" class="headerlink" title="第 11 条：覆盖 equals 时总要覆盖 hashCode"></a>第 11 条：覆盖 equals 时总要覆盖 hashCode</h3><h4 id="原文摘抄-9"><a href="#原文摘抄-9" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P44</p>
+<blockquote>
+<p><em>在每个覆盖了 equals 方法的类中，都必须覆盖 hashCode 方法。</em><br><em>相等的对象必须具有相等的散列码。</em></p>
+</blockquote>
+</li>
+<li><p>P46</p>
+<blockquote>
+<p><em>必须排除 equals 比较计算中没有用到的任何域，否则很有可能违反 hashCode 约定的第二条。</em></p>
+</blockquote>
+</li>
+<li><p>P47</p>
+<blockquote>
+<p><em>如果一个类是不可变的，并且计算散列码的开销也比较大，就应该考虑把散列码缓存在对象内部，而不是每次请求的时候都重新计算散列码。</em><br><em>不要试图从散列码计算中排除掉一个对象的关键域来提高性能。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-10"><a href="#本条总结-10" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了覆盖 hashCode 的方法和实现细节以及需要注意的地方，提到了 Objects 类的 hash 方法会引发数组的创建，所以运行速度更慢一些。以及利用 AutoValue 框架和 IDE 可以自动生成。</p>
+<h3 id="第-12-条：始终要覆盖-toString"><a href="#第-12-条：始终要覆盖-toString" class="headerlink" title="第 12 条：始终要覆盖 toString"></a>第 12 条：始终要覆盖 toString</h3><h4 id="原文摘抄-10"><a href="#原文摘抄-10" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P49</p>
+<blockquote>
+<p><em>在实际应用中，toString 方法应该返回对象中包含的<strong>所有</strong>值得关注的信息。</em><br><em>无论是否决定指定格式，都应该在文档中明确地表明你的意图。</em></p>
+</blockquote>
+</li>
+<li><p>P50</p>
+<blockquote>
+<p><em>无论是否指定格式，都为 toString 返回值中包含的所有信息提供一种可以通过编程访问之的途径。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-11"><a href="#本条总结-11" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了覆盖 toString 方法要注意的点。</p>
 </body></html>]]></content>
       <categories>
         <category>读书笔记</category>
