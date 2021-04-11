@@ -226,7 +226,30 @@
 </li>
 </ul>
 <h4 id="本条总结-13"><a href="#本条总结-13" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了 Comparable 接口相关内容，实现 compareTo 方法和 equals 方法的异同，并以 new BigDecimal(“1.0”) 和 new BigDecimal(“1.00”) 的 equals() 比较不相等但 compareTo() 比较相等为例说明。</p>
-<h2 id="第-4-章-类和接口"><a href="#第-4-章-类和接口" class="headerlink" title="第 4 章 类和接口"></a>第 4 章 类和接口</h2><h3 id="第-15-条：使类和成员的可访问性最小化"><a href="#第-15-条：使类和成员的可访问性最小化" class="headerlink" title="第 15 条：使类和成员的可访问性最小化"></a>第 15 条：使类和成员的可访问性最小化</h3></body></html>]]></content>
+<h2 id="第-4-章-类和接口"><a href="#第-4-章-类和接口" class="headerlink" title="第 4 章 类和接口"></a>第 4 章 类和接口</h2><h3 id="第-15-条：使类和成员的可访问性最小化"><a href="#第-15-条：使类和成员的可访问性最小化" class="headerlink" title="第 15 条：使类和成员的可访问性最小化"></a>第 15 条：使类和成员的可访问性最小化</h3><h4 id="原文摘抄-13"><a href="#原文摘抄-13" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P66</p>
+<blockquote>
+<p><em>尽可能地使每个类或者成员不被外界访问。</em></p>
+</blockquote>
+</li>
+<li><p>P67</p>
+<blockquote>
+<p><em>这条规则有一个特例：如果一个类实现了一个接口，那么接口中所有的方法在这个类中也都必须被声明为公有的。</em><br><em>公有类的实例域决不能是公有的。</em><br><em>包含公有可变域的类通常不是线程安全的。</em></p>
+</blockquote>
+</li>
+<li><p>P68</p>
+<blockquote>
+<p><em>注意，长度非零的数组总是可变的，所以让类具有公有的静态 final 数组域，或者返回这种域的访问方法，这是错误的。</em></p>
+</blockquote>
+</li>
+<li><p>P69</p>
+<blockquote>
+<p><em>现在说模块将在 JDK 之外获得广泛的使用，还为时过早。同时，似乎最好不用它们，除非你的需求非常迫切。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-14"><a href="#本条总结-14" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了尽量让类和类中的成员访问级别最小化。讲了两种使得类中私有数组不被外界修改的两种方法。</p>
+</body></html>]]></content>
       <categories>
         <category>读书笔记</category>
         <category>IT</category>
