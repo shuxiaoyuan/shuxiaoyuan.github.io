@@ -203,7 +203,30 @@
 </li>
 </ul>
 <h4 id="本条总结-12"><a href="#本条总结-12" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条详细讲了 Cloneable 接口、Object 类里的 clone 方法。一般只需要记住，复制对象用构造器或工厂，复制数组用 clone 方法。</p>
-</body></html>]]></content>
+<h3 id="第-14-条：考虑实现-Comparable-接口"><a href="#第-14-条：考虑实现-Comparable-接口" class="headerlink" title="第 14 条：考虑实现 Comparable 接口"></a>第 14 条：考虑实现 Comparable 接口</h3><h4 id="原文摘抄-12"><a href="#原文摘抄-12" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P58</p>
+<blockquote>
+<p><em>Java 平台类库中的所有值类，以及所有的枚举类型都实现了 Comparable 接口。如果你正在编写一个值类，它具有非常明显的内在排序关系，比如按字母顺序、按数值顺序或者按年代顺序，那你就应该坚决考虑实现 Comparable 接口。</em></p>
+</blockquote>
+</li>
+<li><p>P60</p>
+<blockquote>
+<p><em>由 compareTo 方法施加的等同性测试，也必须遵守相同于 equals 约定所施加的限制条件：自反性、对称性和传递性。因此，下面的告诫也同样适用：无法在用新的值组件扩展可实例化的类时，同时保持 compareTo 约定，除非愿意放弃面向对象的抽象优势。</em></p>
+</blockquote>
+</li>
+<li><p>P61</p>
+<blockquote>
+<p><em>在 compareTo 方法中使用关系操作符 < 和 > 是非常烦琐的，并且容易出错，因此不再建议使用。</em></p>
+</blockquote>
+</li>
+<li><p>P63</p>
+<blockquote>
+<p><em>总而言之，每当实现一个对排序敏感的类时，都应该让这个类实现 Comparable 接口，以便其实例可以轻松地被分类、搜索，以及用在基于比较的集合中。每当在 compareTo 方法的实现中比较域值时，都要避免使用 < 和 > 操作符，而应该在装箱基本类型的类中使用静态的 compare 方法，或者在 Comparator 接口中使用比较器构造方法。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-13"><a href="#本条总结-13" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了 Comparable 接口相关内容，实现 compareTo 方法和 equals 方法的异同，并以 new BigDecimal(“1.0”) 和 new BigDecimal(“1.00”) 的 equals() 比较不相等但 compareTo() 比较相等为例说明。</p>
+<h2 id="第-4-章-类和接口"><a href="#第-4-章-类和接口" class="headerlink" title="第 4 章 类和接口"></a>第 4 章 类和接口</h2><h3 id="第-15-条：使类和成员的可访问性最小化"><a href="#第-15-条：使类和成员的可访问性最小化" class="headerlink" title="第 15 条：使类和成员的可访问性最小化"></a>第 15 条：使类和成员的可访问性最小化</h3></body></html>]]></content>
       <categories>
         <category>读书笔记</category>
         <category>IT</category>
