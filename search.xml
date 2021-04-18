@@ -360,6 +360,19 @@
 </ul>
 <p>这句没太明白。</p>
 <h4 id="本条总结-20"><a href="#本条总结-20" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了要谨慎设计接口，并围绕 Java 8 新增的缺省方法，以 Collection 接口中的缺省方法 removeIf 方法为例，讲了虽然它的实现很好，但仍然在某些实现它却没有覆盖它的类里仍然存在多线程问题。多线程相关细节我不太懂。</p>
+<h3 id="第-22-条：接口只用于定义类型"><a href="#第-22-条：接口只用于定义类型" class="headerlink" title="第 22 条：接口只用于定义类型"></a>第 22 条：接口只用于定义类型</h3><h4 id="原文摘抄-20"><a href="#原文摘抄-20" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P92</p>
+<blockquote>
+<p><em>常量接口模式是对接口的不良使用。</em><br><em>如果这些常量与某个现有的类或者接口紧密相关，就应该把这些常量添加到这个类或者接口中。</em><br><em>否则，应该使用不可实例化的工具类（utility class）（详见第 4 条）来导出这些常量。</em></p>
+</blockquote>
+</li>
+<li><p>P93</p>
+<blockquote>
+<p><em>如果大量利用工具类导出的常量，可以通过利用静态导入（static import）机制，避免用类名来修饰常量名。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-21"><a href="#本条总结-21" class="headerlink" title="本条总结"></a>本条总结</h4><p>简而言之，接口应该只被用来定义类型，它们不应该被用来导出常量。<br>本条还提到了 Java 7 允许数字字面量用下划线隔开以便于阅读的特性。</p>
 </body></html>]]></content>
       <categories>
         <category>读书笔记</category>
