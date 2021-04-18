@@ -373,6 +373,13 @@
 </li>
 </ul>
 <h4 id="本条总结-21"><a href="#本条总结-21" class="headerlink" title="本条总结"></a>本条总结</h4><p>简而言之，接口应该只被用来定义类型，它们不应该被用来导出常量。<br>本条还提到了 Java 7 允许数字字面量用下划线隔开以便于阅读的特性。</p>
+<h3 id="第-23-条：类层次优于标签类"><a href="#第-23-条：类层次优于标签类" class="headerlink" title="第 23 条：类层次优于标签类"></a>第 23 条：类层次优于标签类</h3><h4 id="原文摘抄-21"><a href="#原文摘抄-21" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li>P94<blockquote>
+<p><em>标签类过于冗长、容易出错，并且效率低下。</em><br><em>标签类正是对类层次的一种简单的仿效。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-22"><a href="#本条总结-22" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条其实可以概括为类的单一职责原则，不要用一个类来包含多个类的域和方法。</p>
 </body></html>]]></content>
       <categories>
         <category>读书笔记</category>
