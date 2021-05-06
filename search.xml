@@ -428,6 +428,37 @@
 </ul>
 <h4 id="本条总结-27"><a href="#本条总结-27" class="headerlink" title="本条总结"></a>本条总结</h4><p>总而言之，数组和泛型有着截然不同的类型规则。数组是协变且可以具体化的；泛型是不可变的且可以被擦除的。因此，数组提供了运行时的类型安全，但是没有编译时的类型安全，反之，对于泛型也一样。一般来说，数组和泛型不能很好地混合使用。如果你发现自己将它们混合起来使用，并且得到了编译时的错误或者警告，你的第一反应就应该是用列表代替数组。</p>
 <h3 id="第-29-条：优先考虑泛型"><a href="#第-29-条：优先考虑泛型" class="headerlink" title="第 29 条：优先考虑泛型"></a>第 29 条：优先考虑泛型</h3><h4 id="原文摘抄-27"><a href="#原文摘抄-27" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><h4 id="本条总结-28"><a href="#本条总结-28" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条通过一个简单的 Stack 类说明了如何把一个类写成泛型类，并讲了泛型数组的两种处理方式，顺带提到了堆污染概念。最后提到，使用泛型比使用需要在客户端代码中进行转换的类型更加安全，也更加容易，只要时间允许，就把现有的类型都泛型化。</p>
+<h3 id="第-30-条：优先考虑泛型方法"><a href="#第-30-条：优先考虑泛型方法" class="headerlink" title="第 30 条：优先考虑泛型方法"></a>第 30 条：优先考虑泛型方法</h3><h4 id="原文摘抄-28"><a href="#原文摘抄-28" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P116</p>
+<blockquote>
+<p><em>声明类型参数的类型参数列表，处在方法的修饰符及其返回值之间。</em></p>
+</blockquote>
+</li>
+<li><p>P118</p>
+<blockquote>
+<p><em>类型限制 < E extends Comparable< E > > ,可以读作“针对可以与自身进行比较的每个类 E”</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-29"><a href="#本条总结-29" class="headerlink" title="本条总结"></a>本条总结</h4><p>总而言之，泛型方法就像泛型一样，使用起来比要求客户端转换输入参数并返回值的方法来得更加安全，也更加容易。就像类型一样，你应该确保方法不用转换就能使用，这通常意味着要将它们泛型化。并且就像类型一样，还应该将现有的方法泛型化，使新用户使用起来更加轻松，且不会破坏现有的客户端。</p>
+<h3 id="第-31-条：利用有限制通配符来提升-API-的灵活性"><a href="#第-31-条：利用有限制通配符来提升-API-的灵活性" class="headerlink" title="第 31 条：利用有限制通配符来提升 API 的灵活性"></a>第 31 条：利用有限制通配符来提升 API 的灵活性</h3><h4 id="原文摘抄-29"><a href="#原文摘抄-29" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P121</p>
+<blockquote>
+<p><em>为了获得最大限度的灵活性，要在表示生产者或者消费者的输入参数上使用通配符类型。</em><br><em>PECS 表示 producer-extends，consumer-super</em></p>
+</blockquote>
+</li>
+<li><p>P122</p>
+<blockquote>
+<p><em>不要用通配符类型作为返回类型。</em><br><em>如果类的用户必须考虑通配符类型，类的 API 或许就会出错。</em></p>
+</blockquote>
+</li>
+<li><p>P123</p>
+<blockquote>
+<p><em>使用时始终应该是 Comparable< ? super T > 优先于 Comparable< T >。</em><br><em>使用时始终应该是 Comparator< ? super T > 优先于 Comparator< T >。</em><br><em>如果类型参数只在方法声明中出现一次，就可以用通配符取代它。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-30"><a href="#本条总结-30" class="headerlink" title="本条总结"></a>本条总结</h4><p>总而言之，在 API 中使用通配符类型虽然比较需要技巧，但是会使 API 变得灵活得多。如果编写的是将被广泛使用的类库，则一定要适当地利用通配符类型。记住基本的原则：producer-extends,consumer-super(PECS)。还要记住所有的 comparable 和 comparator 都是消费者。</p>
 </body></html>]]></content>
       <categories>
         <category>读书笔记</category>
