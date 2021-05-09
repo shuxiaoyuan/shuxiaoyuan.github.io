@@ -478,7 +478,8 @@
 </ul>
 <h4 id="本条总结-31"><a href="#本条总结-31" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条很多细节没有看懂。讲了显式创建泛型数组是非法的，但用泛型可变参数声明方法却是合法的，这是因为带有泛型可变参数或者参数化类型的方法在实践中用处很大，因此 Java 语言的设计者选择容忍这一矛盾的存在。</p>
 <p>总而言之，可变参数和泛型不能良好地合作，这是因为可变参数设施是构建在顶级数组之上的一个技术露底，泛型数组有不同的类型规则。虽然泛型可变参数不是类型安全的，但它们是合法的。如果选择编写带有泛型（或者参数化）可变参数的方法，首先要确保该方法是类型安全的，然后用 @SafeVarargs 对它进行注解，这样使用起来就不会出现不愉快的情况了。</p>
-</body></html>]]></content>
+<h3 id="第-33-条：优先考虑类型安全的异构容器"><a href="#第-33-条：优先考虑类型安全的异构容器" class="headerlink" title="第 33 条：优先考虑类型安全的异构容器"></a>第 33 条：优先考虑类型安全的异构容器</h3><h4 id="原文摘抄-31"><a href="#原文摘抄-31" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><h4 id="本条总结-32"><a href="#本条总结-32" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲真没太看懂，讲了类型令牌的概念，大概意思就是讲怎么实现一个可以把不同类型作为键的类似 Map 的容器类。</p>
+<h2 id="第-6-章-枚举和注解"><a href="#第-6-章-枚举和注解" class="headerlink" title="第 6 章 枚举和注解"></a>第 6 章 枚举和注解</h2><h3 id="第-34-条：用-enum-代替-int-常量"><a href="#第-34-条：用-enum-代替-int-常量" class="headerlink" title="第 34 条：用 enum 代替 int 常量"></a>第 34 条：用 enum 代替 int 常量</h3><h4 id="原文摘抄-32"><a href="#原文摘抄-32" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><h4 id="本条总结-33"><a href="#本条总结-33" class="headerlink" title="本条总结"></a>本条总结</h4></body></html>]]></content>
       <categories>
         <category>读书笔记</category>
         <category>IT</category>
