@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>《MySQL 必知必会》读书笔记</title>
+    <url>/2021/06/26/%E3%80%8AMySQL-%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<html><head></head><body><p>《MySQL 必知必会》读书笔记，持续更新中…</p>
+<a id="more"></a>
+
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><p><a href="https://pan.baidu.com/s/1T0GVnjnB-fZslCbT2Wmhcw" target="_blank" rel="noopener">百度网盘链接</a> （包括本书英文电子版以及书中代码资源）提取码：fm30</p>
+<p><a href="https://forta.com/books/0672327120/errata/" target="_blank" rel="noopener">勘误表</a></p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h2 id="第-1-章-了解-SQL"><a href="#第-1-章-了解-SQL" class="headerlink" title="第 1 章 了解 SQL"></a>第 1 章 了解 SQL</h2><p>本章介绍了数据库的基础知识，包括一些常见术语和概念。</p>
+<h2 id="第-2-章-MySQL-简介"><a href="#第-2-章-MySQL-简介" class="headerlink" title="第 2 章 MySQL 简介"></a>第 2 章 MySQL 简介</h2><p>本章简单介绍了 MySQL。</p>
+<h2 id="第-3-章-使用-MySQL"><a href="#第-3-章-使用-MySQL" class="headerlink" title="第 3 章 使用 MySQL"></a>第 3 章 使用 MySQL</h2><p>本章 SQL 语法：</p>
+<figure class="highlight sql"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">USE</span> <span class="keyword">database</span>;</span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">DATABASES</span>;</span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">TABLES</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 以下两行结果一样</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">COLUMNS</span> <span class="keyword">FROM</span> <span class="keyword">table</span>; </span><br><span class="line"><span class="keyword">DESCRIBE</span>  <span class="keyword">table</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 显示广泛的服务器状态信息</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">STATUS</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 显示创建某个数据库和表的 MySQL 语句</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> <span class="keyword">database</span>;</span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="keyword">table</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 显示授予用户（所有或特定用户）的安全权限</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">GRANTS</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 显示服务器错误或警告信息</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">ERRORS</span>;</span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">WARNINGS</span>;</span><br></pre></td></tr></tbody></table></figure>
+</body></html>]]></content>
+      <categories>
+        <category>读书笔记</category>
+        <category>IT</category>
+      </categories>
+      <tags>
+        <tag>读书笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>《Effective Java 第3版》读书笔记</title>
     <url>/2021/03/14/%E3%80%8AEffective-Java-%E7%AC%AC3%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<html><head></head><body><p>《Effective Java 第3版》读书笔记，持续更新中…</p>
