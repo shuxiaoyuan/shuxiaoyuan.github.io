@@ -1,0 +1,1583 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hello World</title>
+    <url>/2024/03/06/hello-world/</url>
+    <content><![CDATA[<html><head></head><body><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<a id="more"></a>
+
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></tbody></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></tbody></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></tbody></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+</body></html>]]></content>
+  </entry>
+  <entry>
+    <title>《MySQL 必知必会》读书笔记</title>
+    <url>/2021/06/26/%E3%80%8AMySQL-%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<html><head></head><body><p>《MySQL 必知必会》读书笔记，持续更新中…</p>
+<a id="more"></a>
+
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><p><a href="https://pan.baidu.com/s/1T0GVnjnB-fZslCbT2Wmhcw" target="_blank" rel="noopener">百度网盘链接</a> （包括本书英文电子版以及书中代码资源）提取码：fm30</p>
+<p><a href="https://forta.com/books/0672327120/errata/" target="_blank" rel="noopener">勘误表</a></p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h2 id="第-1-章-了解-SQL"><a href="#第-1-章-了解-SQL" class="headerlink" title="第 1 章 了解 SQL"></a>第 1 章 了解 SQL</h2><p>本章介绍了数据库的基础知识，包括一些常见术语和概念。</p>
+<h2 id="第-2-章-MySQL-简介"><a href="#第-2-章-MySQL-简介" class="headerlink" title="第 2 章 MySQL 简介"></a>第 2 章 MySQL 简介</h2><p>本章简单介绍了 MySQL。</p>
+<h2 id="第-3-章-使用-MySQL"><a href="#第-3-章-使用-MySQL" class="headerlink" title="第 3 章 使用 MySQL"></a>第 3 章 使用 MySQL</h2><figure class="highlight sql"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">USE</span> <span class="keyword">database</span>;</span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">DATABASES</span>;</span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">TABLES</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 以下两行结果一样</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">COLUMNS</span> <span class="keyword">FROM</span> <span class="keyword">table</span>; </span><br><span class="line"><span class="keyword">DESCRIBE</span>  <span class="keyword">table</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 显示广泛的服务器状态信息</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">STATUS</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 显示创建某个数据库和表的 MySQL 语句</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> <span class="keyword">database</span>;</span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="keyword">table</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 显示授予用户（所有或特定用户）的安全权限</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">GRANTS</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 显示服务器错误或警告信息</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">ERRORS</span>;</span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">WARNINGS</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="第-4-章-检索数据"><a href="#第-4-章-检索数据" class="headerlink" title="第 4 章 检索数据"></a>第 4 章 检索数据</h2><figure class="highlight sql"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">column</span> <span class="keyword">FROM</span> <span class="keyword">table</span>;</span><br><span class="line"><span class="keyword">SELECT</span> column1, column2, column3 <span class="keyword">FROM</span> <span class="keyword">table</span>;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">table</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> <span class="keyword">column</span> <span class="keyword">FROM</span> <span class="keyword">table</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 注意，这种查询检索出来的行里，只有两个列都相同的行才会被排除掉</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> column1, column2 <span class="keyword">FROM</span> <span class="keyword">table</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 返回不多于 5 行</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">column</span> <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">LIMIT</span> <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 从行 3 开始检索，返回最多 4 行结果（行号从 0 开始）</span></span><br><span class="line"><span class="comment">-- 以下两句结果相同</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">column</span> <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">LIMIT</span> <span class="number">3</span>, <span class="number">4</span>;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">column</span> <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">LIMIT</span> <span class="number">4</span> <span class="keyword">OFFSET</span> <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 有一些情形需要完全限定名</span></span><br><span class="line"><span class="keyword">SELECT</span> table.column <span class="keyword">FROM</span> <span class="keyword">table</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="第-5-章-排序检索数据"><a href="#第-5-章-排序检索数据" class="headerlink" title="第 5 章 排序检索数据"></a>第 5 章 排序检索数据</h2><ul>
+<li><p>P29</p>
+<blockquote>
+<p><em>关系数据库设计理论认为，如果不明确规定排序顺序，则不应该假定检索出的数据的顺序有意义。</em></p>
+</blockquote>
+</li>
+<li><p>P32<br>这里提到了大小写排序先后顺序取决于数据库设置。</p>
+</li>
+<li><p>P33<br>LIMIT 子句必须在 ORDER BY 之后</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">-- column1 和 column2 可以相同，也可以不同</span></span><br><span class="line"><span class="keyword">SELECT</span> column1 <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span> column2;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- DESC 只对 column2 起作用</span></span><br><span class="line"><span class="comment">-- 先按 column2 降序排序，碰到相同的行再按 column3 升序排序</span></span><br><span class="line"><span class="keyword">SELECT</span> column1 <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span> column2 <span class="keyword">DESC</span>, column3;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> column1 <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span> column2 <span class="keyword">DESC</span>, column3 <span class="keyword">DESC</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 降序排序，取排名第一的那条数据</span></span><br><span class="line"><span class="keyword">SELECT</span> column1 <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span> column2 <span class="keyword">DESC</span> <span class="keyword">LIMIT</span> <span class="number">1</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="第-6-章-过滤数据"><a href="#第-6-章-过滤数据" class="headerlink" title="第 6 章 过滤数据"></a>第 6 章 过滤数据</h2><ul>
+<li><p>P35<br>数据不要放到应用层过滤，不然会影响性能，而且如果是通过网络传输数据，还会浪费网络带宽。<br>ORDER BY 必须在 WHERE 子句的后面</p>
+</li>
+<li><p>P36</p>
+</li>
+</ul>
+<p><strong>MySQL 在执行匹配的时候默认不区分大小写</strong></p>
+<ul>
+<li>P39 NULL 与 不匹配</li>
+</ul>
+<p><em>在通过过滤选择出不具有特定值的行时，你可能希望返回具有 NULL 值的行。但是，不行。因为未知具有特殊的含义，数据库不知道它们是否匹配，所以在匹配过滤或不匹配过滤时不返回它们。</em><br><em>因此，在过滤数据时，一定要验证返回数据中确实给出了被过滤列具有 NULL 的行。</em></p>
+<figure class="highlight sql"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> column1, column2 <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> column3 = <span class="keyword">value</span></span><br><span class="line"><span class="keyword">SELECT</span> column1, column2 <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> column3 < <span class="built_in">number</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- <> 与 != 都是不等于符号</span></span><br><span class="line"><span class="keyword">SELECT</span> column1, column2 <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> column3 <> <span class="built_in">number</span></span><br><span class="line"><span class="keyword">SELECT</span> column1, column2 <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> column3 != <span class="built_in">number</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- BETWEEN 匹配范围中所有的值，包括开始值和结束值</span></span><br><span class="line"><span class="keyword">SELECT</span> column1, column2 <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> column3 <span class="keyword">BETWEEN</span> number1 <span class="keyword">AND</span> number2</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 空值检查</span></span><br><span class="line"><span class="keyword">SELECT</span> column1 <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> column2 <span class="keyword">IS</span> <span class="literal">NULL</span></span><br></pre></td></tr></tbody></table></figure>
+</body></html>]]></content>
+      <categories>
+        <category>读书笔记</category>
+        <category>IT</category>
+      </categories>
+      <tags>
+        <tag>读书笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《Effective Java 第3版》读书笔记</title>
+    <url>/2021/03/14/%E3%80%8AEffective-Java-%E7%AC%AC3%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<html><head></head><body><p>《Effective Java 第3版》读书笔记，持续更新中…</p>
+<a id="more"></a>
+
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><p><a href="https://pan.baidu.com/s/1hdEoFrC2VcWIER8P-g1wtQ" target="_blank" rel="noopener">百度网盘资源链接</a>(包含第2版和第3版的中英文 pdf 电子书)提取码：zunh</p>
+<p><a href="https://www.iteye.com/blog/yulimin-2432638" target="_blank" rel="noopener">勘误表</a></p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h2 id="第-2-章-创建和销毁对象"><a href="#第-2-章-创建和销毁对象" class="headerlink" title="第 2 章 创建和销毁对象"></a>第 2 章 创建和销毁对象</h2><h3 id="第-1-条：用静态工厂方法代替构造器"><a href="#第-1-条：用静态工厂方法代替构造器" class="headerlink" title="第 1 条：用静态工厂方法代替构造器"></a>第 1 条：用静态工厂方法代替构造器</h3><h4 id="原文摘抄"><a href="#原文摘抄" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li>P9<blockquote>
+<p><em>静态工厂和公有构造器都各有用处，我们需要理解它们各自的长处。静态工厂经常更加合适，因此切忌第一反应就是提供公有的构造器，而不先考虑静态工厂。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结"><a href="#本条总结" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了静态工厂方法相比于公有构造器的五大优势和两个缺点，还提到了享元模式。</p>
+<h3 id="第-2-条：遇到多个构造器参数时要考虑使用构建器"><a href="#第-2-条：遇到多个构造器参数时要考虑使用构建器" class="headerlink" title="第 2 条：遇到多个构造器参数时要考虑使用构建器"></a>第 2 条：遇到多个构造器参数时要考虑使用构建器</h3><h4 id="原文摘抄-1"><a href="#原文摘抄-1" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li>P15<blockquote>
+<p><em>如果类的构造器或者静态工厂中具有多个参数，设计这种类时，Builder 模式就是一种不错的选择。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-1"><a href="#本条总结-1" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了当一个类中有多个参数时，这个类的构建方式，提到了重叠构造器、JavaBeans 模式，并分析了它们的缺点。</p>
+<h3 id="第-3-条：用私有构造器或者枚举类型强化-Singleton-属性"><a href="#第-3-条：用私有构造器或者枚举类型强化-Singleton-属性" class="headerlink" title="第 3 条：用私有构造器或者枚举类型强化 Singleton 属性"></a>第 3 条：用私有构造器或者枚举类型强化 Singleton 属性</h3><h4 id="原文摘抄-2"><a href="#原文摘抄-2" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li>P17<blockquote>
+<p><em>如果 Singleton 必须扩展一个超类，而不是扩展 Enum 的时候，则不宜使用这个方法（虽然可以声明枚举去实现接口）。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-2"><a href="#本条总结-2" class="headerlink" title="本条总结"></a>本条总结</h4><p>单例模式的各种实现已经很熟悉了，但还是有很多需要注意的细节问题。比如本条中提到的通过反射机制调用私有构造器，可以采用在构造器中创建实例的时候判断持有的实例引用不为空则抛出异常的方式。另外防止序列化创建新的实例，本条中提到了 transient 关键字还有 readResolve 方法，这个没有接触过，有机会再看。</p>
+<h3 id="第-4-条：通过私有构造器强化不可实例化的能力"><a href="#第-4-条：通过私有构造器强化不可实例化的能力" class="headerlink" title="第 4 条：通过私有构造器强化不可实例化的能力"></a>第 4 条：通过私有构造器强化不可实例化的能力</h3><h4 id="本条总结-3"><a href="#本条总结-3" class="headerlink" title="本条总结"></a>本条总结</h4><p>只包含静态方法和静态域的类，据我理解也就是所谓的工具类，如 java.lang.Math、java.util.Collections 等。这些类也可以聚集与之相关的 final 类的静态方法，因为 final 类没有子类。</p>
+<p>从 Java 8 开始，可以把这些方法组织到一个接口里。<br>如果是组织到一个类中，那么你肯定不希望这个类被实例化，具体做法就是给这个类写一个私有的构造器，并在里面抛出 AssertionError()，并写好注释。</p>
+<h3 id="第-5-条：优先考虑依赖注入来引用资源"><a href="#第-5-条：优先考虑依赖注入来引用资源" class="headerlink" title="第 5 条：优先考虑依赖注入来引用资源"></a>第 5 条：优先考虑依赖注入来引用资源</h3><h4 id="原文摘抄-3"><a href="#原文摘抄-3" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P18</p>
+<blockquote>
+<p><em>静态工具类和 Singleton 类不适合于需要引用底层资源的类。</em></p>
+</blockquote>
+</li>
+<li><p>P18</p>
+<blockquote>
+<p><em>当创建一个新的实例时，就将该资源传到构造器中。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-4"><a href="#本条总结-4" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了依赖注入模式，还顺带讲了 Java 8 的 Supplier< T > 接口，以及工厂模式在此模式下的应用。</p>
+<h3 id="第-6-条：避免创建不必要的对象"><a href="#第-6-条：避免创建不必要的对象" class="headerlink" title="第 6 条：避免创建不必要的对象"></a>第 6 条：避免创建不必要的对象</h3><h4 id="原文摘抄-4"><a href="#原文摘抄-4" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li>P22<blockquote>
+<p><em>要优先使用基本类型而不是装箱基本类型，要当心无意识的自动装箱。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-5"><a href="#本条总结-5" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了在 <code>String s = new String("abc")</code> 中，”abc” 本来就是一个 String 实例，不如直接重用方式写成 <code>String s = "abc"</code>。</p>
+<p>然后讲了正则表达式匹配创建 Pattern 实例的成本很高，因为需要将正则表达式编译成一个有限状态机。所以应该用变量将这个实例缓存起来，在用到的时候复用。另外不要使用延迟初始化，这样每次调用都会判定是否初始化，反而会降低性能。</p>
+<p>本章还讲了适配器模式和 Map 接口的 keySet 方法，但我没太 get 到作者想表达的意思。</p>
+<p>后面讲到要避免频繁自动装箱引起的不必要的性能损耗。</p>
+<h3 id="第-7-条：消除过期的对象引用"><a href="#第-7-条：消除过期的对象引用" class="headerlink" title="第 7 条：消除过期的对象引用"></a>第 7 条：消除过期的对象引用</h3><h4 id="原文摘抄-5"><a href="#原文摘抄-5" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P24</p>
+<blockquote>
+<p><em>清空对象引用应该是一种例外，而不是一种规范行为。</em></p>
+</blockquote>
+</li>
+<li><p>P24</p>
+<blockquote>
+<p><em>只要类是自己管理内存，程序员就应该警惕内存泄漏问题。</em><br><em>内存泄漏的另一个常见来源是缓存。</em><br><em>内存泄漏的第三个常见来源是监听器和其他回调。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-6"><a href="#本条总结-6" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条以自己实现的栈为例，当栈弹出元素时，应该立刻将其赋值为 null，否则这些元素可能既访问不到又不会被垃圾回收，从而造成内存泄漏。</p>
+<p>本章还提到了几个弱引用相关的集合，例如 WeakHashMap、LinkedHashMap。</p>
+<h3 id="第-8-条：避免使用终结方法和清除方法"><a href="#第-8-条：避免使用终结方法和清除方法" class="headerlink" title="第 8 条：避免使用终结方法和清除方法"></a>第 8 条：避免使用终结方法和清除方法</h3><h4 id="原文摘抄-6"><a href="#原文摘抄-6" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li>P29<blockquote>
+<p><em>总而言之，除非是作为安全网，或者是为了终止非关键的本地资源，否则请不要使用清除方法，对于在 Java 9 之前的发行版本，则尽量不要使用终结方法。若使用了终结方法或者清除方法，则要注意它的不确定性和性能后果。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-7"><a href="#本条总结-7" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条说了挺多但其实只有一点，别用这俩方法！别用这俩方法！别用这俩方法！</p>
+<h3 id="第-9-条：try-with-resources-优先于-try-finally"><a href="#第-9-条：try-with-resources-优先于-try-finally" class="headerlink" title="第 9 条：try-with-resources 优先于 try-finally"></a>第 9 条：try-with-resources 优先于 try-finally</h3><h4 id="原文摘抄-7"><a href="#原文摘抄-7" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li>P32<blockquote>
+<p><em>结论很明显：在处理必须关闭的资源时，始终要优先考虑用 try-with-resources，而不是用 try-finally。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-8"><a href="#本条总结-8" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了使用 try-finally 在遇到多个资源时写法的复杂、finally 中 close 可能会抛出异常然后覆盖 try 中的异常等缺点。然后给出了优先使用 try-with-resources 的结论。</p>
+<h2 id="第-3-章-对于所有对象都通用的方法"><a href="#第-3-章-对于所有对象都通用的方法" class="headerlink" title="第 3 章 对于所有对象都通用的方法"></a>第 3 章 对于所有对象都通用的方法</h2><h3 id="第-10-条：覆盖-equals-时请遵守通用约定"><a href="#第-10-条：覆盖-equals-时请遵守通用约定" class="headerlink" title="第 10 条：覆盖 equals 时请遵守通用约定"></a>第 10 条：覆盖 equals 时请遵守通用约定</h3><h4 id="原文摘抄-8"><a href="#原文摘抄-8" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P33</p>
+<blockquote>
+<p><em>最容易避免这类问题的办法就是不覆盖 equals 方法，在这种情况下，类的每个实例都只与它自身相等。如果满足了以下任何一个条件，这就是所期望的结果：</em></p>
+<ul>
+<li><em>类的每个实例本质上都是唯一的。</em></li>
+<li><em>类没有必要提供“逻辑相等（logical equality）的测试功能。”</em></li>
+<li><em>超类已经覆盖率 equals，超类的行为对于这个类也是合适的。</em></li>
+<li><em>类是私有的，或者是包级私有的，可以确定它的 equals 方法永远不会被调用。</em></li>
+</ul>
+</blockquote>
+</li>
+<li><p>P34</p>
+<blockquote>
+<p><em>equals 方法实现了等价关系（equivalence relation），其属性如下：</em></p>
+<ul>
+<li><em>自反性</em></li>
+<li><em>对称性</em></li>
+<li><em>传递性</em></li>
+<li><em>一致性</em></li>
+<li><em>对于任何非 null 的引用值 x，x.equals(null) 必须返回 false</em></li>
+</ul>
+</blockquote>
+</li>
+<li><p>P36</p>
+<blockquote>
+<p><em>一旦违反了 equals 约定，当其他对象面对你的对象时，你完全不知道这些对象的行为会怎么样。</em></p>
+</blockquote>
+</li>
+<li><p>P38</p>
+<blockquote>
+<p><em>我们无法在扩展可实例化的类的同时，既能增加新的组件，同时又保留 equals 约定，除非愿意放弃面向对象的抽象所带来的优势。</em></p>
+</blockquote>
+</li>
+<li><p>P41</p>
+<blockquote>
+<p><em>结合所有这些要求，得出了以下实现高质量 equals 方法的诀窍：</em></p>
+<ol>
+<li><em>使用 == 操作符检查，“参数是否为这个对象的引用”。</em></li>
+<li><em>使用 instanceof 操作符检查“参数是否为正确的类型”。</em></li>
+<li><em>把参数转换成正确的类型。</em></li>
+<li><em>对于该类中的每个“关键”（significant）域，检查参数中的域是否与该对象中对应的域相匹配。</em></li>
+</ol>
+</blockquote>
+</li>
+<li><p>P43</p>
+<blockquote>
+<p><em>覆盖 equals 时总要覆盖 hashCode。</em><br><em>不要企图让 equals 方法过于智能。</em><br><em>不要将 equals 声明中的 Object 对象替换为其他的类型。</em></p>
+</blockquote>
+</li>
+<li><p>P44</p>
+<blockquote>
+<p><em>总而言之，不要轻易覆盖 equals 方法，除非迫不得已。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-9"><a href="#本条总结-9" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了覆盖 equals 方法要注意的点，并提到了 Google 开源的 AutoValue 框架或者 IDE 可以自动生成。另外还提到了 java.sql.Timestamp 对 java.util.Date 进行了扩展，并增加了 nanoseconds 域，它的 equals 方法实现违反了对称性。还提到了 java.net.URL 的 equals 方法违反了一致性。</p>
+<h3 id="第-11-条：覆盖-equals-时总要覆盖-hashCode"><a href="#第-11-条：覆盖-equals-时总要覆盖-hashCode" class="headerlink" title="第 11 条：覆盖 equals 时总要覆盖 hashCode"></a>第 11 条：覆盖 equals 时总要覆盖 hashCode</h3><h4 id="原文摘抄-9"><a href="#原文摘抄-9" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P44</p>
+<blockquote>
+<p><em>在每个覆盖了 equals 方法的类中，都必须覆盖 hashCode 方法。</em><br><em>相等的对象必须具有相等的散列码。</em></p>
+</blockquote>
+</li>
+<li><p>P46</p>
+<blockquote>
+<p><em>必须排除 equals 比较计算中没有用到的任何域，否则很有可能违反 hashCode 约定的第二条。</em></p>
+</blockquote>
+</li>
+<li><p>P47</p>
+<blockquote>
+<p><em>如果一个类是不可变的，并且计算散列码的开销也比较大，就应该考虑把散列码缓存在对象内部，而不是每次请求的时候都重新计算散列码。</em><br><em>不要试图从散列码计算中排除掉一个对象的关键域来提高性能。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-10"><a href="#本条总结-10" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了覆盖 hashCode 的方法和实现细节以及需要注意的地方，提到了 Objects 类的 hash 方法会引发数组的创建，所以运行速度更慢一些。以及利用 AutoValue 框架和 IDE 可以自动生成。</p>
+<h3 id="第-12-条：始终要覆盖-toString"><a href="#第-12-条：始终要覆盖-toString" class="headerlink" title="第 12 条：始终要覆盖 toString"></a>第 12 条：始终要覆盖 toString</h3><h4 id="原文摘抄-10"><a href="#原文摘抄-10" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P49</p>
+<blockquote>
+<p><em>在实际应用中，toString 方法应该返回对象中包含的<strong>所有</strong>值得关注的信息。</em><br><em>无论是否决定指定格式，都应该在文档中明确地表明你的意图。</em></p>
+</blockquote>
+</li>
+<li><p>P50</p>
+<blockquote>
+<p><em>无论是否指定格式，都为 toString 返回值中包含的所有信息提供一种可以通过编程访问之的途径。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-11"><a href="#本条总结-11" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了覆盖 toString 方法要注意的点。</p>
+<h3 id="第-13-条：谨慎地覆盖-clone"><a href="#第-13-条：谨慎地覆盖-clone" class="headerlink" title="第 13 条：谨慎地覆盖 clone"></a>第 13 条：谨慎地覆盖 clone</h3><h4 id="原文摘抄-11"><a href="#原文摘抄-11" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P51</p>
+<blockquote>
+<p><em>事实上，实现 Cloneable 接口的类是为了提供一个功能适当的公有的 clone 方法。</em></p>
+</blockquote>
+</li>
+<li><p>P52</p>
+<blockquote>
+<p><em>不可变的类永远都不应该提供 clone 方法。</em></p>
+</blockquote>
+</li>
+<li><p>P53</p>
+<blockquote>
+<p><em>实际上，clone 方法就是另一个构造器；必须确保它不会伤害到原始的对象，并确保正确地创建被克隆对象中的约束条件（invariant）。</em><br><em>在数组上调用 clone 返回的数组，其编译时的类型与被克隆数组的类型相同。<strong>这是复制数组的最佳习惯做法</strong>，事实上，数组是 clone 方法唯一吸引人的用法。</em><br><em>Cloneable 架构与引用可变对象的 final 域的正常用法是不相兼容的。</em></p>
+</blockquote>
+</li>
+<li><p>P56</p>
+<blockquote>
+<p><em>公有的 clone 方法应该省略 throws 声明。</em></p>
+</blockquote>
+</li>
+<li><p>P57</p>
+<blockquote>
+<p><em>所有实现了 Cloneable 接口的类都应该覆盖 clone 方法。</em><br><em>对象拷贝的更好的办法是提供一个拷贝构造器（copy constructor）或拷贝工厂（copy factory）。</em></p>
+</blockquote>
+</li>
+<li><p>P58</p>
+<blockquote>
+<p><em>总之，复制功能最好由构造器或者工厂提供。这条规则最绝对例外的是数组，最好利用 clone 方法复制数组。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-12"><a href="#本条总结-12" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条详细讲了 Cloneable 接口、Object 类里的 clone 方法。一般只需要记住，复制对象用构造器或工厂，复制数组用 clone 方法。</p>
+<h3 id="第-14-条：考虑实现-Comparable-接口"><a href="#第-14-条：考虑实现-Comparable-接口" class="headerlink" title="第 14 条：考虑实现 Comparable 接口"></a>第 14 条：考虑实现 Comparable 接口</h3><h4 id="原文摘抄-12"><a href="#原文摘抄-12" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P58</p>
+<blockquote>
+<p><em>Java 平台类库中的所有值类，以及所有的枚举类型都实现了 Comparable 接口。如果你正在编写一个值类，它具有非常明显的内在排序关系，比如按字母顺序、按数值顺序或者按年代顺序，那你就应该坚决考虑实现 Comparable 接口。</em></p>
+</blockquote>
+</li>
+<li><p>P60</p>
+<blockquote>
+<p><em>由 compareTo 方法施加的等同性测试，也必须遵守相同于 equals 约定所施加的限制条件：自反性、对称性和传递性。因此，下面的告诫也同样适用：无法在用新的值组件扩展可实例化的类时，同时保持 compareTo 约定，除非愿意放弃面向对象的抽象优势。</em></p>
+</blockquote>
+</li>
+<li><p>P61</p>
+<blockquote>
+<p><em>在 compareTo 方法中使用关系操作符 < 和 > 是非常烦琐的，并且容易出错，因此不再建议使用。</em></p>
+</blockquote>
+</li>
+<li><p>P63</p>
+<blockquote>
+<p><em>总而言之，每当实现一个对排序敏感的类时，都应该让这个类实现 Comparable 接口，以便其实例可以轻松地被分类、搜索，以及用在基于比较的集合中。每当在 compareTo 方法的实现中比较域值时，都要避免使用 < 和 > 操作符，而应该在装箱基本类型的类中使用静态的 compare 方法，或者在 Comparator 接口中使用比较器构造方法。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-13"><a href="#本条总结-13" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了 Comparable 接口相关内容，实现 compareTo 方法和 equals 方法的异同，并以 new BigDecimal(“1.0”) 和 new BigDecimal(“1.00”) 的 equals() 比较不相等但 compareTo() 比较相等为例说明。</p>
+<h2 id="第-4-章-类和接口"><a href="#第-4-章-类和接口" class="headerlink" title="第 4 章 类和接口"></a>第 4 章 类和接口</h2><h3 id="第-15-条：使类和成员的可访问性最小化"><a href="#第-15-条：使类和成员的可访问性最小化" class="headerlink" title="第 15 条：使类和成员的可访问性最小化"></a>第 15 条：使类和成员的可访问性最小化</h3><h4 id="原文摘抄-13"><a href="#原文摘抄-13" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P66</p>
+<blockquote>
+<p><em>尽可能地使每个类或者成员不被外界访问。</em></p>
+</blockquote>
+</li>
+<li><p>P67</p>
+<blockquote>
+<p><em>这条规则有一个特例：如果一个类实现了一个接口，那么接口中所有的方法在这个类中也都必须被声明为公有的。</em><br><em>公有类的实例域决不能是公有的。</em><br><em>包含公有可变域的类通常不是线程安全的。</em></p>
+</blockquote>
+</li>
+<li><p>P68</p>
+<blockquote>
+<p><em>注意，长度非零的数组总是可变的，所以让类具有公有的静态 final 数组域，或者返回这种域的访问方法，这是错误的。</em></p>
+</blockquote>
+</li>
+<li><p>P69</p>
+<blockquote>
+<p><em>现在说模块将在 JDK 之外获得广泛的使用，还为时过早。同时，似乎最好不用它们，除非你的需求非常迫切。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-14"><a href="#本条总结-14" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了尽量让类和类中的成员访问级别最小化。讲了两种使得类中私有数组不被外界修改的两种方法。</p>
+<h3 id="第-16-条：要在公有类而非公有域中使用访问方法"><a href="#第-16-条：要在公有类而非公有域中使用访问方法" class="headerlink" title="第 16 条：要在公有类而非公有域中使用访问方法"></a>第 16 条：要在公有类而非公有域中使用访问方法</h3><h4 id="原文摘抄-14"><a href="#原文摘抄-14" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P69</p>
+<blockquote>
+<p><em>如果类可以在它所在的包之外进行访问，就提供访问方法。</em></p>
+</blockquote>
+</li>
+<li><p>P70</p>
+<blockquote>
+<p><em>如果类是包级私有的，或者是私有的嵌套类，直接暴露它的数据域并没有本质的错误。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-15"><a href="#本条总结-15" class="headerlink" title="本条总结"></a>本条总结</h4><p>简而言之，公有类永远都不应该暴露可变的域。虽然还是有问题，但是让公有类暴露<strong>不</strong>可变的域，其危害相对来说比较小。但有时候会需要用包级私有的或者私有的嵌套类来暴露域，无论这个类是可变的还是不可变的。</p>
+<h3 id="第-17-条：使可变性最小化"><a href="#第-17-条：使可变性最小化" class="headerlink" title="第 17 条：使可变性最小化"></a>第 17 条：使可变性最小化</h3><h4 id="原文摘抄-15"><a href="#原文摘抄-15" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P71</p>
+<blockquote>
+<ol>
+<li><em>不要提供任何会修改对象状态的方法（也称为设值方法）。</em></li>
+<li><em>保证类不会被扩展。</em></li>
+<li><em>声明所有的域都是 final 的。</em></li>
+<li><em>声明所有的域都为私有的。</em></li>
+<li><em>确保对于任何可变组件的互斥访问。</em></li>
+</ol>
+</blockquote>
+</li>
+<li><p>P73</p>
+<blockquote>
+<p><em>不可变对象本质上是线程安全的，它们不要求同步。</em><br><em>不可变对象可以被自由地共享。</em><br><em>不仅可以共享不可变对象，甚至也可以共享它们的内部信息。</em><br><em>不可变对象为其他对象提供了大量的构件。</em><br><em>不可变对象无偿地提供了失败的原子性。</em><br><em>不可变类真正唯一的缺点是，对于每个不同的值都需要一个单独的对象。</em></p>
+</blockquote>
+</li>
+<li><p>P76</p>
+<blockquote>
+<p><em>除非有很好的理由要让类称为可变的类，否则它就应该是不可变的。</em><br><em>如果类不能被做成不可变的，仍然应该尽可能地限制它的可变性。</em><br><em>除非有令人信服的理由要使域变成是非 final 的，否则要使每个域都是 private final 的。</em><br><em>构造器应该创建完全初始化的对象，并建立起所有的约束关系。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-16"><a href="#本条总结-16" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了使类成为不可变要遵循的规则，不可变对象的优势和缺点，以及其缺点的解决思路，还提到了 BigInteger 和 BigDecimal 由于可以被继承覆盖类中的方法，若要保证不可变性必须进行检查。<br>不可变类也可以拥有非 final 域用于缓存一些昂贵的计算结果。例如 String 类中的 hashCode() 方法。<br>还提到了一点不可变类序列化的知识，不过现在我不太熟悉。<br>提到了重用对象的“重新初始化方法”与增加的复杂性相比，通常并没有带来太多的性能提升。</p>
+<h3 id="第-18-条：复合优先于继承"><a href="#第-18-条：复合优先于继承" class="headerlink" title="第 18 条：复合优先于继承"></a>第 18 条：复合优先于继承</h3><h4 id="原文摘抄-16"><a href="#原文摘抄-16" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P77</p>
+<blockquote>
+<p><em>与方法调用不同的是，继承打破了封装性。</em></p>
+</blockquote>
+</li>
+<li><p>P80</p>
+<blockquote>
+<p><em>包装类不适合用于回调框架；在回调框架中，对象把自身的引用传递给其他的对象，用于后续的调用（“回调”）。因为被包装起来的对象并不知道它外面的包装对象，所以它传递一个指向自身的引用（this），回调时避开了外面的包装对象。这被称为 SELF 问题。</em></p>
+</blockquote>
+</li>
+</ul>
+<p>这一点没太懂为啥。</p>
+<h4 id="本条总结-17"><a href="#本条总结-17" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了只有当子类和超类之间确实存在子类型关系时，使用继承才是恰当的。可以用复合和转发机制来代替继承。并以 HashSet 的 addAll() 方法实现依赖 add() 方法举例说明“自用性”可能导致继承来扩展功能的问题。复合和转发机制避免了父类添加新的方法时子类不适用的情况。</p>
+<h3 id="第-19-条：要么设计继承并提供文档说明，要么禁止继承"><a href="#第-19-条：要么设计继承并提供文档说明，要么禁止继承" class="headerlink" title="第 19 条：要么设计继承并提供文档说明，要么禁止继承"></a>第 19 条：要么设计继承并提供文档说明，要么禁止继承</h3><h4 id="原文摘抄-17"><a href="#原文摘抄-17" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P81</p>
+<blockquote>
+<p><em>该类必须有文档说明它可覆盖（overridable）的方法的自用性（self-use）。</em></p>
+</blockquote>
+</li>
+<li><p>P82</p>
+<blockquote>
+<p><em>类必须以精心挑选的受保护的（protected）方法的形式，提供适当的钩子（hook），以便进入其内部工作中。</em></p>
+</blockquote>
+</li>
+<li><p>P83</p>
+<blockquote>
+<p><em>对于为了继承而设计的类，唯一的测试方法就是编写子类。</em><br><em>必须在发布类之前先编写子类对类进行测试。</em><br><em>构造器决不能调用可被覆盖的方法。</em></p>
+</blockquote>
+</li>
+<li><p>P85</p>
+<blockquote>
+<p><em>无论是 clone 还是 readObject，都不可以调用可覆盖的方法，不管是以直接还是间接的方式。</em><br><em>为了继承而设计类，对这个类会有一些实质性的限制。</em><br><em>这个问题的最佳解决方案是，对于那些并非为了安全地进行子类化而设计和编写文档的类，要禁止子类化。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-18"><a href="#本条总结-18" class="headerlink" title="本条总结"></a>本条总结</h4><p>看完这条，发现继承真的是被（我）滥用了，特别是覆盖方法的自用性，可能会导致很多问题。</p>
+<h3 id="第-20-条：接口优于抽象类"><a href="#第-20-条：接口优于抽象类" class="headerlink" title="第 20 条：接口优于抽象类"></a>第 20 条：接口优于抽象类</h3><h4 id="原文摘抄-18"><a href="#原文摘抄-18" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P86</p>
+<blockquote>
+<p><em>现有的类可以很容易被更新，以实现新的接口。</em><br><em>接口是定义 mixin（混合类型）的理想选择。</em></p>
+</blockquote>
+</li>
+<li><p>P87</p>
+<blockquote>
+<p><em>接口允许构造非层次结构的类型框架。</em><br><em>接口使得安全地增强类的功能成为可能。</em></p>
+</blockquote>
+</li>
+<li><p>P88</p>
+<blockquote>
+<p><em>实现了这个接口的类可以把对于接口方法的调用转发到一个内部私有类的实例上，这个内部私有类扩展了骨架实现类。这种方法被称作<strong>模拟多重继承</strong>。</em></p>
+</blockquote>
+</li>
+<li><p>P89</p>
+<blockquote>
+<p><em>对于骨架实现类而言，好的文档绝对是非常必要的。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-19"><a href="#本条总结-19" class="headerlink" title="本条总结"></a>本条总结</h4><p>因为一个类可以实现多个接口，所以接口适合作为类型定义。<br>Java 9 允许接口中有<strong>私有</strong>的静态方法。<br>总而言之，接口通常是定义允许多个实现的类型的最佳途径。如果你导出了一个重要的接口，就应该坚决考虑同时提供骨架实现类。而且，还应该尽可能地通过缺省方法在接口中提供骨架实现，以便接口的所有实现类都能使用。也就是说，对于接口的限制，通常也限制了骨架实现会采用的抽象类的形式。</p>
+<h3 id="第-21-条：为后代设计接口"><a href="#第-21-条：为后代设计接口" class="headerlink" title="第 21 条：为后代设计接口"></a>第 21 条：为后代设计接口</h3><h4 id="原文摘抄-19"><a href="#原文摘抄-19" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P90</p>
+<blockquote>
+<p><em>在 Java 8 中，增加了缺省方法（default method）构造，目的就是允许给现有的接口添加方法。</em><br><em>并非每一个可能的实现的所有变体，始终都可以编写出一个缺省方法。</em></p>
+</blockquote>
+</li>
+<li><p>P91</p>
+<blockquote>
+<p><em>有了缺省方法，接口的现有实现就不会出现编译时没有报错或警告，运行时却失败的情况。</em></p>
+</blockquote>
+</li>
+</ul>
+<p>这句没太明白。</p>
+<h4 id="本条总结-20"><a href="#本条总结-20" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了要谨慎设计接口，并围绕 Java 8 新增的缺省方法，以 Collection 接口中的缺省方法 removeIf 方法为例，讲了虽然它的实现很好，但仍然在某些实现它却没有覆盖它的类里仍然存在多线程问题。多线程相关细节我不太懂。</p>
+<h3 id="第-22-条：接口只用于定义类型"><a href="#第-22-条：接口只用于定义类型" class="headerlink" title="第 22 条：接口只用于定义类型"></a>第 22 条：接口只用于定义类型</h3><h4 id="原文摘抄-20"><a href="#原文摘抄-20" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P92</p>
+<blockquote>
+<p><em>常量接口模式是对接口的不良使用。</em><br><em>如果这些常量与某个现有的类或者接口紧密相关，就应该把这些常量添加到这个类或者接口中。</em><br><em>否则，应该使用不可实例化的工具类（utility class）（详见第 4 条）来导出这些常量。</em></p>
+</blockquote>
+</li>
+<li><p>P93</p>
+<blockquote>
+<p><em>如果大量利用工具类导出的常量，可以通过利用静态导入（static import）机制，避免用类名来修饰常量名。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-21"><a href="#本条总结-21" class="headerlink" title="本条总结"></a>本条总结</h4><p>简而言之，接口应该只被用来定义类型，它们不应该被用来导出常量。<br>本条还提到了 Java 7 允许数字字面量用下划线隔开以便于阅读的特性。</p>
+<h3 id="第-23-条：类层次优于标签类"><a href="#第-23-条：类层次优于标签类" class="headerlink" title="第 23 条：类层次优于标签类"></a>第 23 条：类层次优于标签类</h3><h4 id="原文摘抄-21"><a href="#原文摘抄-21" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li>P94<blockquote>
+<p><em>标签类过于冗长、容易出错，并且效率低下。</em><br><em>标签类正是对类层次的一种简单的仿效。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-22"><a href="#本条总结-22" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条其实可以概括为类的单一职责原则，不要用一个类来包含多个类的域和方法。</p>
+<h3 id="第-24-条：静态成员类优于非静态成员类"><a href="#第-24-条：静态成员类优于非静态成员类" class="headerlink" title="第 24 条：静态成员类优于非静态成员类"></a>第 24 条：静态成员类优于非静态成员类</h3><h4 id="原文摘抄-22"><a href="#原文摘抄-22" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li>P97<blockquote>
+<p><em>如果声明成员类不要求访问外围实例，就要始终把修饰符 static 放在它的声明中。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-23"><a href="#本条总结-23" class="headerlink" title="本条总结"></a>本条总结</h4><p>如果一个嵌套类需要在单个方法之外仍然是可见的，或者它太长了，不适合放在方法内部，就应该使用成员类。如果成员类的每个实例都需要一个指向其外围实例的引用，就要把成员类做成非静态的；否则，就做成静态的。假设这个嵌套类属于一个方法的内部，如果你只需要在一个地方创建实例，并且已经有了一个预置的类型可以说明这个类的特征，就要把它做成匿名类；否则，就做成局部类。</p>
+<h3 id="第-25-条：限制源文件为单个顶级类"><a href="#第-25-条：限制源文件为单个顶级类" class="headerlink" title="第 25 条：限制源文件为单个顶级类"></a>第 25 条：限制源文件为单个顶级类</h3><h4 id="原文摘抄-23"><a href="#原文摘抄-23" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><h4 id="本条总结-24"><a href="#本条总结-24" class="headerlink" title="本条总结"></a>本条总结</h4><p>结论显而易见：永远不要把多个顶级类或者接口放在一个源文件中。遵循这个规则可以确保编译时一个类不会有多个定义。这么做反过来也能确保编译产生的类文件，以及程序结果的行为，都不会受到源文件被传给编译器时的顺序的影响。</p>
+<h2 id="第-5-章-泛型"><a href="#第-5-章-泛型" class="headerlink" title="第 5 章 泛型"></a>第 5 章 泛型</h2><h3 id="第-26-条：请不要使用原生态类型"><a href="#第-26-条：请不要使用原生态类型" class="headerlink" title="第 26 条：请不要使用原生态类型"></a>第 26 条：请不要使用原生态类型</h3><h4 id="原文摘抄-24"><a href="#原文摘抄-24" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P103</p>
+<blockquote>
+<p><em>如果使用原生态类型，就失掉了泛型在安全性和描述性方面的所有优势。</em><br><em>如果使用像 List 这样的原生态类型，就会失掉类型安全性，但是如果使用像 List< Object > 这样的参数化类型，则不会。</em></p>
+</blockquote>
+</li>
+<li><p>P104</p>
+<blockquote>
+<p><em>不能将任何元素（除了 null 之外）放到 Collection< ? > 中。</em><br><em>必须在类文字（class literal）中使用原生态类型。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-25"><a href="#本条总结-25" class="headerlink" title="本条总结"></a>本条总结</h4><p>总而言之，使用原生态类型会在运行时导致异常，因此不要使用。原生态类型只是为了与引入泛型之前的遗留代码进行兼容和互用而提供的。让我们做个快速的回顾：Set< Object > 是个参数化类型，表示可以包含任何对象类型的一个集合；Set< ? > 则是一个通配符类型，表示只能包含某种未知对象类型的一个集合；Set 是一个原生态类型，它脱离了泛型系统。前两种是安全的，最后一种不安全。</p>
+<h3 id="第-27-条：消除非受检的警告"><a href="#第-27-条：消除非受检的警告" class="headerlink" title="第 27 条：消除非受检的警告"></a>第 27 条：消除非受检的警告</h3><h4 id="原文摘抄-25"><a href="#原文摘抄-25" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P107</p>
+<blockquote>
+<p><em>要尽可能地消除每一个非受监警告。</em><br><em>如果无法消除警告，同时可以证明引起警告的代码是类型安全的，（只有在这种情况下）才可以用一个 @SuppressWarnings(“unchecked”) 注解来禁止这条警告。</em><br><em>应该始终在尽可能小的范围内使用 SuppressWarnings 注解。</em>  </p>
+</blockquote>
+</li>
+<li><p>P108</p>
+<blockquote>
+<p><em>每当使用 SuppressWarnings(“unchecked”) 注解时，都要添加一条注释，说明为什么这么做是安全的。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-26"><a href="#本条总结-26" class="headerlink" title="本条总结"></a>本条总结</h4><p>总而言之，非受检警告很重要，不要忽略它们。每一条警告都表示可能在运行时抛出 ClassCastException 异常。要尽最大的努力消除这些警告。如果无法消除非受检警告，同时可以证明引起警告的代码是类型安全的，就可以再尽可能小的范围内使用 @SuppressWarnings(“unchecked”) 注解禁止该警告。要用注释把禁止该警告的原因记录下来。</p>
+<h3 id="第-28-条：列表优于数组"><a href="#第-28-条：列表优于数组" class="headerlink" title="第 28 条：列表优于数组"></a>第 28 条：列表优于数组</h3><h4 id="原文摘抄-26"><a href="#原文摘抄-26" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P109</p>
+<blockquote>
+<p><em>唯一可具体化的（reifiable）参数化类型是无限制的通配符类型，如 List< ? > 和 Map< ?, ? >（详见第 26 条）。虽然不常用，但是创建无限制通配类型的数组是合法的。</em></p>
+</blockquote>
+</li>
+<li><p>P110</p>
+<blockquote>
+<p><em>当你得到泛型数组创建错误时，最好的解决办法通常是优先使用集合类型 List< E >，而不是数组类型 E[]。这样可能会损失一些性能或者简洁性，但是换回的却是更高的类型安全性和互用性。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-27"><a href="#本条总结-27" class="headerlink" title="本条总结"></a>本条总结</h4><p>总而言之，数组和泛型有着截然不同的类型规则。数组是协变且可以具体化的；泛型是不可变的且可以被擦除的。因此，数组提供了运行时的类型安全，但是没有编译时的类型安全，反之，对于泛型也一样。一般来说，数组和泛型不能很好地混合使用。如果你发现自己将它们混合起来使用，并且得到了编译时的错误或者警告，你的第一反应就应该是用列表代替数组。</p>
+<h3 id="第-29-条：优先考虑泛型"><a href="#第-29-条：优先考虑泛型" class="headerlink" title="第 29 条：优先考虑泛型"></a>第 29 条：优先考虑泛型</h3><h4 id="原文摘抄-27"><a href="#原文摘抄-27" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><h4 id="本条总结-28"><a href="#本条总结-28" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条通过一个简单的 Stack 类说明了如何把一个类写成泛型类，并讲了泛型数组的两种处理方式，顺带提到了堆污染概念。最后提到，使用泛型比使用需要在客户端代码中进行转换的类型更加安全，也更加容易，只要时间允许，就把现有的类型都泛型化。</p>
+<h3 id="第-30-条：优先考虑泛型方法"><a href="#第-30-条：优先考虑泛型方法" class="headerlink" title="第 30 条：优先考虑泛型方法"></a>第 30 条：优先考虑泛型方法</h3><h4 id="原文摘抄-28"><a href="#原文摘抄-28" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P116</p>
+<blockquote>
+<p><em>声明类型参数的类型参数列表，处在方法的修饰符及其返回值之间。</em></p>
+</blockquote>
+</li>
+<li><p>P118</p>
+<blockquote>
+<p><em>类型限制 < E extends Comparable< E > > ,可以读作“针对可以与自身进行比较的每个类 E”</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-29"><a href="#本条总结-29" class="headerlink" title="本条总结"></a>本条总结</h4><p>总而言之，泛型方法就像泛型一样，使用起来比要求客户端转换输入参数并返回值的方法来得更加安全，也更加容易。就像类型一样，你应该确保方法不用转换就能使用，这通常意味着要将它们泛型化。并且就像类型一样，还应该将现有的方法泛型化，使新用户使用起来更加轻松，且不会破坏现有的客户端。</p>
+<h3 id="第-31-条：利用有限制通配符来提升-API-的灵活性"><a href="#第-31-条：利用有限制通配符来提升-API-的灵活性" class="headerlink" title="第 31 条：利用有限制通配符来提升 API 的灵活性"></a>第 31 条：利用有限制通配符来提升 API 的灵活性</h3><h4 id="原文摘抄-29"><a href="#原文摘抄-29" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P121</p>
+<blockquote>
+<p><em>为了获得最大限度的灵活性，要在表示生产者或者消费者的输入参数上使用通配符类型。</em><br><em>PECS 表示 producer-extends，consumer-super</em></p>
+</blockquote>
+</li>
+<li><p>P122</p>
+<blockquote>
+<p><em>不要用通配符类型作为返回类型。</em><br><em>如果类的用户必须考虑通配符类型，类的 API 或许就会出错。</em></p>
+</blockquote>
+</li>
+<li><p>P123</p>
+<blockquote>
+<p><em>使用时始终应该是 Comparable< ? super T > 优先于 Comparable< T >。</em><br><em>使用时始终应该是 Comparator< ? super T > 优先于 Comparator< T >。</em><br><em>如果类型参数只在方法声明中出现一次，就可以用通配符取代它。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-30"><a href="#本条总结-30" class="headerlink" title="本条总结"></a>本条总结</h4><p>总而言之，在 API 中使用通配符类型虽然比较需要技巧，但是会使 API 变得灵活得多。如果编写的是将被广泛使用的类库，则一定要适当地利用通配符类型。记住基本的原则：producer-extends,consumer-super(PECS)。还要记住所有的 comparable 和 comparator 都是消费者。</p>
+<h3 id="第-32-条：谨慎并用泛型和可变参数"><a href="#第-32-条：谨慎并用泛型和可变参数" class="headerlink" title="第 32 条：谨慎并用泛型和可变参数"></a>第 32 条：谨慎并用泛型和可变参数</h3><h4 id="原文摘抄-30"><a href="#原文摘抄-30" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P125</p>
+<blockquote>
+<p><em>将值保存在泛型可变参数数组参数中是不安全的。</em></p>
+</blockquote>
+</li>
+<li><p>P126</p>
+<blockquote>
+<p><em>SafeVarargs 注解是通过方法的设计者做出承诺，声明这是类型安全的。</em></p>
+</blockquote>
+</li>
+<li><p>P127</p>
+<blockquote>
+<p><em>允许另一个方法访问一个泛型可变参数数组是不安全的。有两种情况例外：将数组传给另一个用 @SafeVarargs 正确注解过的可变参数方法是安全的，将数组传给只计算数组内容部分函数的非可变参数方法也是安全的。</em><br><em>对于每一个带有泛型可变参数或者参数化类型的方法，都要用 @SafeVarargs 进行注解。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-31"><a href="#本条总结-31" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条很多细节没有看懂。讲了显式创建泛型数组是非法的，但用泛型可变参数声明方法却是合法的，这是因为带有泛型可变参数或者参数化类型的方法在实践中用处很大，因此 Java 语言的设计者选择容忍这一矛盾的存在。</p>
+<p>总而言之，可变参数和泛型不能良好地合作，这是因为可变参数设施是构建在顶级数组之上的一个技术露底，泛型数组有不同的类型规则。虽然泛型可变参数不是类型安全的，但它们是合法的。如果选择编写带有泛型（或者参数化）可变参数的方法，首先要确保该方法是类型安全的，然后用 @SafeVarargs 对它进行注解，这样使用起来就不会出现不愉快的情况了。</p>
+<h3 id="第-33-条：优先考虑类型安全的异构容器"><a href="#第-33-条：优先考虑类型安全的异构容器" class="headerlink" title="第 33 条：优先考虑类型安全的异构容器"></a>第 33 条：优先考虑类型安全的异构容器</h3><h4 id="原文摘抄-31"><a href="#原文摘抄-31" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><h4 id="本条总结-32"><a href="#本条总结-32" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲真没太看懂，讲了类型令牌的概念，大概意思就是讲怎么实现一个可以把不同类型作为键的类似 Map 的容器类。</p>
+<h2 id="第-6-章-枚举和注解"><a href="#第-6-章-枚举和注解" class="headerlink" title="第 6 章 枚举和注解"></a>第 6 章 枚举和注解</h2><h3 id="第-34-条：用-enum-代替-int-常量"><a href="#第-34-条：用-enum-代替-int-常量" class="headerlink" title="第 34 条：用 enum 代替 int 常量"></a>第 34 条：用 enum 代替 int 常量</h3><h4 id="原文摘抄-32"><a href="#原文摘抄-32" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><h4 id="本条总结-33"><a href="#本条总结-33" class="headerlink" title="本条总结"></a>本条总结</h4></body></html>]]></content>
+      <categories>
+        <category>读书笔记</category>
+        <category>IT</category>
+      </categories>
+      <tags>
+        <tag>读书笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《深入理解Java虚拟机第3版》读书笔记</title>
+    <url>/2021/01/14/%E3%80%8A%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC3%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<html><head></head><body><p>《深入理解Java虚拟机第3版》读书笔记，待更新…</p>
+<a id="more"></a>
+
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><p><a href="https://github.com/fenixsoft/jvm_book" target="_blank" rel="noopener">勘误表</a></p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h2 id="第一部分-走近-Java"><a href="#第一部分-走近-Java" class="headerlink" title="第一部分 走近 Java"></a>第一部分 走近 Java</h2><h3 id="第-1-章-走近-Java"><a href="#第-1-章-走近-Java" class="headerlink" title="第 1 章 走近 Java"></a>第 1 章 走近 Java</h3><h2 id="第二部分-自动内存管理"><a href="#第二部分-自动内存管理" class="headerlink" title="第二部分 自动内存管理"></a>第二部分 自动内存管理</h2><h3 id="第-2-章-Java-内存区域与内存溢出异常"><a href="#第-2-章-Java-内存区域与内存溢出异常" class="headerlink" title="第 2 章 Java 内存区域与内存溢出异常"></a>第 2 章 Java 内存区域与内存溢出异常</h3></body></html>]]></content>
+      <categories>
+        <category>读书笔记</category>
+        <category>IT</category>
+      </categories>
+      <tags>
+        <tag>读书笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《计算机网络：自顶向下方法（第7版）》读书笔记</title>
+    <url>/2021/01/14/%E3%80%8A%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E6%96%B9%E6%B3%95%EF%BC%88%E7%AC%AC7%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<html><head></head><body><p>《计算机网络：自顶向下方法（第7版）》读书笔记，待更新…</p>
+<a id="more"></a>
+
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><p><a href="https://pan.baidu.com/s/1Hjd9wJYsPltnu4o5f5ftPg" target="_blank" rel="noopener">百度网盘资源链接</a> （包含中文课后答案以及英文PPT） 提取码：u8yy</p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h2 id="第-1-章-计算机网络和因特网"><a href="#第-1-章-计算机网络和因特网" class="headerlink" title="第 1 章 计算机网络和因特网"></a>第 1 章 计算机网络和因特网</h2></body></html>]]></content>
+      <categories>
+        <category>读书笔记</category>
+        <category>IT</category>
+      </categories>
+      <tags>
+        <tag>读书笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《操作系统导论》读书笔记</title>
+    <url>/2020/11/25/%E3%80%8A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<html><head></head><body><p>《操作系统导论》读书笔记，待更新…</p>
+<a id="more"></a>
+
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><p><a href="https://pan.baidu.com/s/1X-5RY-rHLoROZtq5juMdRA" target="_blank" rel="noopener">百度网盘资源链接</a>（包含书中代码和本书英文原版 pdf ）提取码：ffhc<br><a href="http://pages.cs.wisc.edu/~remzi/OSTEP/" target="_blank" rel="noopener">官网</a><br><a href="https://github.com/remzi-arpacidusseau/ostep-code" target="_blank" rel="noopener">GitHub</a></p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h2 id="第-2-章-操作系统介绍"><a href="#第-2-章-操作系统介绍" class="headerlink" title="第 2 章 操作系统介绍"></a>第 2 章 操作系统介绍</h2><ul>
+<li>将单个 CPU（或其中一小部分）转换为看似无限数量的 CPU，从而让许多程序看似同时运行，这就是所谓的虚拟化 CPU（virtualizing the CPU）。</li>
+</ul>
+<h2 id="第-1-部分-虚拟化"><a href="#第-1-部分-虚拟化" class="headerlink" title="第 1 部分 虚拟化"></a>第 1 部分 虚拟化</h2><h3 id="第-4-章-抽象：进程"><a href="#第-4-章-抽象：进程" class="headerlink" title="第 4 章 抽象：进程"></a>第 4 章 抽象：进程</h3><ul>
+<li><p>时分共享（和空分共享）</p>
+</li>
+<li><p>进程状态：运行、就绪、阻塞</p>
+</li>
+</ul>
+<h3 id="第-5-章-插叙：进程-API"><a href="#第-5-章-插叙：进程-API" class="headerlink" title="第 5 章 插叙：进程 API"></a>第 5 章 插叙：进程 API</h3><p>本章讲了 UNIX 系统的三个系统调用：<code>fork()</code>、<code>exec()</code> 和 <code>wait()</code>。</p>
+<h3 id="第-6-章-机制：受限直接执行"><a href="#第-6-章-机制：受限直接执行" class="headerlink" title="第 6 章 机制：受限直接执行"></a>第 6 章 机制：受限直接执行</h3><p>本章讲了用户模式和内核模式、进程切换、保存和恢复上下文。</p>
+<h3 id="第-7-章-进程调度：介绍"><a href="#第-7-章-进程调度：介绍" class="headerlink" title="第 7 章 进程调度：介绍"></a>第 7 章 进程调度：介绍</h3><p>本章开始对任务有几项假设，然后采用逐渐放宽假设的方式由浅入深讨论各种情况下的调度算法思想。</p>
+<p>以周转时间为指标，有下列三种调度算法：</p>
+<ul>
+<li>先进先出（First In First Out, FIFO）或先到先服务（First Come First Served, FCFS）</li>
+<li>最短任务优先（Shortest Job First, SJF）</li>
+<li>最短完成时间优先（Shortest Time-to-Completion First, STCF）或最短完成时间优先（Preemptive Shortest Job First, PSJF）</li>
+</ul>
+<p>以响应时间为指标：</p>
+<ul>
+<li>轮转（Round-Robin, RR）</li>
+</ul>
+<h3 id="第-8-章-调度：多级反馈队列"><a href="#第-8-章-调度：多级反馈队列" class="headerlink" title="第 8 章 调度：多级反馈队列"></a>第 8 章 调度：多级反馈队列</h3><p>MLFQ（multi-level feedback queue）规则：</p>
+<ul>
+<li>规则 1：如果 A 的优先级 > B 的优先级，运行 A（不运行 B）。</li>
+<li>规则 2：如果 A 的优先级 = B 的优先级，轮转运行 A 和 B。</li>
+<li>规则 3：工作进入系统时，放在最高优先级（最上层队列）。</li>
+<li>规则 4：一旦工作用完了其在某一层中的时间配额（无论中间主动放弃了多少次 CPU），就降低其优先级（移入低一级队列）。</li>
+<li>规则 5：经过一段时间 S，就将系统中所有工作重新加入最高优先级队列。</li>
+</ul>
+<h3 id="第-9-章-调度：比例份额"><a href="#第-9-章-调度：比例份额" class="headerlink" title="第 9 章 调度：比例份额"></a>第 9 章 调度：比例份额</h3><p>本章讲了彩票调度（lottery scheduling），其实现类似于我的 Blackjack 随机发牌算法实现。<br>另外一种是步长调度，思想也很简单：按步长增加进度，每次选进度最低的进程运行。<br>但这两种都没有作为 CPU 调度程序被广泛使用。一是因为它们不适合 I/O ，二是很难确定每个进程的“票数”。</p>
+<h3 id="第-10-章-多处理器调度（高级）"><a href="#第-10-章-多处理器调度（高级）" class="headerlink" title="第 10 章 多处理器调度（高级）"></a>第 10 章 多处理器调度（高级）</h3><ul>
+<li>本章介绍了多处理器调度的不同方法。其中单队列的方式（SQMS）比较容易构建，负载均衡较好，但在扩展性和缓存亲和度方面有着固有的缺陷。多队列的方式（MQMS）有很好的扩展性和缓存亲和度，但实现负载均衡却很困难，也更复杂。</li>
+</ul>
+<h3 id="第-13-章-抽象：地址空间"><a href="#第-13-章-抽象：地址空间" class="headerlink" title="第 13 章 抽象：地址空间"></a>第 13 章 抽象：地址空间</h3><p>本章大概地介绍了虚拟化内存的相关知识。</p>
+<h3 id="第-14-章-插叙：内存操作-API"><a href="#第-14-章-插叙：内存操作-API" class="headerlink" title="第 14 章 插叙：内存操作 API"></a>第 14 章 插叙：内存操作 API</h3><p>本章讲了 C 语言的 malloc() 和 free() 函数和相关内存管理知识。</p>
+<h3 id="第-15-章-机制：地址转换"><a href="#第-15-章-机制：地址转换" class="headerlink" title="第 15 章 机制：地址转换"></a>第 15 章 机制：地址转换</h3><ul>
+<li>将虚拟地址转换为物理地址，这正是所谓的地址转换（address translation）技术。</li>
+</ul>
+<p>本章讲了基址加界限的动态重定位原理。</p>
+<h3 id="第-16-章-分段"><a href="#第-16-章-分段" class="headerlink" title="第 16 章 分段"></a>第 16 章 分段</h3><ul>
+<li>在典型的地址空间里有 3 个逻辑不同的段：代码、栈、和堆</li>
+</ul>
+<p>分段后管理物理的空闲空间，减小内存碎片有两种常见解决方案：</p>
+<ul>
+<li>紧凑物理内存，重新安排原有的段。</li>
+<li>空闲列表管理算法。包括最优匹配、最坏匹配、首次匹配、伙伴算法等，这几个具体算法书中本章没细讲。正如书中所讲，方案越多越说明这个问题没有最好的办法。。。</li>
+</ul>
+<h3 id="第-17-章-空闲空间管理"><a href="#第-17-章-空闲空间管理" class="headerlink" title="第 17 章 空闲空间管理"></a>第 17 章 空闲空间管理</h3><p>本章讲了空闲列表管理算法。包括上章中提到的各种具体的匹配算法。</p>
+<h3 id="第-18-章-分页：介绍"><a href="#第-18-章-分页：介绍" class="headerlink" title="第 18 章 分页：介绍"></a>第 18 章 分页：介绍</h3><p>分页不会导致外部碎片，因为分页（按设计）将内存划分为固定大小的单元。其次，它非常灵活，支持稀疏虚拟地址空间。</p>
+<h3 id="第-19-章-分页：快速地址转换（TLB）"><a href="#第-19-章-分页：快速地址转换（TLB）" class="headerlink" title="第 19 章 分页：快速地址转换（TLB）"></a>第 19 章 分页：快速地址转换（TLB）</h3><p>本章讲了 TLB 相关的知识。</p>
+<h3 id="第-20-章-分页：较小的表"><a href="#第-20-章-分页：较小的表" class="headerlink" title="第 20 章 分页：较小的表"></a>第 20 章 分页：较小的表</h3><ul>
+<li>大内存页会导致每页内的浪费，这被称为内部碎片（internal fragmentation）问题（因为浪费在分配单元内部）。</li>
+</ul>
+<p>本章讲了多级页表的相关知识。</p>
+<h3 id="第-21-章-超越物理内存：机制"><a href="#第-21-章-超越物理内存：机制" class="headerlink" title="第 21 章 超越物理内存：机制"></a>第 21 章 超越物理内存：机制</h3><p>本章讲了内存换页的相关知识。</p>
+<h3 id="第-22-章-超越物理内存：策略"><a href="#第-22-章-超越物理内存：策略" class="headerlink" title="第 22 章 超越物理内存：策略"></a>第 22 章 超越物理内存：策略</h3><p>本章讲了操作系统的换页策略。包括 FIFO、随机、LRU，其中介绍了近似 LRU 的实现，以及各种策略在不同情况下的命中率比较。</p>
+<h3 id="第-23-章-VAX-VMS-虚拟内存系统"><a href="#第-23-章-VAX-VMS-虚拟内存系统" class="headerlink" title="第 23 章 VAX/VMS 虚拟内存系统"></a>第 23 章 VAX/VMS 虚拟内存系统</h3><p>本章介绍了 VAX/VMS 操作系统的虚拟内存管理器。</p>
+<h2 id="第-2-部分-并发"><a href="#第-2-部分-并发" class="headerlink" title="第 2 部分 并发"></a>第 2 部分 并发</h2><h3 id="第-26-章-并发：介绍"><a href="#第-26-章-并发：介绍" class="headerlink" title="第 26 章 并发：介绍"></a>第 26 章 并发：介绍</h3><p>本章简单介绍了并发中的几个术语，并引出原子性和原语等概念。</p>
+<h3 id="第-27-章-插叙：线程-API"><a href="#第-27-章-插叙：线程-API" class="headerlink" title="第 27 章 插叙：线程 API"></a>第 27 章 插叙：线程 API</h3><p>本章介绍了 pthread 库，包括线程创建，通过锁创建互斥执行，通过条件变量的信号和等待。</p>
+<h3 id="第-28-章-锁"><a href="#第-28-章-锁" class="headerlink" title="第 28 章 锁"></a>第 28 章 锁</h3><p>本章介绍了几个原子指令实现和锁的实现。有几个地方比较难还不是很懂。</p>
+<h3 id="第-29-章-基于锁的并发数据结构"><a href="#第-29-章-基于锁的并发数据结构" class="headerlink" title="第 29 章 基于锁的并发数据结构"></a>第 29 章 基于锁的并发数据结构</h3><p>本章讲了计数器、链表、队列、散列表在并发加锁中的实现。</p>
+<h3 id="第-30-章-条件变量"><a href="#第-30-章-条件变量" class="headerlink" title="第 30 章 条件变量"></a>第 30 章 条件变量</h3><p>本章讲了条件变量的概念及应用，并介绍了著名的生产者/消费者问题，以及覆盖条件。</p>
+<h3 id="第-31-章-信号量"><a href="#第-31-章-信号量" class="headerlink" title="第 31 章 信号量"></a>第 31 章 信号量</h3><p>本章讲了信号量相关知识和用法，介绍了哲学家就餐问题。</p>
+<h3 id="第-32-章-常见并发问题"><a href="#第-32-章-常见并发问题" class="headerlink" title="第 32 章 常见并发问题"></a>第 32 章 常见并发问题</h3><p>本章讨论并发编程中非死锁缺陷和死锁产生的原因以及解决方案。</p>
+<h3 id="第-33-章-基于事件的并发（进阶）"><a href="#第-33-章-基于事件的并发（进阶）" class="headerlink" title="第 33 章 基于事件的并发（进阶）"></a>第 33 章 基于事件的并发（进阶）</h3><p>本章讲了基于事件的并发相关实现和常见问题。</p>
+<h2 id="第-3-部分-持久性"><a href="#第-3-部分-持久性" class="headerlink" title="第 3 部分 持久性"></a>第 3 部分 持久性</h2><h3 id="第-36-章-I-O-设备"><a href="#第-36-章-I-O-设备" class="headerlink" title="第 36 章 I/O 设备"></a>第 36 章 I/O 设备</h3><p>本章讲了中断和 DMA ，以及访问设备寄存器的两种方式：I/O 指令和内存映射 I/O。另外还介绍了设备驱动程序的概念。</p>
+<h3 id="第-37-章-磁盘驱动器"><a href="#第-37-章-磁盘驱动器" class="headerlink" title="第 37 章 磁盘驱动器"></a>第 37 章 磁盘驱动器</h3><p>本章讲了磁盘的大致结构，以及介绍了常见的磁盘调度算法。</p>
+<h3 id="第-38-章-廉价冗余磁盘阵列（RAID）"><a href="#第-38-章-廉价冗余磁盘阵列（RAID）" class="headerlink" title="第 38 章 廉价冗余磁盘阵列（RAID）"></a>第 38 章 廉价冗余磁盘阵列（RAID）</h3><p>本章介绍了多种级别的 RAID 。</p>
+<h3 id="第-39-章-插叙：文件和目录"><a href="#第-39-章-插叙：文件和目录" class="headerlink" title="第 39 章 插叙：文件和目录"></a>第 39 章 插叙：文件和目录</h3><p>本章介绍了文件和目录在操作系统底层的实现和各种操作。</p>
+<h3 id="第-40-章-文件系统实现"><a href="#第-40-章-文件系统实现" class="headerlink" title="第 40 章 文件系统实现"></a>第 40 章 文件系统实现</h3><p>本章介绍了构建文件系统所需的基本机制，粗略一看。</p>
+<h3 id="第-41-章-局部性和快速文件系统"><a href="#第-41-章-局部性和快速文件系统" class="headerlink" title="第 41 章 局部性和快速文件系统"></a>第 41 章 局部性和快速文件系统</h3><p>本章介绍了 FFS（快速文件系统）的相关知识，粗略浏览了一下。</p>
+<h3 id="第-42-章-崩溃一致性：FSCK-和日志"><a href="#第-42-章-崩溃一致性：FSCK-和日志" class="headerlink" title="第 42 章 崩溃一致性：FSCK 和日志"></a>第 42 章 崩溃一致性：FSCK 和日志</h3><p>本章介绍了崩溃一致性的问题，大致翻了一翻。</p>
+<h3 id="第-43-章-日志结构文件系统"><a href="#第-43-章-日志结构文件系统" class="headerlink" title="第 43 章 日志结构文件系统"></a>第 43 章 日志结构文件系统</h3></body></html>]]></content>
+      <categories>
+        <category>读书笔记</category>
+        <category>IT</category>
+      </categories>
+      <tags>
+        <tag>读书笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《Java 核心技术（第10版）》读书笔记</title>
+    <url>/2020/11/23/%E3%80%8AJava-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%EF%BC%88%E7%AC%AC10%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<html><head></head><body><p>《Java 核心技术（第10版）》读书笔记，已大概完结。</p>
+<a id="more"></a>
+
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><p><a href="https://horstmann.com/corejava/bugs10.html" target="_blank" rel="noopener">勘误表</a></p>
+<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>重看这本书一是为了查漏补缺，二是扫清那些不熟悉的知识点。对于已经非常熟悉的部分，就不做笔记了。另外卷 I 第 10~13 章讲的是 Java GUI 和 applet 的知识，用不到，没有看。卷 II 只需要看 IO 和流式 API 等章节，其余可以用到再查。</p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h2 id="卷-I-基础知识"><a href="#卷-I-基础知识" class="headerlink" title="卷 I 基础知识"></a>卷 I 基础知识</h2><h3 id="第-1-章-Java-程序设计概述"><a href="#第-1-章-Java-程序设计概述" class="headerlink" title="第 1 章 Java 程序设计概述"></a>第 1 章 Java 程序设计概述</h3><ul>
+<li>即时编译（JIT）使得现在的的 Java 代码运行速度与 C++ 相差无几，有些情况下甚至更快。</li>
+</ul>
+<h3 id="第-3-章-Java-的基本程序设计结构"><a href="#第-3-章-Java-的基本程序设计结构" class="headerlink" title="第 3 章 Java 的基本程序设计结构"></a>第 3 章 Java 的基本程序设计结构</h3><h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><ul>
+<li><p>Java 整型范围与运行 Java 代码的机器无关。</p>
+</li>
+<li><p>长整型数值有一个后缀 L 或 l，例如 4000000000L。十六进制数值有一个前缀 0x 或 0X，例如 0xCAFE。八进制有一个前缀 0，例如 010 对应十进制的 8。八进制表示法比较容易混淆，所以建议最好不要使用八进制常数。</p>
+</li>
+<li><p>从 Java 7 开始，加上前缀 0b 或 0B 就可以写二进制数，例如 0b1001 是 9。Java 7 开始还可以为数字字面量加下划线，如 1_000_000（或 0b1111_0100_0010_0100_0000）表示一百万。这些下划线只是为了让人更易读。Java 编译器会去除这些下划线。</p>
+</li>
+<li><p>Java 没有任何无符号（unsigned）形式的 int、long、short 或 byte 类型。</p>
+</li>
+<li><p>没有后缀 F 的浮点数值（如 3.14）默认为 double 类型。当然，也可以在浮点数值后面添加后缀 D 或 d（例如，3.14D）</p>
+</li>
+<li><p>有三个特殊的浮点数值：正无穷大、负无穷大、NaN（不是一个数字）。例如，一个正浮点数除以 0 的结果为正无穷大。计算 0.0/0 或者负数的平方根结果为 NaN。常量 Double.POSITIVE_INFINITY、Double.NEGATIVE_INFINITY 和 Double.NaN（以及相应的 Float 类型的常量）分别表示这三个特殊的值。判断一个特定值是否等于 Double.NaN 应该用 Double.isNaN() 方法，而不是“==”。</p>
+</li>
+<li><p>Unicode 转义序列会在解析代码之前得到处理。因此需要小心注释中的 \u。注释 <code>// \u000A</code> 会产生一个语法错误，因为读程序时 \u000A 会替换成一个换行符。 类似地，注释 <code>// c:\users</code> 也会产生一个语法错误，因为 \u 后面并未跟着 4 个十六进制数。</p>
+</li>
+<li><p><strong>我们强烈建议不要在程序中使用 char 类型</strong>，除非确实需要处理 UTF-16 代码单元。最好将字符串作为抽象数据类型处理。</p>
+<p>  这一条其实我也没太弄懂，关于 Java Unicode、码点、代码单元等相关知识，用到再查。</p>
+</li>
+</ul>
+<h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><ul>
+<li><p>尽管 $ 是一个合法的 Java 字符，但不要在你自己的代码中使用这个字符。它只用在 Java 编译器或其他工具生成的名字中。</p>
+</li>
+<li><p>在 Java 中，变量的声明尽可能地靠近变量第一次使用的地方，这是一种良好的程序编写风格。</p>
+</li>
+</ul>
+<h4 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h4><ul>
+<li><p>如果两个操作数中有一个是 double 类型，另一个操作数就会转换为 double 类型。否则，如果其中一个操作数是 float 类型，另一个操作数将会转换为 float 类型。否则，如果其中一个操作数是 long 类型，另一个操作数将会转换为 long 类型。否则，两个操作数都将被转换为 int 类型。</p>
+<p>  <strong>注意：自动类型转换规则包括三目运算！！</strong></p>
+</li>
+<li><p>如果运算符得到一个值，其类型与左侧操作数的类型不同，就会发生强制类型转换。例如，如果 x 是一个 int，则 <code>x += 3.5;</code> 是合法的，将把 x 设置为 <code>(int)(x + 3.5)</code>。</p>
+</li>
+<li><p><code>>>></code> 运算符会用 0 填充高位，这与 <code>>></code> 不同，它会用符号位填充高位。不存在 <code><<<</code> 运算符。移位运算符的右操作数要完成模 32 的运算（除非左操作数是 long 类型，在这种情况下需要对右操作数模 64）。例如，1 << 35 的值等同于 1 << 3 ，结果为 8。</p>
+</li>
+</ul>
+<h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><p>P49 讲了码点和代码单元的知识，但基本用不到，不要踩这个坑就行。</p>
+<h4 id="控制流程"><a href="#控制流程" class="headerlink" title="控制流程"></a>控制流程</h4><ul>
+<li><p>在循环中，检测两个浮点数是否相等需要格外小心。循环：<code>for(double x = 0; x != 10; x += 0.1)</code> 可能永远不会结束。由于舍入的误差，最终可能得不到精确值。因为 0.1 无法精确地用二进制表示，所以，x 将从 9.999 999 999 999 98 跳到 10.099 999 999 999 98</p>
+</li>
+<li><p>许多程序员容易混淆 break 和 continue 语句。这些语句完全是可选的，即不使用它们也可以表达同样的逻辑含义。</p>
+</li>
+</ul>
+<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><ul>
+<li><p>数组长度不要求是常量：<code>new int[n]</code> 会创建一个长度为 n 的数组。</p>
+</li>
+<li><p><strong>在 Java 中，允许数组长度为 0。在编写一个结果为数组的方法时，如果碰巧结果为空，则这种语法形式就显得非常有用。此时可以创建一个长度为 0 的数组：<code>new elementType[0]</code>。注意，数组长度为 0 与 null 不同。</strong></p>
+</li>
+</ul>
+<p>P83 讲了如何从 m 个数中随机取 n 个的实现。</p>
+<h3 id="第-4-章-对象与类"><a href="#第-4-章-对象与类" class="headerlink" title="第 4 章 对象与类"></a>第 4 章 对象与类</h3><h4 id="使用预定义类"><a href="#使用预定义类" class="headerlink" title="使用预定义类"></a>使用预定义类</h4><ul>
+<li>标准 Java 类库分别包含了两个类：一个是用来表示时间点的 Date 类；另一个是用来表示大家熟悉的日历表示法的 LocalDate 类。</li>
+</ul>
+<p>更改器方法（mutator method）和访问器方法（accessor method）区别。</p>
+<h4 id="用户自定义类"><a href="#用户自定义类" class="headerlink" title="用户自定义类"></a>用户自定义类</h4><p>尽量不要返回类中可变的成员变量，这样会破坏类的封装性。如果需要返回一个可变数据域的拷贝，就应该使用 clone。</p>
+<ul>
+<li>如果类中的每个方法都不会改变其对象，这种类就是不可变的类。</li>
+</ul>
+<h3 id="第-5-章-继承"><a href="#第-5-章-继承" class="headerlink" title="第 5 章 继承"></a>第 5 章 继承</h3><h4 id="类、超类和子类"><a href="#类、超类和子类" class="headerlink" title="类、超类和子类"></a>类、超类和子类</h4><ul>
+<li><p>有些人认为 super 与 this 引用的是类似的概念，实际上，这样比较并不太恰当。这是因为 super 不是一个对象的引用，不能将 super 赋给另一个对象变量，它只是一个指示编译器调用超类方法的特殊关键字。</p>
+</li>
+<li><p>一个对象变量可以指示多种实际类型的现象被称为多态（polymorphism）。在运行时能够自动地选择调用哪个方法的现象称为动态绑定（dynamic binding）。</p>
+</li>
+</ul>
+<h4 id="Object：所有类的超类"><a href="#Object：所有类的超类" class="headerlink" title="Object：所有类的超类"></a>Object：所有类的超类</h4><p>为了防备 equals() 方法调用者可能为 null 的情况，需要使用 Objects.equals() 方法。<br>同样，还有 Objects.hashCode() 方法</p>
+<p>这里还讲了重写 equals() 方法需要注意的细节，比如该用 instanceof 还是 getClass() 的问题。《Effective Java》里有关于重写 equals() 方法和 hashCode() 方法的详细介绍。</p>
+<h4 id="泛型数组列表"><a href="#泛型数组列表" class="headerlink" title="泛型数组列表"></a>泛型数组列表</h4><ul>
+<li>一旦能够确认数组列表的大小不再发生变化，就可以调用 trimToSize 方法。这个方法将存储区域的大小调整为当前元素数量所需要的存储空间数目。垃圾回收器将回收多余的存储空间。</li>
+<li>一旦整理了数组列表的大小，添加新元素就需要花时间再次移动存储块，所以应该在确认不会添加任何元素时，再调用 trimToSize。</li>
+</ul>
+<h4 id="对象包装器与自动装箱"><a href="#对象包装器与自动装箱" class="headerlink" title="对象包装器与自动装箱"></a>对象包装器与自动装箱</h4><ul>
+<li><p>对象包装器类是不可变的，即一旦构造了包装器，就不允许更改包装在其中的值。同时，对象包装器类还是 final，因此不能定义它们的子类。</p>
+</li>
+<li><p>如果在一个条件表达式中混合使用 Integer 和 Double 类型，Integer 值就会拆箱，提升为 double，再装箱为 Double：</p>
+  <figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line">Integer n = <span class="number">1</span>;</span><br><span class="line">Double x = <span class="number">2.0</span>;</span><br><span class="line">System.out.println(<span class="keyword">true</span> ? n : x); <span class="comment">// 输出 1.0</span></span><br></pre></td></tr></tbody></table></figure>
+
+</li>
+</ul>
+<h4 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h4><ul>
+<li>能够分析类能力的程序称为反射（reflective）。</li>
+<li>使用反射的主要人员是工具构造者，而不是应用程序员。</li>
+</ul>
+<h3 id="第-6-章-接口、lambda-表达式与内部类"><a href="#第-6-章-接口、lambda-表达式与内部类" class="headerlink" title="第 6 章 接口、lambda 表达式与内部类"></a>第 6 章 接口、lambda 表达式与内部类</h3><h4 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h4><p>接口声明方法不必声明 public，因为接口的所有方法都自动地是 public，但在接口的实现类里必须将方法声明为 public。</p>
+<p>compareTo() 方法如果使用两整数相减的实现，要确保减法运算不会溢出，否则，调用静态 Integer.compare() 方法。而如果是两个很接近的浮点数，它们的差经过四舍五入后有可能变成 0，应该调用 Double.compare() 方法。</p>
+<p>关于父类 x 和子类 y ，如果它们各自实现了自己的 compareTo() 方法，调用 x.compareTo(y) 没问题，但调用 y.compareTo(x) 时，若在方法内将 x 转换为 y 类型可能会报 ClassCastException 所以，这种情况有两种解决方案：第一种是利用 getClass() 判断两者是否是同一类型，不同的话属于非法比较，直接抛出异常；第二种是在 x 中实现一个子类也通用的 compareTo() 方法，并声明为 final 类型。</p>
+<p>Java 语言规范建议不要书写接口中 publi static final 这样的多余关键字。</p>
+<ul>
+<li><p>实际上，接口可以提供多重继承的大多数好处，同时还能避免多重继承的复杂性和低效性。</p>
+</li>
+<li><p>在 Java API 中，，你会看到很多接口都有相应的伴随类，这个伴随类中实现了相应接口的部分或所有方法，如 Collection/AbstractCollection 或 MouseListener/MouseAdapter。在 Java SE 8 中，这个技术已经过时。现在可以直接在接口中实现方法。</p>
+</li>
+</ul>
+<p>另外，默认方法也可以使得在 Java 老接口里定义新的默认方法，这样老的接口实现代码不必改动。</p>
+<p>解决默认方法冲突：<br>(1) 超类优先。如果超类提供了一个具体方法，同名而且有相同参数类型的默认方法会被忽略。<br>(2) 接口冲突。如果一个超接口提供了一个默认方法，另一个接口提供了一个同名而且参数类型（不论是否是默认参数）相同的方法，则子接口或实现类必须覆盖这个方法来解决冲突。</p>
+<h4 id="接口示例"><a href="#接口示例" class="headerlink" title="接口示例"></a>接口示例</h4><p>要对一个 String 数组按 String 长度排序，不能利用 String 自己实现的 compareTo() 方法，需要自己创建一个 Comparator 对象实现按字符串长度的比较方法，然后传入 Arrays.sort()。</p>
+<p>Cloneable 接口只是一个标记接口（标记接口不包含任何方法；它唯一的作用就是允许在类型查询中使用 instanceof）</p>
+<h4 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h4><ul>
+<li><p>内部类中声明的所有静态域都必须是 final，并且用一个编译时常量来初始化。原因很简单，我们希望一个静态域只能有一个实例，不过对于每个外部对象，会分别有一个单独的内部实例。如果这个域不是常量，它可能不是唯一的。内部类不能有 static 方法。Java 语言规范对这个限制没有做任何解释。（按理来说）也可以允许有静态方法，<del>但</del>只<del>能</del>（让它）访问外围类的静态域和方法。（但是）<del>显然</del>，Java 设计者认为相对于这种复杂性来说，它带来的好处有些得不偿失。（注：括号内容和删除线是我加的，原文翻译不通顺）</p>
+</li>
+<li><p>多年来，Java 程序员习惯的做法是用匿名内部类实现事件监听器和其他回调。如今最好还是使用 lambda 表达式。</p>
+</li>
+<li><p>在内部类不需要访问外围类对象的时候，应该使用静态内部类。</p>
+</li>
+</ul>
+<h4 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h4><ul>
+<li>克隆和代理是库设计者和工具构造者感兴趣的高级技术，对应用程序员来说，它们并不十分重要。</li>
+</ul>
+<h3 id="第-7-章-异常、断言和日志"><a href="#第-7-章-异常、断言和日志" class="headerlink" title="第 7 章 异常、断言和日志"></a>第 7 章 异常、断言和日志</h3><h4 id="处理错误"><a href="#处理错误" class="headerlink" title="处理错误"></a>处理错误</h4><ul>
+<li><p>Error 类层次结构描述了 Java 运行时系统的内部错误和资源耗尽错误。应用程序不应该抛出这种类型的对象。如果出现了这样的内部错误，除了通告给用户，并尽力使程序安全地终止之外，再也无能为力了。这种情况很少出现。</p>
+</li>
+<li><p>子类方法中声明的受检查异常不能比超类方法中声明的异常更通用。</p>
+</li>
+<li><p>如果超类方法没有抛出任何受检查异常，子类也不能抛出任何受检查异常。 </p>
+</li>
+</ul>
+<h4 id="捕获异常"><a href="#捕获异常" class="headerlink" title="捕获异常"></a>捕获异常</h4><ul>
+<li>捕获多个异常时，异常变量隐含为 final 变量。例如，不能在以下子句体中为 e 赋不同的值：<code>catch (FileNotFoundException | UnknownHostException e) { ... }</code></li>
+</ul>
+<p>7.2.3 节还讲了异常链，用到可以一看。</p>
+<ul>
+<li><p>try 语句可以只有 finally 子句，而没有 catch 子句。</p>
+</li>
+<li><p>当 finally 子句包含 return 语句时，将会出现一种意想不到的结果。假设利用 return 语句从 try 语句块中退出。在方法返回前，finally 子句的内容将被执行。如果 finally 子句中也有一个 return 语句，这个返回值将会覆盖原始的返回值。</p>
+</li>
+</ul>
+<p>另外当在 finally 子句中抛出异常时，会把 try 子句和 catch 子句中抛出的异常覆盖掉。</p>
+<h4 id="使用异常机制的技巧"><a href="#使用异常机制的技巧" class="headerlink" title="使用异常机制的技巧"></a>使用异常机制的技巧</h4><p>捕获异常比判定合法条件再运行要花费更多的时间，因此使用异常的基本规则是：只在异常情况下使用异常机制。</p>
+<ul>
+<li>不要过分地细化异常</li>
+</ul>
+<p>可以把一个逻辑放在一个 try 语句里，然后 catch 多个可能发生的异常。</p>
+<p>异常要“早抛出，晚捕获”。</p>
+<h4 id="记录日志"><a href="#记录日志" class="headerlink" title="记录日志"></a>记录日志</h4><p>这节没仔细看，不重要，用到可以再查。</p>
+<blockquote>
+<p>使用Java标准库内置的Logging有以下局限：<br>Logging系统在JVM启动时读取配置文件并完成初始化，一旦开始运行main()方法，就无法修改配置；<br>配置不太方便，需要在JVM启动时传递参数-Djava.util.logging.config.file=< config-file-name >。<br>因此，Java标准库内置的Logging使用并不是非常广泛。<br><a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1264738568571776" target="_blank" rel="noopener"><em>——廖雪峰教程</em></a></p>
+</blockquote>
+<h3 id="第-8-章-泛型程序设计"><a href="#第-8-章-泛型程序设计" class="headerlink" title="第 8 章 泛型程序设计"></a>第 8 章 泛型程序设计</h3><h4 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h4><ul>
+<li>类型变量放在修饰符（例如：public static）的后面，返回类型的前面</li>
+</ul>
+<h4 id="类型变量的限定"><a href="#类型变量的限定" class="headerlink" title="类型变量的限定"></a>类型变量的限定</h4><ul>
+<li><p>一个类型变量或通配符可以有多个限定，例如：<code>T, E extends Comparable & Serializable</code>。限定类型用 <code>&</code> 分隔，而 <code>,</code> 用来分隔类型变量</p>
+</li>
+<li><p>可以根据需要有多个接口超类型，但限定中至多有一个类。如果用一个类作为限定，它必须是限定列表中的第一个。</p>
+</li>
+</ul>
+<h4 id="泛型代码和虚拟机"><a href="#泛型代码和虚拟机" class="headerlink" title="泛型代码和虚拟机"></a>泛型代码和虚拟机</h4><ul>
+<li><p>原始类型用第一个限定的类型变量来替换，如果没有给定限定就用 Object 替换。</p>
+</li>
+<li><p><code>class Interval< T extends Serializable & Comparable ></code> 中，原始类型用 Serializable 替换 T，而编译器在必要时要向 Comparable 插入强制类型转换。为了提高效率，应该将标签（tagging）接口（即没有方法的接口）放在限定列表的末尾。</p>
+</li>
+</ul>
+<h4 id="约束与局限性"><a href="#约束与局限性" class="headerlink" title="约束与局限性"></a>约束与局限性</h4><ul>
+<li><p>不能创建参数化类型的数组，但声明参数化类型的数组是允许的。也可以创建数组后强制转换为参数化类型。</p>
+</li>
+<li><p>不能抛出或捕获泛型类的实例，泛型类扩展 Throwable 都是不合法的。</p>
+</li>
+</ul>
+<h4 id="通配符类型"><a href="#通配符类型" class="headerlink" title="通配符类型"></a>通配符类型</h4><ul>
+<li><p>带有超类型限定的通配符可以向泛型对象写入，带有子类型限定的通配符可以从泛型对象读取。</p>
+</li>
+<li><p>无限定通配符类型的 get 方法只能赋值给一个 Object，set 方法不能被调用（除非传入 null）。通常它被用来判定是否为 null。</p>
+</li>
+</ul>
+<p>本章泛型相关跳着看的，后面比较复杂，实际应该很少遇到，遇到再来查。</p>
+<h3 id="第-9-章-集合"><a href="#第-9-章-集合" class="headerlink" title="第 9 章 集合"></a>第 9 章 集合</h3><h4 id="Java-集合框架"><a href="#Java-集合框架" class="headerlink" title="Java 集合框架"></a>Java 集合框架</h4><ul>
+<li>查找一个元素的唯一方法是调用 next，而在执行查找操作的同时，迭代器的位置随之向前移动。因此，应该将 Java 迭代器认为是位于两个元素之间。当调用 next 时，迭代器就越过下一个元素，并返回刚刚越过的那个元素的引用。</li>
+</ul>
+<h4 id="具体的集合"><a href="#具体的集合" class="headerlink" title="具体的集合"></a>具体的集合</h4><ul>
+<li><p>在 Java 程序设计语言中，所有链表实际上都是双向链接的——即每个结点还存放着指向前驱结点的引用。</p>
+</li>
+<li><p>只有对自然有序的集合使用迭代器添加元素才有实际意义。例如，set 类型中的元素完全无序，因此，在 Iterator 接口中就没有 add 方法，相反地，集合类库提供了子接口 ListIterator，其中包含 add 方法。</p>
+</li>
+<li><p>在调用 next 之后，remove 方法删除迭代器左侧的元素。但是，如果调用 previous 就会将右侧的元素删除掉，并且不能连续调用两次 remove。add 方法只依赖于迭代器的位置，而 remove 方法依赖于迭代器的状态。</p>
+</li>
+<li><p>LinkedList 的 get 方法每次查找一个元素都要从列表的头部重新开始搜索。LinkedList 对象根本不做任何缓存位置信息的操作。get 方法做了微小的优化：如果索引大于 size()/2 就从列表尾端开始搜索元素。</p>
+</li>
+<li><p>标准类库散列表使用的桶数是 2 的幂，默认值为 16（为表大小提供的任何值都将被自动地转换为 2 的下一个幂）。</p>
+</li>
+</ul>
+<h4 id="映射"><a href="#映射" class="headerlink" title="映射"></a>映射</h4><ul>
+<li>putIfAbsent 方法只有当键原先不存在或键对应的值为 null 时才会放入一个值。</li>
+</ul>
+<h4 id="视图与包装器"><a href="#视图与包装器" class="headerlink" title="视图与包装器"></a>视图与包装器</h4><p>这节讲了 Java 集合的视图及其应用，大概扫了一遍，用到再查。</p>
+<h3 id="第-14-章-并发"><a href="#第-14-章-并发" class="headerlink" title="第 14 章 并发"></a>第 14 章 并发</h3><h4 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h4><h2 id="卷-II-高级特性"><a href="#卷-II-高级特性" class="headerlink" title="卷 II 高级特性"></a>卷 II 高级特性</h2><h3 id="第-1-章-Java-SE-8-的流库"><a href="#第-1-章-Java-SE-8-的流库" class="headerlink" title="第 1 章 Java SE 8 的流库"></a>第 1 章 Java SE 8 的流库</h3><p>本章讲了 Java 8 的流式 API，其中几个和 python 里的 map、reduce、filter 函数类似，能很方便地对数据集进行处理。相当于把自己的迭代实现提供了现成的接口调用。</p>
+<h3 id="第-2-章-输入与输出"><a href="#第-2-章-输入与输出" class="headerlink" title="第 2 章 输入与输出"></a>第 2 章 输入与输出</h3><p>这本书这章感觉讲的不太好，用到再查。</p>
+</body></html>]]></content>
+      <categories>
+        <category>读书笔记</category>
+        <category>IT</category>
+      </categories>
+      <tags>
+        <tag>读书笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《Head First 设计模式》读书笔记</title>
+    <url>/2020/10/30/%E3%80%8AHead-First-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<html><head></head><body><p>《Head First 设计模式》读书笔记，已完结。</p>
+<a id="more"></a>
+
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><p><a href="https://www.wickedlysmart.com/head-first-design-patterns/" target="_blank" rel="noopener">官网</a><br><a href="https://github.com/bethrobson/Head-First-Design-Patterns" target="_blank" rel="noopener">github 源码仓库</a></p>
+<h1 id="OO-基础"><a href="#OO-基础" class="headerlink" title="OO 基础"></a>OO 基础</h1><ul>
+<li>抽象</li>
+<li>封装</li>
+<li>继承</li>
+<li>多态</li>
+</ul>
+<h1 id="OO-原则"><a href="#OO-原则" class="headerlink" title="OO 原则"></a>OO 原则</h1><ul>
+<li>封装变化</li>
+<li>多用组合，少用继承</li>
+<li>针对接口编程，不针对实现编程</li>
+<li>为交互对象之间的松耦合设计而努力（例：观察者模式，解耦观察者和被观察者）</li>
+<li>类应该对扩展开发，对修改关闭（例：装饰者模式，增加功能时添加新的装饰者，而非修改现有类）</li>
+<li>依赖抽象，不要依赖具体类（依赖倒置原则。）</li>
+<li>只和朋友交谈（最少知识原则，又叫得墨忒耳法则（Law of Demeter）。例：外观模式，尽量减少类之间的交互）</li>
+<li>别找我，我会找你（好莱坞原则，超类需要的时候自然会调用子类）</li>
+<li>类应该只有一个改变的理由（单一责任原则，尽量使类高内聚，低耦合）</li>
+</ul>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h2 id="设计模式入门"><a href="#设计模式入门" class="headerlink" title="设计模式入门"></a>设计模式入门</h2><h3 id="原文摘抄"><a href="#原文摘抄" class="headerlink" title="原文摘抄"></a>原文摘抄</h3><ul>
+<li><p>P1</p>
+<blockquote>
+<p><em>使用模式最好的方式是：“把模式装进脑子里，然后在你的设计和已有的应用中，寻找何处可以使用它们。”</em><br><em>以往是代码复用，现在是经验复用</em></p>
+</blockquote>
+</li>
+<li><p>P24</p>
+<blockquote>
+<p><strong>策略模式</strong> <em>定义了算法族，分别封装起来，让它们之间可以互相替换，此模式让算法的变化独立于使用算法的客户。</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="本章总结"><a href="#本章总结" class="headerlink" title="本章总结"></a>本章总结</h3><p>要设计一个 Duck 抽象基类，它的子类有绿头鸭、橡皮鸭、模型鸭等。因为不管什么鸭子，都会游泳（书中确实是这样举例的。。），所以可以在 Duck 类里写具体实现 <code>swim()</code> 方法。但不同鸭子有不同外观表现，所以，<code>display()</code> 是抽象方法，不同子类对它有不同实现。由于模型鸭不会叫，橡皮鸭叫声是吱吱声。而只有绿头鸭会飞。所以鸭子叫方法 <code>quark()</code> 和鸭子飞方法 <code>fly()</code> 不能放在 Duck 基类中，不然很多不会叫不会飞的鸭子子类也不得不实现它。那么，设计一个 Quarkable 和 Flyable 接口，让有这些行为的子类实现它们呢？这样的问题是，对这两个接口的实现没办法复用。表现行为相同的类会写出一样的实现代码。<strong>所以，可以写出对 Quarkable 和 Flyable 接口的不同实现类，让 Duck 类持有这两个接口，将 Duck 类的叫和飞方法委托给这两个接口去实现，让 Duck 类的子类去选择到底使用这两个接口的哪个具体实现类。</strong></p>
+<h2 id="观察者（Observer）模式"><a href="#观察者（Observer）模式" class="headerlink" title="观察者（Observer）模式"></a>观察者（Observer）模式</h2><h3 id="原文摘抄-1"><a href="#原文摘抄-1" class="headerlink" title="原文摘抄"></a>原文摘抄</h3><ul>
+<li><p>P51</p>
+<blockquote>
+<p><strong>观察者模式</strong> <em>定义了对象之间的一对多依赖，这样一来，当一个对象改变状态时，它的所有依赖者都会收到通知并自动更新。</em></p>
+</blockquote>
+</li>
+<li><p>P71</p>
+<blockquote>
+<p><em>首先，因为 Observable 是一个“类”，你必须设计一个类继承它。如果某类想同时具有 Observable 类和另一个超类的行为，就会陷入两难，毕竟 Java 不支持多重继承。再者，因为没有 Observable 接口，所以你无法建立自己的实现，和 Java 内置的 Observer API 搭配使用，也无法将 java.util 的实现换成另一套做法的实现，比方说，如果你看看 Observable API，你会发现 setChanged() 方法被保护起来了（被定义成 protected）。那又怎么样呢？这意味着，除非你继承自 Observable，否则你无法创建 Observable 实例并组合到你自己的对象中来。这个设计违反了第二个设计原则：“多用组合，少用继承”。</em></p>
+</blockquote>
+<p>  这里指出了 java.util.Observable 的设计缺陷，值得一看。<a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1281319577321505" target="_blank" rel="noopener">廖雪峰的教程</a>里也不推荐用这两个类实现观察者模式。<br>  P72~P73 举例 JDK 在 Swing 中用到了观察者模式，不过现在很少有人用 Swing，所以代码不看也罢。</p>
+</li>
+</ul>
+<h3 id="本章总结-1"><a href="#本章总结-1" class="headerlink" title="本章总结"></a>本章总结</h3><p>观察者模式是为了解除观察者和被观察者之间的耦合，使得新增观察者或删除观察者不用改动被观察者的代码，更容易维护。<br>观察者模式分为推和拉两种，<strong>推的话就是在被观察者中用一个列表维护所有观察者，当数据更新的时候遍历通知所有观察者，</strong><br><strong>拉的话是观察者通过保存的被观察者的实例，自己随时可以调用其 getter 方法获取数据。</strong></p>
+<h2 id="装饰者模式"><a href="#装饰者模式" class="headerlink" title="装饰者模式"></a>装饰者模式</h2><h3 id="原文摘抄-2"><a href="#原文摘抄-2" class="headerlink" title="原文摘抄"></a>原文摘抄</h3><ul>
+<li><p>P87</p>
+<blockquote>
+<p><em>在选择需要被扩展的代码部分时要小心。每个地方都采用开放-关闭原则，是一种浪费，也没必要，还会导致代码变得复杂且难以理解。</em></p>
+</blockquote>
+</li>
+<li><p>P91</p>
+<blockquote>
+<p><strong>装饰者模式</strong> <em>动态地将责任附加到对象上。若要扩展功能，装饰者提供了比继承更有弹性的替代方案。</em></p>
+</blockquote>
+</li>
+<li><p>P101</p>
+<blockquote>
+<p><em>但是 Java I/O 也引出装饰者模式一个“缺点”：利用装饰者模式，常常造成设计中有大量小类，数量实在太多，可能会造成使用此 API 程序员的困扰。</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="本章总结-2"><a href="#本章总结-2" class="headerlink" title="本章总结"></a>本章总结</h3><p>业务场景：给咖啡加不同的调料（如牛奶、摩卡、奶泡等），计算最终的价格。如果把所有调料组合都创建一个咖啡类，那类要爆炸。如果用变量给每种调料标明价格，然后通过判断有没有加这种调料来计算最终价格，那每加一种调料都要改动原有代码，不符合“对扩展开放，对修改封闭”的原则。<br>装饰者模式实现方式：<strong>各种调料都继承自咖啡类，构造函数需要传入咖啡类引用，然后在重写的计算价格方法里，首先调用咖啡类引用的计算价格方法，再加上本调料类的价格。</strong>这样想加哪种调料就用哪种调料类包装，而且同一种调料可以包装若干次，即使新增调料，也只需添加一个类，无需修改原有代码。</p>
+<h2 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h2><h3 id="原文摘抄-3"><a href="#原文摘抄-3" class="headerlink" title="原文摘抄"></a>原文摘抄</h3><ul>
+<li><p>P134</p>
+<blockquote>
+<p><strong>工厂方法模式</strong> <em>定义了一个创建对象的接口，但由子类决定要实例化的类是哪一个，工厂方法让类把实例化推迟到子类</em></p>
+</blockquote>
+</li>
+<li><p>P143</p>
+<blockquote>
+<p><em>下面的指导方针，能帮你避免在 OO 设计中违反<strong>依赖倒置原则</strong>：</em></p>
+<ul>
+<li><em>变量不可以持有具体类的引用</em></li>
+<li><em>不要让类派生自具体类</em></li>
+<li><em>不要覆盖基类中已实现的方法</em></li>
+</ul>
+<p><em>应该尽量达到这个原则，而不是随时随地都要遵循这个原则。深入体验这些方针，将这些方针内化成你思考的一部分，那么在设计时，你将知道何时有足够的理由违反这样的原则</em></p>
+</blockquote>
+</li>
+<li><p>P156</p>
+<blockquote>
+<p><strong>抽象工厂模式</strong> <em>提供一个接口，用于创建相关或依赖对象的家族，而不需要明确指定具体类。</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="本章总结-3"><a href="#本章总结-3" class="headerlink" title="本章总结"></a>本章总结</h3><p>简单工厂就是把创建对象的方法拿出来放到一个工厂类里。这样方便用到多个需要创建这个对象的地方。<br>静态工厂就是把创建对象的方法设置成静态的，不用实例化对象就能调用，但这种方式也有缺点，就是不能通过继承重写这个方法实现多态。<br>工厂方法要有一个产品抽象类（接口）和专门生产这个产品的工厂抽象类（接口），然后由工厂抽象类的具体子类去创建具体的产品类。<br>抽象工厂就是一个产品有很多原料构成，我把所有创建这些原料的方法拿出来放到一个接口里，通过这个接口不同的实现类去创建不同的原料。</p>
+<p><a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1281319170474017" target="_blank" rel="noopener">廖雪峰教程</a>里提到：</p>
+<blockquote>
+<p><em>工厂方法可以隐藏创建产品的细节，且不一定每次都会真正创建产品，完全可以返回缓存的产品，从而提升速度并减少内存消耗。</em></p>
+</blockquote>
+<p>并且拿 <code>Integer.valueOf(i)</code> 和 <code>new Integer(i)</code> 区别的例子说明了这一情况。</p>
+<h2 id="单件模式"><a href="#单件模式" class="headerlink" title="单件模式"></a>单件模式</h2><h3 id="原文摘抄-4"><a href="#原文摘抄-4" class="headerlink" title="原文摘抄"></a>原文摘抄</h3><ul>
+<li><p>P177</p>
+<blockquote>
+<p><strong>单件模式</strong> <em>确保一个类只有一个实例，并提供一个全局访问点。</em></p>
+</blockquote>
+</li>
+<li><p>P184</p>
+<blockquote>
+<p><em>问：难道我不能创建一个类，把所有的方法和变量都定义为静态的，把类直接当做一个单件？</em><br><em>答：如果你的类自给自足，而且不依赖于复杂的初始化，那么你可以这么做。但是，因为静态初始化的控制权是在 Java 手上，这么做可能导致混乱，特别是当有许多类牵涉其中的时候。这么做常常会造成一些微妙的、不容易发现的<strong>和初始化的次序有关的 bug</strong>。除非你有绝对的必要使用类的单件，否则还是建议使用对象的单件，比较保险。</em></p>
+</blockquote>
+</li>
+<li><p>P184</p>
+<blockquote>
+<p><em>每个类加载器都定义了一个命名空间，如果有两个以上的类加载器，不同的类加载器可能会加载同一个类，从整个程序来看，同一个类会被加载多次。如果这样的事情发生在单件上，就会产生多个单件并存的怪异现象。所以，如果聂程序有多个类加载器又同时使用了单件模式，请小心。有一个解决办法：自行指定类加载器，并指定同一个类加载器。</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="本章总结-4"><a href="#本章总结-4" class="headerlink" title="本章总结"></a>本章总结</h3><p>单件模式虽然简单，其实里面涉及到的细节却不少，本章后面有好几个关于单件细节问题的问答，可以一看。<br><strong>其实单件模式最好的实现方式是使用枚举类</strong>，这一点在本书没有提到，不过在 Effective Java 里提到了。<br>使用枚举类也避免了序列化和反序列化会绕过普通类的 private 构造方法从而创建出多个实例的问题。<br>关于<a href="https://www.liaoxuefeng.com/discuss/1279869501571105/1379270435799074" target="_blank" rel="noopener">双重检查加锁的讨论</a>，廖雪峰老师回复了一篇文章链接：<a href="http://www.cs.umd.edu/~pugh/java/memoryModel/DoubleCheckedLocking.html" target="_blank" rel="noopener">双重检查加锁</a><br>这篇文章提到了 volatile 配合双重检查加锁其实是可以保证多线程下单例模式的安全的</p>
+<h2 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h2><h3 id="原文摘抄-5"><a href="#原文摘抄-5" class="headerlink" title="原文摘抄"></a>原文摘抄</h3><ul>
+<li><p>P206</p>
+<blockquote>
+<p><strong>命令模式</strong> <em>将“请求”封装成对象，以便使用不同的请求，队列或者日志来参数化其他对象。命令模式也支持可撤销的操作。</em></p>
+</blockquote>
+</li>
+<li><p>P214</p>
+<blockquote>
+<p><em>NoCommand 对象是一个空对象（null object）的例子。当你不想返回一个有意义的对象时，空对象就很有用。客户也可以将处理 null 的责任转移给空对象。举例来说，遥控器不可能一出厂就设置了有意义的命令对象，所以提供了 NoCommand 对象作为代用品，当调用它的 execute() 方法时，这种对象设么事情都不做。在许多设计模式中，都会看到空对象的使用。甚至有些时候，空对象本身也被视为是一种设计模式。</em></p>
+</blockquote>
+</li>
+<li><p>P227</p>
+<blockquote>
+<p><em>问：接受者有必要存在吗？为何命令对象不直接实现 execute() 方法的细节？</em><br><em>答：一般来说，我们尽量设计“傻瓜”命令对象，它只懂得调用一个接收者的一个行为。然而，有许多“聪明”命令对象会实现许多逻辑，直接完成一个请求。当然你可以设计聪明的命令对象，只是这样一来，调用者和接收者之间的解耦程度是比不上“傻瓜”命令对象的，而且，你也不能把接收者当做参数传给命令。</em></p>
+</blockquote>
+<p>  让命令对象和接收者对象解耦，可以通过传参给命令对象传入不同的接收者。<br>  本页也提到了 undo() 方法可以通过维护一个栈来实现撤销多次记录。</p>
+</li>
+<li><p>P227</p>
+<blockquote>
+<p><em>问：我可以创建一个 PartyCommand，然后在它的 execute() 方法中调用其他的命令，利用这种做法实现 Party 模式（Party Mode）吗？</em><br><em>答：你可以这么做。然而，这等于把 Party 模式“硬编码”到 PartyCommand 中。为什么要这么麻烦呢？利用宏命令，你可以动态地决定 PartyCommand 是由那些命令组成，所以宏命令在使用上更灵活。一般来说，宏命令的做法更优雅，也需要较少的新代码。</em></p>
+</blockquote>
+<p>  所谓宏命令，就是一个命令类，里面维护了一个命令数组，构造函数需要传入一个命令数组引用给它赋值，这个宏命令类的 execute() 方法就是遍历这个数组里的所有命令然后依次执行。这样具体执行哪些命令就可以由调用者决定，如果把 execute() 写死成固定的几个命令执行，那就不够灵活了。以上就是这个问答的意思。</p>
+</li>
+</ul>
+<p>后面 P228~P229 举例说明命令模式的应用：工作队列、日程安排、线程池、日志请求和事务系统等，了解一下就可以。</p>
+<h3 id="本章总结-5"><a href="#本章总结-5" class="headerlink" title="本章总结"></a>本章总结</h3><p>命令模式就是把请求封装成一个对象，由这个对象去执行。<br>命令对象里持有接收者的引用，去调用接收者的相关方法，具体的执行步骤还是命令的接收者完成的。<br>这样，调用者只和命令对象打交道，调用者和接收者解耦了。<br>其实，如果需求简单且变化不大，没有必要用命令模式，直接让调用者去调用接收者的方法就可以。<br>但如果接收者有不同类型的多个，且逻辑较为复杂，而且需要 undo、 redo 等功能。就可以用命令模式了。</p>
+<h2 id="适配器模式与外观模式"><a href="#适配器模式与外观模式" class="headerlink" title="适配器模式与外观模式"></a>适配器模式与外观模式</h2><h3 id="原文摘抄-6"><a href="#原文摘抄-6" class="headerlink" title="原文摘抄"></a>原文摘抄</h3><ul>
+<li><p>P241</p>
+<blockquote>
+<ol>
+<li><em>客户通过目标接口调用适配器的方法对适配器发出请求。</em></li>
+<li><em>适配器使用被适配者接口把请求转换成被适配者的一个或多个调用接口。</em></li>
+<li><em>客户接收到调用的结果，但并未察觉这一切是适配器在起转换作用。</em></li>
+</ol>
+</blockquote>
+</li>
+<li><p>P242</p>
+<blockquote>
+<p><em>问：一个适配器需要做多少“适配”的工作？如果我需要实现一个很大的目标接口，似乎有“很多”工作要做。</em><br><em>答：的确是如此。实现一个适配器所需要进行的工作，的确和目标接口的大小成正比。如果不用适配器，你就必须改写客户端的代码来调用这个新的接口，将会花许多力气来做大量的调查工作和代码改写工作。相比之下，提供一个适配器类，将所有的改变封装在一个类中，是比较好的做法。</em></p>
+<p><em>问：万一我的系统中新旧并存，旧的部分期望旧的厂商接口，但我们却已经使用新厂商的接口编写了这一部分，这个时候该怎么办？这里使用适配器，那里却使用未包装的接口，这实在是让人感到混乱。如果我只是固守着旧的代码，完全不要管适配器，这样子会不会好一些？</em><br><em>答：不需要如此。可以创建一个双向的适配器，支持两边的接口。想创建一个双向的适配器，就必须实现所涉及的两个接口，这样，这个适配器可以当做旧的接口，或者当做新的接口使用。</em></p>
+</blockquote>
+</li>
+<li><p>P243</p>
+<blockquote>
+<p><strong>适配器模式</strong> <em>将一个类的接口，转换成客户期望的另一个接口。适配器让原本接口不兼容的类可以合作无间。</em></p>
+</blockquote>
+</li>
+</ul>
+<p>P244 提到在支持多重继承的语言中，可以让适配器类同时继承自目标类和被适配类来实现。第一种使用组合来实现的叫对象适配器，第二种通过多继承来实现的叫类适配器。</p>
+<ul>
+<li>P264<blockquote>
+<p><strong>外观模式</strong> <em>提供了一个统一的接口，用来访问子系统中的一群接口。</em><br><em>外观定义了一个高层接口，让子系统更容易使用。</em></p>
+</blockquote>
+</li>
+</ul>
+<p>书中还提到可以为一个子系统实现多个外观，而且可以把子系统接口暴露给客户，方便他们直接调用底层。</p>
+<h3 id="本章总结-6"><a href="#本章总结-6" class="headerlink" title="本章总结"></a>本章总结</h3><p>适配器模式将一个或多个接口转换成另一个接口，外观模式是用一个接口来简化一堆比较复杂的接口，相当于“一键XX”。这俩其实都是在目标接口里持有要被转换接口的引用，调用其方法实现。</p>
+<h2 id="模板方法模式"><a href="#模板方法模式" class="headerlink" title="模板方法模式"></a>模板方法模式</h2><h3 id="原文摘抄-7"><a href="#原文摘抄-7" class="headerlink" title="原文摘抄"></a>原文摘抄</h3><ul>
+<li><p>P289</p>
+<blockquote>
+<p><strong>模板方法模式</strong> <em>在一个方法中定义一个算法的骨架，而将一些步骤延迟到子类中。模板方法使得子类可以在不改变算法结构的情况下，重新定义算法中的某些步骤。</em></p>
+</blockquote>
+</li>
+<li><p>P295</p>
+<blockquote>
+<p><em>问：当我创建一个模板方法时，怎么才能知道什么时候该使用抽象方法，什么时候使用钩子呢？</em><br><em>答：当你的子类“必须”提供算法中某个方法或步骤的实现时，就使用抽象方法。如果算法的这个部分是可选的，就用钩子。如果是钩子的话，子类可以选择实现这个钩子，但并不强制这么做。</em></p>
+</blockquote>
+</li>
+<li><p>P298</p>
+<blockquote>
+<p><em>问：好莱坞原则和依赖倒置原则（第 4 章）之间的关系如何？</em><br><em>答：依赖倒置原则教我们尽量避免使用具体类，而多使用抽象。而好莱坞原则是用在创建框架或组件上的一种技巧，好让底层组件能够被挂钩进计算中，而且又不会让高层组件依赖低层组件。两者的目标都是在于解耦，但是依赖倒置原则更加注重如何在设计中避免依赖。好莱坞原则教我们一个技巧，创建一个有弹性的设计，允许低层结构能够互相操作，而又防止其他类太过依赖它们。</em></p>
+<p><em>问：低层组件不可以调用高层组件中的方法吗？</em><br><em>答：并不尽然。事实上，低层组件在结束时，常常会调用从超类中继承来的方法。我们所要做的是，避免让高层和低层组件之间有明显的环状依赖。</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="本章总结-7"><a href="#本章总结-7" class="headerlink" title="本章总结"></a>本章总结</h3><p>模板方法的核心思想：<strong>父类定义骨架，子类实现某些细节</strong><br>比如，把大象装进冰箱需要三步：1、打开冰箱门；2、把大象装进去；3、把冰箱门关上。<br>那么把老虎装进冰箱呢？<br>可以在父类中只实现这三步骨架，至于是大象还是老虎还是猴子，父类只提供一个抽象方法，子类去实现具体的动物。<br>如果不想子类重写，可以在模板方法前加上 final 关键字。<br>可以在父类中定义一个默认的钩子方法，用于控制模板方法里的某些行为，子类可以选择是否覆盖来控制这些行为。<br>工厂方法是模板方法的一种特殊版本。</p>
+<h2 id="迭代器与组合模式"><a href="#迭代器与组合模式" class="headerlink" title="迭代器与组合模式"></a>迭代器与组合模式</h2><h3 id="原文摘抄-8"><a href="#原文摘抄-8" class="headerlink" title="原文摘抄"></a>原文摘抄</h3><ul>
+<li><p>P336</p>
+<blockquote>
+<p><strong>迭代器模式</strong> <em>提供一种方法顺序访问一个聚合对象中的各个元素，而又不暴露其内部的表示</em></p>
+<p><em>迭代器模式让我们能游走于聚合内的每一个元素，而又不暴露其内部的表示。</em><br><em>把游走的任务放在迭代器上，而不是聚合上。这样简化了聚合的接口和实现，也让责任各得其所。</em></p>
+</blockquote>
+</li>
+<li><p>P356</p>
+<blockquote>
+<p><strong>组合模式</strong> <em>允许你将对象组合成树形结构来表现“整体/部分”层次结构。组合能让客户以一致的方式处理个别对象以及对象组合。</em></p>
+</blockquote>
+</li>
+<li><p>P357</p>
+<blockquote>
+<p><em>组合模式让我们能用树形方式创建对象的结构，树里面包含了组合以及个别的对象。使用组合结构，我们能把相同的操作应用在组合和个别对象上。换句话说，在大多数情况下，我们可以忽略对象组合和个别对象之间的差别。</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="本章总结-8"><a href="#本章总结-8" class="headerlink" title="本章总结"></a>本章总结</h3><p>迭代器模式就是把遍历类中集合对象的实现交给迭代器去做，而不是将集合直接暴露给其他类。<br>这样做的好处是，调用者不必知道类中的集合具体是什么类型（数组、ArrayList、HashSet 等），<br>只要它实现了 iterator 接口就可以。实际上 Java 的 Collection 接口是继承自 Iterable 接口的，<br>它提供了返回迭代器的方法 <code>iterator()</code>，而且实现 Iterable 接口还可以使用更方便的 foreach 语句。<br>自己实现某个类中集合的迭代器时要考虑多线程并发访问和修改以及删除可能造成的影响。</p>
+<p>组合模式比较复杂，而且细节也比较多。这个模式像一个树形结构，以书中给出的菜单例子来说，<br>总菜单里包含多个子菜单，子菜单里可以包含具体菜品或者子菜单。<br>这样可以设计一个抽象类，它既包含菜单的所有方法，又包含菜品的所有方法，默认实现是抛出 UnsupportedOperationException 异常。<br>让菜单和菜品都实现它，然后实现各自有的方法。这样虽然失去了安全性，但也保证了一致性，是设计上的一种取舍权衡和妥协。<br>这样一来，我们遍历这个总菜单的内容时，不管是子菜单还是具体菜品都可以一视同仁。<br>要实现这个总菜单的迭代器，首先在抽象类里添加一个获取迭代器的 <code>createIterator()</code> 方法，<br>实现是子菜单返回其迭代器，菜品则返回一个 NullIterator，其 <code>hasNext()</code> 返回 false、<code>next()</code> 返回 null。<br>然后创建一个持有栈来维护所有菜单的迭代器，构造函数传入总菜单的迭代器入栈，<br>它的遍历方法 <code>next()</code> 实现是遇到子菜单就将其迭代器入栈，遇到菜品就打印，<br><code>hasNext()</code> 是委托给栈顶的迭代器调用其 <code>hasNext()</code> ，若为 false 则出栈，一直到为 true 或栈空为止。</p>
+<h2 id="状态模式"><a href="#状态模式" class="headerlink" title="状态模式"></a>状态模式</h2><h3 id="原文摘抄-9"><a href="#原文摘抄-9" class="headerlink" title="原文摘抄"></a>原文摘抄</h3><ul>
+<li>P410<blockquote>
+<p><strong>状态模式</strong> <em>允许对象在内部状态改变时改变它的行为，对象看起来好像修改了它的类。</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="本章总结-9"><a href="#本章总结-9" class="headerlink" title="本章总结"></a>本章总结</h3><p>状态模式和策略模式的类图一样，然而两者的意图是不同的。策略模式把行为封装成类，然后使用组合使得持有它不同实例的类表现出不同的行为。而状态模式则是持有不同状态类的实例，由状态来控制行为，不同状态下会表现出不同的行为。</p>
+<h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2><h3 id="原文摘抄-10"><a href="#原文摘抄-10" class="headerlink" title="原文摘抄"></a>原文摘抄</h3><ul>
+<li>P460<blockquote>
+<p><strong>代理模式</strong> <em>为另一个对象提供一个替身或占位符以控制对这个对象的访问。</em></p>
+<p><em>使用代理模式创建代表（representative）对象，让代表对象控制某对象的访问，</em><br><em>被代理的对象可以是远程的对象、创建开销大的对象或需要安全控制的对象。</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="本章总结-10"><a href="#本章总结-10" class="headerlink" title="本章总结"></a>本章总结</h3><p>本章对代理模式及其变体举例较多，然而远程代理和动态代理因为代码比较老（早于 Java 5），没有细看。<br>远程代理涉及到 RMI 序列化和反序列化等相关知识。<br>虚拟代理是当创建开销大的对象时，可以先用代理对象替代其工作，等其创建好了再委托给它处理。<br>保护代理基于权限控制对资源的访问，书中举例了 Java 动态代理的实现来说明，没有细看。<br>其他的代理模式变体还举例了：缓存代理、防火墙代理、同步代理、写入时复制代理、智能引用代理、复杂隐藏代理。<br>代理在结构上类似装饰者，但是目的不同。装饰者为对象加上行为，而代理则是控制访问。<br>代理模式相比于适配器模式，并没有改变接口。代理对象和真实对象都实现同一个接口。</p>
+<h2 id="复合模式"><a href="#复合模式" class="headerlink" title="复合模式"></a>复合模式</h2><h3 id="原文摘抄-11"><a href="#原文摘抄-11" class="headerlink" title="原文摘抄"></a>原文摘抄</h3><ul>
+<li><p>P500</p>
+<blockquote>
+<p><em>模式通常被一起使用，并被组合在同一个设计解决方案中。</em><br><strong>复合模式</strong> <em>在一个解决方案中结合两个或多个模式，以解决一般或重复发生的问题。</em></p>
+</blockquote>
+</li>
+<li><p>P523</p>
+<blockquote>
+<p><strong>我们从一大堆 Quackable 开始…</strong></p>
+<p><strong>有一只鹅出现了，它希望自己像一个 Quackable。</strong><br><em>所以我们利用适配器模式，将鹅适配成 Quackable。现在你就可以调用鹅适配器的 quack() 方法来让鹅咯咯叫。</em></p>
+<p><strong>然后，呱呱叫学家决定要计算呱呱叫声的次数。</strong><br><em>所以我们使用装饰者模式，添加了一个名为 QuackCounter 的装饰者。它用来追踪 quack() 被调用的次数，并将调用委托给它所装饰的 Quackable 对象。</em></p>
+<p><strong>但是呱呱叫学家担心他们忘了加上 QuackCounter 装饰者。</strong><br><em>所以我们使用抽象工厂模式创建鸭子。从此以后，当他们需要鸭子时，就直接跟工厂要，工厂会给他们装饰过的鸭子。（别忘了，如果他们想取得没装饰的鸭子，用另一个鸭子工厂就可以！）</em></p>
+<p><strong>又是鸭子，又是鹅，又是 Quackable 的…我们有管理上的困扰。</strong><br><em>所以我们需要使用组合模式，将许多 Quackable 集结成一个群。这个模式也允许群中有群，以便让呱呱叫学家来管理鸭子家族。我们在实现中通过使用 ArrayList 中的 Java.util 的迭代器而使用了迭代器模式。</em></p>
+<p><strong>当任何呱呱叫声响起时，呱呱叫学家都希望能被告知。</strong><br><em>所以我们使用观察者模式，让呱呱叫学家注册成为观察者。现在，当呱呱声响起时，呱呱叫学家就会被通知了。在这个实现中，我们再度用到了迭代器。呱呱叫学家不仅可以当某个鸭子的观察者，甚至可以当一整群的观察者。</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="本章总结-11"><a href="#本章总结-11" class="headerlink" title="本章总结"></a>本章总结</h3><p>这章后面 MVC 举例用的是 Java 的 Swing 和 Servlet，代码没有细看。<br>控制器是视图的策略，视图可以使用不同的控制器实现，得到不同的行为。<br>视图使用组合模式实现用户界面，用户界面通常组合了嵌套的组件，像面板、框架和按钮。</p>
+<h2 id="与设计模式相处"><a href="#与设计模式相处" class="headerlink" title="与设计模式相处"></a>与设计模式相处</h2><h3 id="原文摘抄-12"><a href="#原文摘抄-12" class="headerlink" title="原文摘抄"></a>原文摘抄</h3><ul>
+<li><p>P579</p>
+<blockquote>
+<p><strong>模式</strong> <em>是在某情境（context）下，针对某问题的某种解决方案。</em></p>
+</blockquote>
+</li>
+<li><p>P590</p>
+<blockquote>
+<p><strong>创建型模式</strong> <em>涉及到将对象实例化，这类模式都提供一个方法，将客户从所需要实例化的对象中解耦。</em><br><em>创建型模式包括：单件模式、工厂方法模式、抽象工厂模式、生成器模式、原型模式。</em><br><strong>行为型模式</strong> <em>都涉及到类和对象如何交互及分配职责。</em><br><em>行为型模式包括：模板方法模式、迭代器模式、观察者模式、状态模式、策略模式、责任链模式、中介者模式、备忘录模式、访问者模式、命令模式、解释器模式。</em><br><strong>结构型模式</strong> <em>可以让你把类或对象组合到更大的结构中。</em><br><em>结构型模式包括：装饰者模式、组合模式、代理模式、外观模式、适配器模式、桥接模式、蝇量模式（享元模式）。</em></p>
+</blockquote>
+</li>
+</ul>
+<p>这种分类方式是“四人组”提出的，另外还有根据模式处理的是类还是对象来分类的等等。<br>这些分类方式都是为了对各种模式有清晰的概念，帮助我们记忆和理解。</p>
+<ul>
+<li>P606<blockquote>
+<p><strong>反模式</strong> 告诉你如何采用一个不好的解决方案解决一个问题。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="本章总结-12"><a href="#本章总结-12" class="headerlink" title="本章总结"></a>本章总结</h3><p>不要过度使用设计模式，尽量保持代码简单。</p>
+<h2 id="附录-A-剩下的模式"><a href="#附录-A-剩下的模式" class="headerlink" title="附录 A 剩下的模式"></a>附录 A 剩下的模式</h2><p>这些剩下的模式书中只是简单介绍，因为它们大都是提供一种编程方式和思路。</p>
+<h3 id="桥接模式"><a href="#桥接模式" class="headerlink" title="桥接模式"></a>桥接模式</h3><p>桥接模式将抽象部分与它的实现部分分离，使它们都可以独立地变化。</p>
+<p>书上举例不太清楚，可以看<a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1281319266943009" target="_blank" rel="noopener">廖雪峰教程：桥接模式</a><br>简单来说就是为了防止子类爆炸，如果类的某个组件不同，可以用组合而不是继承的方式。<br>看起来有点像策略模式，不过策略模式更强调算法封装成对象，在运行时可以互换。</p>
+<h3 id="生成器模式"><a href="#生成器模式" class="headerlink" title="生成器模式"></a>生成器模式</h3><p>就是构造一个对象时，有很多参数，有的是可选的，这个模式就非常好用。<br>这个模式讲的比较好的是《Effective Java》，即书中的 Builder （构建器）模式。</p>
+<h3 id="责任链模式"><a href="#责任链模式" class="headerlink" title="责任链模式"></a>责任链模式</h3><p>使多个对象都有机会处理请求，从而避免请求的发送者和接收者之间的耦合关系。将这些对象连成一条链，并沿着这条链传递该请求，直到有一个对象处理它为止。<br>请看<a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1281319474561057" target="_blank" rel="noopener">廖雪峰教程：责任链模式</a></p>
+<h3 id="蝇量模式（享元模式）"><a href="#蝇量模式（享元模式）" class="headerlink" title="蝇量模式（享元模式）"></a>蝇量模式（享元模式）</h3><p>如想让某个类的一个实例能用来提供许多“虚拟实例”，就使用蝇量模式（Flyweight Pattern）。<br>这是为了节省内存的，避免创建过多对象。比如你想创建大量的树对象，每个树对象都有自己的坐标(x, y)，<br>而且这些树对象<strong>一经创建则不会再改变</strong>，则可以使用蝇量模式避免创建这些树对象，而是用一个树管理器类，持有一个二维数组保存这些树的坐标信息。<br><a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1281319417937953" target="_blank" rel="noopener">廖雪峰教程：享元模式</a></p>
+<h3 id="解释器模式"><a href="#解释器模式" class="headerlink" title="解释器模式"></a>解释器模式</h3><p>这个模式是专门创建一个简单的语言解释器的，它将每个语法规则表示成一个类。<br>书上和廖雪峰教程都没有详解。</p>
+<h3 id="中介者模式"><a href="#中介者模式" class="headerlink" title="中介者模式"></a>中介者模式</h3><p>使用中介者模式（Mediator Pattern）来集中相关对象之间复杂的沟通和控制方式。<br>中介者使多对多的关系转变为一对多，MVC 模式的 C（控制器）就是中介者。<br>像聊天室、对战平台等都是中介者，方便用户和用户之间的交互。</p>
+<h3 id="备忘录模式"><a href="#备忘录模式" class="headerlink" title="备忘录模式"></a>备忘录模式</h3><p>当你需要让对象返回之前的状态时（例如，你的用户请求“撤销”），就使用备忘录模式（Memento Pattern）。<br>就是用一个类来保存所有状态数据，比如游戏进度等。</p>
+<h3 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h3><p>当创建给定的实例的过程很昂贵或很复杂时，就使用原型模式（Prototype Pattern）。<br>就像 Java Object 的 clone() 方法，根据已有对象复制出一个一样的来。</p>
+<h3 id="访问者模式"><a href="#访问者模式" class="headerlink" title="访问者模式"></a>访问者模式</h3><p>当你想要为一个对象的组合增加新的能力，且封装并不重要时，就使用访问者模式（Visitor Pattern）。<br>访问者模式就是把访问行为和具体要访问的数据解耦，详见<a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1281319659110433" target="_blank" rel="noopener">廖雪峰教程：访问者模式</a></p>
+</body></html>]]></content>
+      <categories>
+        <category>读书笔记</category>
+        <category>IT</category>
+      </categories>
+      <tags>
+        <tag>读书笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《Java 并发编程实战》读书笔记</title>
+    <url>/2020/10/14/%E3%80%8AJava-%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<html><head></head><body><p>《Java 并发编程实战》读书笔记，待更新…</p>
+<a id="more"></a>
+
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><p><a href="https://jcip.net/" target="_blank" rel="noopener">官方网站</a>（包含了勘误表、书中源码等文档和资源）<br>这篇<a href="https://book.douban.com/review/9875717/" target="_blank" rel="noopener">豆瓣书评</a>提到了本书的优缺点，蛮不错的，可以一看。</p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h2 id="第-1-章-简介"><a href="#第-1-章-简介" class="headerlink" title="第 1 章 简介"></a>第 1 章 简介</h2><ul>
+<li><p>P5</p>
+<blockquote>
+<p><em>虽然递增运算 <code>someVariable++</code> 看上去是单个操作，但事实上它包含三个独立的操作：读取 value，将 value 加 1，并将计算结果写入 value。</em></p>
+</blockquote>
+<p>  这里讲到了一个操作的原子性。原子操作是不可再分割的操作，要么执行，要么不执行。而 <code>someVariable++</code> 是一个复合操作，包含了三个原子操作。</p>
+</li>
+</ul>
+<h2 id="第一部分-基础知识"><a href="#第一部分-基础知识" class="headerlink" title="第一部分 基础知识"></a>第一部分 基础知识</h2><h3 id="第-2-章-线程安全性"><a href="#第-2-章-线程安全性" class="headerlink" title="第 2 章 线程安全性"></a>第 2 章 线程安全性</h3><ul>
+<li><p>P12</p>
+<blockquote>
+<p><em>但在编写并发应用程序时，一种正确的编程方法就是：首先使代码正确运行，然后再提高代码速度。即便如此，最好也只是当性能测试结果和应用需求告诉你必须提高性能，以及测量结果表明这种优化在实际环境中确实能带来性能提升时，才进行优化。</em></p>
+</blockquote>
+<p>  Donald Knuth 也说过“过早优化是万恶之源”（premature optimization is the root of all evil）。</p>
+</li>
+</ul>
+<h3 id="第-3-章-对象的共享"><a href="#第-3-章-对象的共享" class="headerlink" title="第 3 章 对象的共享"></a>第 3 章 对象的共享</h3><ul>
+<li><p>P29</p>
+<blockquote>
+<p><em>Java 内存模型要求，变量的读取操作和写入操作都必须是原子操作，但对于非 volatile 类型的 long 和 double 变量，JVM 允许将 64 位的读操作或写操作分解为两个 32 位的操作。</em></p>
+</blockquote>
+<p>  关于这一点，廖雪峰 Java 教程的这一节：<a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1306580844806178" target="_blank" rel="noopener">线程同步</a> 文章最后小结前的部分也有讲到。而且讲的更清晰易懂。</p>
+</li>
+<li><p>P31</p>
+<blockquote>
+<p><em>当把变量声明为 volatile 类型后，编译器与运行时都会注意到这个变量是共享的，因此不会将该变量上的操作与其他内存操作一起重排序。volatile 变量不会被缓存在寄存器或者对其他处理器不可见的地方，因此在读取 volatile 类型的变量时总会返回最新写入的值。</em></p>
+</blockquote>
+<p>  volatile 是确保<strong>可见性</strong>的，并不能保证操作的<strong>原子性</strong>，这点要搞清楚。<br>  可见性：当一个线程修改了某个共享变量的值，其他线程能够立刻看到修改后的值。<br>  加锁机制是既可以确保可见性又可以确保原子性的。<br>  详细请看廖雪峰 Java 教程这篇 <a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1306580767211554" target="_blank" rel="noopener">中断线程</a> 文章最后小结前的部分。</p>
+</li>
+<li><p>P34</p>
+<blockquote>
+<p><em>不要在构造过程中使 this 引用逸出。</em></p>
+</blockquote>
+</li>
+<li><p>P38</p>
+<blockquote>
+<p><em>当满足以下条件时，对象才是不可变的：</em></p>
+<ul>
+<li><em>对象创建以后其状态就不能修改。</em></li>
+<li><em>对象的所有域都是 final 类型。</em></li>
+<li><em>对象是正确创建的（在对象的创建期间，this 引用没有逸出）。</em></li>
+</ul>
+</blockquote>
+</li>
+<li><p>P38 底部注释</p>
+<blockquote>
+<p><em>从技术上看，不可变对象并不需要将其所有的域都声明为 final 类型，例如 String 就是这种情况，这就要对类的良性数据竞争（Benign Data Race）情况做精确分析，因此需要深入理解 Java 内存模型。（注意：String 会将散列值的计算推迟到第一次调用 hash Code 时进行，并将计算得到的散列值缓存到非 final 类型的域中，但这种方式之所以可行，是因为这个域有一个非默认的值，并且在每次计算中都得到相同的结果[因为基于一个不可变的状态]。自己在编写代码时不要这么做。）</em></p>
+</blockquote>
+<p>  这里讲到了 String 类的不可变性，String 类中的 <code>hash</code> 字段虽然是非 final 的，但还是可以保证其不变性。</p>
+</li>
+<li><p>P42</p>
+<blockquote>
+<p><em>由于不可变对象是一种非常重要的对象，因此 Java 内存模型为不可变对象的共享提供了一种特殊的初始化安全性保证。另一方面，即使在发布不可变对象的引用时没有使用同步，也仍然可以安全地访问该对象。</em></p>
+</blockquote>
+<p>  这种 Java 内存模型为不可变对象提供的特殊初始化安全性保证机制，书中这里没有详细讲解，也许在《深入理解 Java 虚拟机》里会有。</p>
+</li>
+<li><p>P43</p>
+<blockquote>
+<p><em>静态初始化器由 JVM 在类的初始化阶段进行。由于在 JVM 内部存在着同步机制，因此通过这种方式初始化的任何对象都可以被安全地发布。</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="第-4-章-对象的组合"><a href="#第-4-章-对象的组合" class="headerlink" title="第 4 章 对象的组合"></a>第 4 章 对象的组合</h3><ul>
+<li>P51<blockquote>
+<p><em>在许多类中都使用了 Java 监视器模式，例如 Vector 和 Hashtable。Java 监视器模式的主要优势就在于它的简单性。</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="第-5-章-基础构建模块"><a href="#第-5-章-基础构建模块" class="headerlink" title="第 5 章 基础构建模块"></a>第 5 章 基础构建模块</h3><ul>
+<li><p>P70</p>
+<blockquote>
+<p><em>容器的 hashCode 和 equals 等方法也会间接地执行迭代操作，当容器作为另一个容器的元素或键值时，就会出现这种情况。同样，containsAll、removeAll 和 retainAll 等方法，以及把容器作为参数的构造函数，都会对容器进行迭代。所有这些间接的迭代操作都可能抛出 ConcurrentModificationException。</em></p>
+</blockquote>
+<p>  还有书上举例的对容器打印时调用的 toString 函数，也会对容器进行迭代（这里<a href="https://jcip.net/errata.html" target="_blank" rel="noopener">勘误表</a>p.83 有补充，不过我没太看懂。。）</p>
+</li>
+<li><p>P71</p>
+<blockquote>
+<p><em>ConcurrentHashMap 并不是将每个方法都在同一个锁上同步并使得每次只能有一个线程访问容器，而是使用一种粒度更细的加锁机制来实现更大程度的共享，这种机制称为分段锁（Lock Striping，请参见 11.4.3 节）。在这种机制中，任意数量的读取线程可以并发地访问 Map，执行读取操作的线程和执行写入操作的线程可以并发地访问 Map，并且一定数量的写入线程可以并发地修改 Map。ConcurrentHashMap 带来的结果是，在并发访问环境下将实现更高的吞吐量，而在单线程环境中只损失非常小的性能。</em></p>
+</blockquote>
+<p>  书中这段对 ConcurrentHashMap 的特点概括非常精彩，提到了它在并发环境下的设计权衡：用处很小的 size 和 isEmpty 返回的值不一定准确，因为它们的返回值总在不断变化，但是换取了 get、put、containsKey 和 remove 等更重要操作的性能优化。</p>
+</li>
+<li><p>P74</p>
+<blockquote>
+<p><em>开发人员总会假设消费者处理工作的速率能赶上生产者生成工作项的速率，因此通常不会为工作队列的大小设置边界，但这将导致在之后需要重新设计系统架构。因此，应该尽早地通过阻塞对了在设计中构建资源管理机制——这件事情做得越早，就越容易。在许多情况下，阻塞队列能使这项工作更加简单，如果阻塞队列并不完全符合设计需求，那么还可以通过信号量（Semaphore）来创建其他的阻塞数据结构（请参见 5.5.3 节）。</em></p>
+</blockquote>
+</li>
+<li><p>P77</p>
+<blockquote>
+<p><em>Java 6 增加了两种容器类型，Deque（发音为 “deck”）和 BlockingDeque</em></p>
+</blockquote>
+<p>  我之前一直读作 “滴Q” ，汗。。。</p>
+</li>
+<li><p>P79</p>
+<blockquote>
+<p><em>等待直到某个操作的所有参与者（例如，在多玩家游戏中的所有玩家）都就绪再继续执行。在这种情况中，当所有玩家都准备就绪时，闭锁将到达结束状态。</em></p>
+</blockquote>
+<p>  比如王者打匹配要等所有玩家都确认之后才会进入选择英雄界面？</p>
+</li>
+<li><p>P83</p>
+<blockquote>
+<p><em>栅栏与闭锁的关键区别在于，所有线程必须同时到达栅栏位置，才能继续执行。闭锁用于等待事件，而栅栏用于等待其他线程。</em></p>
+</blockquote>
+<p>  闭锁用于所有线程等待一个外部事件的发生；栅栏则是所有线程相互等待，直到所有线程都到达某一点时才打开栅栏，然后线程可以继续执行。<a href="https://blog.csdn.net/x329357842/article/details/53239351" target="_blank" rel="noopener">参考来源</a></p>
+</li>
+</ul>
+<h2 id="第二部分-结构化并发应用程序"><a href="#第二部分-结构化并发应用程序" class="headerlink" title="第二部分 结构化并发应用程序"></a>第二部分 结构化并发应用程序</h2><p>本部分包括之后的部分，看书的时候大概能看懂，但由于是实践部分，所以要在实际代码中回来反复看反复印证。而且，很多细节，没有实际代码用到，体会不到。</p>
+<h3 id="第-6-章-任务执行"><a href="#第-6-章-任务执行" class="headerlink" title="第 6 章 任务执行"></a>第 6 章 任务执行</h3><ul>
+<li><p>P97</p>
+<blockquote>
+<p><em>改变 Executor 实现或配置所带来的影响要远远小于改变任务提交方式带来的影响。通常，Executor 的配置是一次性的，因此在部署阶段可以完成，而提交任务的代码却会不断地扩散到整个程序中，增加了修改的难度。</em></p>
+</blockquote>
+</li>
+<li><p>P98</p>
+<blockquote>
+<p><em>每当看到下面这种形式的代码时：</em><br><em><code>new Thread(runnable).start()</code></em><br><em>并且你希望获得一种更灵活的执行策略时，请考虑使用 Executor 来代替 Thread。</em></p>
+</blockquote>
+</li>
+<li><p>P99 底部注释</p>
+<blockquote>
+<p><em>但在足够长的时间内，如果任务到达的速度总是超过任务执行的速度，那么服务器仍有可能（只是更不易）耗尽内存，因为等待执行的 Runnable 队列将不断增长。</em></p>
+</blockquote>
+<p>  P101 讲了 Timer 类需要注意的坑点，以后用的到的话可以看一看。</p>
+</li>
+<li><p>P106</p>
+<blockquote>
+<p><em>只有当大量相互独立且同构的任务可以并发进行处理时，才能体现出将程序的工作负载分配到多个任务中带来的真正性能提升。</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="第-7-章-取消与关闭"><a href="#第-7-章-取消与关闭" class="headerlink" title="第 7 章 取消与关闭"></a>第 7 章 取消与关闭</h3><ul>
+<li><p>P115</p>
+<blockquote>
+<p><em>通常，中断是实现取消的最合理方式。</em></p>
+</blockquote>
+</li>
+<li><p>P117</p>
+<blockquote>
+<p><em>只有实现了线程中断策略的代码才可以屏蔽中断请求。在常规的任务和库代码中都不应该屏蔽中断请求。</em></p>
+</blockquote>
+</li>
+</ul>
+</body></html>]]></content>
+      <categories>
+        <category>读书笔记</category>
+        <category>IT</category>
+      </categories>
+      <tags>
+        <tag>读书笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java 中的运算符</title>
+    <url>/2020/10/13/Java-%E4%B8%AD%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6/</url>
+    <content><![CDATA[<html><head></head><body><p>关于 Java 运算符相关的问题。</p>
+<a id="more"></a>
+
+<h2 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h2><p>Java 的赋值运算符 <code>=</code> 是有返回值的，返回值即 <code>=</code> 右边的值：</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a;</span><br><span class="line"><span class="keyword">boolean</span> b;</span><br><span class="line">String string;</span><br><span class="line">System.out.println(a = <span class="number">1</span>);              <span class="comment">// 输出结果为 1</span></span><br><span class="line"><span class="keyword">if</span>(b = <span class="keyword">true</span>) {</span><br><span class="line">    System.out.println(<span class="string">"b = true"</span>);     <span class="comment">// 输出结果为 b = true</span></span><br><span class="line">}</span><br><span class="line">System.out.println(string=<span class="string">"aaa"</span>);       <span class="comment">// 输出结果为 aaa</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="除-0"><a href="#除-0" class="headerlink" title="除 0"></a>除 0</h2><figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">// System.out.println(1 / 0);           // java.lang.ArithmeticException: / by zero</span></span><br><span class="line">System.out.println(<span class="number">1.0</span> / <span class="number">0</span>);            <span class="comment">// 输出结果：Infinity</span></span><br></pre></td></tr></tbody></table></figure></body></html>]]></content>
+      <categories>
+        <category>IT</category>
+        <category>Java</category>
+        <category>运算符</category>
+      </categories>
+      <tags>
+        <tag>踩坑</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java 中的 split()</title>
+    <url>/2020/10/13/Java-%E4%B8%AD%E7%9A%84-split/</url>
+    <content><![CDATA[<html><head></head><body><p>关于 Java 的 <code>split()</code></p>
+<a id="more"></a>
+
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>函数原型：<code>String[] split(String regex, int limit)</code><br>另一个 <code>String[] split(String regex)</code> 实际上是把第二个参数 <code>limit</code> 传入了 <code>0</code></p>
+<ul>
+<li><code>regex</code>：要匹配的正则表达式字符串</li>
+<li><code>limit</code>：限制匹配的次数</li>
+</ul>
+<p>具体匹配规则如下：</p>
+<ul>
+<li>当 <code>limit</code> 为正时，最多匹配 <code>limit-1</code> 次，得到的结果数组长度不大于 <code>limit</code></li>
+<li>当 <code>limit</code> 为负时，尽可能多地去匹配</li>
+<li>当 <code>limit</code> 为 <code>0</code> 时，尽可能多地去匹配，<strong>并把结果数组中末尾的空串都舍去</strong>。</li>
+</ul>
+<p>以下为 <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#split-java.lang.String-int-" target="_blank" rel="noopener">split() 官方文档</a> 给出的示例：</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line">String str = <span class="string">"boo:and:foo"</span>;</span><br><span class="line">System.out.println(Arrays.toString(str.split(<span class="string">":"</span>, <span class="number">2</span>)));	    <span class="comment">// 输出结果：[boo, and:foo]</span></span><br><span class="line">System.out.println(Arrays.toString(str.split(<span class="string">":"</span>, <span class="number">5</span>)));	    <span class="comment">// 输出结果：[boo, and, foo]</span></span><br><span class="line">System.out.println(Arrays.toString(str.split(<span class="string">":"</span>, -<span class="number">2</span>)));    <span class="comment">// 输出结果：[boo, and, foo]</span></span><br><span class="line">System.out.println(Arrays.toString(str.split(<span class="string">"o"</span>, <span class="number">5</span>)));	    <span class="comment">// 输出结果：[b, , :and:f, , ]</span></span><br><span class="line">System.out.println(Arrays.toString(str.split(<span class="string">"o"</span>, -<span class="number">2</span>)));    <span class="comment">// 输出结果：[b, , :and:f, , ]</span></span><br><span class="line">System.out.println(Arrays.toString(str.split(<span class="string">"o"</span>, <span class="number">0</span>)));	    <span class="comment">// 输出结果：[b, , :and:f]</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>另外，第一个参数 <code>regex</code> 是一个正则表达式字符串，某些特殊字符需要进行转义。如下所示，每行代码输出结果均为：<code>[a, b]</code></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line">System.out.println(Arrays.toString(<span class="string">"a.b"</span>.split(<span class="string">"\\."</span>)));</span><br><span class="line">System.out.println(Arrays.toString(<span class="string">"a$b"</span>.split(<span class="string">"\\$"</span>)));</span><br><span class="line">System.out.println(Arrays.toString(<span class="string">"a|b"</span>.split(<span class="string">"\\|"</span>)));</span><br><span class="line">System.out.println(Arrays.toString(<span class="string">"a*b"</span>.split(<span class="string">"\\*"</span>)));</span><br><span class="line">System.out.println(Arrays.toString(<span class="string">"a^b"</span>.split(<span class="string">"\\^"</span>)));</span><br><span class="line">System.out.println(Arrays.toString(<span class="string">"a\\b"</span>.split(<span class="string">"\\\\"</span>)));  <span class="comment">// '\b' 是特殊字符，'\' 需要写成 "\\"</span></span><br></pre></td></tr></tbody></table></figure></body></html>]]></content>
+      <categories>
+        <category>IT</category>
+        <category>Java</category>
+        <category>String</category>
+      </categories>
+      <tags>
+        <tag>语法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java 语法问题汇总</title>
+    <url>/2020/10/12/Java-%E8%AF%AD%E6%B3%95%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/</url>
+    <content><![CDATA[<html><head></head><body><p>使用 Java 遇到的一些语法问题汇总。</p>
+<a id="more"></a>
+
+<h2 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h2><p>对于以下 switch 语句中，<code>option</code> 可以是变量，<code>A</code> 、<code>B</code> 和 <code>C</code> 必须是<strong>编译时就能确定的常量</strong>，否则编译不通过。</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">switch</span>(option) {</span><br><span class="line">    <span class="keyword">case</span> A:</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> B:</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> C:</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="try…catch…finally"><a href="#try…catch…finally" class="headerlink" title="try…catch…finally"></a>try…catch…finally</h2><ul>
+<li><p>try 语句后面可以只跟 catch 语句或 finally 语句其中的一个。</p>
+</li>
+<li><p>若 try 中或 catch 中包含 return 语句，在方法返回前，finally 子句的内容将被执行。若 finally 子句中也有一个 return 语句，这个返回值将会覆盖 try catch 中的返回值。</p>
+</li>
+<li><p>在 finally 子句中抛出异常时，会把 try 子句和 catch 子句中抛出的异常覆盖掉。</p>
+</li>
+<li><p>捕获多个异常时，异常变量隐含为 final 变量。例如，不能在以下子句体中为 e 赋不同的值：<code>catch (FileNotFoundException | UnknownHostException e) { ... }</code></p>
+</li>
+</ul>
+</body></html>]]></content>
+      <categories>
+        <category>IT</category>
+        <category>Java</category>
+        <category>语法</category>
+      </categories>
+      <tags>
+        <tag>语法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java 中的 int 和 Integer</title>
+    <url>/2020/10/12/Java-%E4%B8%AD%E7%9A%84-int-%E5%92%8C-Integer/</url>
+    <content><![CDATA[<html><head></head><body><p>总结在使用 Java 的 int 和 Integer 时可能会遇到的一些意想不到的问题。</p>
+<a id="more"></a>
+
+<h2 id="问题一：整型溢出"><a href="#问题一：整型溢出" class="headerlink" title="问题一：整型溢出"></a>问题一：整型溢出</h2><p>int 能表示的整数范围为：<strong>-2147483648 ~ 2147483647</strong>，超出这个范围就会造成溢出。因此，我们在做常见的加减乘除等运算时会注意这一问题，但是要警惕某些方法也可能造成溢出：</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line">System.out.println(Math.abs(-<span class="number">2147483648</span>));  <span class="comment">// 输出结果：-2147483648</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="问题二：自动拆箱导致的空指针错误"><a href="#问题二：自动拆箱导致的空指针错误" class="headerlink" title="问题二：自动拆箱导致的空指针错误"></a>问题二：自动拆箱导致的空指针错误</h2><p>以下为简单示例，实际代码中包装类型进行拆箱操作时要考虑为 null 的情况。</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line">Integer integer = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">int</span> i = integer;</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="问题三：Java-虚拟机的常量池会缓存-128-127-之间的-Integer-对象"><a href="#问题三：Java-虚拟机的常量池会缓存-128-127-之间的-Integer-对象" class="headerlink" title="问题三：Java 虚拟机的常量池会缓存 [-128, 127] 之间的 Integer 对象"></a>问题三：Java 虚拟机的常量池会缓存 [-128, 127] 之间的 Integer 对象</h2><p>如果我们用这个范围内的数给 Integer 对象直接赋值，而不是 new 一个 Integer 对象，则会出现以下结果：</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line">Integer i1 = <span class="number">127</span>;</span><br><span class="line">Integer i2 = <span class="number">127</span>;</span><br><span class="line">System.out.println(i1 == i2);   <span class="comment">// 输出 true</span></span><br><span class="line"></span><br><span class="line">Integer i3 = <span class="number">128</span>;</span><br><span class="line">Integer i4 = <span class="number">128</span>;</span><br><span class="line">System.out.println(i3 == i4);   <span class="comment">// 输出 false</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>其实是 Java 在编译期间自动装箱，[-128, 127] 以内返回同一个缓存对象。另外，<code>Integer.valueOf()</code> 在这个范围内也会返回缓存对象。</p>
+</body></html>]]></content>
+      <categories>
+        <category>IT</category>
+        <category>Java</category>
+        <category>基本类型</category>
+      </categories>
+      <tags>
+        <tag>踩坑</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java toLowerCase() 语言问题</title>
+    <url>/2020/10/10/Java-toLowerCase-%E8%AF%AD%E8%A8%80%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<html><head></head><body><p>Java String 类里的 <code>toLowerCase()</code> 返回字符串的小写形式，在某些语言环境下可能会得到意料之外的结果。</p>
+<a id="more"></a>
+
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>首先熟悉下用法（省略类和包名等）：</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line">System.out.println(<span class="string">"IT"</span>.toLowerCase());                     <span class="comment">// 输出结果为：it</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>查阅 <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#toLowerCase--" target="_blank" rel="noopener">toLowerCase() 官方文档</a> ，发现它实际调用的是 toLowerCase(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html#getDefault--" target="_blank" rel="noopener">Locale.getDefault()</a>)，而如果你的程序不幸运行在了土耳其语言环境下，则会出现以下情况：</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line">Locale locale = Locale.forLanguageTag(<span class="string">"tr-TR"</span>);             <span class="comment">// 手动设置 locale 为土耳其</span></span><br><span class="line"><span class="comment">// Locale locale = new Locale("tr", "TR");                  // 两种设置方式是一样的</span></span><br><span class="line">System.out.println(<span class="string">"IT"</span>.toLowerCase(locale));               <span class="comment">// 输出结果为：ıt</span></span><br><span class="line">System.out.println(<span class="string">"IT"</span>.toLowerCase(locale).equals(<span class="string">"it"</span>));  <span class="comment">// 输出结果为：false</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>仔细看，输出结果 <strong>“it”</strong> 的 <strong>“i”</strong> 少了头上的一点，所以 <code>equals()</code> 的比较结果肯定为 false。这是因为，不同语言环境下的字符集可能是不一样的。<strong>因此，不带参数的 <code>toLowerCase()</code> 可以用于文本显示，不能用于逻辑判定。</strong>如果涉及到逻辑判定，可以使用带参数的 <code>toLowerCase(Locale locale)</code>，给它指定一个语言环境：</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line">System.out.println(<span class="string">"IT"</span>.toLowerCase(Locale.US));            <span class="comment">// 输出结果为：it</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>这样就能保证得到的结果是确定的，不会根据当前地区语言环境发生变化。类似的方法还有 <code>toUpperCase()</code>，原理是一样的，不再赘述。</p>
+</body></html>]]></content>
+      <categories>
+        <category>IT</category>
+        <category>Java</category>
+        <category>String</category>
+      </categories>
+      <tags>
+        <tag>踩坑</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>-7 除以 4 的整数商是 -1 还是 -2 ？</title>
+    <url>/2020/03/25/7-%E9%99%A4%E4%BB%A5-4-%E7%9A%84%E6%95%B4%E6%95%B0%E5%95%86%E6%98%AF-1-%E8%BF%98%E6%98%AF-2-%EF%BC%9F/</url>
+    <content><![CDATA[<html><head></head><body><p>在 C/C++ 、Java 中结果为 -1，在 Python 中结果为 -2。为什么会这样？</p>
+<a id="more"></a>
+
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>我们都知道，在 C/C++ 、Java 中，运算符 <code>/</code> 两边若都为整数，则结果也会是整数。例如：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># C/C++ 、Java</span></span><br><span class="line">>>> 7 / 4 = 1</span><br></pre></td></tr></tbody></table></figure>
+
+<p>但在 Python 中，运算符 <code>/</code> 的结果是浮点数，要想得到整数商，需要用到“地板除运算符”：<code>//</code>。 </p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># Python 3.7.0</span></span><br><span class="line">>>> 7 / 4 = 1.75</span><br><span class="line">>>> 8 / 4 = 2.0</span><br><span class="line">>>> 7 // 4 = 1</span><br><span class="line">>>> 8 // 4 = 2</span><br></pre></td></tr></tbody></table></figure>
+
+<p>对于异号的整数相除，C/C++、Java 和 Python 的结果也是不一样的：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># C/C++ 、Java</span></span><br><span class="line">>>> -7 / 4 = -1</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># Python 3.7.0</span></span><br><span class="line">>>> -7 // 4 = -2</span><br></pre></td></tr></tbody></table></figure>
+
+<p>可以看到，在计算异号相除的整数商时，C/C++、Java 会向 0 方向舍入；而 Python 会向负无穷方向舍入。其实这也是造成它们的运算符 <code>%</code> 结果也不一样的原因。详细请看我的另一文章：<a href="/2020/03/24/运算符-37-是取余还是取模？/">运算符 % 是取余还是取模？</a></p>
+</body></html>]]></content>
+      <categories>
+        <category>IT</category>
+        <category>运算符</category>
+      </categories>
+      <tags>
+        <tag>踩坑</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>运算符 &amp;#37; 是取余还是取模？</title>
+    <url>/2020/03/24/%E8%BF%90%E7%AE%97%E7%AC%A6-37-%E6%98%AF%E5%8F%96%E4%BD%99%E8%BF%98%E6%98%AF%E5%8F%96%E6%A8%A1%EF%BC%9F/</url>
+    <content><![CDATA[<html><head></head><body><p>“运算符 % 不就是用来取余的嘛，而且各语言通用啊。”<br>“在 C/C++ 、Java 等语言中确实是这样，但在 Python 中，它是取模运算符。”<br>“等等，取余和取模…有什么区别？？”</p>
+<a id="more"></a>
+
+<h2 id="取余和取模的区别"><a href="#取余和取模的区别" class="headerlink" title="取余和取模的区别"></a>取余和取模的区别</h2><p>对于正整数来说，取余和取模得到的结果是相同的：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">7 rem 4 = 3 (7对4取余得到的结果是3)</span><br><span class="line">7 mod 4 = 3 (7对4取模得到的结果也是3)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>但是，若有一个为负数，则结果如下：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">-7 rem 4 = -3</span><br><span class="line">-7 mod 4 = 1</span><br></pre></td></tr></tbody></table></figure>
+
+<p>那么，计算过程是怎样的呢？<br>对于整数 a，b 来说，取余运算和取模运算的计算过程都分为两步：</p>
+<ol>
+<li>求整数商： c = a / b</li>
+<li>计算模或者余数： r = a - c * b</li>
+</ol>
+<p><strong>取余运算和取模运算在第 1 步不同: 在计算商时，取余运算会向 0 方向舍入；而取模运算会向负无穷方向舍入。</strong></p>
+<p>就拿上面的例子来说，按第 1 步计算 -7 / 4 的整数商时，我们知道结果要么是 -1 要么是 -2 。若取余，则商为 -1，第 2 步得到结果为 -3，若取模，则商为 -2，第 2 步得到结果为 1。</p>
+<p>这就是取余和取模的区别。</p>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符 %"></a>运算符 %</h2><p>搞清楚取余和取模的区别后，再来说一下运算符 % 到底是取余还是取模。</p>
+<p>其实结论在文章开头就已经给出了，% 在 C/C++ 、Java 等语言中是取余运算符，而在 Python 中是取模运算符。至于其他语言，可以代入上面 -7 % 4 的例子输出一下结果就能知道。</p>
+<p>对于我们常用的正整数之间运算，取余和取模的结果是相同的，可以放心地使用 % 。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li><a href="https://baike.baidu.com/item/%E5%8F%96%E6%A8%A1%E8%BF%90%E7%AE%97" target="_blank" rel="noopener">取模运算-百度百科</a></li>
+</ul>
+</body></html>]]></content>
+      <categories>
+        <category>IT</category>
+        <category>运算符</category>
+      </categories>
+      <tags>
+        <tag>踩坑</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python 四舍五入用 round() ？</title>
+    <url>/2020/02/24/Python-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E7%94%A8-round-%EF%BC%9F/</url>
+    <content><![CDATA[<html><head></head><body><p>网上一查很多资料都说 Python 内置的 <code>round()</code> 是用于四舍五入的函数，其实它包含着很大的坑，本文将会说明。</p>
+<a id="more"></a>
+
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>先上几个正常的例子熟悉下用法：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># Python 3.7.0</span></span><br><span class="line">>>> round(1.6)</span><br><span class="line">2</span><br><span class="line">>>> round(1.66, 1)</span><br><span class="line">1.7</span><br><span class="line">>>> round(1.666, 2)</span><br><span class="line">1.67</span><br></pre></td></tr></tbody></table></figure>
+
+<p>再上几个打脸的例子：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># Python 3.7.0</span></span><br><span class="line">>>> round(0.5)</span><br><span class="line">0</span><br><span class="line">>>> round(2.5)</span><br><span class="line">2</span><br></pre></td></tr></tbody></table></figure>
+
+<p>纳尼？小数部分的 0.5 为啥被舍掉了，不应该“五入”进一吗？查阅<a href="#1">官方文档</a>可知， <code>round()</code> 函数有两个参数，依次是：</p>
+<ul>
+<li><code>number</code>: 整数或浮点数</li>
+<li><code>ndigits</code>（可选）：整数。若被省略或为 None 则函数返回整数，否则函数返回值的类型与 number 相同。</li>
+</ul>
+<p>函数的作用为：</p>
+<blockquote>
+<p>Return <strong>number</strong> rounded to <strong>ndigits</strong> precision after the decimal point.</p>
+</blockquote>
+<p>翻译过来不就是四舍五入的意思吗？仔细往下看文档，特殊场景下不是的：</p>
+<blockquote>
+<p>if two multiples are equally close, rounding is done toward the <strong>even</strong> choice.</p>
+</blockquote>
+<p>这句话书上的解释是：</p>
+<blockquote>
+<p>“当某个值恰好等于两个整数间的一半时，取整操作会取到离该值最接近的那个偶数上”<br><em>——《Python Cookbook 中文版第 3 版》 P83</em></p>
+</blockquote>
+<p>也就是说，判断进位的数恰好是 5 的情况，要看 5 的前一位是奇数还是偶数，如果是奇数，则进一，例如 <code>round(1.5)</code> 的结果是 2 ；如果是偶数，则不会进一，而是直接把 5 舍掉，例如 <code>round(2.5)</code> 的结果也是 2 。以上举的几个例子都是浮点数，不过仔细看文档和书上对 <code>round()</code> 函数第二个参数 ndigits 的说明，会发现：</p>
+<blockquote>
+<p>“传递给 <code>round()</code> 的参数 ndigits 可以是负数，在这种情况下会相应地取整到十位、百位、千位等”<br><em>——《Python Cookbook 中文版第 3 版》 P83</em></p>
+</blockquote>
+<p>也就是说，给第二个参数 ndigits 传入 -1， 会取整到十位，传入 -2，会取整到百位，以此类推。以取整到十位为例，示例如下：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># Python 3.7.0</span></span><br><span class="line">>>> round(15, -1)</span><br><span class="line">20</span><br><span class="line">>>> round(25, -1)</span><br><span class="line">20</span><br></pre></td></tr></tbody></table></figure>
+
+<p>如果你想：我对判断进位的数是 5 的情况特殊处理，还是可以达到四舍五入的目的的。那么请再看下面的示例：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># Python 3.7.0</span></span><br><span class="line">>>> round(2.675, 2)</span><br><span class="line">2.67</span><br></pre></td></tr></tbody></table></figure>
+<p>Excuse me??? 不是说 5 的前一位是奇数的话要进一么，怎么又不对了？难道是 Python 的 Bug ？ Python 官方文档说这不算 Bug ，而是浮点数固有的精度丢失问题。我们都知道，计算机存储的任何数据其实都是二进制流，也就是一串 0 和 1。整数在计算机内是可以精确存储的，而大多数浮点数则不然。因为大多数浮点数若用二进制表示，会变得很长甚至无限长，计算机需要将其截断才能存储，这样就丢失了精度。就拿 2.675 来说，它要存储到计算机里，首先要转为二进制，结果为：10.1010110011001100（假设计算机截断小数点后十六位），如下图所示：</p>
+<img src="/2020/02/24/Python-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E7%94%A8-round-%EF%BC%9F/decimal2binary.png" class title="2.675 转为二进制">
+
+<p>我们把计算机存储 2.675 的这个二进制串再转回十进制，就变成了：<strong>2.674</strong>98779296875 ，如下图所示：</p>
+<img src="/2020/02/24/Python-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E7%94%A8-round-%EF%BC%9F/binary2decimal.png" class title="二进制转回十进制">
+
+<p>所以， <code>round(2.675, 2)</code> 的结果就成了 2.67 。更详细的说明可以看<a href="#2">参考文献 2</a></p>
+<h2 id="替代方案"><a href="#替代方案" class="headerlink" title="替代方案"></a>替代方案</h2><p>既然 Python 四舍五入不可以用 <code>round()</code>，那有没有替代方案呢？<br>当然有， <code>decimal</code> 模块就是用于浮点数的精确运算的，其中就包括四舍五入。用法示例如下：</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> decimal <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用当前上下文的一个副本，退出 with 语句时会恢复之前的上下文</span></span><br><span class="line"><span class="keyword">with</span> localcontext() <span class="keyword">as</span> ctx:</span><br><span class="line">    ctx.prec = <span class="number">3</span>                    <span class="comment"># 设置精度（整数和小数部分加起来的位数）</span></span><br><span class="line">    ctx.rounding = ROUND_HALF_UP    <span class="comment"># 设置舍入方式为四舍五入</span></span><br><span class="line">    print(Decimal(<span class="string">'2.675'</span>) + <span class="number">0</span>)     <span class="comment"># 后面 + 0 是因为精度和舍入仅在运算期间发挥作用</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>运行这段代码，输出结果为 2.68<br>关于 <code>decimal</code> 模块的详细用法和相关问题，可以看<a href="#3">参考文献 3</a></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Python 四舍五入不可以用 <code>round()</code>，需要用到 <code>decimal</code> 模块。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
+<li><a name="1"></a><a href="https://docs.python.org/zh-cn/3/library/functions.html?highlight=round#round" target="_blank" rel="noopener">round() 官方文档</a></li>
+<li><a name="2"></a><a href="https://docs.python.org/zh-cn/3/tutorial/floatingpoint.html#tut-fp-issues" target="_blank" rel="noopener">官方文档对于浮点数精度丢失的说明</a></li>
+<li><a name="3"></a><a href="https://docs.python.org/zh-cn/3.7/library/decimal.html" target="_blank" rel="noopener">官方文档：decimal — 十进制定点和浮点运算</a></li>
+</ol>
+</body></html>]]></content>
+      <categories>
+        <category>IT</category>
+        <category>Python</category>
+        <category>API</category>
+      </categories>
+      <tags>
+        <tag>踩坑</tag>
+      </tags>
+  </entry>
+</search>

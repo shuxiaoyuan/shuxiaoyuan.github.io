@@ -1,0 +1,828 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://shuxiaoyuan.github.io').hostname,
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="《Head First 设计模式》读书笔记，已完结。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《Head First 设计模式》读书笔记">
+<meta property="og:url" content="https://shuxiaoyuan.github.io/2020/10/30/%E3%80%8AHead-First-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+<meta property="og:site_name" content="书缘的博客">
+<meta property="og:description" content="《Head First 设计模式》读书笔记，已完结。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-30T02:38:19.000Z">
+<meta property="article:modified_time" content="2024-03-06T06:28:27.934Z">
+<meta property="article:author" content="书缘">
+<meta property="article:tag" content="读书笔记">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://shuxiaoyuan.github.io/2020/10/30/%E3%80%8AHead-First-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>《Head First 设计模式》读书笔记 | 书缘的博客</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?a298916edd5b96c19fd09758e88c2e2e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="书缘的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">书缘的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">博观而约取，厚积而薄发</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">3</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">11</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">17</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="搜索..." spellcheck="false" type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://shuxiaoyuan.github.io/2020/10/30/%E3%80%8AHead-First-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="书缘">
+      <meta itemprop="description" content="God is a coder.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="书缘的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          《Head First 设计模式》读书笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-10-30 10:38:19" itemprop="dateCreated datePublished" datetime="2020-10-30T10:38:19+08:00">2020-10-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-03-06 14:28:27" itemprop="dateModified" datetime="2024-03-06T14:28:27+08:00">2024-03-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/IT/" itemprop="url" rel="index">
+                    <span itemprop="name">IT</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>9.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 ≈</span>
+              <span>16 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>《Head First 设计模式》读书笔记，已完结。</p>
+<a id="more"></a>
+
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><p><a href="https://www.wickedlysmart.com/head-first-design-patterns/" target="_blank" rel="noopener">官网</a><br><a href="https://github.com/bethrobson/Head-First-Design-Patterns" target="_blank" rel="noopener">github 源码仓库</a></p>
+<h1 id="OO-基础"><a href="#OO-基础" class="headerlink" title="OO 基础"></a>OO 基础</h1><ul>
+<li>抽象</li>
+<li>封装</li>
+<li>继承</li>
+<li>多态</li>
+</ul>
+<h1 id="OO-原则"><a href="#OO-原则" class="headerlink" title="OO 原则"></a>OO 原则</h1><ul>
+<li>封装变化</li>
+<li>多用组合，少用继承</li>
+<li>针对接口编程，不针对实现编程</li>
+<li>为交互对象之间的松耦合设计而努力（例：观察者模式，解耦观察者和被观察者）</li>
+<li>类应该对扩展开发，对修改关闭（例：装饰者模式，增加功能时添加新的装饰者，而非修改现有类）</li>
+<li>依赖抽象，不要依赖具体类（依赖倒置原则。）</li>
+<li>只和朋友交谈（最少知识原则，又叫得墨忒耳法则（Law of Demeter）。例：外观模式，尽量减少类之间的交互）</li>
+<li>别找我，我会找你（好莱坞原则，超类需要的时候自然会调用子类）</li>
+<li>类应该只有一个改变的理由（单一责任原则，尽量使类高内聚，低耦合）</li>
+</ul>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h2 id="设计模式入门"><a href="#设计模式入门" class="headerlink" title="设计模式入门"></a>设计模式入门</h2><h3 id="原文摘抄"><a href="#原文摘抄" class="headerlink" title="原文摘抄"></a>原文摘抄</h3><ul>
+<li><p>P1</p>
+<blockquote>
+<p><em>使用模式最好的方式是：“把模式装进脑子里，然后在你的设计和已有的应用中，寻找何处可以使用它们。”</em><br><em>以往是代码复用，现在是经验复用</em></p>
+</blockquote>
+</li>
+<li><p>P24</p>
+<blockquote>
+<p><strong>策略模式</strong> <em>定义了算法族，分别封装起来，让它们之间可以互相替换，此模式让算法的变化独立于使用算法的客户。</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="本章总结"><a href="#本章总结" class="headerlink" title="本章总结"></a>本章总结</h3><p>要设计一个 Duck 抽象基类，它的子类有绿头鸭、橡皮鸭、模型鸭等。因为不管什么鸭子，都会游泳（书中确实是这样举例的。。），所以可以在 Duck 类里写具体实现 <code>swim()</code> 方法。但不同鸭子有不同外观表现，所以，<code>display()</code> 是抽象方法，不同子类对它有不同实现。由于模型鸭不会叫，橡皮鸭叫声是吱吱声。而只有绿头鸭会飞。所以鸭子叫方法 <code>quark()</code> 和鸭子飞方法 <code>fly()</code> 不能放在 Duck 基类中，不然很多不会叫不会飞的鸭子子类也不得不实现它。那么，设计一个 Quarkable 和 Flyable 接口，让有这些行为的子类实现它们呢？这样的问题是，对这两个接口的实现没办法复用。表现行为相同的类会写出一样的实现代码。<strong>所以，可以写出对 Quarkable 和 Flyable 接口的不同实现类，让 Duck 类持有这两个接口，将 Duck 类的叫和飞方法委托给这两个接口去实现，让 Duck 类的子类去选择到底使用这两个接口的哪个具体实现类。</strong></p>
+<h2 id="观察者（Observer）模式"><a href="#观察者（Observer）模式" class="headerlink" title="观察者（Observer）模式"></a>观察者（Observer）模式</h2><h3 id="原文摘抄-1"><a href="#原文摘抄-1" class="headerlink" title="原文摘抄"></a>原文摘抄</h3><ul>
+<li><p>P51</p>
+<blockquote>
+<p><strong>观察者模式</strong> <em>定义了对象之间的一对多依赖，这样一来，当一个对象改变状态时，它的所有依赖者都会收到通知并自动更新。</em></p>
+</blockquote>
+</li>
+<li><p>P71</p>
+<blockquote>
+<p><em>首先，因为 Observable 是一个“类”，你必须设计一个类继承它。如果某类想同时具有 Observable 类和另一个超类的行为，就会陷入两难，毕竟 Java 不支持多重继承。再者，因为没有 Observable 接口，所以你无法建立自己的实现，和 Java 内置的 Observer API 搭配使用，也无法将 java.util 的实现换成另一套做法的实现，比方说，如果你看看 Observable API，你会发现 setChanged() 方法被保护起来了（被定义成 protected）。那又怎么样呢？这意味着，除非你继承自 Observable，否则你无法创建 Observable 实例并组合到你自己的对象中来。这个设计违反了第二个设计原则：“多用组合，少用继承”。</em></p>
+</blockquote>
+<p>  这里指出了 java.util.Observable 的设计缺陷，值得一看。<a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1281319577321505" target="_blank" rel="noopener">廖雪峰的教程</a>里也不推荐用这两个类实现观察者模式。<br>  P72~P73 举例 JDK 在 Swing 中用到了观察者模式，不过现在很少有人用 Swing，所以代码不看也罢。</p>
+</li>
+</ul>
+<h3 id="本章总结-1"><a href="#本章总结-1" class="headerlink" title="本章总结"></a>本章总结</h3><p>观察者模式是为了解除观察者和被观察者之间的耦合，使得新增观察者或删除观察者不用改动被观察者的代码，更容易维护。<br>观察者模式分为推和拉两种，<strong>推的话就是在被观察者中用一个列表维护所有观察者，当数据更新的时候遍历通知所有观察者，</strong><br><strong>拉的话是观察者通过保存的被观察者的实例，自己随时可以调用其 getter 方法获取数据。</strong></p>
+<h2 id="装饰者模式"><a href="#装饰者模式" class="headerlink" title="装饰者模式"></a>装饰者模式</h2><h3 id="原文摘抄-2"><a href="#原文摘抄-2" class="headerlink" title="原文摘抄"></a>原文摘抄</h3><ul>
+<li><p>P87</p>
+<blockquote>
+<p><em>在选择需要被扩展的代码部分时要小心。每个地方都采用开放-关闭原则，是一种浪费，也没必要，还会导致代码变得复杂且难以理解。</em></p>
+</blockquote>
+</li>
+<li><p>P91</p>
+<blockquote>
+<p><strong>装饰者模式</strong> <em>动态地将责任附加到对象上。若要扩展功能，装饰者提供了比继承更有弹性的替代方案。</em></p>
+</blockquote>
+</li>
+<li><p>P101</p>
+<blockquote>
+<p><em>但是 Java I/O 也引出装饰者模式一个“缺点”：利用装饰者模式，常常造成设计中有大量小类，数量实在太多，可能会造成使用此 API 程序员的困扰。</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="本章总结-2"><a href="#本章总结-2" class="headerlink" title="本章总结"></a>本章总结</h3><p>业务场景：给咖啡加不同的调料（如牛奶、摩卡、奶泡等），计算最终的价格。如果把所有调料组合都创建一个咖啡类，那类要爆炸。如果用变量给每种调料标明价格，然后通过判断有没有加这种调料来计算最终价格，那每加一种调料都要改动原有代码，不符合“对扩展开放，对修改封闭”的原则。<br>装饰者模式实现方式：<strong>各种调料都继承自咖啡类，构造函数需要传入咖啡类引用，然后在重写的计算价格方法里，首先调用咖啡类引用的计算价格方法，再加上本调料类的价格。</strong>这样想加哪种调料就用哪种调料类包装，而且同一种调料可以包装若干次，即使新增调料，也只需添加一个类，无需修改原有代码。</p>
+<h2 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h2><h3 id="原文摘抄-3"><a href="#原文摘抄-3" class="headerlink" title="原文摘抄"></a>原文摘抄</h3><ul>
+<li><p>P134</p>
+<blockquote>
+<p><strong>工厂方法模式</strong> <em>定义了一个创建对象的接口，但由子类决定要实例化的类是哪一个，工厂方法让类把实例化推迟到子类</em></p>
+</blockquote>
+</li>
+<li><p>P143</p>
+<blockquote>
+<p><em>下面的指导方针，能帮你避免在 OO 设计中违反<strong>依赖倒置原则</strong>：</em></p>
+<ul>
+<li><em>变量不可以持有具体类的引用</em></li>
+<li><em>不要让类派生自具体类</em></li>
+<li><em>不要覆盖基类中已实现的方法</em></li>
+</ul>
+<p><em>应该尽量达到这个原则，而不是随时随地都要遵循这个原则。深入体验这些方针，将这些方针内化成你思考的一部分，那么在设计时，你将知道何时有足够的理由违反这样的原则</em></p>
+</blockquote>
+</li>
+<li><p>P156</p>
+<blockquote>
+<p><strong>抽象工厂模式</strong> <em>提供一个接口，用于创建相关或依赖对象的家族，而不需要明确指定具体类。</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="本章总结-3"><a href="#本章总结-3" class="headerlink" title="本章总结"></a>本章总结</h3><p>简单工厂就是把创建对象的方法拿出来放到一个工厂类里。这样方便用到多个需要创建这个对象的地方。<br>静态工厂就是把创建对象的方法设置成静态的，不用实例化对象就能调用，但这种方式也有缺点，就是不能通过继承重写这个方法实现多态。<br>工厂方法要有一个产品抽象类（接口）和专门生产这个产品的工厂抽象类（接口），然后由工厂抽象类的具体子类去创建具体的产品类。<br>抽象工厂就是一个产品有很多原料构成，我把所有创建这些原料的方法拿出来放到一个接口里，通过这个接口不同的实现类去创建不同的原料。</p>
+<p><a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1281319170474017" target="_blank" rel="noopener">廖雪峰教程</a>里提到：</p>
+<blockquote>
+<p><em>工厂方法可以隐藏创建产品的细节，且不一定每次都会真正创建产品，完全可以返回缓存的产品，从而提升速度并减少内存消耗。</em></p>
+</blockquote>
+<p>并且拿 <code>Integer.valueOf(i)</code> 和 <code>new Integer(i)</code> 区别的例子说明了这一情况。</p>
+<h2 id="单件模式"><a href="#单件模式" class="headerlink" title="单件模式"></a>单件模式</h2><h3 id="原文摘抄-4"><a href="#原文摘抄-4" class="headerlink" title="原文摘抄"></a>原文摘抄</h3><ul>
+<li><p>P177</p>
+<blockquote>
+<p><strong>单件模式</strong> <em>确保一个类只有一个实例，并提供一个全局访问点。</em></p>
+</blockquote>
+</li>
+<li><p>P184</p>
+<blockquote>
+<p><em>问：难道我不能创建一个类，把所有的方法和变量都定义为静态的，把类直接当做一个单件？</em><br><em>答：如果你的类自给自足，而且不依赖于复杂的初始化，那么你可以这么做。但是，因为静态初始化的控制权是在 Java 手上，这么做可能导致混乱，特别是当有许多类牵涉其中的时候。这么做常常会造成一些微妙的、不容易发现的<strong>和初始化的次序有关的 bug</strong>。除非你有绝对的必要使用类的单件，否则还是建议使用对象的单件，比较保险。</em></p>
+</blockquote>
+</li>
+<li><p>P184</p>
+<blockquote>
+<p><em>每个类加载器都定义了一个命名空间，如果有两个以上的类加载器，不同的类加载器可能会加载同一个类，从整个程序来看，同一个类会被加载多次。如果这样的事情发生在单件上，就会产生多个单件并存的怪异现象。所以，如果聂程序有多个类加载器又同时使用了单件模式，请小心。有一个解决办法：自行指定类加载器，并指定同一个类加载器。</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="本章总结-4"><a href="#本章总结-4" class="headerlink" title="本章总结"></a>本章总结</h3><p>单件模式虽然简单，其实里面涉及到的细节却不少，本章后面有好几个关于单件细节问题的问答，可以一看。<br><strong>其实单件模式最好的实现方式是使用枚举类</strong>，这一点在本书没有提到，不过在 Effective Java 里提到了。<br>使用枚举类也避免了序列化和反序列化会绕过普通类的 private 构造方法从而创建出多个实例的问题。<br>关于<a href="https://www.liaoxuefeng.com/discuss/1279869501571105/1379270435799074" target="_blank" rel="noopener">双重检查加锁的讨论</a>，廖雪峰老师回复了一篇文章链接：<a href="http://www.cs.umd.edu/~pugh/java/memoryModel/DoubleCheckedLocking.html" target="_blank" rel="noopener">双重检查加锁</a><br>这篇文章提到了 volatile 配合双重检查加锁其实是可以保证多线程下单例模式的安全的</p>
+<h2 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h2><h3 id="原文摘抄-5"><a href="#原文摘抄-5" class="headerlink" title="原文摘抄"></a>原文摘抄</h3><ul>
+<li><p>P206</p>
+<blockquote>
+<p><strong>命令模式</strong> <em>将“请求”封装成对象，以便使用不同的请求，队列或者日志来参数化其他对象。命令模式也支持可撤销的操作。</em></p>
+</blockquote>
+</li>
+<li><p>P214</p>
+<blockquote>
+<p><em>NoCommand 对象是一个空对象（null object）的例子。当你不想返回一个有意义的对象时，空对象就很有用。客户也可以将处理 null 的责任转移给空对象。举例来说，遥控器不可能一出厂就设置了有意义的命令对象，所以提供了 NoCommand 对象作为代用品，当调用它的 execute() 方法时，这种对象设么事情都不做。在许多设计模式中，都会看到空对象的使用。甚至有些时候，空对象本身也被视为是一种设计模式。</em></p>
+</blockquote>
+</li>
+<li><p>P227</p>
+<blockquote>
+<p><em>问：接受者有必要存在吗？为何命令对象不直接实现 execute() 方法的细节？</em><br><em>答：一般来说，我们尽量设计“傻瓜”命令对象，它只懂得调用一个接收者的一个行为。然而，有许多“聪明”命令对象会实现许多逻辑，直接完成一个请求。当然你可以设计聪明的命令对象，只是这样一来，调用者和接收者之间的解耦程度是比不上“傻瓜”命令对象的，而且，你也不能把接收者当做参数传给命令。</em></p>
+</blockquote>
+<p>  让命令对象和接收者对象解耦，可以通过传参给命令对象传入不同的接收者。<br>  本页也提到了 undo() 方法可以通过维护一个栈来实现撤销多次记录。</p>
+</li>
+<li><p>P227</p>
+<blockquote>
+<p><em>问：我可以创建一个 PartyCommand，然后在它的 execute() 方法中调用其他的命令，利用这种做法实现 Party 模式（Party Mode）吗？</em><br><em>答：你可以这么做。然而，这等于把 Party 模式“硬编码”到 PartyCommand 中。为什么要这么麻烦呢？利用宏命令，你可以动态地决定 PartyCommand 是由那些命令组成，所以宏命令在使用上更灵活。一般来说，宏命令的做法更优雅，也需要较少的新代码。</em></p>
+</blockquote>
+<p>  所谓宏命令，就是一个命令类，里面维护了一个命令数组，构造函数需要传入一个命令数组引用给它赋值，这个宏命令类的 execute() 方法就是遍历这个数组里的所有命令然后依次执行。这样具体执行哪些命令就可以由调用者决定，如果把 execute() 写死成固定的几个命令执行，那就不够灵活了。以上就是这个问答的意思。</p>
+</li>
+</ul>
+<p>后面 P228~P229 举例说明命令模式的应用：工作队列、日程安排、线程池、日志请求和事务系统等，了解一下就可以。</p>
+<h3 id="本章总结-5"><a href="#本章总结-5" class="headerlink" title="本章总结"></a>本章总结</h3><p>命令模式就是把请求封装成一个对象，由这个对象去执行。<br>命令对象里持有接收者的引用，去调用接收者的相关方法，具体的执行步骤还是命令的接收者完成的。<br>这样，调用者只和命令对象打交道，调用者和接收者解耦了。<br>其实，如果需求简单且变化不大，没有必要用命令模式，直接让调用者去调用接收者的方法就可以。<br>但如果接收者有不同类型的多个，且逻辑较为复杂，而且需要 undo、 redo 等功能。就可以用命令模式了。</p>
+<h2 id="适配器模式与外观模式"><a href="#适配器模式与外观模式" class="headerlink" title="适配器模式与外观模式"></a>适配器模式与外观模式</h2><h3 id="原文摘抄-6"><a href="#原文摘抄-6" class="headerlink" title="原文摘抄"></a>原文摘抄</h3><ul>
+<li><p>P241</p>
+<blockquote>
+<ol>
+<li><em>客户通过目标接口调用适配器的方法对适配器发出请求。</em></li>
+<li><em>适配器使用被适配者接口把请求转换成被适配者的一个或多个调用接口。</em></li>
+<li><em>客户接收到调用的结果，但并未察觉这一切是适配器在起转换作用。</em></li>
+</ol>
+</blockquote>
+</li>
+<li><p>P242</p>
+<blockquote>
+<p><em>问：一个适配器需要做多少“适配”的工作？如果我需要实现一个很大的目标接口，似乎有“很多”工作要做。</em><br><em>答：的确是如此。实现一个适配器所需要进行的工作，的确和目标接口的大小成正比。如果不用适配器，你就必须改写客户端的代码来调用这个新的接口，将会花许多力气来做大量的调查工作和代码改写工作。相比之下，提供一个适配器类，将所有的改变封装在一个类中，是比较好的做法。</em></p>
+<p><em>问：万一我的系统中新旧并存，旧的部分期望旧的厂商接口，但我们却已经使用新厂商的接口编写了这一部分，这个时候该怎么办？这里使用适配器，那里却使用未包装的接口，这实在是让人感到混乱。如果我只是固守着旧的代码，完全不要管适配器，这样子会不会好一些？</em><br><em>答：不需要如此。可以创建一个双向的适配器，支持两边的接口。想创建一个双向的适配器，就必须实现所涉及的两个接口，这样，这个适配器可以当做旧的接口，或者当做新的接口使用。</em></p>
+</blockquote>
+</li>
+<li><p>P243</p>
+<blockquote>
+<p><strong>适配器模式</strong> <em>将一个类的接口，转换成客户期望的另一个接口。适配器让原本接口不兼容的类可以合作无间。</em></p>
+</blockquote>
+</li>
+</ul>
+<p>P244 提到在支持多重继承的语言中，可以让适配器类同时继承自目标类和被适配类来实现。第一种使用组合来实现的叫对象适配器，第二种通过多继承来实现的叫类适配器。</p>
+<ul>
+<li>P264<blockquote>
+<p><strong>外观模式</strong> <em>提供了一个统一的接口，用来访问子系统中的一群接口。</em><br><em>外观定义了一个高层接口，让子系统更容易使用。</em></p>
+</blockquote>
+</li>
+</ul>
+<p>书中还提到可以为一个子系统实现多个外观，而且可以把子系统接口暴露给客户，方便他们直接调用底层。</p>
+<h3 id="本章总结-6"><a href="#本章总结-6" class="headerlink" title="本章总结"></a>本章总结</h3><p>适配器模式将一个或多个接口转换成另一个接口，外观模式是用一个接口来简化一堆比较复杂的接口，相当于“一键XX”。这俩其实都是在目标接口里持有要被转换接口的引用，调用其方法实现。</p>
+<h2 id="模板方法模式"><a href="#模板方法模式" class="headerlink" title="模板方法模式"></a>模板方法模式</h2><h3 id="原文摘抄-7"><a href="#原文摘抄-7" class="headerlink" title="原文摘抄"></a>原文摘抄</h3><ul>
+<li><p>P289</p>
+<blockquote>
+<p><strong>模板方法模式</strong> <em>在一个方法中定义一个算法的骨架，而将一些步骤延迟到子类中。模板方法使得子类可以在不改变算法结构的情况下，重新定义算法中的某些步骤。</em></p>
+</blockquote>
+</li>
+<li><p>P295</p>
+<blockquote>
+<p><em>问：当我创建一个模板方法时，怎么才能知道什么时候该使用抽象方法，什么时候使用钩子呢？</em><br><em>答：当你的子类“必须”提供算法中某个方法或步骤的实现时，就使用抽象方法。如果算法的这个部分是可选的，就用钩子。如果是钩子的话，子类可以选择实现这个钩子，但并不强制这么做。</em></p>
+</blockquote>
+</li>
+<li><p>P298</p>
+<blockquote>
+<p><em>问：好莱坞原则和依赖倒置原则（第 4 章）之间的关系如何？</em><br><em>答：依赖倒置原则教我们尽量避免使用具体类，而多使用抽象。而好莱坞原则是用在创建框架或组件上的一种技巧，好让底层组件能够被挂钩进计算中，而且又不会让高层组件依赖低层组件。两者的目标都是在于解耦，但是依赖倒置原则更加注重如何在设计中避免依赖。好莱坞原则教我们一个技巧，创建一个有弹性的设计，允许低层结构能够互相操作，而又防止其他类太过依赖它们。</em></p>
+<p><em>问：低层组件不可以调用高层组件中的方法吗？</em><br><em>答：并不尽然。事实上，低层组件在结束时，常常会调用从超类中继承来的方法。我们所要做的是，避免让高层和低层组件之间有明显的环状依赖。</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="本章总结-7"><a href="#本章总结-7" class="headerlink" title="本章总结"></a>本章总结</h3><p>模板方法的核心思想：<strong>父类定义骨架，子类实现某些细节</strong><br>比如，把大象装进冰箱需要三步：1、打开冰箱门；2、把大象装进去；3、把冰箱门关上。<br>那么把老虎装进冰箱呢？<br>可以在父类中只实现这三步骨架，至于是大象还是老虎还是猴子，父类只提供一个抽象方法，子类去实现具体的动物。<br>如果不想子类重写，可以在模板方法前加上 final 关键字。<br>可以在父类中定义一个默认的钩子方法，用于控制模板方法里的某些行为，子类可以选择是否覆盖来控制这些行为。<br>工厂方法是模板方法的一种特殊版本。</p>
+<h2 id="迭代器与组合模式"><a href="#迭代器与组合模式" class="headerlink" title="迭代器与组合模式"></a>迭代器与组合模式</h2><h3 id="原文摘抄-8"><a href="#原文摘抄-8" class="headerlink" title="原文摘抄"></a>原文摘抄</h3><ul>
+<li><p>P336</p>
+<blockquote>
+<p><strong>迭代器模式</strong> <em>提供一种方法顺序访问一个聚合对象中的各个元素，而又不暴露其内部的表示</em></p>
+<p><em>迭代器模式让我们能游走于聚合内的每一个元素，而又不暴露其内部的表示。</em><br><em>把游走的任务放在迭代器上，而不是聚合上。这样简化了聚合的接口和实现，也让责任各得其所。</em></p>
+</blockquote>
+</li>
+<li><p>P356</p>
+<blockquote>
+<p><strong>组合模式</strong> <em>允许你将对象组合成树形结构来表现“整体/部分”层次结构。组合能让客户以一致的方式处理个别对象以及对象组合。</em></p>
+</blockquote>
+</li>
+<li><p>P357</p>
+<blockquote>
+<p><em>组合模式让我们能用树形方式创建对象的结构，树里面包含了组合以及个别的对象。使用组合结构，我们能把相同的操作应用在组合和个别对象上。换句话说，在大多数情况下，我们可以忽略对象组合和个别对象之间的差别。</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="本章总结-8"><a href="#本章总结-8" class="headerlink" title="本章总结"></a>本章总结</h3><p>迭代器模式就是把遍历类中集合对象的实现交给迭代器去做，而不是将集合直接暴露给其他类。<br>这样做的好处是，调用者不必知道类中的集合具体是什么类型（数组、ArrayList、HashSet 等），<br>只要它实现了 iterator 接口就可以。实际上 Java 的 Collection 接口是继承自 Iterable 接口的，<br>它提供了返回迭代器的方法 <code>iterator()</code>，而且实现 Iterable 接口还可以使用更方便的 foreach 语句。<br>自己实现某个类中集合的迭代器时要考虑多线程并发访问和修改以及删除可能造成的影响。</p>
+<p>组合模式比较复杂，而且细节也比较多。这个模式像一个树形结构，以书中给出的菜单例子来说，<br>总菜单里包含多个子菜单，子菜单里可以包含具体菜品或者子菜单。<br>这样可以设计一个抽象类，它既包含菜单的所有方法，又包含菜品的所有方法，默认实现是抛出 UnsupportedOperationException 异常。<br>让菜单和菜品都实现它，然后实现各自有的方法。这样虽然失去了安全性，但也保证了一致性，是设计上的一种取舍权衡和妥协。<br>这样一来，我们遍历这个总菜单的内容时，不管是子菜单还是具体菜品都可以一视同仁。<br>要实现这个总菜单的迭代器，首先在抽象类里添加一个获取迭代器的 <code>createIterator()</code> 方法，<br>实现是子菜单返回其迭代器，菜品则返回一个 NullIterator，其 <code>hasNext()</code> 返回 false、<code>next()</code> 返回 null。<br>然后创建一个持有栈来维护所有菜单的迭代器，构造函数传入总菜单的迭代器入栈，<br>它的遍历方法 <code>next()</code> 实现是遇到子菜单就将其迭代器入栈，遇到菜品就打印，<br><code>hasNext()</code> 是委托给栈顶的迭代器调用其 <code>hasNext()</code> ，若为 false 则出栈，一直到为 true 或栈空为止。</p>
+<h2 id="状态模式"><a href="#状态模式" class="headerlink" title="状态模式"></a>状态模式</h2><h3 id="原文摘抄-9"><a href="#原文摘抄-9" class="headerlink" title="原文摘抄"></a>原文摘抄</h3><ul>
+<li>P410<blockquote>
+<p><strong>状态模式</strong> <em>允许对象在内部状态改变时改变它的行为，对象看起来好像修改了它的类。</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="本章总结-9"><a href="#本章总结-9" class="headerlink" title="本章总结"></a>本章总结</h3><p>状态模式和策略模式的类图一样，然而两者的意图是不同的。策略模式把行为封装成类，然后使用组合使得持有它不同实例的类表现出不同的行为。而状态模式则是持有不同状态类的实例，由状态来控制行为，不同状态下会表现出不同的行为。</p>
+<h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2><h3 id="原文摘抄-10"><a href="#原文摘抄-10" class="headerlink" title="原文摘抄"></a>原文摘抄</h3><ul>
+<li>P460<blockquote>
+<p><strong>代理模式</strong> <em>为另一个对象提供一个替身或占位符以控制对这个对象的访问。</em></p>
+<p><em>使用代理模式创建代表（representative）对象，让代表对象控制某对象的访问，</em><br><em>被代理的对象可以是远程的对象、创建开销大的对象或需要安全控制的对象。</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="本章总结-10"><a href="#本章总结-10" class="headerlink" title="本章总结"></a>本章总结</h3><p>本章对代理模式及其变体举例较多，然而远程代理和动态代理因为代码比较老（早于 Java 5），没有细看。<br>远程代理涉及到 RMI 序列化和反序列化等相关知识。<br>虚拟代理是当创建开销大的对象时，可以先用代理对象替代其工作，等其创建好了再委托给它处理。<br>保护代理基于权限控制对资源的访问，书中举例了 Java 动态代理的实现来说明，没有细看。<br>其他的代理模式变体还举例了：缓存代理、防火墙代理、同步代理、写入时复制代理、智能引用代理、复杂隐藏代理。<br>代理在结构上类似装饰者，但是目的不同。装饰者为对象加上行为，而代理则是控制访问。<br>代理模式相比于适配器模式，并没有改变接口。代理对象和真实对象都实现同一个接口。</p>
+<h2 id="复合模式"><a href="#复合模式" class="headerlink" title="复合模式"></a>复合模式</h2><h3 id="原文摘抄-11"><a href="#原文摘抄-11" class="headerlink" title="原文摘抄"></a>原文摘抄</h3><ul>
+<li><p>P500</p>
+<blockquote>
+<p><em>模式通常被一起使用，并被组合在同一个设计解决方案中。</em><br><strong>复合模式</strong> <em>在一个解决方案中结合两个或多个模式，以解决一般或重复发生的问题。</em></p>
+</blockquote>
+</li>
+<li><p>P523</p>
+<blockquote>
+<p><strong>我们从一大堆 Quackable 开始…</strong></p>
+<p><strong>有一只鹅出现了，它希望自己像一个 Quackable。</strong><br><em>所以我们利用适配器模式，将鹅适配成 Quackable。现在你就可以调用鹅适配器的 quack() 方法来让鹅咯咯叫。</em></p>
+<p><strong>然后，呱呱叫学家决定要计算呱呱叫声的次数。</strong><br><em>所以我们使用装饰者模式，添加了一个名为 QuackCounter 的装饰者。它用来追踪 quack() 被调用的次数，并将调用委托给它所装饰的 Quackable 对象。</em></p>
+<p><strong>但是呱呱叫学家担心他们忘了加上 QuackCounter 装饰者。</strong><br><em>所以我们使用抽象工厂模式创建鸭子。从此以后，当他们需要鸭子时，就直接跟工厂要，工厂会给他们装饰过的鸭子。（别忘了，如果他们想取得没装饰的鸭子，用另一个鸭子工厂就可以！）</em></p>
+<p><strong>又是鸭子，又是鹅，又是 Quackable 的…我们有管理上的困扰。</strong><br><em>所以我们需要使用组合模式，将许多 Quackable 集结成一个群。这个模式也允许群中有群，以便让呱呱叫学家来管理鸭子家族。我们在实现中通过使用 ArrayList 中的 Java.util 的迭代器而使用了迭代器模式。</em></p>
+<p><strong>当任何呱呱叫声响起时，呱呱叫学家都希望能被告知。</strong><br><em>所以我们使用观察者模式，让呱呱叫学家注册成为观察者。现在，当呱呱声响起时，呱呱叫学家就会被通知了。在这个实现中，我们再度用到了迭代器。呱呱叫学家不仅可以当某个鸭子的观察者，甚至可以当一整群的观察者。</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="本章总结-11"><a href="#本章总结-11" class="headerlink" title="本章总结"></a>本章总结</h3><p>这章后面 MVC 举例用的是 Java 的 Swing 和 Servlet，代码没有细看。<br>控制器是视图的策略，视图可以使用不同的控制器实现，得到不同的行为。<br>视图使用组合模式实现用户界面，用户界面通常组合了嵌套的组件，像面板、框架和按钮。</p>
+<h2 id="与设计模式相处"><a href="#与设计模式相处" class="headerlink" title="与设计模式相处"></a>与设计模式相处</h2><h3 id="原文摘抄-12"><a href="#原文摘抄-12" class="headerlink" title="原文摘抄"></a>原文摘抄</h3><ul>
+<li><p>P579</p>
+<blockquote>
+<p><strong>模式</strong> <em>是在某情境（context）下，针对某问题的某种解决方案。</em></p>
+</blockquote>
+</li>
+<li><p>P590</p>
+<blockquote>
+<p><strong>创建型模式</strong> <em>涉及到将对象实例化，这类模式都提供一个方法，将客户从所需要实例化的对象中解耦。</em><br><em>创建型模式包括：单件模式、工厂方法模式、抽象工厂模式、生成器模式、原型模式。</em><br><strong>行为型模式</strong> <em>都涉及到类和对象如何交互及分配职责。</em><br><em>行为型模式包括：模板方法模式、迭代器模式、观察者模式、状态模式、策略模式、责任链模式、中介者模式、备忘录模式、访问者模式、命令模式、解释器模式。</em><br><strong>结构型模式</strong> <em>可以让你把类或对象组合到更大的结构中。</em><br><em>结构型模式包括：装饰者模式、组合模式、代理模式、外观模式、适配器模式、桥接模式、蝇量模式（享元模式）。</em></p>
+</blockquote>
+</li>
+</ul>
+<p>这种分类方式是“四人组”提出的，另外还有根据模式处理的是类还是对象来分类的等等。<br>这些分类方式都是为了对各种模式有清晰的概念，帮助我们记忆和理解。</p>
+<ul>
+<li>P606<blockquote>
+<p><strong>反模式</strong> 告诉你如何采用一个不好的解决方案解决一个问题。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="本章总结-12"><a href="#本章总结-12" class="headerlink" title="本章总结"></a>本章总结</h3><p>不要过度使用设计模式，尽量保持代码简单。</p>
+<h2 id="附录-A-剩下的模式"><a href="#附录-A-剩下的模式" class="headerlink" title="附录 A 剩下的模式"></a>附录 A 剩下的模式</h2><p>这些剩下的模式书中只是简单介绍，因为它们大都是提供一种编程方式和思路。</p>
+<h3 id="桥接模式"><a href="#桥接模式" class="headerlink" title="桥接模式"></a>桥接模式</h3><p>桥接模式将抽象部分与它的实现部分分离，使它们都可以独立地变化。</p>
+<p>书上举例不太清楚，可以看<a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1281319266943009" target="_blank" rel="noopener">廖雪峰教程：桥接模式</a><br>简单来说就是为了防止子类爆炸，如果类的某个组件不同，可以用组合而不是继承的方式。<br>看起来有点像策略模式，不过策略模式更强调算法封装成对象，在运行时可以互换。</p>
+<h3 id="生成器模式"><a href="#生成器模式" class="headerlink" title="生成器模式"></a>生成器模式</h3><p>就是构造一个对象时，有很多参数，有的是可选的，这个模式就非常好用。<br>这个模式讲的比较好的是《Effective Java》，即书中的 Builder （构建器）模式。</p>
+<h3 id="责任链模式"><a href="#责任链模式" class="headerlink" title="责任链模式"></a>责任链模式</h3><p>使多个对象都有机会处理请求，从而避免请求的发送者和接收者之间的耦合关系。将这些对象连成一条链，并沿着这条链传递该请求，直到有一个对象处理它为止。<br>请看<a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1281319474561057" target="_blank" rel="noopener">廖雪峰教程：责任链模式</a></p>
+<h3 id="蝇量模式（享元模式）"><a href="#蝇量模式（享元模式）" class="headerlink" title="蝇量模式（享元模式）"></a>蝇量模式（享元模式）</h3><p>如想让某个类的一个实例能用来提供许多“虚拟实例”，就使用蝇量模式（Flyweight Pattern）。<br>这是为了节省内存的，避免创建过多对象。比如你想创建大量的树对象，每个树对象都有自己的坐标(x, y)，<br>而且这些树对象<strong>一经创建则不会再改变</strong>，则可以使用蝇量模式避免创建这些树对象，而是用一个树管理器类，持有一个二维数组保存这些树的坐标信息。<br><a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1281319417937953" target="_blank" rel="noopener">廖雪峰教程：享元模式</a></p>
+<h3 id="解释器模式"><a href="#解释器模式" class="headerlink" title="解释器模式"></a>解释器模式</h3><p>这个模式是专门创建一个简单的语言解释器的，它将每个语法规则表示成一个类。<br>书上和廖雪峰教程都没有详解。</p>
+<h3 id="中介者模式"><a href="#中介者模式" class="headerlink" title="中介者模式"></a>中介者模式</h3><p>使用中介者模式（Mediator Pattern）来集中相关对象之间复杂的沟通和控制方式。<br>中介者使多对多的关系转变为一对多，MVC 模式的 C（控制器）就是中介者。<br>像聊天室、对战平台等都是中介者，方便用户和用户之间的交互。</p>
+<h3 id="备忘录模式"><a href="#备忘录模式" class="headerlink" title="备忘录模式"></a>备忘录模式</h3><p>当你需要让对象返回之前的状态时（例如，你的用户请求“撤销”），就使用备忘录模式（Memento Pattern）。<br>就是用一个类来保存所有状态数据，比如游戏进度等。</p>
+<h3 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h3><p>当创建给定的实例的过程很昂贵或很复杂时，就使用原型模式（Prototype Pattern）。<br>就像 Java Object 的 clone() 方法，根据已有对象复制出一个一样的来。</p>
+<h3 id="访问者模式"><a href="#访问者模式" class="headerlink" title="访问者模式"></a>访问者模式</h3><p>当你想要为一个对象的组合增加新的能力，且封装并不重要时，就使用访问者模式（Visitor Pattern）。<br>访问者模式就是把访问行为和具体要访问的数据解耦，详见<a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1281319659110433" target="_blank" rel="noopener">廖雪峰教程：访问者模式</a></p>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>觉得文章有帮助，打赏1元鼓励一下作者</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="书缘 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="书缘 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>书缘
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://shuxiaoyuan.github.io/2020/10/30/%E3%80%8AHead-First-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" title="《Head First 设计模式》读书笔记">https://shuxiaoyuan.github.io/2020/10/30/《Head-First-设计模式》读书笔记/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag"># 读书笔记</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/10/14/%E3%80%8AJava-%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="prev" title="《Java 并发编程实战》读书笔记">
+      <i class="fa fa-chevron-left"></i> 《Java 并发编程实战》读书笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/11/23/%E3%80%8AJava-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%EF%BC%88%E7%AC%AC10%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="next" title="《Java 核心技术（第10版）》读书笔记">
+      《Java 核心技术（第10版）》读书笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#资源"><span class="nav-number">1.</span> <span class="nav-text">资源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OO-基础"><span class="nav-number">2.</span> <span class="nav-text">OO 基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OO-原则"><span class="nav-number">3.</span> <span class="nav-text">OO 原则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">4.</span> <span class="nav-text">目录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#设计模式入门"><span class="nav-number">4.1.</span> <span class="nav-text">设计模式入门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原文摘抄"><span class="nav-number">4.1.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本章总结"><span class="nav-number">4.1.2.</span> <span class="nav-text">本章总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#观察者（Observer）模式"><span class="nav-number">4.2.</span> <span class="nav-text">观察者（Observer）模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原文摘抄-1"><span class="nav-number">4.2.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本章总结-1"><span class="nav-number">4.2.2.</span> <span class="nav-text">本章总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#装饰者模式"><span class="nav-number">4.3.</span> <span class="nav-text">装饰者模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原文摘抄-2"><span class="nav-number">4.3.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本章总结-2"><span class="nav-number">4.3.2.</span> <span class="nav-text">本章总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工厂模式"><span class="nav-number">4.4.</span> <span class="nav-text">工厂模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原文摘抄-3"><span class="nav-number">4.4.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本章总结-3"><span class="nav-number">4.4.2.</span> <span class="nav-text">本章总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单件模式"><span class="nav-number">4.5.</span> <span class="nav-text">单件模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原文摘抄-4"><span class="nav-number">4.5.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本章总结-4"><span class="nav-number">4.5.2.</span> <span class="nav-text">本章总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令模式"><span class="nav-number">4.6.</span> <span class="nav-text">命令模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原文摘抄-5"><span class="nav-number">4.6.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本章总结-5"><span class="nav-number">4.6.2.</span> <span class="nav-text">本章总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#适配器模式与外观模式"><span class="nav-number">4.7.</span> <span class="nav-text">适配器模式与外观模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原文摘抄-6"><span class="nav-number">4.7.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本章总结-6"><span class="nav-number">4.7.2.</span> <span class="nav-text">本章总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板方法模式"><span class="nav-number">4.8.</span> <span class="nav-text">模板方法模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原文摘抄-7"><span class="nav-number">4.8.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本章总结-7"><span class="nav-number">4.8.2.</span> <span class="nav-text">本章总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代器与组合模式"><span class="nav-number">4.9.</span> <span class="nav-text">迭代器与组合模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原文摘抄-8"><span class="nav-number">4.9.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本章总结-8"><span class="nav-number">4.9.2.</span> <span class="nav-text">本章总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#状态模式"><span class="nav-number">4.10.</span> <span class="nav-text">状态模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原文摘抄-9"><span class="nav-number">4.10.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本章总结-9"><span class="nav-number">4.10.2.</span> <span class="nav-text">本章总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代理模式"><span class="nav-number">4.11.</span> <span class="nav-text">代理模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原文摘抄-10"><span class="nav-number">4.11.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本章总结-10"><span class="nav-number">4.11.2.</span> <span class="nav-text">本章总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复合模式"><span class="nav-number">4.12.</span> <span class="nav-text">复合模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原文摘抄-11"><span class="nav-number">4.12.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本章总结-11"><span class="nav-number">4.12.2.</span> <span class="nav-text">本章总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#与设计模式相处"><span class="nav-number">4.13.</span> <span class="nav-text">与设计模式相处</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原文摘抄-12"><span class="nav-number">4.13.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本章总结-12"><span class="nav-number">4.13.2.</span> <span class="nav-text">本章总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附录-A-剩下的模式"><span class="nav-number">4.14.</span> <span class="nav-text">附录 A 剩下的模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#桥接模式"><span class="nav-number">4.14.1.</span> <span class="nav-text">桥接模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成器模式"><span class="nav-number">4.14.2.</span> <span class="nav-text">生成器模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#责任链模式"><span class="nav-number">4.14.3.</span> <span class="nav-text">责任链模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#蝇量模式（享元模式）"><span class="nav-number">4.14.4.</span> <span class="nav-text">蝇量模式（享元模式）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解释器模式"><span class="nav-number">4.14.5.</span> <span class="nav-text">解释器模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中介者模式"><span class="nav-number">4.14.6.</span> <span class="nav-text">中介者模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#备忘录模式"><span class="nav-number">4.14.7.</span> <span class="nav-text">备忘录模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型模式"><span class="nav-number">4.14.8.</span> <span class="nav-text">原型模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问者模式"><span class="nav-number">4.14.9.</span> <span class="nav-text">访问者模式</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="书缘" src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">书缘</p>
+  <div class="site-description" itemprop="description">God is a coder.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/shuxiaoyuan" title="GitHub → https://github.com/shuxiaoyuan" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1362521868@qq.com" title="E-Mail → mailto:1362521868@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → /atom.xml"><i class="fa fa-fw fa-rss"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  © 2019 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">书缘</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">40k</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script>
+
+<script type="text/javascript" charset="utf-8" src="/js/lazyload-plugin/lazyload.intersectionObserver.min.js"></script></body></html>

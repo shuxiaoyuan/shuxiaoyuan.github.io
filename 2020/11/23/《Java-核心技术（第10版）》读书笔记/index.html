@@ -1,0 +1,746 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://shuxiaoyuan.github.io').hostname,
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="《Java 核心技术（第10版）》读书笔记，已大概完结。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《Java 核心技术（第10版）》读书笔记">
+<meta property="og:url" content="https://shuxiaoyuan.github.io/2020/11/23/%E3%80%8AJava-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%EF%BC%88%E7%AC%AC10%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+<meta property="og:site_name" content="书缘的博客">
+<meta property="og:description" content="《Java 核心技术（第10版）》读书笔记，已大概完结。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-11-23T03:36:45.000Z">
+<meta property="article:modified_time" content="2024-03-06T06:28:27.934Z">
+<meta property="article:author" content="书缘">
+<meta property="article:tag" content="读书笔记">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://shuxiaoyuan.github.io/2020/11/23/%E3%80%8AJava-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%EF%BC%88%E7%AC%AC10%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>《Java 核心技术（第10版）》读书笔记 | 书缘的博客</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?a298916edd5b96c19fd09758e88c2e2e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="书缘的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">书缘的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">博观而约取，厚积而薄发</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">3</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">11</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">17</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="搜索..." spellcheck="false" type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://shuxiaoyuan.github.io/2020/11/23/%E3%80%8AJava-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%EF%BC%88%E7%AC%AC10%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="书缘">
+      <meta itemprop="description" content="God is a coder.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="书缘的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          《Java 核心技术（第10版）》读书笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-23 11:36:45" itemprop="dateCreated datePublished" datetime="2020-11-23T11:36:45+08:00">2020-11-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-03-06 14:28:27" itemprop="dateModified" datetime="2024-03-06T14:28:27+08:00">2024-03-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/IT/" itemprop="url" rel="index">
+                    <span itemprop="name">IT</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>6.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 ≈</span>
+              <span>11 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>《Java 核心技术（第10版）》读书笔记，已大概完结。</p>
+<a id="more"></a>
+
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><p><a href="https://horstmann.com/corejava/bugs10.html" target="_blank" rel="noopener">勘误表</a></p>
+<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>重看这本书一是为了查漏补缺，二是扫清那些不熟悉的知识点。对于已经非常熟悉的部分，就不做笔记了。另外卷 I 第 10~13 章讲的是 Java GUI 和 applet 的知识，用不到，没有看。卷 II 只需要看 IO 和流式 API 等章节，其余可以用到再查。</p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h2 id="卷-I-基础知识"><a href="#卷-I-基础知识" class="headerlink" title="卷 I 基础知识"></a>卷 I 基础知识</h2><h3 id="第-1-章-Java-程序设计概述"><a href="#第-1-章-Java-程序设计概述" class="headerlink" title="第 1 章 Java 程序设计概述"></a>第 1 章 Java 程序设计概述</h3><ul>
+<li>即时编译（JIT）使得现在的的 Java 代码运行速度与 C++ 相差无几，有些情况下甚至更快。</li>
+</ul>
+<h3 id="第-3-章-Java-的基本程序设计结构"><a href="#第-3-章-Java-的基本程序设计结构" class="headerlink" title="第 3 章 Java 的基本程序设计结构"></a>第 3 章 Java 的基本程序设计结构</h3><h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><ul>
+<li><p>Java 整型范围与运行 Java 代码的机器无关。</p>
+</li>
+<li><p>长整型数值有一个后缀 L 或 l，例如 4000000000L。十六进制数值有一个前缀 0x 或 0X，例如 0xCAFE。八进制有一个前缀 0，例如 010 对应十进制的 8。八进制表示法比较容易混淆，所以建议最好不要使用八进制常数。</p>
+</li>
+<li><p>从 Java 7 开始，加上前缀 0b 或 0B 就可以写二进制数，例如 0b1001 是 9。Java 7 开始还可以为数字字面量加下划线，如 1_000_000（或 0b1111_0100_0010_0100_0000）表示一百万。这些下划线只是为了让人更易读。Java 编译器会去除这些下划线。</p>
+</li>
+<li><p>Java 没有任何无符号（unsigned）形式的 int、long、short 或 byte 类型。</p>
+</li>
+<li><p>没有后缀 F 的浮点数值（如 3.14）默认为 double 类型。当然，也可以在浮点数值后面添加后缀 D 或 d（例如，3.14D）</p>
+</li>
+<li><p>有三个特殊的浮点数值：正无穷大、负无穷大、NaN（不是一个数字）。例如，一个正浮点数除以 0 的结果为正无穷大。计算 0.0/0 或者负数的平方根结果为 NaN。常量 Double.POSITIVE_INFINITY、Double.NEGATIVE_INFINITY 和 Double.NaN（以及相应的 Float 类型的常量）分别表示这三个特殊的值。判断一个特定值是否等于 Double.NaN 应该用 Double.isNaN() 方法，而不是“==”。</p>
+</li>
+<li><p>Unicode 转义序列会在解析代码之前得到处理。因此需要小心注释中的 \u。注释 <code>// \u000A</code> 会产生一个语法错误，因为读程序时 \u000A 会替换成一个换行符。 类似地，注释 <code>// c:\users</code> 也会产生一个语法错误，因为 \u 后面并未跟着 4 个十六进制数。</p>
+</li>
+<li><p><strong>我们强烈建议不要在程序中使用 char 类型</strong>，除非确实需要处理 UTF-16 代码单元。最好将字符串作为抽象数据类型处理。</p>
+<p>  这一条其实我也没太弄懂，关于 Java Unicode、码点、代码单元等相关知识，用到再查。</p>
+</li>
+</ul>
+<h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><ul>
+<li><p>尽管 $ 是一个合法的 Java 字符，但不要在你自己的代码中使用这个字符。它只用在 Java 编译器或其他工具生成的名字中。</p>
+</li>
+<li><p>在 Java 中，变量的声明尽可能地靠近变量第一次使用的地方，这是一种良好的程序编写风格。</p>
+</li>
+</ul>
+<h4 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h4><ul>
+<li><p>如果两个操作数中有一个是 double 类型，另一个操作数就会转换为 double 类型。否则，如果其中一个操作数是 float 类型，另一个操作数将会转换为 float 类型。否则，如果其中一个操作数是 long 类型，另一个操作数将会转换为 long 类型。否则，两个操作数都将被转换为 int 类型。</p>
+<p>  <strong>注意：自动类型转换规则包括三目运算！！</strong></p>
+</li>
+<li><p>如果运算符得到一个值，其类型与左侧操作数的类型不同，就会发生强制类型转换。例如，如果 x 是一个 int，则 <code>x += 3.5;</code> 是合法的，将把 x 设置为 <code>(int)(x + 3.5)</code>。</p>
+</li>
+<li><p><code>>>></code> 运算符会用 0 填充高位，这与 <code>>></code> 不同，它会用符号位填充高位。不存在 <code><<<</code> 运算符。移位运算符的右操作数要完成模 32 的运算（除非左操作数是 long 类型，在这种情况下需要对右操作数模 64）。例如，1 << 35 的值等同于 1 << 3 ，结果为 8。</p>
+</li>
+</ul>
+<h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><p>P49 讲了码点和代码单元的知识，但基本用不到，不要踩这个坑就行。</p>
+<h4 id="控制流程"><a href="#控制流程" class="headerlink" title="控制流程"></a>控制流程</h4><ul>
+<li><p>在循环中，检测两个浮点数是否相等需要格外小心。循环：<code>for(double x = 0; x != 10; x += 0.1)</code> 可能永远不会结束。由于舍入的误差，最终可能得不到精确值。因为 0.1 无法精确地用二进制表示，所以，x 将从 9.999 999 999 999 98 跳到 10.099 999 999 999 98</p>
+</li>
+<li><p>许多程序员容易混淆 break 和 continue 语句。这些语句完全是可选的，即不使用它们也可以表达同样的逻辑含义。</p>
+</li>
+</ul>
+<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><ul>
+<li><p>数组长度不要求是常量：<code>new int[n]</code> 会创建一个长度为 n 的数组。</p>
+</li>
+<li><p><strong>在 Java 中，允许数组长度为 0。在编写一个结果为数组的方法时，如果碰巧结果为空，则这种语法形式就显得非常有用。此时可以创建一个长度为 0 的数组：<code>new elementType[0]</code>。注意，数组长度为 0 与 null 不同。</strong></p>
+</li>
+</ul>
+<p>P83 讲了如何从 m 个数中随机取 n 个的实现。</p>
+<h3 id="第-4-章-对象与类"><a href="#第-4-章-对象与类" class="headerlink" title="第 4 章 对象与类"></a>第 4 章 对象与类</h3><h4 id="使用预定义类"><a href="#使用预定义类" class="headerlink" title="使用预定义类"></a>使用预定义类</h4><ul>
+<li>标准 Java 类库分别包含了两个类：一个是用来表示时间点的 Date 类；另一个是用来表示大家熟悉的日历表示法的 LocalDate 类。</li>
+</ul>
+<p>更改器方法（mutator method）和访问器方法（accessor method）区别。</p>
+<h4 id="用户自定义类"><a href="#用户自定义类" class="headerlink" title="用户自定义类"></a>用户自定义类</h4><p>尽量不要返回类中可变的成员变量，这样会破坏类的封装性。如果需要返回一个可变数据域的拷贝，就应该使用 clone。</p>
+<ul>
+<li>如果类中的每个方法都不会改变其对象，这种类就是不可变的类。</li>
+</ul>
+<h3 id="第-5-章-继承"><a href="#第-5-章-继承" class="headerlink" title="第 5 章 继承"></a>第 5 章 继承</h3><h4 id="类、超类和子类"><a href="#类、超类和子类" class="headerlink" title="类、超类和子类"></a>类、超类和子类</h4><ul>
+<li><p>有些人认为 super 与 this 引用的是类似的概念，实际上，这样比较并不太恰当。这是因为 super 不是一个对象的引用，不能将 super 赋给另一个对象变量，它只是一个指示编译器调用超类方法的特殊关键字。</p>
+</li>
+<li><p>一个对象变量可以指示多种实际类型的现象被称为多态（polymorphism）。在运行时能够自动地选择调用哪个方法的现象称为动态绑定（dynamic binding）。</p>
+</li>
+</ul>
+<h4 id="Object：所有类的超类"><a href="#Object：所有类的超类" class="headerlink" title="Object：所有类的超类"></a>Object：所有类的超类</h4><p>为了防备 equals() 方法调用者可能为 null 的情况，需要使用 Objects.equals() 方法。<br>同样，还有 Objects.hashCode() 方法</p>
+<p>这里还讲了重写 equals() 方法需要注意的细节，比如该用 instanceof 还是 getClass() 的问题。《Effective Java》里有关于重写 equals() 方法和 hashCode() 方法的详细介绍。</p>
+<h4 id="泛型数组列表"><a href="#泛型数组列表" class="headerlink" title="泛型数组列表"></a>泛型数组列表</h4><ul>
+<li>一旦能够确认数组列表的大小不再发生变化，就可以调用 trimToSize 方法。这个方法将存储区域的大小调整为当前元素数量所需要的存储空间数目。垃圾回收器将回收多余的存储空间。</li>
+<li>一旦整理了数组列表的大小，添加新元素就需要花时间再次移动存储块，所以应该在确认不会添加任何元素时，再调用 trimToSize。</li>
+</ul>
+<h4 id="对象包装器与自动装箱"><a href="#对象包装器与自动装箱" class="headerlink" title="对象包装器与自动装箱"></a>对象包装器与自动装箱</h4><ul>
+<li><p>对象包装器类是不可变的，即一旦构造了包装器，就不允许更改包装在其中的值。同时，对象包装器类还是 final，因此不能定义它们的子类。</p>
+</li>
+<li><p>如果在一个条件表达式中混合使用 Integer 和 Double 类型，Integer 值就会拆箱，提升为 double，再装箱为 Double：</p>
+  <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Integer n = <span class="number">1</span>;</span><br><span class="line">Double x = <span class="number">2.0</span>;</span><br><span class="line">System.out.println(<span class="keyword">true</span> ? n : x); <span class="comment">// 输出 1.0</span></span><br></pre></td></tr></tbody></table></figure>
+
+</li>
+</ul>
+<h4 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h4><ul>
+<li>能够分析类能力的程序称为反射（reflective）。</li>
+<li>使用反射的主要人员是工具构造者，而不是应用程序员。</li>
+</ul>
+<h3 id="第-6-章-接口、lambda-表达式与内部类"><a href="#第-6-章-接口、lambda-表达式与内部类" class="headerlink" title="第 6 章 接口、lambda 表达式与内部类"></a>第 6 章 接口、lambda 表达式与内部类</h3><h4 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h4><p>接口声明方法不必声明 public，因为接口的所有方法都自动地是 public，但在接口的实现类里必须将方法声明为 public。</p>
+<p>compareTo() 方法如果使用两整数相减的实现，要确保减法运算不会溢出，否则，调用静态 Integer.compare() 方法。而如果是两个很接近的浮点数，它们的差经过四舍五入后有可能变成 0，应该调用 Double.compare() 方法。</p>
+<p>关于父类 x 和子类 y ，如果它们各自实现了自己的 compareTo() 方法，调用 x.compareTo(y) 没问题，但调用 y.compareTo(x) 时，若在方法内将 x 转换为 y 类型可能会报 ClassCastException 所以，这种情况有两种解决方案：第一种是利用 getClass() 判断两者是否是同一类型，不同的话属于非法比较，直接抛出异常；第二种是在 x 中实现一个子类也通用的 compareTo() 方法，并声明为 final 类型。</p>
+<p>Java 语言规范建议不要书写接口中 publi static final 这样的多余关键字。</p>
+<ul>
+<li><p>实际上，接口可以提供多重继承的大多数好处，同时还能避免多重继承的复杂性和低效性。</p>
+</li>
+<li><p>在 Java API 中，，你会看到很多接口都有相应的伴随类，这个伴随类中实现了相应接口的部分或所有方法，如 Collection/AbstractCollection 或 MouseListener/MouseAdapter。在 Java SE 8 中，这个技术已经过时。现在可以直接在接口中实现方法。</p>
+</li>
+</ul>
+<p>另外，默认方法也可以使得在 Java 老接口里定义新的默认方法，这样老的接口实现代码不必改动。</p>
+<p>解决默认方法冲突：<br>(1) 超类优先。如果超类提供了一个具体方法，同名而且有相同参数类型的默认方法会被忽略。<br>(2) 接口冲突。如果一个超接口提供了一个默认方法，另一个接口提供了一个同名而且参数类型（不论是否是默认参数）相同的方法，则子接口或实现类必须覆盖这个方法来解决冲突。</p>
+<h4 id="接口示例"><a href="#接口示例" class="headerlink" title="接口示例"></a>接口示例</h4><p>要对一个 String 数组按 String 长度排序，不能利用 String 自己实现的 compareTo() 方法，需要自己创建一个 Comparator 对象实现按字符串长度的比较方法，然后传入 Arrays.sort()。</p>
+<p>Cloneable 接口只是一个标记接口（标记接口不包含任何方法；它唯一的作用就是允许在类型查询中使用 instanceof）</p>
+<h4 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h4><ul>
+<li><p>内部类中声明的所有静态域都必须是 final，并且用一个编译时常量来初始化。原因很简单，我们希望一个静态域只能有一个实例，不过对于每个外部对象，会分别有一个单独的内部实例。如果这个域不是常量，它可能不是唯一的。内部类不能有 static 方法。Java 语言规范对这个限制没有做任何解释。（按理来说）也可以允许有静态方法，<del>但</del>只<del>能</del>（让它）访问外围类的静态域和方法。（但是）<del>显然</del>，Java 设计者认为相对于这种复杂性来说，它带来的好处有些得不偿失。（注：括号内容和删除线是我加的，原文翻译不通顺）</p>
+</li>
+<li><p>多年来，Java 程序员习惯的做法是用匿名内部类实现事件监听器和其他回调。如今最好还是使用 lambda 表达式。</p>
+</li>
+<li><p>在内部类不需要访问外围类对象的时候，应该使用静态内部类。</p>
+</li>
+</ul>
+<h4 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h4><ul>
+<li>克隆和代理是库设计者和工具构造者感兴趣的高级技术，对应用程序员来说，它们并不十分重要。</li>
+</ul>
+<h3 id="第-7-章-异常、断言和日志"><a href="#第-7-章-异常、断言和日志" class="headerlink" title="第 7 章 异常、断言和日志"></a>第 7 章 异常、断言和日志</h3><h4 id="处理错误"><a href="#处理错误" class="headerlink" title="处理错误"></a>处理错误</h4><ul>
+<li><p>Error 类层次结构描述了 Java 运行时系统的内部错误和资源耗尽错误。应用程序不应该抛出这种类型的对象。如果出现了这样的内部错误，除了通告给用户，并尽力使程序安全地终止之外，再也无能为力了。这种情况很少出现。</p>
+</li>
+<li><p>子类方法中声明的受检查异常不能比超类方法中声明的异常更通用。</p>
+</li>
+<li><p>如果超类方法没有抛出任何受检查异常，子类也不能抛出任何受检查异常。 </p>
+</li>
+</ul>
+<h4 id="捕获异常"><a href="#捕获异常" class="headerlink" title="捕获异常"></a>捕获异常</h4><ul>
+<li>捕获多个异常时，异常变量隐含为 final 变量。例如，不能在以下子句体中为 e 赋不同的值：<code>catch (FileNotFoundException | UnknownHostException e) { ... }</code></li>
+</ul>
+<p>7.2.3 节还讲了异常链，用到可以一看。</p>
+<ul>
+<li><p>try 语句可以只有 finally 子句，而没有 catch 子句。</p>
+</li>
+<li><p>当 finally 子句包含 return 语句时，将会出现一种意想不到的结果。假设利用 return 语句从 try 语句块中退出。在方法返回前，finally 子句的内容将被执行。如果 finally 子句中也有一个 return 语句，这个返回值将会覆盖原始的返回值。</p>
+</li>
+</ul>
+<p>另外当在 finally 子句中抛出异常时，会把 try 子句和 catch 子句中抛出的异常覆盖掉。</p>
+<h4 id="使用异常机制的技巧"><a href="#使用异常机制的技巧" class="headerlink" title="使用异常机制的技巧"></a>使用异常机制的技巧</h4><p>捕获异常比判定合法条件再运行要花费更多的时间，因此使用异常的基本规则是：只在异常情况下使用异常机制。</p>
+<ul>
+<li>不要过分地细化异常</li>
+</ul>
+<p>可以把一个逻辑放在一个 try 语句里，然后 catch 多个可能发生的异常。</p>
+<p>异常要“早抛出，晚捕获”。</p>
+<h4 id="记录日志"><a href="#记录日志" class="headerlink" title="记录日志"></a>记录日志</h4><p>这节没仔细看，不重要，用到可以再查。</p>
+<blockquote>
+<p>使用Java标准库内置的Logging有以下局限：<br>Logging系统在JVM启动时读取配置文件并完成初始化，一旦开始运行main()方法，就无法修改配置；<br>配置不太方便，需要在JVM启动时传递参数-Djava.util.logging.config.file=< config-file-name >。<br>因此，Java标准库内置的Logging使用并不是非常广泛。<br><a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1264738568571776" target="_blank" rel="noopener"><em>——廖雪峰教程</em></a></p>
+</blockquote>
+<h3 id="第-8-章-泛型程序设计"><a href="#第-8-章-泛型程序设计" class="headerlink" title="第 8 章 泛型程序设计"></a>第 8 章 泛型程序设计</h3><h4 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h4><ul>
+<li>类型变量放在修饰符（例如：public static）的后面，返回类型的前面</li>
+</ul>
+<h4 id="类型变量的限定"><a href="#类型变量的限定" class="headerlink" title="类型变量的限定"></a>类型变量的限定</h4><ul>
+<li><p>一个类型变量或通配符可以有多个限定，例如：<code>T, E extends Comparable & Serializable</code>。限定类型用 <code>&</code> 分隔，而 <code>,</code> 用来分隔类型变量</p>
+</li>
+<li><p>可以根据需要有多个接口超类型，但限定中至多有一个类。如果用一个类作为限定，它必须是限定列表中的第一个。</p>
+</li>
+</ul>
+<h4 id="泛型代码和虚拟机"><a href="#泛型代码和虚拟机" class="headerlink" title="泛型代码和虚拟机"></a>泛型代码和虚拟机</h4><ul>
+<li><p>原始类型用第一个限定的类型变量来替换，如果没有给定限定就用 Object 替换。</p>
+</li>
+<li><p><code>class Interval< T extends Serializable & Comparable ></code> 中，原始类型用 Serializable 替换 T，而编译器在必要时要向 Comparable 插入强制类型转换。为了提高效率，应该将标签（tagging）接口（即没有方法的接口）放在限定列表的末尾。</p>
+</li>
+</ul>
+<h4 id="约束与局限性"><a href="#约束与局限性" class="headerlink" title="约束与局限性"></a>约束与局限性</h4><ul>
+<li><p>不能创建参数化类型的数组，但声明参数化类型的数组是允许的。也可以创建数组后强制转换为参数化类型。</p>
+</li>
+<li><p>不能抛出或捕获泛型类的实例，泛型类扩展 Throwable 都是不合法的。</p>
+</li>
+</ul>
+<h4 id="通配符类型"><a href="#通配符类型" class="headerlink" title="通配符类型"></a>通配符类型</h4><ul>
+<li><p>带有超类型限定的通配符可以向泛型对象写入，带有子类型限定的通配符可以从泛型对象读取。</p>
+</li>
+<li><p>无限定通配符类型的 get 方法只能赋值给一个 Object，set 方法不能被调用（除非传入 null）。通常它被用来判定是否为 null。</p>
+</li>
+</ul>
+<p>本章泛型相关跳着看的，后面比较复杂，实际应该很少遇到，遇到再来查。</p>
+<h3 id="第-9-章-集合"><a href="#第-9-章-集合" class="headerlink" title="第 9 章 集合"></a>第 9 章 集合</h3><h4 id="Java-集合框架"><a href="#Java-集合框架" class="headerlink" title="Java 集合框架"></a>Java 集合框架</h4><ul>
+<li>查找一个元素的唯一方法是调用 next，而在执行查找操作的同时，迭代器的位置随之向前移动。因此，应该将 Java 迭代器认为是位于两个元素之间。当调用 next 时，迭代器就越过下一个元素，并返回刚刚越过的那个元素的引用。</li>
+</ul>
+<h4 id="具体的集合"><a href="#具体的集合" class="headerlink" title="具体的集合"></a>具体的集合</h4><ul>
+<li><p>在 Java 程序设计语言中，所有链表实际上都是双向链接的——即每个结点还存放着指向前驱结点的引用。</p>
+</li>
+<li><p>只有对自然有序的集合使用迭代器添加元素才有实际意义。例如，set 类型中的元素完全无序，因此，在 Iterator 接口中就没有 add 方法，相反地，集合类库提供了子接口 ListIterator，其中包含 add 方法。</p>
+</li>
+<li><p>在调用 next 之后，remove 方法删除迭代器左侧的元素。但是，如果调用 previous 就会将右侧的元素删除掉，并且不能连续调用两次 remove。add 方法只依赖于迭代器的位置，而 remove 方法依赖于迭代器的状态。</p>
+</li>
+<li><p>LinkedList 的 get 方法每次查找一个元素都要从列表的头部重新开始搜索。LinkedList 对象根本不做任何缓存位置信息的操作。get 方法做了微小的优化：如果索引大于 size()/2 就从列表尾端开始搜索元素。</p>
+</li>
+<li><p>标准类库散列表使用的桶数是 2 的幂，默认值为 16（为表大小提供的任何值都将被自动地转换为 2 的下一个幂）。</p>
+</li>
+</ul>
+<h4 id="映射"><a href="#映射" class="headerlink" title="映射"></a>映射</h4><ul>
+<li>putIfAbsent 方法只有当键原先不存在或键对应的值为 null 时才会放入一个值。</li>
+</ul>
+<h4 id="视图与包装器"><a href="#视图与包装器" class="headerlink" title="视图与包装器"></a>视图与包装器</h4><p>这节讲了 Java 集合的视图及其应用，大概扫了一遍，用到再查。</p>
+<h3 id="第-14-章-并发"><a href="#第-14-章-并发" class="headerlink" title="第 14 章 并发"></a>第 14 章 并发</h3><h4 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h4><h2 id="卷-II-高级特性"><a href="#卷-II-高级特性" class="headerlink" title="卷 II 高级特性"></a>卷 II 高级特性</h2><h3 id="第-1-章-Java-SE-8-的流库"><a href="#第-1-章-Java-SE-8-的流库" class="headerlink" title="第 1 章 Java SE 8 的流库"></a>第 1 章 Java SE 8 的流库</h3><p>本章讲了 Java 8 的流式 API，其中几个和 python 里的 map、reduce、filter 函数类似，能很方便地对数据集进行处理。相当于把自己的迭代实现提供了现成的接口调用。</p>
+<h3 id="第-2-章-输入与输出"><a href="#第-2-章-输入与输出" class="headerlink" title="第 2 章 输入与输出"></a>第 2 章 输入与输出</h3><p>这本书这章感觉讲的不太好，用到再查。</p>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>觉得文章有帮助，打赏1元鼓励一下作者</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="书缘 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="书缘 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>书缘
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://shuxiaoyuan.github.io/2020/11/23/%E3%80%8AJava-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%EF%BC%88%E7%AC%AC10%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" title="《Java 核心技术（第10版）》读书笔记">https://shuxiaoyuan.github.io/2020/11/23/《Java-核心技术（第10版）》读书笔记/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag"># 读书笔记</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/10/30/%E3%80%8AHead-First-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="prev" title="《Head First 设计模式》读书笔记">
+      <i class="fa fa-chevron-left"></i> 《Head First 设计模式》读书笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/11/25/%E3%80%8A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="next" title="《操作系统导论》读书笔记">
+      《操作系统导论》读书笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#资源"><span class="nav-number">1.</span> <span class="nav-text">资源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#说明"><span class="nav-number">2.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">3.</span> <span class="nav-text">目录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#卷-I-基础知识"><span class="nav-number">3.1.</span> <span class="nav-text">卷 I 基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第-1-章-Java-程序设计概述"><span class="nav-number">3.1.1.</span> <span class="nav-text">第 1 章 Java 程序设计概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-3-章-Java-的基本程序设计结构"><span class="nav-number">3.1.2.</span> <span class="nav-text">第 3 章 Java 的基本程序设计结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据类型"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变量"><span class="nav-number">3.1.2.2.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运算符"><span class="nav-number">3.1.2.3.</span> <span class="nav-text">运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串"><span class="nav-number">3.1.2.4.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#控制流程"><span class="nav-number">3.1.2.5.</span> <span class="nav-text">控制流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数组"><span class="nav-number">3.1.2.6.</span> <span class="nav-text">数组</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-4-章-对象与类"><span class="nav-number">3.1.3.</span> <span class="nav-text">第 4 章 对象与类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用预定义类"><span class="nav-number">3.1.3.1.</span> <span class="nav-text">使用预定义类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用户自定义类"><span class="nav-number">3.1.3.2.</span> <span class="nav-text">用户自定义类</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-5-章-继承"><span class="nav-number">3.1.4.</span> <span class="nav-text">第 5 章 继承</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#类、超类和子类"><span class="nav-number">3.1.4.1.</span> <span class="nav-text">类、超类和子类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Object：所有类的超类"><span class="nav-number">3.1.4.2.</span> <span class="nav-text">Object：所有类的超类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#泛型数组列表"><span class="nav-number">3.1.4.3.</span> <span class="nav-text">泛型数组列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对象包装器与自动装箱"><span class="nav-number">3.1.4.4.</span> <span class="nav-text">对象包装器与自动装箱</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反射"><span class="nav-number">3.1.4.5.</span> <span class="nav-text">反射</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-6-章-接口、lambda-表达式与内部类"><span class="nav-number">3.1.5.</span> <span class="nav-text">第 6 章 接口、lambda 表达式与内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#接口"><span class="nav-number">3.1.5.1.</span> <span class="nav-text">接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接口示例"><span class="nav-number">3.1.5.2.</span> <span class="nav-text">接口示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内部类"><span class="nav-number">3.1.5.3.</span> <span class="nav-text">内部类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代理"><span class="nav-number">3.1.5.4.</span> <span class="nav-text">代理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-7-章-异常、断言和日志"><span class="nav-number">3.1.6.</span> <span class="nav-text">第 7 章 异常、断言和日志</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#处理错误"><span class="nav-number">3.1.6.1.</span> <span class="nav-text">处理错误</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#捕获异常"><span class="nav-number">3.1.6.2.</span> <span class="nav-text">捕获异常</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用异常机制的技巧"><span class="nav-number">3.1.6.3.</span> <span class="nav-text">使用异常机制的技巧</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#记录日志"><span class="nav-number">3.1.6.4.</span> <span class="nav-text">记录日志</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-8-章-泛型程序设计"><span class="nav-number">3.1.7.</span> <span class="nav-text">第 8 章 泛型程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#泛型方法"><span class="nav-number">3.1.7.1.</span> <span class="nav-text">泛型方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类型变量的限定"><span class="nav-number">3.1.7.2.</span> <span class="nav-text">类型变量的限定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#泛型代码和虚拟机"><span class="nav-number">3.1.7.3.</span> <span class="nav-text">泛型代码和虚拟机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#约束与局限性"><span class="nav-number">3.1.7.4.</span> <span class="nav-text">约束与局限性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通配符类型"><span class="nav-number">3.1.7.5.</span> <span class="nav-text">通配符类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-9-章-集合"><span class="nav-number">3.1.8.</span> <span class="nav-text">第 9 章 集合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Java-集合框架"><span class="nav-number">3.1.8.1.</span> <span class="nav-text">Java 集合框架</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#具体的集合"><span class="nav-number">3.1.8.2.</span> <span class="nav-text">具体的集合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#映射"><span class="nav-number">3.1.8.3.</span> <span class="nav-text">映射</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#视图与包装器"><span class="nav-number">3.1.8.4.</span> <span class="nav-text">视图与包装器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-14-章-并发"><span class="nav-number">3.1.9.</span> <span class="nav-text">第 14 章 并发</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#线程"><span class="nav-number">3.1.9.1.</span> <span class="nav-text">线程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卷-II-高级特性"><span class="nav-number">3.2.</span> <span class="nav-text">卷 II 高级特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第-1-章-Java-SE-8-的流库"><span class="nav-number">3.2.1.</span> <span class="nav-text">第 1 章 Java SE 8 的流库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-2-章-输入与输出"><span class="nav-number">3.2.2.</span> <span class="nav-text">第 2 章 输入与输出</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="书缘" src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">书缘</p>
+  <div class="site-description" itemprop="description">God is a coder.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/shuxiaoyuan" title="GitHub → https://github.com/shuxiaoyuan" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1362521868@qq.com" title="E-Mail → mailto:1362521868@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → /atom.xml"><i class="fa fa-fw fa-rss"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  © 2019 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">书缘</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">40k</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script>
+
+<script type="text/javascript" charset="utf-8" src="/js/lazyload-plugin/lazyload.intersectionObserver.min.js"></script></body></html>

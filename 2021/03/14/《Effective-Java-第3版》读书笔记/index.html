@@ -1,0 +1,1031 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://shuxiaoyuan.github.io').hostname,
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="《Effective Java 第3版》读书笔记，持续更新中…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《Effective Java 第3版》读书笔记">
+<meta property="og:url" content="https://shuxiaoyuan.github.io/2021/03/14/%E3%80%8AEffective-Java-%E7%AC%AC3%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+<meta property="og:site_name" content="书缘的博客">
+<meta property="og:description" content="《Effective Java 第3版》读书笔记，持续更新中…">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-14T13:08:34.000Z">
+<meta property="article:modified_time" content="2024-03-06T06:28:27.934Z">
+<meta property="article:author" content="书缘">
+<meta property="article:tag" content="读书笔记">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://shuxiaoyuan.github.io/2021/03/14/%E3%80%8AEffective-Java-%E7%AC%AC3%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>《Effective Java 第3版》读书笔记 | 书缘的博客</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?a298916edd5b96c19fd09758e88c2e2e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="书缘的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">书缘的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">博观而约取，厚积而薄发</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">3</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">11</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">17</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="搜索..." spellcheck="false" type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://shuxiaoyuan.github.io/2021/03/14/%E3%80%8AEffective-Java-%E7%AC%AC3%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="书缘">
+      <meta itemprop="description" content="God is a coder.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="书缘的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          《Effective Java 第3版》读书笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-14 21:08:34" itemprop="dateCreated datePublished" datetime="2021-03-14T21:08:34+08:00">2021-03-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-03-06 14:28:27" itemprop="dateModified" datetime="2024-03-06T14:28:27+08:00">2024-03-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/IT/" itemprop="url" rel="index">
+                    <span itemprop="name">IT</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>10k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 ≈</span>
+              <span>17 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>《Effective Java 第3版》读书笔记，持续更新中…</p>
+<a id="more"></a>
+
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><p><a href="https://pan.baidu.com/s/1hdEoFrC2VcWIER8P-g1wtQ" target="_blank" rel="noopener">百度网盘资源链接</a>(包含第2版和第3版的中英文 pdf 电子书)提取码：zunh</p>
+<p><a href="https://www.iteye.com/blog/yulimin-2432638" target="_blank" rel="noopener">勘误表</a></p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h2 id="第-2-章-创建和销毁对象"><a href="#第-2-章-创建和销毁对象" class="headerlink" title="第 2 章 创建和销毁对象"></a>第 2 章 创建和销毁对象</h2><h3 id="第-1-条：用静态工厂方法代替构造器"><a href="#第-1-条：用静态工厂方法代替构造器" class="headerlink" title="第 1 条：用静态工厂方法代替构造器"></a>第 1 条：用静态工厂方法代替构造器</h3><h4 id="原文摘抄"><a href="#原文摘抄" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li>P9<blockquote>
+<p><em>静态工厂和公有构造器都各有用处，我们需要理解它们各自的长处。静态工厂经常更加合适，因此切忌第一反应就是提供公有的构造器，而不先考虑静态工厂。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结"><a href="#本条总结" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了静态工厂方法相比于公有构造器的五大优势和两个缺点，还提到了享元模式。</p>
+<h3 id="第-2-条：遇到多个构造器参数时要考虑使用构建器"><a href="#第-2-条：遇到多个构造器参数时要考虑使用构建器" class="headerlink" title="第 2 条：遇到多个构造器参数时要考虑使用构建器"></a>第 2 条：遇到多个构造器参数时要考虑使用构建器</h3><h4 id="原文摘抄-1"><a href="#原文摘抄-1" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li>P15<blockquote>
+<p><em>如果类的构造器或者静态工厂中具有多个参数，设计这种类时，Builder 模式就是一种不错的选择。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-1"><a href="#本条总结-1" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了当一个类中有多个参数时，这个类的构建方式，提到了重叠构造器、JavaBeans 模式，并分析了它们的缺点。</p>
+<h3 id="第-3-条：用私有构造器或者枚举类型强化-Singleton-属性"><a href="#第-3-条：用私有构造器或者枚举类型强化-Singleton-属性" class="headerlink" title="第 3 条：用私有构造器或者枚举类型强化 Singleton 属性"></a>第 3 条：用私有构造器或者枚举类型强化 Singleton 属性</h3><h4 id="原文摘抄-2"><a href="#原文摘抄-2" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li>P17<blockquote>
+<p><em>如果 Singleton 必须扩展一个超类，而不是扩展 Enum 的时候，则不宜使用这个方法（虽然可以声明枚举去实现接口）。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-2"><a href="#本条总结-2" class="headerlink" title="本条总结"></a>本条总结</h4><p>单例模式的各种实现已经很熟悉了，但还是有很多需要注意的细节问题。比如本条中提到的通过反射机制调用私有构造器，可以采用在构造器中创建实例的时候判断持有的实例引用不为空则抛出异常的方式。另外防止序列化创建新的实例，本条中提到了 transient 关键字还有 readResolve 方法，这个没有接触过，有机会再看。</p>
+<h3 id="第-4-条：通过私有构造器强化不可实例化的能力"><a href="#第-4-条：通过私有构造器强化不可实例化的能力" class="headerlink" title="第 4 条：通过私有构造器强化不可实例化的能力"></a>第 4 条：通过私有构造器强化不可实例化的能力</h3><h4 id="本条总结-3"><a href="#本条总结-3" class="headerlink" title="本条总结"></a>本条总结</h4><p>只包含静态方法和静态域的类，据我理解也就是所谓的工具类，如 java.lang.Math、java.util.Collections 等。这些类也可以聚集与之相关的 final 类的静态方法，因为 final 类没有子类。</p>
+<p>从 Java 8 开始，可以把这些方法组织到一个接口里。<br>如果是组织到一个类中，那么你肯定不希望这个类被实例化，具体做法就是给这个类写一个私有的构造器，并在里面抛出 AssertionError()，并写好注释。</p>
+<h3 id="第-5-条：优先考虑依赖注入来引用资源"><a href="#第-5-条：优先考虑依赖注入来引用资源" class="headerlink" title="第 5 条：优先考虑依赖注入来引用资源"></a>第 5 条：优先考虑依赖注入来引用资源</h3><h4 id="原文摘抄-3"><a href="#原文摘抄-3" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P18</p>
+<blockquote>
+<p><em>静态工具类和 Singleton 类不适合于需要引用底层资源的类。</em></p>
+</blockquote>
+</li>
+<li><p>P18</p>
+<blockquote>
+<p><em>当创建一个新的实例时，就将该资源传到构造器中。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-4"><a href="#本条总结-4" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了依赖注入模式，还顺带讲了 Java 8 的 Supplier< T > 接口，以及工厂模式在此模式下的应用。</p>
+<h3 id="第-6-条：避免创建不必要的对象"><a href="#第-6-条：避免创建不必要的对象" class="headerlink" title="第 6 条：避免创建不必要的对象"></a>第 6 条：避免创建不必要的对象</h3><h4 id="原文摘抄-4"><a href="#原文摘抄-4" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li>P22<blockquote>
+<p><em>要优先使用基本类型而不是装箱基本类型，要当心无意识的自动装箱。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-5"><a href="#本条总结-5" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了在 <code>String s = new String("abc")</code> 中，”abc” 本来就是一个 String 实例，不如直接重用方式写成 <code>String s = "abc"</code>。</p>
+<p>然后讲了正则表达式匹配创建 Pattern 实例的成本很高，因为需要将正则表达式编译成一个有限状态机。所以应该用变量将这个实例缓存起来，在用到的时候复用。另外不要使用延迟初始化，这样每次调用都会判定是否初始化，反而会降低性能。</p>
+<p>本章还讲了适配器模式和 Map 接口的 keySet 方法，但我没太 get 到作者想表达的意思。</p>
+<p>后面讲到要避免频繁自动装箱引起的不必要的性能损耗。</p>
+<h3 id="第-7-条：消除过期的对象引用"><a href="#第-7-条：消除过期的对象引用" class="headerlink" title="第 7 条：消除过期的对象引用"></a>第 7 条：消除过期的对象引用</h3><h4 id="原文摘抄-5"><a href="#原文摘抄-5" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P24</p>
+<blockquote>
+<p><em>清空对象引用应该是一种例外，而不是一种规范行为。</em></p>
+</blockquote>
+</li>
+<li><p>P24</p>
+<blockquote>
+<p><em>只要类是自己管理内存，程序员就应该警惕内存泄漏问题。</em><br><em>内存泄漏的另一个常见来源是缓存。</em><br><em>内存泄漏的第三个常见来源是监听器和其他回调。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-6"><a href="#本条总结-6" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条以自己实现的栈为例，当栈弹出元素时，应该立刻将其赋值为 null，否则这些元素可能既访问不到又不会被垃圾回收，从而造成内存泄漏。</p>
+<p>本章还提到了几个弱引用相关的集合，例如 WeakHashMap、LinkedHashMap。</p>
+<h3 id="第-8-条：避免使用终结方法和清除方法"><a href="#第-8-条：避免使用终结方法和清除方法" class="headerlink" title="第 8 条：避免使用终结方法和清除方法"></a>第 8 条：避免使用终结方法和清除方法</h3><h4 id="原文摘抄-6"><a href="#原文摘抄-6" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li>P29<blockquote>
+<p><em>总而言之，除非是作为安全网，或者是为了终止非关键的本地资源，否则请不要使用清除方法，对于在 Java 9 之前的发行版本，则尽量不要使用终结方法。若使用了终结方法或者清除方法，则要注意它的不确定性和性能后果。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-7"><a href="#本条总结-7" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条说了挺多但其实只有一点，别用这俩方法！别用这俩方法！别用这俩方法！</p>
+<h3 id="第-9-条：try-with-resources-优先于-try-finally"><a href="#第-9-条：try-with-resources-优先于-try-finally" class="headerlink" title="第 9 条：try-with-resources 优先于 try-finally"></a>第 9 条：try-with-resources 优先于 try-finally</h3><h4 id="原文摘抄-7"><a href="#原文摘抄-7" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li>P32<blockquote>
+<p><em>结论很明显：在处理必须关闭的资源时，始终要优先考虑用 try-with-resources，而不是用 try-finally。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-8"><a href="#本条总结-8" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了使用 try-finally 在遇到多个资源时写法的复杂、finally 中 close 可能会抛出异常然后覆盖 try 中的异常等缺点。然后给出了优先使用 try-with-resources 的结论。</p>
+<h2 id="第-3-章-对于所有对象都通用的方法"><a href="#第-3-章-对于所有对象都通用的方法" class="headerlink" title="第 3 章 对于所有对象都通用的方法"></a>第 3 章 对于所有对象都通用的方法</h2><h3 id="第-10-条：覆盖-equals-时请遵守通用约定"><a href="#第-10-条：覆盖-equals-时请遵守通用约定" class="headerlink" title="第 10 条：覆盖 equals 时请遵守通用约定"></a>第 10 条：覆盖 equals 时请遵守通用约定</h3><h4 id="原文摘抄-8"><a href="#原文摘抄-8" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P33</p>
+<blockquote>
+<p><em>最容易避免这类问题的办法就是不覆盖 equals 方法，在这种情况下，类的每个实例都只与它自身相等。如果满足了以下任何一个条件，这就是所期望的结果：</em></p>
+<ul>
+<li><em>类的每个实例本质上都是唯一的。</em></li>
+<li><em>类没有必要提供“逻辑相等（logical equality）的测试功能。”</em></li>
+<li><em>超类已经覆盖率 equals，超类的行为对于这个类也是合适的。</em></li>
+<li><em>类是私有的，或者是包级私有的，可以确定它的 equals 方法永远不会被调用。</em></li>
+</ul>
+</blockquote>
+</li>
+<li><p>P34</p>
+<blockquote>
+<p><em>equals 方法实现了等价关系（equivalence relation），其属性如下：</em></p>
+<ul>
+<li><em>自反性</em></li>
+<li><em>对称性</em></li>
+<li><em>传递性</em></li>
+<li><em>一致性</em></li>
+<li><em>对于任何非 null 的引用值 x，x.equals(null) 必须返回 false</em></li>
+</ul>
+</blockquote>
+</li>
+<li><p>P36</p>
+<blockquote>
+<p><em>一旦违反了 equals 约定，当其他对象面对你的对象时，你完全不知道这些对象的行为会怎么样。</em></p>
+</blockquote>
+</li>
+<li><p>P38</p>
+<blockquote>
+<p><em>我们无法在扩展可实例化的类的同时，既能增加新的组件，同时又保留 equals 约定，除非愿意放弃面向对象的抽象所带来的优势。</em></p>
+</blockquote>
+</li>
+<li><p>P41</p>
+<blockquote>
+<p><em>结合所有这些要求，得出了以下实现高质量 equals 方法的诀窍：</em></p>
+<ol>
+<li><em>使用 == 操作符检查，“参数是否为这个对象的引用”。</em></li>
+<li><em>使用 instanceof 操作符检查“参数是否为正确的类型”。</em></li>
+<li><em>把参数转换成正确的类型。</em></li>
+<li><em>对于该类中的每个“关键”（significant）域，检查参数中的域是否与该对象中对应的域相匹配。</em></li>
+</ol>
+</blockquote>
+</li>
+<li><p>P43</p>
+<blockquote>
+<p><em>覆盖 equals 时总要覆盖 hashCode。</em><br><em>不要企图让 equals 方法过于智能。</em><br><em>不要将 equals 声明中的 Object 对象替换为其他的类型。</em></p>
+</blockquote>
+</li>
+<li><p>P44</p>
+<blockquote>
+<p><em>总而言之，不要轻易覆盖 equals 方法，除非迫不得已。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-9"><a href="#本条总结-9" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了覆盖 equals 方法要注意的点，并提到了 Google 开源的 AutoValue 框架或者 IDE 可以自动生成。另外还提到了 java.sql.Timestamp 对 java.util.Date 进行了扩展，并增加了 nanoseconds 域，它的 equals 方法实现违反了对称性。还提到了 java.net.URL 的 equals 方法违反了一致性。</p>
+<h3 id="第-11-条：覆盖-equals-时总要覆盖-hashCode"><a href="#第-11-条：覆盖-equals-时总要覆盖-hashCode" class="headerlink" title="第 11 条：覆盖 equals 时总要覆盖 hashCode"></a>第 11 条：覆盖 equals 时总要覆盖 hashCode</h3><h4 id="原文摘抄-9"><a href="#原文摘抄-9" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P44</p>
+<blockquote>
+<p><em>在每个覆盖了 equals 方法的类中，都必须覆盖 hashCode 方法。</em><br><em>相等的对象必须具有相等的散列码。</em></p>
+</blockquote>
+</li>
+<li><p>P46</p>
+<blockquote>
+<p><em>必须排除 equals 比较计算中没有用到的任何域，否则很有可能违反 hashCode 约定的第二条。</em></p>
+</blockquote>
+</li>
+<li><p>P47</p>
+<blockquote>
+<p><em>如果一个类是不可变的，并且计算散列码的开销也比较大，就应该考虑把散列码缓存在对象内部，而不是每次请求的时候都重新计算散列码。</em><br><em>不要试图从散列码计算中排除掉一个对象的关键域来提高性能。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-10"><a href="#本条总结-10" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了覆盖 hashCode 的方法和实现细节以及需要注意的地方，提到了 Objects 类的 hash 方法会引发数组的创建，所以运行速度更慢一些。以及利用 AutoValue 框架和 IDE 可以自动生成。</p>
+<h3 id="第-12-条：始终要覆盖-toString"><a href="#第-12-条：始终要覆盖-toString" class="headerlink" title="第 12 条：始终要覆盖 toString"></a>第 12 条：始终要覆盖 toString</h3><h4 id="原文摘抄-10"><a href="#原文摘抄-10" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P49</p>
+<blockquote>
+<p><em>在实际应用中，toString 方法应该返回对象中包含的<strong>所有</strong>值得关注的信息。</em><br><em>无论是否决定指定格式，都应该在文档中明确地表明你的意图。</em></p>
+</blockquote>
+</li>
+<li><p>P50</p>
+<blockquote>
+<p><em>无论是否指定格式，都为 toString 返回值中包含的所有信息提供一种可以通过编程访问之的途径。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-11"><a href="#本条总结-11" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了覆盖 toString 方法要注意的点。</p>
+<h3 id="第-13-条：谨慎地覆盖-clone"><a href="#第-13-条：谨慎地覆盖-clone" class="headerlink" title="第 13 条：谨慎地覆盖 clone"></a>第 13 条：谨慎地覆盖 clone</h3><h4 id="原文摘抄-11"><a href="#原文摘抄-11" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P51</p>
+<blockquote>
+<p><em>事实上，实现 Cloneable 接口的类是为了提供一个功能适当的公有的 clone 方法。</em></p>
+</blockquote>
+</li>
+<li><p>P52</p>
+<blockquote>
+<p><em>不可变的类永远都不应该提供 clone 方法。</em></p>
+</blockquote>
+</li>
+<li><p>P53</p>
+<blockquote>
+<p><em>实际上，clone 方法就是另一个构造器；必须确保它不会伤害到原始的对象，并确保正确地创建被克隆对象中的约束条件（invariant）。</em><br><em>在数组上调用 clone 返回的数组，其编译时的类型与被克隆数组的类型相同。<strong>这是复制数组的最佳习惯做法</strong>，事实上，数组是 clone 方法唯一吸引人的用法。</em><br><em>Cloneable 架构与引用可变对象的 final 域的正常用法是不相兼容的。</em></p>
+</blockquote>
+</li>
+<li><p>P56</p>
+<blockquote>
+<p><em>公有的 clone 方法应该省略 throws 声明。</em></p>
+</blockquote>
+</li>
+<li><p>P57</p>
+<blockquote>
+<p><em>所有实现了 Cloneable 接口的类都应该覆盖 clone 方法。</em><br><em>对象拷贝的更好的办法是提供一个拷贝构造器（copy constructor）或拷贝工厂（copy factory）。</em></p>
+</blockquote>
+</li>
+<li><p>P58</p>
+<blockquote>
+<p><em>总之，复制功能最好由构造器或者工厂提供。这条规则最绝对例外的是数组，最好利用 clone 方法复制数组。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-12"><a href="#本条总结-12" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条详细讲了 Cloneable 接口、Object 类里的 clone 方法。一般只需要记住，复制对象用构造器或工厂，复制数组用 clone 方法。</p>
+<h3 id="第-14-条：考虑实现-Comparable-接口"><a href="#第-14-条：考虑实现-Comparable-接口" class="headerlink" title="第 14 条：考虑实现 Comparable 接口"></a>第 14 条：考虑实现 Comparable 接口</h3><h4 id="原文摘抄-12"><a href="#原文摘抄-12" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P58</p>
+<blockquote>
+<p><em>Java 平台类库中的所有值类，以及所有的枚举类型都实现了 Comparable 接口。如果你正在编写一个值类，它具有非常明显的内在排序关系，比如按字母顺序、按数值顺序或者按年代顺序，那你就应该坚决考虑实现 Comparable 接口。</em></p>
+</blockquote>
+</li>
+<li><p>P60</p>
+<blockquote>
+<p><em>由 compareTo 方法施加的等同性测试，也必须遵守相同于 equals 约定所施加的限制条件：自反性、对称性和传递性。因此，下面的告诫也同样适用：无法在用新的值组件扩展可实例化的类时，同时保持 compareTo 约定，除非愿意放弃面向对象的抽象优势。</em></p>
+</blockquote>
+</li>
+<li><p>P61</p>
+<blockquote>
+<p><em>在 compareTo 方法中使用关系操作符 < 和 > 是非常烦琐的，并且容易出错，因此不再建议使用。</em></p>
+</blockquote>
+</li>
+<li><p>P63</p>
+<blockquote>
+<p><em>总而言之，每当实现一个对排序敏感的类时，都应该让这个类实现 Comparable 接口，以便其实例可以轻松地被分类、搜索，以及用在基于比较的集合中。每当在 compareTo 方法的实现中比较域值时，都要避免使用 < 和 > 操作符，而应该在装箱基本类型的类中使用静态的 compare 方法，或者在 Comparator 接口中使用比较器构造方法。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-13"><a href="#本条总结-13" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了 Comparable 接口相关内容，实现 compareTo 方法和 equals 方法的异同，并以 new BigDecimal(“1.0”) 和 new BigDecimal(“1.00”) 的 equals() 比较不相等但 compareTo() 比较相等为例说明。</p>
+<h2 id="第-4-章-类和接口"><a href="#第-4-章-类和接口" class="headerlink" title="第 4 章 类和接口"></a>第 4 章 类和接口</h2><h3 id="第-15-条：使类和成员的可访问性最小化"><a href="#第-15-条：使类和成员的可访问性最小化" class="headerlink" title="第 15 条：使类和成员的可访问性最小化"></a>第 15 条：使类和成员的可访问性最小化</h3><h4 id="原文摘抄-13"><a href="#原文摘抄-13" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P66</p>
+<blockquote>
+<p><em>尽可能地使每个类或者成员不被外界访问。</em></p>
+</blockquote>
+</li>
+<li><p>P67</p>
+<blockquote>
+<p><em>这条规则有一个特例：如果一个类实现了一个接口，那么接口中所有的方法在这个类中也都必须被声明为公有的。</em><br><em>公有类的实例域决不能是公有的。</em><br><em>包含公有可变域的类通常不是线程安全的。</em></p>
+</blockquote>
+</li>
+<li><p>P68</p>
+<blockquote>
+<p><em>注意，长度非零的数组总是可变的，所以让类具有公有的静态 final 数组域，或者返回这种域的访问方法，这是错误的。</em></p>
+</blockquote>
+</li>
+<li><p>P69</p>
+<blockquote>
+<p><em>现在说模块将在 JDK 之外获得广泛的使用，还为时过早。同时，似乎最好不用它们，除非你的需求非常迫切。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-14"><a href="#本条总结-14" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了尽量让类和类中的成员访问级别最小化。讲了两种使得类中私有数组不被外界修改的两种方法。</p>
+<h3 id="第-16-条：要在公有类而非公有域中使用访问方法"><a href="#第-16-条：要在公有类而非公有域中使用访问方法" class="headerlink" title="第 16 条：要在公有类而非公有域中使用访问方法"></a>第 16 条：要在公有类而非公有域中使用访问方法</h3><h4 id="原文摘抄-14"><a href="#原文摘抄-14" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P69</p>
+<blockquote>
+<p><em>如果类可以在它所在的包之外进行访问，就提供访问方法。</em></p>
+</blockquote>
+</li>
+<li><p>P70</p>
+<blockquote>
+<p><em>如果类是包级私有的，或者是私有的嵌套类，直接暴露它的数据域并没有本质的错误。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-15"><a href="#本条总结-15" class="headerlink" title="本条总结"></a>本条总结</h4><p>简而言之，公有类永远都不应该暴露可变的域。虽然还是有问题，但是让公有类暴露<strong>不</strong>可变的域，其危害相对来说比较小。但有时候会需要用包级私有的或者私有的嵌套类来暴露域，无论这个类是可变的还是不可变的。</p>
+<h3 id="第-17-条：使可变性最小化"><a href="#第-17-条：使可变性最小化" class="headerlink" title="第 17 条：使可变性最小化"></a>第 17 条：使可变性最小化</h3><h4 id="原文摘抄-15"><a href="#原文摘抄-15" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P71</p>
+<blockquote>
+<ol>
+<li><em>不要提供任何会修改对象状态的方法（也称为设值方法）。</em></li>
+<li><em>保证类不会被扩展。</em></li>
+<li><em>声明所有的域都是 final 的。</em></li>
+<li><em>声明所有的域都为私有的。</em></li>
+<li><em>确保对于任何可变组件的互斥访问。</em></li>
+</ol>
+</blockquote>
+</li>
+<li><p>P73</p>
+<blockquote>
+<p><em>不可变对象本质上是线程安全的，它们不要求同步。</em><br><em>不可变对象可以被自由地共享。</em><br><em>不仅可以共享不可变对象，甚至也可以共享它们的内部信息。</em><br><em>不可变对象为其他对象提供了大量的构件。</em><br><em>不可变对象无偿地提供了失败的原子性。</em><br><em>不可变类真正唯一的缺点是，对于每个不同的值都需要一个单独的对象。</em></p>
+</blockquote>
+</li>
+<li><p>P76</p>
+<blockquote>
+<p><em>除非有很好的理由要让类称为可变的类，否则它就应该是不可变的。</em><br><em>如果类不能被做成不可变的，仍然应该尽可能地限制它的可变性。</em><br><em>除非有令人信服的理由要使域变成是非 final 的，否则要使每个域都是 private final 的。</em><br><em>构造器应该创建完全初始化的对象，并建立起所有的约束关系。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-16"><a href="#本条总结-16" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了使类成为不可变要遵循的规则，不可变对象的优势和缺点，以及其缺点的解决思路，还提到了 BigInteger 和 BigDecimal 由于可以被继承覆盖类中的方法，若要保证不可变性必须进行检查。<br>不可变类也可以拥有非 final 域用于缓存一些昂贵的计算结果。例如 String 类中的 hashCode() 方法。<br>还提到了一点不可变类序列化的知识，不过现在我不太熟悉。<br>提到了重用对象的“重新初始化方法”与增加的复杂性相比，通常并没有带来太多的性能提升。</p>
+<h3 id="第-18-条：复合优先于继承"><a href="#第-18-条：复合优先于继承" class="headerlink" title="第 18 条：复合优先于继承"></a>第 18 条：复合优先于继承</h3><h4 id="原文摘抄-16"><a href="#原文摘抄-16" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P77</p>
+<blockquote>
+<p><em>与方法调用不同的是，继承打破了封装性。</em></p>
+</blockquote>
+</li>
+<li><p>P80</p>
+<blockquote>
+<p><em>包装类不适合用于回调框架；在回调框架中，对象把自身的引用传递给其他的对象，用于后续的调用（“回调”）。因为被包装起来的对象并不知道它外面的包装对象，所以它传递一个指向自身的引用（this），回调时避开了外面的包装对象。这被称为 SELF 问题。</em></p>
+</blockquote>
+</li>
+</ul>
+<p>这一点没太懂为啥。</p>
+<h4 id="本条总结-17"><a href="#本条总结-17" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了只有当子类和超类之间确实存在子类型关系时，使用继承才是恰当的。可以用复合和转发机制来代替继承。并以 HashSet 的 addAll() 方法实现依赖 add() 方法举例说明“自用性”可能导致继承来扩展功能的问题。复合和转发机制避免了父类添加新的方法时子类不适用的情况。</p>
+<h3 id="第-19-条：要么设计继承并提供文档说明，要么禁止继承"><a href="#第-19-条：要么设计继承并提供文档说明，要么禁止继承" class="headerlink" title="第 19 条：要么设计继承并提供文档说明，要么禁止继承"></a>第 19 条：要么设计继承并提供文档说明，要么禁止继承</h3><h4 id="原文摘抄-17"><a href="#原文摘抄-17" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P81</p>
+<blockquote>
+<p><em>该类必须有文档说明它可覆盖（overridable）的方法的自用性（self-use）。</em></p>
+</blockquote>
+</li>
+<li><p>P82</p>
+<blockquote>
+<p><em>类必须以精心挑选的受保护的（protected）方法的形式，提供适当的钩子（hook），以便进入其内部工作中。</em></p>
+</blockquote>
+</li>
+<li><p>P83</p>
+<blockquote>
+<p><em>对于为了继承而设计的类，唯一的测试方法就是编写子类。</em><br><em>必须在发布类之前先编写子类对类进行测试。</em><br><em>构造器决不能调用可被覆盖的方法。</em></p>
+</blockquote>
+</li>
+<li><p>P85</p>
+<blockquote>
+<p><em>无论是 clone 还是 readObject，都不可以调用可覆盖的方法，不管是以直接还是间接的方式。</em><br><em>为了继承而设计类，对这个类会有一些实质性的限制。</em><br><em>这个问题的最佳解决方案是，对于那些并非为了安全地进行子类化而设计和编写文档的类，要禁止子类化。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-18"><a href="#本条总结-18" class="headerlink" title="本条总结"></a>本条总结</h4><p>看完这条，发现继承真的是被（我）滥用了，特别是覆盖方法的自用性，可能会导致很多问题。</p>
+<h3 id="第-20-条：接口优于抽象类"><a href="#第-20-条：接口优于抽象类" class="headerlink" title="第 20 条：接口优于抽象类"></a>第 20 条：接口优于抽象类</h3><h4 id="原文摘抄-18"><a href="#原文摘抄-18" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P86</p>
+<blockquote>
+<p><em>现有的类可以很容易被更新，以实现新的接口。</em><br><em>接口是定义 mixin（混合类型）的理想选择。</em></p>
+</blockquote>
+</li>
+<li><p>P87</p>
+<blockquote>
+<p><em>接口允许构造非层次结构的类型框架。</em><br><em>接口使得安全地增强类的功能成为可能。</em></p>
+</blockquote>
+</li>
+<li><p>P88</p>
+<blockquote>
+<p><em>实现了这个接口的类可以把对于接口方法的调用转发到一个内部私有类的实例上，这个内部私有类扩展了骨架实现类。这种方法被称作<strong>模拟多重继承</strong>。</em></p>
+</blockquote>
+</li>
+<li><p>P89</p>
+<blockquote>
+<p><em>对于骨架实现类而言，好的文档绝对是非常必要的。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-19"><a href="#本条总结-19" class="headerlink" title="本条总结"></a>本条总结</h4><p>因为一个类可以实现多个接口，所以接口适合作为类型定义。<br>Java 9 允许接口中有<strong>私有</strong>的静态方法。<br>总而言之，接口通常是定义允许多个实现的类型的最佳途径。如果你导出了一个重要的接口，就应该坚决考虑同时提供骨架实现类。而且，还应该尽可能地通过缺省方法在接口中提供骨架实现，以便接口的所有实现类都能使用。也就是说，对于接口的限制，通常也限制了骨架实现会采用的抽象类的形式。</p>
+<h3 id="第-21-条：为后代设计接口"><a href="#第-21-条：为后代设计接口" class="headerlink" title="第 21 条：为后代设计接口"></a>第 21 条：为后代设计接口</h3><h4 id="原文摘抄-19"><a href="#原文摘抄-19" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P90</p>
+<blockquote>
+<p><em>在 Java 8 中，增加了缺省方法（default method）构造，目的就是允许给现有的接口添加方法。</em><br><em>并非每一个可能的实现的所有变体，始终都可以编写出一个缺省方法。</em></p>
+</blockquote>
+</li>
+<li><p>P91</p>
+<blockquote>
+<p><em>有了缺省方法，接口的现有实现就不会出现编译时没有报错或警告，运行时却失败的情况。</em></p>
+</blockquote>
+</li>
+</ul>
+<p>这句没太明白。</p>
+<h4 id="本条总结-20"><a href="#本条总结-20" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲了要谨慎设计接口，并围绕 Java 8 新增的缺省方法，以 Collection 接口中的缺省方法 removeIf 方法为例，讲了虽然它的实现很好，但仍然在某些实现它却没有覆盖它的类里仍然存在多线程问题。多线程相关细节我不太懂。</p>
+<h3 id="第-22-条：接口只用于定义类型"><a href="#第-22-条：接口只用于定义类型" class="headerlink" title="第 22 条：接口只用于定义类型"></a>第 22 条：接口只用于定义类型</h3><h4 id="原文摘抄-20"><a href="#原文摘抄-20" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P92</p>
+<blockquote>
+<p><em>常量接口模式是对接口的不良使用。</em><br><em>如果这些常量与某个现有的类或者接口紧密相关，就应该把这些常量添加到这个类或者接口中。</em><br><em>否则，应该使用不可实例化的工具类（utility class）（详见第 4 条）来导出这些常量。</em></p>
+</blockquote>
+</li>
+<li><p>P93</p>
+<blockquote>
+<p><em>如果大量利用工具类导出的常量，可以通过利用静态导入（static import）机制，避免用类名来修饰常量名。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-21"><a href="#本条总结-21" class="headerlink" title="本条总结"></a>本条总结</h4><p>简而言之，接口应该只被用来定义类型，它们不应该被用来导出常量。<br>本条还提到了 Java 7 允许数字字面量用下划线隔开以便于阅读的特性。</p>
+<h3 id="第-23-条：类层次优于标签类"><a href="#第-23-条：类层次优于标签类" class="headerlink" title="第 23 条：类层次优于标签类"></a>第 23 条：类层次优于标签类</h3><h4 id="原文摘抄-21"><a href="#原文摘抄-21" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li>P94<blockquote>
+<p><em>标签类过于冗长、容易出错，并且效率低下。</em><br><em>标签类正是对类层次的一种简单的仿效。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-22"><a href="#本条总结-22" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条其实可以概括为类的单一职责原则，不要用一个类来包含多个类的域和方法。</p>
+<h3 id="第-24-条：静态成员类优于非静态成员类"><a href="#第-24-条：静态成员类优于非静态成员类" class="headerlink" title="第 24 条：静态成员类优于非静态成员类"></a>第 24 条：静态成员类优于非静态成员类</h3><h4 id="原文摘抄-22"><a href="#原文摘抄-22" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li>P97<blockquote>
+<p><em>如果声明成员类不要求访问外围实例，就要始终把修饰符 static 放在它的声明中。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-23"><a href="#本条总结-23" class="headerlink" title="本条总结"></a>本条总结</h4><p>如果一个嵌套类需要在单个方法之外仍然是可见的，或者它太长了，不适合放在方法内部，就应该使用成员类。如果成员类的每个实例都需要一个指向其外围实例的引用，就要把成员类做成非静态的；否则，就做成静态的。假设这个嵌套类属于一个方法的内部，如果你只需要在一个地方创建实例，并且已经有了一个预置的类型可以说明这个类的特征，就要把它做成匿名类；否则，就做成局部类。</p>
+<h3 id="第-25-条：限制源文件为单个顶级类"><a href="#第-25-条：限制源文件为单个顶级类" class="headerlink" title="第 25 条：限制源文件为单个顶级类"></a>第 25 条：限制源文件为单个顶级类</h3><h4 id="原文摘抄-23"><a href="#原文摘抄-23" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><h4 id="本条总结-24"><a href="#本条总结-24" class="headerlink" title="本条总结"></a>本条总结</h4><p>结论显而易见：永远不要把多个顶级类或者接口放在一个源文件中。遵循这个规则可以确保编译时一个类不会有多个定义。这么做反过来也能确保编译产生的类文件，以及程序结果的行为，都不会受到源文件被传给编译器时的顺序的影响。</p>
+<h2 id="第-5-章-泛型"><a href="#第-5-章-泛型" class="headerlink" title="第 5 章 泛型"></a>第 5 章 泛型</h2><h3 id="第-26-条：请不要使用原生态类型"><a href="#第-26-条：请不要使用原生态类型" class="headerlink" title="第 26 条：请不要使用原生态类型"></a>第 26 条：请不要使用原生态类型</h3><h4 id="原文摘抄-24"><a href="#原文摘抄-24" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P103</p>
+<blockquote>
+<p><em>如果使用原生态类型，就失掉了泛型在安全性和描述性方面的所有优势。</em><br><em>如果使用像 List 这样的原生态类型，就会失掉类型安全性，但是如果使用像 List< Object > 这样的参数化类型，则不会。</em></p>
+</blockquote>
+</li>
+<li><p>P104</p>
+<blockquote>
+<p><em>不能将任何元素（除了 null 之外）放到 Collection< ? > 中。</em><br><em>必须在类文字（class literal）中使用原生态类型。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-25"><a href="#本条总结-25" class="headerlink" title="本条总结"></a>本条总结</h4><p>总而言之，使用原生态类型会在运行时导致异常，因此不要使用。原生态类型只是为了与引入泛型之前的遗留代码进行兼容和互用而提供的。让我们做个快速的回顾：Set< Object > 是个参数化类型，表示可以包含任何对象类型的一个集合；Set< ? > 则是一个通配符类型，表示只能包含某种未知对象类型的一个集合；Set 是一个原生态类型，它脱离了泛型系统。前两种是安全的，最后一种不安全。</p>
+<h3 id="第-27-条：消除非受检的警告"><a href="#第-27-条：消除非受检的警告" class="headerlink" title="第 27 条：消除非受检的警告"></a>第 27 条：消除非受检的警告</h3><h4 id="原文摘抄-25"><a href="#原文摘抄-25" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P107</p>
+<blockquote>
+<p><em>要尽可能地消除每一个非受监警告。</em><br><em>如果无法消除警告，同时可以证明引起警告的代码是类型安全的，（只有在这种情况下）才可以用一个 @SuppressWarnings(“unchecked”) 注解来禁止这条警告。</em><br><em>应该始终在尽可能小的范围内使用 SuppressWarnings 注解。</em>  </p>
+</blockquote>
+</li>
+<li><p>P108</p>
+<blockquote>
+<p><em>每当使用 SuppressWarnings(“unchecked”) 注解时，都要添加一条注释，说明为什么这么做是安全的。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-26"><a href="#本条总结-26" class="headerlink" title="本条总结"></a>本条总结</h4><p>总而言之，非受检警告很重要，不要忽略它们。每一条警告都表示可能在运行时抛出 ClassCastException 异常。要尽最大的努力消除这些警告。如果无法消除非受检警告，同时可以证明引起警告的代码是类型安全的，就可以再尽可能小的范围内使用 @SuppressWarnings(“unchecked”) 注解禁止该警告。要用注释把禁止该警告的原因记录下来。</p>
+<h3 id="第-28-条：列表优于数组"><a href="#第-28-条：列表优于数组" class="headerlink" title="第 28 条：列表优于数组"></a>第 28 条：列表优于数组</h3><h4 id="原文摘抄-26"><a href="#原文摘抄-26" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P109</p>
+<blockquote>
+<p><em>唯一可具体化的（reifiable）参数化类型是无限制的通配符类型，如 List< ? > 和 Map< ?, ? >（详见第 26 条）。虽然不常用，但是创建无限制通配类型的数组是合法的。</em></p>
+</blockquote>
+</li>
+<li><p>P110</p>
+<blockquote>
+<p><em>当你得到泛型数组创建错误时，最好的解决办法通常是优先使用集合类型 List< E >，而不是数组类型 E[]。这样可能会损失一些性能或者简洁性，但是换回的却是更高的类型安全性和互用性。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-27"><a href="#本条总结-27" class="headerlink" title="本条总结"></a>本条总结</h4><p>总而言之，数组和泛型有着截然不同的类型规则。数组是协变且可以具体化的；泛型是不可变的且可以被擦除的。因此，数组提供了运行时的类型安全，但是没有编译时的类型安全，反之，对于泛型也一样。一般来说，数组和泛型不能很好地混合使用。如果你发现自己将它们混合起来使用，并且得到了编译时的错误或者警告，你的第一反应就应该是用列表代替数组。</p>
+<h3 id="第-29-条：优先考虑泛型"><a href="#第-29-条：优先考虑泛型" class="headerlink" title="第 29 条：优先考虑泛型"></a>第 29 条：优先考虑泛型</h3><h4 id="原文摘抄-27"><a href="#原文摘抄-27" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><h4 id="本条总结-28"><a href="#本条总结-28" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条通过一个简单的 Stack 类说明了如何把一个类写成泛型类，并讲了泛型数组的两种处理方式，顺带提到了堆污染概念。最后提到，使用泛型比使用需要在客户端代码中进行转换的类型更加安全，也更加容易，只要时间允许，就把现有的类型都泛型化。</p>
+<h3 id="第-30-条：优先考虑泛型方法"><a href="#第-30-条：优先考虑泛型方法" class="headerlink" title="第 30 条：优先考虑泛型方法"></a>第 30 条：优先考虑泛型方法</h3><h4 id="原文摘抄-28"><a href="#原文摘抄-28" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P116</p>
+<blockquote>
+<p><em>声明类型参数的类型参数列表，处在方法的修饰符及其返回值之间。</em></p>
+</blockquote>
+</li>
+<li><p>P118</p>
+<blockquote>
+<p><em>类型限制 < E extends Comparable< E > > ,可以读作“针对可以与自身进行比较的每个类 E”</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-29"><a href="#本条总结-29" class="headerlink" title="本条总结"></a>本条总结</h4><p>总而言之，泛型方法就像泛型一样，使用起来比要求客户端转换输入参数并返回值的方法来得更加安全，也更加容易。就像类型一样，你应该确保方法不用转换就能使用，这通常意味着要将它们泛型化。并且就像类型一样，还应该将现有的方法泛型化，使新用户使用起来更加轻松，且不会破坏现有的客户端。</p>
+<h3 id="第-31-条：利用有限制通配符来提升-API-的灵活性"><a href="#第-31-条：利用有限制通配符来提升-API-的灵活性" class="headerlink" title="第 31 条：利用有限制通配符来提升 API 的灵活性"></a>第 31 条：利用有限制通配符来提升 API 的灵活性</h3><h4 id="原文摘抄-29"><a href="#原文摘抄-29" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P121</p>
+<blockquote>
+<p><em>为了获得最大限度的灵活性，要在表示生产者或者消费者的输入参数上使用通配符类型。</em><br><em>PECS 表示 producer-extends，consumer-super</em></p>
+</blockquote>
+</li>
+<li><p>P122</p>
+<blockquote>
+<p><em>不要用通配符类型作为返回类型。</em><br><em>如果类的用户必须考虑通配符类型，类的 API 或许就会出错。</em></p>
+</blockquote>
+</li>
+<li><p>P123</p>
+<blockquote>
+<p><em>使用时始终应该是 Comparable< ? super T > 优先于 Comparable< T >。</em><br><em>使用时始终应该是 Comparator< ? super T > 优先于 Comparator< T >。</em><br><em>如果类型参数只在方法声明中出现一次，就可以用通配符取代它。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-30"><a href="#本条总结-30" class="headerlink" title="本条总结"></a>本条总结</h4><p>总而言之，在 API 中使用通配符类型虽然比较需要技巧，但是会使 API 变得灵活得多。如果编写的是将被广泛使用的类库，则一定要适当地利用通配符类型。记住基本的原则：producer-extends,consumer-super(PECS)。还要记住所有的 comparable 和 comparator 都是消费者。</p>
+<h3 id="第-32-条：谨慎并用泛型和可变参数"><a href="#第-32-条：谨慎并用泛型和可变参数" class="headerlink" title="第 32 条：谨慎并用泛型和可变参数"></a>第 32 条：谨慎并用泛型和可变参数</h3><h4 id="原文摘抄-30"><a href="#原文摘抄-30" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><ul>
+<li><p>P125</p>
+<blockquote>
+<p><em>将值保存在泛型可变参数数组参数中是不安全的。</em></p>
+</blockquote>
+</li>
+<li><p>P126</p>
+<blockquote>
+<p><em>SafeVarargs 注解是通过方法的设计者做出承诺，声明这是类型安全的。</em></p>
+</blockquote>
+</li>
+<li><p>P127</p>
+<blockquote>
+<p><em>允许另一个方法访问一个泛型可变参数数组是不安全的。有两种情况例外：将数组传给另一个用 @SafeVarargs 正确注解过的可变参数方法是安全的，将数组传给只计算数组内容部分函数的非可变参数方法也是安全的。</em><br><em>对于每一个带有泛型可变参数或者参数化类型的方法，都要用 @SafeVarargs 进行注解。</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="本条总结-31"><a href="#本条总结-31" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条很多细节没有看懂。讲了显式创建泛型数组是非法的，但用泛型可变参数声明方法却是合法的，这是因为带有泛型可变参数或者参数化类型的方法在实践中用处很大，因此 Java 语言的设计者选择容忍这一矛盾的存在。</p>
+<p>总而言之，可变参数和泛型不能良好地合作，这是因为可变参数设施是构建在顶级数组之上的一个技术露底，泛型数组有不同的类型规则。虽然泛型可变参数不是类型安全的，但它们是合法的。如果选择编写带有泛型（或者参数化）可变参数的方法，首先要确保该方法是类型安全的，然后用 @SafeVarargs 对它进行注解，这样使用起来就不会出现不愉快的情况了。</p>
+<h3 id="第-33-条：优先考虑类型安全的异构容器"><a href="#第-33-条：优先考虑类型安全的异构容器" class="headerlink" title="第 33 条：优先考虑类型安全的异构容器"></a>第 33 条：优先考虑类型安全的异构容器</h3><h4 id="原文摘抄-31"><a href="#原文摘抄-31" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><h4 id="本条总结-32"><a href="#本条总结-32" class="headerlink" title="本条总结"></a>本条总结</h4><p>本条讲真没太看懂，讲了类型令牌的概念，大概意思就是讲怎么实现一个可以把不同类型作为键的类似 Map 的容器类。</p>
+<h2 id="第-6-章-枚举和注解"><a href="#第-6-章-枚举和注解" class="headerlink" title="第 6 章 枚举和注解"></a>第 6 章 枚举和注解</h2><h3 id="第-34-条：用-enum-代替-int-常量"><a href="#第-34-条：用-enum-代替-int-常量" class="headerlink" title="第 34 条：用 enum 代替 int 常量"></a>第 34 条：用 enum 代替 int 常量</h3><h4 id="原文摘抄-32"><a href="#原文摘抄-32" class="headerlink" title="原文摘抄"></a>原文摘抄</h4><h4 id="本条总结-33"><a href="#本条总结-33" class="headerlink" title="本条总结"></a>本条总结</h4><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>觉得文章有帮助，打赏1元鼓励一下作者</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="书缘 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="书缘 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>书缘
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://shuxiaoyuan.github.io/2021/03/14/%E3%80%8AEffective-Java-%E7%AC%AC3%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" title="《Effective Java 第3版》读书笔记">https://shuxiaoyuan.github.io/2021/03/14/《Effective-Java-第3版》读书笔记/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag"># 读书笔记</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/14/%E3%80%8A%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC3%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="prev" title="《深入理解Java虚拟机第3版》读书笔记">
+      <i class="fa fa-chevron-left"></i> 《深入理解Java虚拟机第3版》读书笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/06/26/%E3%80%8AMySQL-%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="next" title="《MySQL 必知必会》读书笔记">
+      《MySQL 必知必会》读书笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#资源"><span class="nav-number">1.</span> <span class="nav-text">资源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">2.</span> <span class="nav-text">目录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第-2-章-创建和销毁对象"><span class="nav-number">2.1.</span> <span class="nav-text">第 2 章 创建和销毁对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第-1-条：用静态工厂方法代替构造器"><span class="nav-number">2.1.1.</span> <span class="nav-text">第 1 条：用静态工厂方法代替构造器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-2-条：遇到多个构造器参数时要考虑使用构建器"><span class="nav-number">2.1.2.</span> <span class="nav-text">第 2 条：遇到多个构造器参数时要考虑使用构建器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-1"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-1"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-3-条：用私有构造器或者枚举类型强化-Singleton-属性"><span class="nav-number">2.1.3.</span> <span class="nav-text">第 3 条：用私有构造器或者枚举类型强化 Singleton 属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-2"><span class="nav-number">2.1.3.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-2"><span class="nav-number">2.1.3.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-4-条：通过私有构造器强化不可实例化的能力"><span class="nav-number">2.1.4.</span> <span class="nav-text">第 4 条：通过私有构造器强化不可实例化的能力</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-3"><span class="nav-number">2.1.4.1.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-5-条：优先考虑依赖注入来引用资源"><span class="nav-number">2.1.5.</span> <span class="nav-text">第 5 条：优先考虑依赖注入来引用资源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-3"><span class="nav-number">2.1.5.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-4"><span class="nav-number">2.1.5.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-6-条：避免创建不必要的对象"><span class="nav-number">2.1.6.</span> <span class="nav-text">第 6 条：避免创建不必要的对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-4"><span class="nav-number">2.1.6.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-5"><span class="nav-number">2.1.6.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-7-条：消除过期的对象引用"><span class="nav-number">2.1.7.</span> <span class="nav-text">第 7 条：消除过期的对象引用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-5"><span class="nav-number">2.1.7.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-6"><span class="nav-number">2.1.7.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-8-条：避免使用终结方法和清除方法"><span class="nav-number">2.1.8.</span> <span class="nav-text">第 8 条：避免使用终结方法和清除方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-6"><span class="nav-number">2.1.8.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-7"><span class="nav-number">2.1.8.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-9-条：try-with-resources-优先于-try-finally"><span class="nav-number">2.1.9.</span> <span class="nav-text">第 9 条：try-with-resources 优先于 try-finally</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-7"><span class="nav-number">2.1.9.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-8"><span class="nav-number">2.1.9.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第-3-章-对于所有对象都通用的方法"><span class="nav-number">2.2.</span> <span class="nav-text">第 3 章 对于所有对象都通用的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第-10-条：覆盖-equals-时请遵守通用约定"><span class="nav-number">2.2.1.</span> <span class="nav-text">第 10 条：覆盖 equals 时请遵守通用约定</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-8"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-9"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-11-条：覆盖-equals-时总要覆盖-hashCode"><span class="nav-number">2.2.2.</span> <span class="nav-text">第 11 条：覆盖 equals 时总要覆盖 hashCode</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-9"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-10"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-12-条：始终要覆盖-toString"><span class="nav-number">2.2.3.</span> <span class="nav-text">第 12 条：始终要覆盖 toString</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-10"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-11"><span class="nav-number">2.2.3.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-13-条：谨慎地覆盖-clone"><span class="nav-number">2.2.4.</span> <span class="nav-text">第 13 条：谨慎地覆盖 clone</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-11"><span class="nav-number">2.2.4.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-12"><span class="nav-number">2.2.4.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-14-条：考虑实现-Comparable-接口"><span class="nav-number">2.2.5.</span> <span class="nav-text">第 14 条：考虑实现 Comparable 接口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-12"><span class="nav-number">2.2.5.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-13"><span class="nav-number">2.2.5.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第-4-章-类和接口"><span class="nav-number">2.3.</span> <span class="nav-text">第 4 章 类和接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第-15-条：使类和成员的可访问性最小化"><span class="nav-number">2.3.1.</span> <span class="nav-text">第 15 条：使类和成员的可访问性最小化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-13"><span class="nav-number">2.3.1.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-14"><span class="nav-number">2.3.1.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-16-条：要在公有类而非公有域中使用访问方法"><span class="nav-number">2.3.2.</span> <span class="nav-text">第 16 条：要在公有类而非公有域中使用访问方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-14"><span class="nav-number">2.3.2.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-15"><span class="nav-number">2.3.2.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-17-条：使可变性最小化"><span class="nav-number">2.3.3.</span> <span class="nav-text">第 17 条：使可变性最小化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-15"><span class="nav-number">2.3.3.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-16"><span class="nav-number">2.3.3.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-18-条：复合优先于继承"><span class="nav-number">2.3.4.</span> <span class="nav-text">第 18 条：复合优先于继承</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-16"><span class="nav-number">2.3.4.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-17"><span class="nav-number">2.3.4.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-19-条：要么设计继承并提供文档说明，要么禁止继承"><span class="nav-number">2.3.5.</span> <span class="nav-text">第 19 条：要么设计继承并提供文档说明，要么禁止继承</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-17"><span class="nav-number">2.3.5.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-18"><span class="nav-number">2.3.5.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-20-条：接口优于抽象类"><span class="nav-number">2.3.6.</span> <span class="nav-text">第 20 条：接口优于抽象类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-18"><span class="nav-number">2.3.6.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-19"><span class="nav-number">2.3.6.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-21-条：为后代设计接口"><span class="nav-number">2.3.7.</span> <span class="nav-text">第 21 条：为后代设计接口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-19"><span class="nav-number">2.3.7.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-20"><span class="nav-number">2.3.7.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-22-条：接口只用于定义类型"><span class="nav-number">2.3.8.</span> <span class="nav-text">第 22 条：接口只用于定义类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-20"><span class="nav-number">2.3.8.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-21"><span class="nav-number">2.3.8.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-23-条：类层次优于标签类"><span class="nav-number">2.3.9.</span> <span class="nav-text">第 23 条：类层次优于标签类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-21"><span class="nav-number">2.3.9.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-22"><span class="nav-number">2.3.9.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-24-条：静态成员类优于非静态成员类"><span class="nav-number">2.3.10.</span> <span class="nav-text">第 24 条：静态成员类优于非静态成员类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-22"><span class="nav-number">2.3.10.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-23"><span class="nav-number">2.3.10.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-25-条：限制源文件为单个顶级类"><span class="nav-number">2.3.11.</span> <span class="nav-text">第 25 条：限制源文件为单个顶级类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-23"><span class="nav-number">2.3.11.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-24"><span class="nav-number">2.3.11.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第-5-章-泛型"><span class="nav-number">2.4.</span> <span class="nav-text">第 5 章 泛型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第-26-条：请不要使用原生态类型"><span class="nav-number">2.4.1.</span> <span class="nav-text">第 26 条：请不要使用原生态类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-24"><span class="nav-number">2.4.1.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-25"><span class="nav-number">2.4.1.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-27-条：消除非受检的警告"><span class="nav-number">2.4.2.</span> <span class="nav-text">第 27 条：消除非受检的警告</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-25"><span class="nav-number">2.4.2.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-26"><span class="nav-number">2.4.2.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-28-条：列表优于数组"><span class="nav-number">2.4.3.</span> <span class="nav-text">第 28 条：列表优于数组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-26"><span class="nav-number">2.4.3.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-27"><span class="nav-number">2.4.3.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-29-条：优先考虑泛型"><span class="nav-number">2.4.4.</span> <span class="nav-text">第 29 条：优先考虑泛型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-27"><span class="nav-number">2.4.4.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-28"><span class="nav-number">2.4.4.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-30-条：优先考虑泛型方法"><span class="nav-number">2.4.5.</span> <span class="nav-text">第 30 条：优先考虑泛型方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-28"><span class="nav-number">2.4.5.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-29"><span class="nav-number">2.4.5.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-31-条：利用有限制通配符来提升-API-的灵活性"><span class="nav-number">2.4.6.</span> <span class="nav-text">第 31 条：利用有限制通配符来提升 API 的灵活性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-29"><span class="nav-number">2.4.6.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-30"><span class="nav-number">2.4.6.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-32-条：谨慎并用泛型和可变参数"><span class="nav-number">2.4.7.</span> <span class="nav-text">第 32 条：谨慎并用泛型和可变参数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-30"><span class="nav-number">2.4.7.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-31"><span class="nav-number">2.4.7.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-33-条：优先考虑类型安全的异构容器"><span class="nav-number">2.4.8.</span> <span class="nav-text">第 33 条：优先考虑类型安全的异构容器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-31"><span class="nav-number">2.4.8.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-32"><span class="nav-number">2.4.8.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第-6-章-枚举和注解"><span class="nav-number">2.5.</span> <span class="nav-text">第 6 章 枚举和注解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第-34-条：用-enum-代替-int-常量"><span class="nav-number">2.5.1.</span> <span class="nav-text">第 34 条：用 enum 代替 int 常量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文摘抄-32"><span class="nav-number">2.5.1.1.</span> <span class="nav-text">原文摘抄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本条总结-33"><span class="nav-number">2.5.1.2.</span> <span class="nav-text">本条总结</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="书缘" src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">书缘</p>
+  <div class="site-description" itemprop="description">God is a coder.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/shuxiaoyuan" title="GitHub → https://github.com/shuxiaoyuan" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1362521868@qq.com" title="E-Mail → mailto:1362521868@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → /atom.xml"><i class="fa fa-fw fa-rss"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  © 2019 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">书缘</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">40k</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script>
+
+<script type="text/javascript" charset="utf-8" src="/js/lazyload-plugin/lazyload.intersectionObserver.min.js"></script></body></html>

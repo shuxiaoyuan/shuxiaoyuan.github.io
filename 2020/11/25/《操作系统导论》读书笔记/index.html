@@ -1,0 +1,632 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://shuxiaoyuan.github.io').hostname,
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="《操作系统导论》读书笔记，待更新…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《操作系统导论》读书笔记">
+<meta property="og:url" content="https://shuxiaoyuan.github.io/2020/11/25/%E3%80%8A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+<meta property="og:site_name" content="书缘的博客">
+<meta property="og:description" content="《操作系统导论》读书笔记，待更新…">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-11-25T14:24:49.000Z">
+<meta property="article:modified_time" content="2024-03-06T06:28:27.934Z">
+<meta property="article:author" content="书缘">
+<meta property="article:tag" content="读书笔记">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://shuxiaoyuan.github.io/2020/11/25/%E3%80%8A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>《操作系统导论》读书笔记 | 书缘的博客</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?a298916edd5b96c19fd09758e88c2e2e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="书缘的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">书缘的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">博观而约取，厚积而薄发</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">3</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">11</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">17</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="搜索..." spellcheck="false" type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://shuxiaoyuan.github.io/2020/11/25/%E3%80%8A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="书缘">
+      <meta itemprop="description" content="God is a coder.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="书缘的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          《操作系统导论》读书笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-25 22:24:49" itemprop="dateCreated datePublished" datetime="2020-11-25T22:24:49+08:00">2020-11-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-03-06 14:28:27" itemprop="dateModified" datetime="2024-03-06T14:28:27+08:00">2024-03-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/IT/" itemprop="url" rel="index">
+                    <span itemprop="name">IT</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 ≈</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>《操作系统导论》读书笔记，待更新…</p>
+<a id="more"></a>
+
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><p><a href="https://pan.baidu.com/s/1X-5RY-rHLoROZtq5juMdRA" target="_blank" rel="noopener">百度网盘资源链接</a>（包含书中代码和本书英文原版 pdf ）提取码：ffhc<br><a href="http://pages.cs.wisc.edu/~remzi/OSTEP/" target="_blank" rel="noopener">官网</a><br><a href="https://github.com/remzi-arpacidusseau/ostep-code" target="_blank" rel="noopener">GitHub</a></p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h2 id="第-2-章-操作系统介绍"><a href="#第-2-章-操作系统介绍" class="headerlink" title="第 2 章 操作系统介绍"></a>第 2 章 操作系统介绍</h2><ul>
+<li>将单个 CPU（或其中一小部分）转换为看似无限数量的 CPU，从而让许多程序看似同时运行，这就是所谓的虚拟化 CPU（virtualizing the CPU）。</li>
+</ul>
+<h2 id="第-1-部分-虚拟化"><a href="#第-1-部分-虚拟化" class="headerlink" title="第 1 部分 虚拟化"></a>第 1 部分 虚拟化</h2><h3 id="第-4-章-抽象：进程"><a href="#第-4-章-抽象：进程" class="headerlink" title="第 4 章 抽象：进程"></a>第 4 章 抽象：进程</h3><ul>
+<li><p>时分共享（和空分共享）</p>
+</li>
+<li><p>进程状态：运行、就绪、阻塞</p>
+</li>
+</ul>
+<h3 id="第-5-章-插叙：进程-API"><a href="#第-5-章-插叙：进程-API" class="headerlink" title="第 5 章 插叙：进程 API"></a>第 5 章 插叙：进程 API</h3><p>本章讲了 UNIX 系统的三个系统调用：<code>fork()</code>、<code>exec()</code> 和 <code>wait()</code>。</p>
+<h3 id="第-6-章-机制：受限直接执行"><a href="#第-6-章-机制：受限直接执行" class="headerlink" title="第 6 章 机制：受限直接执行"></a>第 6 章 机制：受限直接执行</h3><p>本章讲了用户模式和内核模式、进程切换、保存和恢复上下文。</p>
+<h3 id="第-7-章-进程调度：介绍"><a href="#第-7-章-进程调度：介绍" class="headerlink" title="第 7 章 进程调度：介绍"></a>第 7 章 进程调度：介绍</h3><p>本章开始对任务有几项假设，然后采用逐渐放宽假设的方式由浅入深讨论各种情况下的调度算法思想。</p>
+<p>以周转时间为指标，有下列三种调度算法：</p>
+<ul>
+<li>先进先出（First In First Out, FIFO）或先到先服务（First Come First Served, FCFS）</li>
+<li>最短任务优先（Shortest Job First, SJF）</li>
+<li>最短完成时间优先（Shortest Time-to-Completion First, STCF）或最短完成时间优先（Preemptive Shortest Job First, PSJF）</li>
+</ul>
+<p>以响应时间为指标：</p>
+<ul>
+<li>轮转（Round-Robin, RR）</li>
+</ul>
+<h3 id="第-8-章-调度：多级反馈队列"><a href="#第-8-章-调度：多级反馈队列" class="headerlink" title="第 8 章 调度：多级反馈队列"></a>第 8 章 调度：多级反馈队列</h3><p>MLFQ（multi-level feedback queue）规则：</p>
+<ul>
+<li>规则 1：如果 A 的优先级 > B 的优先级，运行 A（不运行 B）。</li>
+<li>规则 2：如果 A 的优先级 = B 的优先级，轮转运行 A 和 B。</li>
+<li>规则 3：工作进入系统时，放在最高优先级（最上层队列）。</li>
+<li>规则 4：一旦工作用完了其在某一层中的时间配额（无论中间主动放弃了多少次 CPU），就降低其优先级（移入低一级队列）。</li>
+<li>规则 5：经过一段时间 S，就将系统中所有工作重新加入最高优先级队列。</li>
+</ul>
+<h3 id="第-9-章-调度：比例份额"><a href="#第-9-章-调度：比例份额" class="headerlink" title="第 9 章 调度：比例份额"></a>第 9 章 调度：比例份额</h3><p>本章讲了彩票调度（lottery scheduling），其实现类似于我的 Blackjack 随机发牌算法实现。<br>另外一种是步长调度，思想也很简单：按步长增加进度，每次选进度最低的进程运行。<br>但这两种都没有作为 CPU 调度程序被广泛使用。一是因为它们不适合 I/O ，二是很难确定每个进程的“票数”。</p>
+<h3 id="第-10-章-多处理器调度（高级）"><a href="#第-10-章-多处理器调度（高级）" class="headerlink" title="第 10 章 多处理器调度（高级）"></a>第 10 章 多处理器调度（高级）</h3><ul>
+<li>本章介绍了多处理器调度的不同方法。其中单队列的方式（SQMS）比较容易构建，负载均衡较好，但在扩展性和缓存亲和度方面有着固有的缺陷。多队列的方式（MQMS）有很好的扩展性和缓存亲和度，但实现负载均衡却很困难，也更复杂。</li>
+</ul>
+<h3 id="第-13-章-抽象：地址空间"><a href="#第-13-章-抽象：地址空间" class="headerlink" title="第 13 章 抽象：地址空间"></a>第 13 章 抽象：地址空间</h3><p>本章大概地介绍了虚拟化内存的相关知识。</p>
+<h3 id="第-14-章-插叙：内存操作-API"><a href="#第-14-章-插叙：内存操作-API" class="headerlink" title="第 14 章 插叙：内存操作 API"></a>第 14 章 插叙：内存操作 API</h3><p>本章讲了 C 语言的 malloc() 和 free() 函数和相关内存管理知识。</p>
+<h3 id="第-15-章-机制：地址转换"><a href="#第-15-章-机制：地址转换" class="headerlink" title="第 15 章 机制：地址转换"></a>第 15 章 机制：地址转换</h3><ul>
+<li>将虚拟地址转换为物理地址，这正是所谓的地址转换（address translation）技术。</li>
+</ul>
+<p>本章讲了基址加界限的动态重定位原理。</p>
+<h3 id="第-16-章-分段"><a href="#第-16-章-分段" class="headerlink" title="第 16 章 分段"></a>第 16 章 分段</h3><ul>
+<li>在典型的地址空间里有 3 个逻辑不同的段：代码、栈、和堆</li>
+</ul>
+<p>分段后管理物理的空闲空间，减小内存碎片有两种常见解决方案：</p>
+<ul>
+<li>紧凑物理内存，重新安排原有的段。</li>
+<li>空闲列表管理算法。包括最优匹配、最坏匹配、首次匹配、伙伴算法等，这几个具体算法书中本章没细讲。正如书中所讲，方案越多越说明这个问题没有最好的办法。。。</li>
+</ul>
+<h3 id="第-17-章-空闲空间管理"><a href="#第-17-章-空闲空间管理" class="headerlink" title="第 17 章 空闲空间管理"></a>第 17 章 空闲空间管理</h3><p>本章讲了空闲列表管理算法。包括上章中提到的各种具体的匹配算法。</p>
+<h3 id="第-18-章-分页：介绍"><a href="#第-18-章-分页：介绍" class="headerlink" title="第 18 章 分页：介绍"></a>第 18 章 分页：介绍</h3><p>分页不会导致外部碎片，因为分页（按设计）将内存划分为固定大小的单元。其次，它非常灵活，支持稀疏虚拟地址空间。</p>
+<h3 id="第-19-章-分页：快速地址转换（TLB）"><a href="#第-19-章-分页：快速地址转换（TLB）" class="headerlink" title="第 19 章 分页：快速地址转换（TLB）"></a>第 19 章 分页：快速地址转换（TLB）</h3><p>本章讲了 TLB 相关的知识。</p>
+<h3 id="第-20-章-分页：较小的表"><a href="#第-20-章-分页：较小的表" class="headerlink" title="第 20 章 分页：较小的表"></a>第 20 章 分页：较小的表</h3><ul>
+<li>大内存页会导致每页内的浪费，这被称为内部碎片（internal fragmentation）问题（因为浪费在分配单元内部）。</li>
+</ul>
+<p>本章讲了多级页表的相关知识。</p>
+<h3 id="第-21-章-超越物理内存：机制"><a href="#第-21-章-超越物理内存：机制" class="headerlink" title="第 21 章 超越物理内存：机制"></a>第 21 章 超越物理内存：机制</h3><p>本章讲了内存换页的相关知识。</p>
+<h3 id="第-22-章-超越物理内存：策略"><a href="#第-22-章-超越物理内存：策略" class="headerlink" title="第 22 章 超越物理内存：策略"></a>第 22 章 超越物理内存：策略</h3><p>本章讲了操作系统的换页策略。包括 FIFO、随机、LRU，其中介绍了近似 LRU 的实现，以及各种策略在不同情况下的命中率比较。</p>
+<h3 id="第-23-章-VAX-VMS-虚拟内存系统"><a href="#第-23-章-VAX-VMS-虚拟内存系统" class="headerlink" title="第 23 章 VAX/VMS 虚拟内存系统"></a>第 23 章 VAX/VMS 虚拟内存系统</h3><p>本章介绍了 VAX/VMS 操作系统的虚拟内存管理器。</p>
+<h2 id="第-2-部分-并发"><a href="#第-2-部分-并发" class="headerlink" title="第 2 部分 并发"></a>第 2 部分 并发</h2><h3 id="第-26-章-并发：介绍"><a href="#第-26-章-并发：介绍" class="headerlink" title="第 26 章 并发：介绍"></a>第 26 章 并发：介绍</h3><p>本章简单介绍了并发中的几个术语，并引出原子性和原语等概念。</p>
+<h3 id="第-27-章-插叙：线程-API"><a href="#第-27-章-插叙：线程-API" class="headerlink" title="第 27 章 插叙：线程 API"></a>第 27 章 插叙：线程 API</h3><p>本章介绍了 pthread 库，包括线程创建，通过锁创建互斥执行，通过条件变量的信号和等待。</p>
+<h3 id="第-28-章-锁"><a href="#第-28-章-锁" class="headerlink" title="第 28 章 锁"></a>第 28 章 锁</h3><p>本章介绍了几个原子指令实现和锁的实现。有几个地方比较难还不是很懂。</p>
+<h3 id="第-29-章-基于锁的并发数据结构"><a href="#第-29-章-基于锁的并发数据结构" class="headerlink" title="第 29 章 基于锁的并发数据结构"></a>第 29 章 基于锁的并发数据结构</h3><p>本章讲了计数器、链表、队列、散列表在并发加锁中的实现。</p>
+<h3 id="第-30-章-条件变量"><a href="#第-30-章-条件变量" class="headerlink" title="第 30 章 条件变量"></a>第 30 章 条件变量</h3><p>本章讲了条件变量的概念及应用，并介绍了著名的生产者/消费者问题，以及覆盖条件。</p>
+<h3 id="第-31-章-信号量"><a href="#第-31-章-信号量" class="headerlink" title="第 31 章 信号量"></a>第 31 章 信号量</h3><p>本章讲了信号量相关知识和用法，介绍了哲学家就餐问题。</p>
+<h3 id="第-32-章-常见并发问题"><a href="#第-32-章-常见并发问题" class="headerlink" title="第 32 章 常见并发问题"></a>第 32 章 常见并发问题</h3><p>本章讨论并发编程中非死锁缺陷和死锁产生的原因以及解决方案。</p>
+<h3 id="第-33-章-基于事件的并发（进阶）"><a href="#第-33-章-基于事件的并发（进阶）" class="headerlink" title="第 33 章 基于事件的并发（进阶）"></a>第 33 章 基于事件的并发（进阶）</h3><p>本章讲了基于事件的并发相关实现和常见问题。</p>
+<h2 id="第-3-部分-持久性"><a href="#第-3-部分-持久性" class="headerlink" title="第 3 部分 持久性"></a>第 3 部分 持久性</h2><h3 id="第-36-章-I-O-设备"><a href="#第-36-章-I-O-设备" class="headerlink" title="第 36 章 I/O 设备"></a>第 36 章 I/O 设备</h3><p>本章讲了中断和 DMA ，以及访问设备寄存器的两种方式：I/O 指令和内存映射 I/O。另外还介绍了设备驱动程序的概念。</p>
+<h3 id="第-37-章-磁盘驱动器"><a href="#第-37-章-磁盘驱动器" class="headerlink" title="第 37 章 磁盘驱动器"></a>第 37 章 磁盘驱动器</h3><p>本章讲了磁盘的大致结构，以及介绍了常见的磁盘调度算法。</p>
+<h3 id="第-38-章-廉价冗余磁盘阵列（RAID）"><a href="#第-38-章-廉价冗余磁盘阵列（RAID）" class="headerlink" title="第 38 章 廉价冗余磁盘阵列（RAID）"></a>第 38 章 廉价冗余磁盘阵列（RAID）</h3><p>本章介绍了多种级别的 RAID 。</p>
+<h3 id="第-39-章-插叙：文件和目录"><a href="#第-39-章-插叙：文件和目录" class="headerlink" title="第 39 章 插叙：文件和目录"></a>第 39 章 插叙：文件和目录</h3><p>本章介绍了文件和目录在操作系统底层的实现和各种操作。</p>
+<h3 id="第-40-章-文件系统实现"><a href="#第-40-章-文件系统实现" class="headerlink" title="第 40 章 文件系统实现"></a>第 40 章 文件系统实现</h3><p>本章介绍了构建文件系统所需的基本机制，粗略一看。</p>
+<h3 id="第-41-章-局部性和快速文件系统"><a href="#第-41-章-局部性和快速文件系统" class="headerlink" title="第 41 章 局部性和快速文件系统"></a>第 41 章 局部性和快速文件系统</h3><p>本章介绍了 FFS（快速文件系统）的相关知识，粗略浏览了一下。</p>
+<h3 id="第-42-章-崩溃一致性：FSCK-和日志"><a href="#第-42-章-崩溃一致性：FSCK-和日志" class="headerlink" title="第 42 章 崩溃一致性：FSCK 和日志"></a>第 42 章 崩溃一致性：FSCK 和日志</h3><p>本章介绍了崩溃一致性的问题，大致翻了一翻。</p>
+<h3 id="第-43-章-日志结构文件系统"><a href="#第-43-章-日志结构文件系统" class="headerlink" title="第 43 章 日志结构文件系统"></a>第 43 章 日志结构文件系统</h3><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>觉得文章有帮助，打赏1元鼓励一下作者</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="书缘 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="书缘 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>书缘
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://shuxiaoyuan.github.io/2020/11/25/%E3%80%8A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" title="《操作系统导论》读书笔记">https://shuxiaoyuan.github.io/2020/11/25/《操作系统导论》读书笔记/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag"># 读书笔记</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/11/23/%E3%80%8AJava-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%EF%BC%88%E7%AC%AC10%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="prev" title="《Java 核心技术（第10版）》读书笔记">
+      <i class="fa fa-chevron-left"></i> 《Java 核心技术（第10版）》读书笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/01/14/%E3%80%8A%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E6%96%B9%E6%B3%95%EF%BC%88%E7%AC%AC7%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="next" title="《计算机网络：自顶向下方法（第7版）》读书笔记">
+      《计算机网络：自顶向下方法（第7版）》读书笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#资源"><span class="nav-number">1.</span> <span class="nav-text">资源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">2.</span> <span class="nav-text">目录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第-2-章-操作系统介绍"><span class="nav-number">2.1.</span> <span class="nav-text">第 2 章 操作系统介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第-1-部分-虚拟化"><span class="nav-number">2.2.</span> <span class="nav-text">第 1 部分 虚拟化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第-4-章-抽象：进程"><span class="nav-number">2.2.1.</span> <span class="nav-text">第 4 章 抽象：进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-5-章-插叙：进程-API"><span class="nav-number">2.2.2.</span> <span class="nav-text">第 5 章 插叙：进程 API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-6-章-机制：受限直接执行"><span class="nav-number">2.2.3.</span> <span class="nav-text">第 6 章 机制：受限直接执行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-7-章-进程调度：介绍"><span class="nav-number">2.2.4.</span> <span class="nav-text">第 7 章 进程调度：介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-8-章-调度：多级反馈队列"><span class="nav-number">2.2.5.</span> <span class="nav-text">第 8 章 调度：多级反馈队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-9-章-调度：比例份额"><span class="nav-number">2.2.6.</span> <span class="nav-text">第 9 章 调度：比例份额</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-10-章-多处理器调度（高级）"><span class="nav-number">2.2.7.</span> <span class="nav-text">第 10 章 多处理器调度（高级）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-13-章-抽象：地址空间"><span class="nav-number">2.2.8.</span> <span class="nav-text">第 13 章 抽象：地址空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-14-章-插叙：内存操作-API"><span class="nav-number">2.2.9.</span> <span class="nav-text">第 14 章 插叙：内存操作 API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-15-章-机制：地址转换"><span class="nav-number">2.2.10.</span> <span class="nav-text">第 15 章 机制：地址转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-16-章-分段"><span class="nav-number">2.2.11.</span> <span class="nav-text">第 16 章 分段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-17-章-空闲空间管理"><span class="nav-number">2.2.12.</span> <span class="nav-text">第 17 章 空闲空间管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-18-章-分页：介绍"><span class="nav-number">2.2.13.</span> <span class="nav-text">第 18 章 分页：介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-19-章-分页：快速地址转换（TLB）"><span class="nav-number">2.2.14.</span> <span class="nav-text">第 19 章 分页：快速地址转换（TLB）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-20-章-分页：较小的表"><span class="nav-number">2.2.15.</span> <span class="nav-text">第 20 章 分页：较小的表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-21-章-超越物理内存：机制"><span class="nav-number">2.2.16.</span> <span class="nav-text">第 21 章 超越物理内存：机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-22-章-超越物理内存：策略"><span class="nav-number">2.2.17.</span> <span class="nav-text">第 22 章 超越物理内存：策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-23-章-VAX-VMS-虚拟内存系统"><span class="nav-number">2.2.18.</span> <span class="nav-text">第 23 章 VAX/VMS 虚拟内存系统</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第-2-部分-并发"><span class="nav-number">2.3.</span> <span class="nav-text">第 2 部分 并发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第-26-章-并发：介绍"><span class="nav-number">2.3.1.</span> <span class="nav-text">第 26 章 并发：介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-27-章-插叙：线程-API"><span class="nav-number">2.3.2.</span> <span class="nav-text">第 27 章 插叙：线程 API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-28-章-锁"><span class="nav-number">2.3.3.</span> <span class="nav-text">第 28 章 锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-29-章-基于锁的并发数据结构"><span class="nav-number">2.3.4.</span> <span class="nav-text">第 29 章 基于锁的并发数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-30-章-条件变量"><span class="nav-number">2.3.5.</span> <span class="nav-text">第 30 章 条件变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-31-章-信号量"><span class="nav-number">2.3.6.</span> <span class="nav-text">第 31 章 信号量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-32-章-常见并发问题"><span class="nav-number">2.3.7.</span> <span class="nav-text">第 32 章 常见并发问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-33-章-基于事件的并发（进阶）"><span class="nav-number">2.3.8.</span> <span class="nav-text">第 33 章 基于事件的并发（进阶）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第-3-部分-持久性"><span class="nav-number">2.4.</span> <span class="nav-text">第 3 部分 持久性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第-36-章-I-O-设备"><span class="nav-number">2.4.1.</span> <span class="nav-text">第 36 章 I/O 设备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-37-章-磁盘驱动器"><span class="nav-number">2.4.2.</span> <span class="nav-text">第 37 章 磁盘驱动器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-38-章-廉价冗余磁盘阵列（RAID）"><span class="nav-number">2.4.3.</span> <span class="nav-text">第 38 章 廉价冗余磁盘阵列（RAID）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-39-章-插叙：文件和目录"><span class="nav-number">2.4.4.</span> <span class="nav-text">第 39 章 插叙：文件和目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-40-章-文件系统实现"><span class="nav-number">2.4.5.</span> <span class="nav-text">第 40 章 文件系统实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-41-章-局部性和快速文件系统"><span class="nav-number">2.4.6.</span> <span class="nav-text">第 41 章 局部性和快速文件系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-42-章-崩溃一致性：FSCK-和日志"><span class="nav-number">2.4.7.</span> <span class="nav-text">第 42 章 崩溃一致性：FSCK 和日志</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-43-章-日志结构文件系统"><span class="nav-number">2.4.8.</span> <span class="nav-text">第 43 章 日志结构文件系统</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="书缘" src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">书缘</p>
+  <div class="site-description" itemprop="description">God is a coder.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/shuxiaoyuan" title="GitHub → https://github.com/shuxiaoyuan" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1362521868@qq.com" title="E-Mail → mailto:1362521868@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → /atom.xml"><i class="fa fa-fw fa-rss"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  © 2019 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">书缘</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">40k</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script>
+
+<script type="text/javascript" charset="utf-8" src="/js/lazyload-plugin/lazyload.intersectionObserver.min.js"></script></body></html>
