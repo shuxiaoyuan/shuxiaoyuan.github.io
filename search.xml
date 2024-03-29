@@ -9,7 +9,9 @@
 <h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><p><a href="http://www.feiguyunai.com/index.php/2019/06/13/python-ml-pytorch/" target="_blank" rel="noopener">作者博客</a></p>
 <p><a href="https://www.bilibili.com/video/BV12Z4y1W7px/?from=search&seid=16795468071068043485&vd_source=1f8ec113c89683aefb6f66948cc28fa2" target="_blank" rel="noopener">B站视频教学</a></p>
 <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h2 id="第-1-章-Numpy-基础"><a href="#第-1-章-Numpy-基础" class="headerlink" title="第 1 章 Numpy 基础"></a>第 1 章 Numpy 基础</h2><p>本章主要介绍了 Numpy 模块的常用操作，尤其涉及对矩阵的操作。</p>
-<h2 id="第-2-章-PyTorch-基础"><a href="#第-2-章-PyTorch-基础" class="headerlink" title="第 2 章 PyTorch 基础"></a>第 2 章 PyTorch 基础</h2></body></html>]]></content>
+<h2 id="第-2-章-PyTorch-基础"><a href="#第-2-章-PyTorch-基础" class="headerlink" title="第 2 章 PyTorch 基础"></a>第 2 章 PyTorch 基础</h2><p>本章首先介绍了 PyTorch 的安装配置，然后介绍了 PyTorch 的重要数据结构 Tensor。<br>Tensor 类似于 Numpy 的数据结构，但 Tensor 提供 GPU 加速及自动求导等技术。<br>最后分别用 Numpy、Tensor、Autograd、TensorFlow 等技术实现同一个机器学习任务。</p>
+<p>本章很多数学概念与机器学习概念并未详细介绍，需要自行了解，暂时跳过，后续用到再查。</p>
+<h2 id="第-3-章-PyTorch-基础"><a href="#第-3-章-PyTorch-基础" class="headerlink" title="第 3 章 PyTorch 基础"></a>第 3 章 PyTorch 基础</h2></body></html>]]></content>
       <categories>
         <category>读书笔记</category>
         <category>IT</category>
