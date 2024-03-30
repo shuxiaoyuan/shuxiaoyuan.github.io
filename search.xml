@@ -38,6 +38,15 @@
 </blockquote>
 </li>
 </ul>
+<h3 id="第-7-条：用列表推导来取代-map-和-filter"><a href="#第-7-条：用列表推导来取代-map-和-filter" class="headerlink" title="第 7 条：用列表推导来取代 map 和 filter"></a>第 7 条：用列表推导来取代 map 和 filter</h3><ul>
+<li>P16<blockquote>
+<p><em>列表推导要比内置的 map 和 filter 函数清晰，因为它无需额外编写 lambda 表达式。</em><br><em>列表推导可以跳过输入列表中的某些元素，如果改用 map 来做，那就必须辅以 filter 方能实现。</em><br><em>字典与集也支持推导表达式。</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="第-8-条：不要使用含有两个以上表达式的列表推导"><a href="#第-8-条：不要使用含有两个以上表达式的列表推导" class="headerlink" title="第 8 条：不要使用含有两个以上表达式的列表推导"></a>第 8 条：不要使用含有两个以上表达式的列表推导</h3><p>总之，列表推导的循环和条件语句不要写太复杂，否则，还不如用普通的 for 循环和 if 语句代替。</p>
+<h3 id="第-9-条：用生成器表达式来改写数据量较大的列表推导"><a href="#第-9-条：用生成器表达式来改写数据量较大的列表推导" class="headerlink" title="第 9 条：用生成器表达式来改写数据量较大的列表推导"></a>第 9 条：用生成器表达式来改写数据量较大的列表推导</h3><p>这条廖雪峰教程写的更详细：<a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017318207388128" target="_blank" rel="noopener">生成器</a></p>
+<h3 id="第-10-条：尽量用-enumerate-取代-range"><a href="#第-10-条：尽量用-enumerate-取代-range" class="headerlink" title="第 10 条：尽量用 enumerate 取代 range"></a>第 10 条：尽量用 enumerate 取代 range</h3><p>遍历序列时，如果需要使用下标（索引），就用 enumerate；如果不需要使用下标，就用 range。</p>
 </body></html>]]></content>
       <categories>
         <category>读书笔记</category>
