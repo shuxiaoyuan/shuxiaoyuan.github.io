@@ -15,7 +15,30 @@
 <figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">to_str</span><span class="params">(bytes_or_str)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> isinstance(bytes_or_str, bytes):</span><br><span class="line">        value = bytes_or_str.decode(<span class="string">'utf-8'</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        value = bytes_or_str</span><br><span class="line">    <span class="keyword">return</span> value  <span class="comment"># Instance of str</span></span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">to_bytes</span><span class="params">(bytes_or_str)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> isinstance(bytes_or_str, str):</span><br><span class="line">        value = bytes_or_str.encode(<span class="string">'utf-8'</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        value = bytes_or_str</span><br><span class="line">    <span class="keyword">return</span> value  <span class="comment"># Instance of bytes</span></span><br></pre></td></tr></tbody></table></figure>
 
 <h3 id="第-4-条：用辅助函数来取代复杂的表达式"><a href="#第-4-条：用辅助函数来取代复杂的表达式" class="headerlink" title="第 4 条：用辅助函数来取代复杂的表达式"></a>第 4 条：用辅助函数来取代复杂的表达式</h3><p>编写 Python 程序时，不要一味追求过于紧凑的写法。</p>
-<h3 id="第-5-条：了解切割序列的办法"><a href="#第-5-条：了解切割序列的办法" class="headerlink" title="第 5 条：了解切割序列的办法"></a>第 5 条：了解切割序列的办法</h3></body></html>]]></content>
+<h3 id="第-5-条：了解切割序列的办法"><a href="#第-5-条：了解切割序列的办法" class="headerlink" title="第 5 条：了解切割序列的办法"></a>第 5 条：了解切割序列的办法</h3><ul>
+<li><p>P11</p>
+<blockquote>
+<p><em>切割列表时，即便 start 或 end 索引越界也不会出问题。利用这一特性，我们可以限定输入序列的最大长度。</em><br><em>反之，访问列表中的单个元素时，下标不能越界，否则会导致异常。</em></p>
+</blockquote>
+</li>
+<li><p>P12</p>
+<blockquote>
+<p><em>对原列表进行切割之后，会产生另外一份全新的列表。系统依然维护着指向原列表中各个对象的引用。在切割后得到的新列表上进行修改，不会影响原列表。</em></p>
+</blockquote>
+</li>
+<li><p>P13</p>
+<blockquote>
+<p><em>对 list 赋值的时候，如果使用切片操作，就会把原列表中处在相关范围内的值替换成新值，即便它们的长度不同也依然可以替换。</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="第-6-条：在单次切片操作内，不要同时指定-start、end-和-stride"><a href="#第-6-条：在单次切片操作内，不要同时指定-start、end-和-stride" class="headerlink" title="第 6 条：在单次切片操作内，不要同时指定 start、end 和 stride"></a>第 6 条：在单次切片操作内，不要同时指定 start、end 和 stride</h3><ul>
+<li>P15<blockquote>
+<p><em>既有 start 和 end，又有 stride 的切割操作，可能会令人费解。</em><br><em>尽量使用 stride 为正数，且不带 start 或 end 索引的切割操作。尽量避免用负数做 stride。</em><br><em>在同一个切片操作内，不用同时使用 start、end 和 stride。如果确实需要执行这种操作，那就考虑将其拆解为两条赋值语句，其中一条做范围切割，另一条做步进切割，或考虑使用内置 itertools 模块中的 islice。</em></p>
+</blockquote>
+</li>
+</ul>
+</body></html>]]></content>
       <categories>
         <category>读书笔记</category>
         <category>IT</category>
