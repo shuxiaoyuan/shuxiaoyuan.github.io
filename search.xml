@@ -47,6 +47,15 @@
 <h3 id="第-8-条：不要使用含有两个以上表达式的列表推导"><a href="#第-8-条：不要使用含有两个以上表达式的列表推导" class="headerlink" title="第 8 条：不要使用含有两个以上表达式的列表推导"></a>第 8 条：不要使用含有两个以上表达式的列表推导</h3><p>总之，列表推导的循环和条件语句不要写太复杂，否则，还不如用普通的 for 循环和 if 语句代替。</p>
 <h3 id="第-9-条：用生成器表达式来改写数据量较大的列表推导"><a href="#第-9-条：用生成器表达式来改写数据量较大的列表推导" class="headerlink" title="第 9 条：用生成器表达式来改写数据量较大的列表推导"></a>第 9 条：用生成器表达式来改写数据量较大的列表推导</h3><p>这条廖雪峰教程写的更详细：<a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017318207388128" target="_blank" rel="noopener">生成器</a></p>
 <h3 id="第-10-条：尽量用-enumerate-取代-range"><a href="#第-10-条：尽量用-enumerate-取代-range" class="headerlink" title="第 10 条：尽量用 enumerate 取代 range"></a>第 10 条：尽量用 enumerate 取代 range</h3><p>遍历序列时，如果需要使用下标（索引），就用 enumerate；如果不需要使用下标，就用 range。</p>
+<h3 id="第-11-条：用-zip-函数同时遍历两个迭代器"><a href="#第-11-条：用-zip-函数同时遍历两个迭代器" class="headerlink" title="第 11 条：用 zip 函数同时遍历两个迭代器"></a>第 11 条：用 zip 函数同时遍历两个迭代器</h3><p>这条直接看官方文档就行：<a href="https://docs.python.org/zh-cn/3/library/functions.html#zip" target="_blank" rel="noopener">zip(*iterables, strict=False)</a></p>
+<h3 id="第-12-条：不要在-for-和-while-循环后面写-else-块"><a href="#第-12-条：不要在-for-和-while-循环后面写-else-块" class="headerlink" title="第 12 条：不要在 for 和 while 循环后面写 else 块"></a>第 12 条：不要在 for 和 while 循环后面写 else 块</h3><p>字面意思，Python 循环后的 else 块语法非常诡异，不要使用。</p>
+<h3 id="第-13-条：合理利用-try-except-else-finally-结构中的每个代码块"><a href="#第-13-条：合理利用-try-except-else-finally-结构中的每个代码块" class="headerlink" title="第 13 条：合理利用 try/except/else/finally 结构中的每个代码块"></a>第 13 条：合理利用 try/except/else/finally 结构中的每个代码块</h3><p>看官方文档就行：<a href="https://docs.python.org/zh-cn/3/tutorial/errors.html" target="_blank" rel="noopener">错误和异常</a></p>
+<h2 id="第-2-章-函数"><a href="#第-2-章-函数" class="headerlink" title="第 2 章 函数"></a>第 2 章 函数</h2><h3 id="第-14-条：尽量用异常来表示特殊情况，而不要返回-None"><a href="#第-14-条：尽量用异常来表示特殊情况，而不要返回-None" class="headerlink" title="第 14 条：尽量用异常来表示特殊情况，而不要返回 None"></a>第 14 条：尽量用异常来表示特殊情况，而不要返回 None</h3><ul>
+<li>P30<blockquote>
+<p><em>用 None 这个返回值来表示特殊意义的函数，很容易使调用者犯错，因为 None 和 0 及空字符串之类的值，在条件表达式里都会评估为 False。</em><br><em>函数在遇到特殊情况时，应该抛出异常，而不要返回 None。调用者看到该函数的文档中所描述的异常之后，应该就会编写相应的代码来处理它们了。</em></p>
+</blockquote>
+</li>
+</ul>
 </body></html>]]></content>
       <categories>
         <category>读书笔记</category>
