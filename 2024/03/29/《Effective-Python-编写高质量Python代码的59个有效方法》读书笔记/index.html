@@ -52,7 +52,7 @@
 <meta property="og:description" content="《Effective Python 编写高质量Python代码的59个有效方法》读书笔记，持续更新中…">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-29T08:02:27.000Z">
-<meta property="article:modified_time" content="2024-04-01T13:10:59.347Z">
+<meta property="article:modified_time" content="2024-04-02T10:20:55.730Z">
 <meta property="article:author" content="书缘">
 <meta property="article:tag" content="读书笔记">
 <meta name="twitter:card" content="summary">
@@ -247,7 +247,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-04-01 21:10:59" itemprop="dateModified" datetime="2024-04-01T21:10:59+08:00">2024-04-01</time>
+                <time title="修改时间：2024-04-02 18:20:55" itemprop="dateModified" datetime="2024-04-02T18:20:55+08:00">2024-04-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -273,7 +273,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.7k</span>
+              <span>2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -342,6 +342,18 @@
 <h2 id="第-2-章-函数"><a href="#第-2-章-函数" class="headerlink" title="第 2 章 函数"></a>第 2 章 函数</h2><h3 id="第-14-条：尽量用异常来表示特殊情况，而不要返回-None"><a href="#第-14-条：尽量用异常来表示特殊情况，而不要返回-None" class="headerlink" title="第 14 条：尽量用异常来表示特殊情况，而不要返回 None"></a>第 14 条：尽量用异常来表示特殊情况，而不要返回 None</h3><ul>
 <li>P30<blockquote>
 <p><em>用 None 这个返回值来表示特殊意义的函数，很容易使调用者犯错，因为 None 和 0 及空字符串之类的值，在条件表达式里都会评估为 False。</em><br><em>函数在遇到特殊情况时，应该抛出异常，而不要返回 None。调用者看到该函数的文档中所描述的异常之后，应该就会编写相应的代码来处理它们了。</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="第-15-条：了解如何在闭包里使用外围作用域中的变量"><a href="#第-15-条：了解如何在闭包里使用外围作用域中的变量" class="headerlink" title="第 15 条：了解如何在闭包里使用外围作用域中的变量"></a>第 15 条：了解如何在闭包里使用外围作用域中的变量</h3><ul>
+<li>P34<blockquote>
+<p><em>对于定义在某作用域内的闭包来说，它可以引用这些作用域中的变量。</em><br><em>使用默认方式对闭包内的变量赋值，不会影响外围作用域中的同名变量。</em><br><em>在 Python 3 中，程序可以在闭包内用 nonlocal 语句来修饰某个名称，使该闭包能够修改外围作用域中的同名变量。</em><br><em>除了那种比较简单的函数，尽量不要用 nonlocal 语句。</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="第-16-条：考虑用生成器来改写直接返回列表的函数"><a href="#第-16-条：考虑用生成器来改写直接返回列表的函数" class="headerlink" title="第 16 条：考虑用生成器来改写直接返回列表的函数"></a>第 16 条：考虑用生成器来改写直接返回列表的函数</h3><ul>
+<li>P37<blockquote>
+<p><em>使用生成器比把收集到的结果放入列表里返回给调用者更加清晰。</em><br><em>由生成器函数所返回的那个迭代器，可以把生成器函数体中，传给 yield 表达式的那些值，逐次产生出来。</em><br><em>无论输入量有多大，生成器都能产生一系列输出，因为这些输入量和输出量，都不会影响它在执行时所耗的内存。</em></p>
 </blockquote>
 </li>
 </ul>
@@ -463,7 +475,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#资源"><span class="nav-number">1.</span> <span class="nav-text">资源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">2.</span> <span class="nav-text">目录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第-1-章-用-Pythonic-方式来思考"><span class="nav-number">2.1.</span> <span class="nav-text">第 1 章 用 Pythonic 方式来思考</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第-1-条：确认自己所用的-Python-版本"><span class="nav-number">2.1.1.</span> <span class="nav-text">第 1 条：确认自己所用的 Python 版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-2-条：遵循-PEP8-风格指南"><span class="nav-number">2.1.2.</span> <span class="nav-text">第 2 条：遵循 PEP8 风格指南</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-3-条：了解-bytes、str-与-unicode-的区别"><span class="nav-number">2.1.3.</span> <span class="nav-text">第 3 条：了解 bytes、str 与 unicode 的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-4-条：用辅助函数来取代复杂的表达式"><span class="nav-number">2.1.4.</span> <span class="nav-text">第 4 条：用辅助函数来取代复杂的表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-5-条：了解切割序列的办法"><span class="nav-number">2.1.5.</span> <span class="nav-text">第 5 条：了解切割序列的办法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-6-条：在单次切片操作内，不要同时指定-start、end-和-stride"><span class="nav-number">2.1.6.</span> <span class="nav-text">第 6 条：在单次切片操作内，不要同时指定 start、end 和 stride</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-7-条：用列表推导来取代-map-和-filter"><span class="nav-number">2.1.7.</span> <span class="nav-text">第 7 条：用列表推导来取代 map 和 filter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-8-条：不要使用含有两个以上表达式的列表推导"><span class="nav-number">2.1.8.</span> <span class="nav-text">第 8 条：不要使用含有两个以上表达式的列表推导</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-9-条：用生成器表达式来改写数据量较大的列表推导"><span class="nav-number">2.1.9.</span> <span class="nav-text">第 9 条：用生成器表达式来改写数据量较大的列表推导</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-10-条：尽量用-enumerate-取代-range"><span class="nav-number">2.1.10.</span> <span class="nav-text">第 10 条：尽量用 enumerate 取代 range</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-11-条：用-zip-函数同时遍历两个迭代器"><span class="nav-number">2.1.11.</span> <span class="nav-text">第 11 条：用 zip 函数同时遍历两个迭代器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-12-条：不要在-for-和-while-循环后面写-else-块"><span class="nav-number">2.1.12.</span> <span class="nav-text">第 12 条：不要在 for 和 while 循环后面写 else 块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-13-条：合理利用-try-except-else-finally-结构中的每个代码块"><span class="nav-number">2.1.13.</span> <span class="nav-text">第 13 条：合理利用 try/except/else/finally 结构中的每个代码块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第-2-章-函数"><span class="nav-number">2.2.</span> <span class="nav-text">第 2 章 函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第-14-条：尽量用异常来表示特殊情况，而不要返回-None"><span class="nav-number">2.2.1.</span> <span class="nav-text">第 14 条：尽量用异常来表示特殊情况，而不要返回 None</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#资源"><span class="nav-number">1.</span> <span class="nav-text">资源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">2.</span> <span class="nav-text">目录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第-1-章-用-Pythonic-方式来思考"><span class="nav-number">2.1.</span> <span class="nav-text">第 1 章 用 Pythonic 方式来思考</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第-1-条：确认自己所用的-Python-版本"><span class="nav-number">2.1.1.</span> <span class="nav-text">第 1 条：确认自己所用的 Python 版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-2-条：遵循-PEP8-风格指南"><span class="nav-number">2.1.2.</span> <span class="nav-text">第 2 条：遵循 PEP8 风格指南</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-3-条：了解-bytes、str-与-unicode-的区别"><span class="nav-number">2.1.3.</span> <span class="nav-text">第 3 条：了解 bytes、str 与 unicode 的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-4-条：用辅助函数来取代复杂的表达式"><span class="nav-number">2.1.4.</span> <span class="nav-text">第 4 条：用辅助函数来取代复杂的表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-5-条：了解切割序列的办法"><span class="nav-number">2.1.5.</span> <span class="nav-text">第 5 条：了解切割序列的办法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-6-条：在单次切片操作内，不要同时指定-start、end-和-stride"><span class="nav-number">2.1.6.</span> <span class="nav-text">第 6 条：在单次切片操作内，不要同时指定 start、end 和 stride</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-7-条：用列表推导来取代-map-和-filter"><span class="nav-number">2.1.7.</span> <span class="nav-text">第 7 条：用列表推导来取代 map 和 filter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-8-条：不要使用含有两个以上表达式的列表推导"><span class="nav-number">2.1.8.</span> <span class="nav-text">第 8 条：不要使用含有两个以上表达式的列表推导</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-9-条：用生成器表达式来改写数据量较大的列表推导"><span class="nav-number">2.1.9.</span> <span class="nav-text">第 9 条：用生成器表达式来改写数据量较大的列表推导</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-10-条：尽量用-enumerate-取代-range"><span class="nav-number">2.1.10.</span> <span class="nav-text">第 10 条：尽量用 enumerate 取代 range</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-11-条：用-zip-函数同时遍历两个迭代器"><span class="nav-number">2.1.11.</span> <span class="nav-text">第 11 条：用 zip 函数同时遍历两个迭代器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-12-条：不要在-for-和-while-循环后面写-else-块"><span class="nav-number">2.1.12.</span> <span class="nav-text">第 12 条：不要在 for 和 while 循环后面写 else 块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-13-条：合理利用-try-except-else-finally-结构中的每个代码块"><span class="nav-number">2.1.13.</span> <span class="nav-text">第 13 条：合理利用 try/except/else/finally 结构中的每个代码块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第-2-章-函数"><span class="nav-number">2.2.</span> <span class="nav-text">第 2 章 函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第-14-条：尽量用异常来表示特殊情况，而不要返回-None"><span class="nav-number">2.2.1.</span> <span class="nav-text">第 14 条：尽量用异常来表示特殊情况，而不要返回 None</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-15-条：了解如何在闭包里使用外围作用域中的变量"><span class="nav-number">2.2.2.</span> <span class="nav-text">第 15 条：了解如何在闭包里使用外围作用域中的变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-16-条：考虑用生成器来改写直接返回列表的函数"><span class="nav-number">2.2.3.</span> <span class="nav-text">第 16 条：考虑用生成器来改写直接返回列表的函数</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -537,7 +549,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">42k</span>
+    <span title="站点总字数">43k</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
   </div>
