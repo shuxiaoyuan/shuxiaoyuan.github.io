@@ -68,6 +68,25 @@
 </blockquote>
 </li>
 </ul>
+<h3 id="第-17-条：在参数上面迭代时，要多加小心"><a href="#第-17-条：在参数上面迭代时，要多加小心" class="headerlink" title="第 17 条：在参数上面迭代时，要多加小心"></a>第 17 条：在参数上面迭代时，要多加小心</h3><ul>
+<li>P41<blockquote>
+<p><em>函数在输入的参数上面多次迭代时要当心：如果参数是迭代器，那么可能导致奇怪的行为并错失某些值。</em><br><em>Python 的迭代器协议，描述了容器和迭代器应该如何与 iter 和 next 内置函数、for 循环及相关表达式相互配合。</em><br><em>把 __iter__ 方法实现为生成器，即可定义自己的容器类型。</em><br><em>想判断某个值是迭代器还是容器，可以拿该值为参数，两次调用 iter 函数，若结果相同，则是迭代器，调用内置的 next 函数，即可令该迭代器前进一步。</em></p>
+</blockquote>
+</li>
+</ul>
+<p>关于迭代器，可查看官方文档：<a href="https://docs.python.org/zh-cn/3/library/stdtypes.html#iterator-types" target="_blank" rel="noopener">迭代器类型</a></p>
+<h3 id="第-18-条：用数量可变的位置参数减少视觉杂讯"><a href="#第-18-条：用数量可变的位置参数减少视觉杂讯" class="headerlink" title="第 18 条：用数量可变的位置参数减少视觉杂讯"></a>第 18 条：用数量可变的位置参数减少视觉杂讯</h3><ul>
+<li><p>P42</p>
+<blockquote>
+<p><em>变长参数在传给函数时，总是要先转化成元组（tuple）。</em></p>
+</blockquote>
+</li>
+<li><p>P43</p>
+<blockquote>
+<p><em>在 def 语句中使用 *args，即可令函数接受数量可变的位置参数。</em><br><em>调用函数时，可以采用 * 操作符，把序列中的元素当成位置参数，传给该函数。</em><br><em>对生成器使用 * 操作符，可能导致程序耗尽内存并崩溃。</em><br><em>在已经接受 *args 参数的函数上面继续添加位置参数，可能会产生难以排查的 bug。</em></p>
+</blockquote>
+</li>
+</ul>
 </body></html>]]></content>
       <categories>
         <category>读书笔记</category>
