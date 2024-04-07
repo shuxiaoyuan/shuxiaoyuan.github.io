@@ -6,6 +6,7 @@
     <content><![CDATA[<html><head></head><body><p>《Effective Python 编写高质量Python代码的59个有效方法》读书笔记，持续更新中…</p>
 <a id="more"></a>
 
+<p>本书同一条目往往也同时包含了 Python2 版本的实现，在阅读时简单浏览或直接略过即可。</p>
 <h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><p><a href="https://effectivepython.com/" target="_blank" rel="noopener">本书官网</a></p>
 <p><a href="https://github.com/bslatkin/effectivepython" target="_blank" rel="noopener">本书Github地址</a></p>
 <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h2 id="第-1-章-用-Pythonic-方式来思考"><a href="#第-1-章-用-Pythonic-方式来思考" class="headerlink" title="第 1 章 用 Pythonic 方式来思考"></a>第 1 章 用 Pythonic 方式来思考</h2><h3 id="第-1-条：确认自己所用的-Python-版本"><a href="#第-1-条：确认自己所用的-Python-版本" class="headerlink" title="第 1 条：确认自己所用的 Python 版本"></a>第 1 条：确认自己所用的 Python 版本</h3><p>现在 Python 2 已经是历史了，这条可以忽略。</p>
@@ -50,7 +51,8 @@
 <h3 id="第-11-条：用-zip-函数同时遍历两个迭代器"><a href="#第-11-条：用-zip-函数同时遍历两个迭代器" class="headerlink" title="第 11 条：用 zip 函数同时遍历两个迭代器"></a>第 11 条：用 zip 函数同时遍历两个迭代器</h3><p>这条直接看官方文档就行：<a href="https://docs.python.org/zh-cn/3/library/functions.html#zip" target="_blank" rel="noopener">zip(*iterables, strict=False)</a></p>
 <h3 id="第-12-条：不要在-for-和-while-循环后面写-else-块"><a href="#第-12-条：不要在-for-和-while-循环后面写-else-块" class="headerlink" title="第 12 条：不要在 for 和 while 循环后面写 else 块"></a>第 12 条：不要在 for 和 while 循环后面写 else 块</h3><p>字面意思，Python 循环后的 else 块语法非常诡异，不要使用。</p>
 <h3 id="第-13-条：合理利用-try-except-else-finally-结构中的每个代码块"><a href="#第-13-条：合理利用-try-except-else-finally-结构中的每个代码块" class="headerlink" title="第 13 条：合理利用 try/except/else/finally 结构中的每个代码块"></a>第 13 条：合理利用 try/except/else/finally 结构中的每个代码块</h3><p>看官方文档就行：<a href="https://docs.python.org/zh-cn/3/tutorial/errors.html" target="_blank" rel="noopener">错误和异常</a></p>
-<h2 id="第-2-章-函数"><a href="#第-2-章-函数" class="headerlink" title="第 2 章 函数"></a>第 2 章 函数</h2><h3 id="第-14-条：尽量用异常来表示特殊情况，而不要返回-None"><a href="#第-14-条：尽量用异常来表示特殊情况，而不要返回-None" class="headerlink" title="第 14 条：尽量用异常来表示特殊情况，而不要返回 None"></a>第 14 条：尽量用异常来表示特殊情况，而不要返回 None</h3><ul>
+<h2 id="第-2-章-函数"><a href="#第-2-章-函数" class="headerlink" title="第 2 章 函数"></a>第 2 章 函数</h2><p>本章第 18 条到第 21 条的内容，廖雪峰教程也概况的比较好：<a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017261630425888" target="_blank" rel="noopener">函数的参数</a></p>
+<h3 id="第-14-条：尽量用异常来表示特殊情况，而不要返回-None"><a href="#第-14-条：尽量用异常来表示特殊情况，而不要返回-None" class="headerlink" title="第 14 条：尽量用异常来表示特殊情况，而不要返回 None"></a>第 14 条：尽量用异常来表示特殊情况，而不要返回 None</h3><ul>
 <li>P30<blockquote>
 <p><em>用 None 这个返回值来表示特殊意义的函数，很容易使调用者犯错，因为 None 和 0 及空字符串之类的值，在条件表达式里都会评估为 False。</em><br><em>函数在遇到特殊情况时，应该抛出异常，而不要返回 None。调用者看到该函数的文档中所描述的异常之后，应该就会编写相应的代码来处理它们了。</em></p>
 </blockquote>
@@ -87,6 +89,24 @@
 </blockquote>
 </li>
 </ul>
+<h3 id="第-19-条：用关键字参数来表达可选的行为"><a href="#第-19-条：用关键字参数来表达可选的行为" class="headerlink" title="第 19 条：用关键字参数来表达可选的行为"></a>第 19 条：用关键字参数来表达可选的行为</h3><ul>
+<li>P46<blockquote>
+<p><em>函数参数可以按位置或关键字来指定。</em><br><em>只使用位置参数来调用函数，可能会导致这些参数值的含义不够明确，而关键字参数则能够阐明每个参数的意图。</em><br><em>给函数添加新的行为时，可以使用带默认值的关键字参数，以便与原有的函数调用代码保持兼容。</em><br><em>可选的关键字参数，总是应该以关键字形式来指定，而不应该以位置参数的形式来指定。</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="第-20-条：用-None-和文档字符串来描述具有动态默认值的参数"><a href="#第-20-条：用-None-和文档字符串来描述具有动态默认值的参数" class="headerlink" title="第 20 条：用 None 和文档字符串来描述具有动态默认值的参数"></a>第 20 条：用 None 和文档字符串来描述具有动态默认值的参数</h3><ul>
+<li>P49<blockquote>
+<p><em>参数的默认值，只会在程序加载模块并读到本地函数的定义时评估一次。对于 {} 或 [] 等动态的值，这可能会导致奇怪的行为。</em><br><em>对于以动态值作为实际默认值的关键字参数来说，应该把形式上的默认值写为 None，并在函数的文档字符串里面描述该默认值所对应的实际行为。</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="第-21-条：用只能以关键字形式指定的参数来确保代码明晰"><a href="#第-21-条：用只能以关键字形式指定的参数来确保代码明晰" class="headerlink" title="第 21 条：用只能以关键字形式指定的参数来确保代码明晰"></a>第 21 条：用只能以关键字形式指定的参数来确保代码明晰</h3><ul>
+<li>P52<blockquote>
+<p><em>关键字参数能够使函数调用的意图更加明确。</em><br><em>对于各参数之间很容易混淆的函数，可以声明只能以关键字形式指定的参数，以确保调用者必须通过关键字来指定它们。对于接受多个 Boolean 标志的函数，更应该这样做。</em><br><em>在编写函数时，Python3 有明确的语法来定义这种只能以关键字形式指定的参数。</em></p>
+</blockquote>
+</li>
+</ul>
 </body></html>]]></content>
       <categories>
         <category>读书笔记</category>
@@ -107,7 +127,7 @@
 <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h2 id="第一部分-PyTorch-基础"><a href="#第一部分-PyTorch-基础" class="headerlink" title="第一部分 PyTorch 基础"></a>第一部分 PyTorch 基础</h2><h3 id="第-1-章-Numpy-基础"><a href="#第-1-章-Numpy-基础" class="headerlink" title="第 1 章 Numpy 基础"></a>第 1 章 Numpy 基础</h3><p>本章主要介绍了 Numpy 模块的常用操作，尤其涉及对矩阵的操作。</p>
 <h3 id="第-2-章-PyTorch-基础"><a href="#第-2-章-PyTorch-基础" class="headerlink" title="第 2 章 PyTorch 基础"></a>第 2 章 PyTorch 基础</h3><p>本章首先介绍了 PyTorch 的安装配置，然后介绍了 PyTorch 的重要数据结构 Tensor。<br>Tensor 类似于 Numpy 的数据结构，但 Tensor 提供 GPU 加速及自动求导等技术。<br>最后分别用 Numpy、Tensor、Autograd、TensorFlow 等技术实现同一个机器学习任务。</p>
 <p>本章很多数学概念与机器学习概念并未详细介绍，需要自行了解，暂时跳过，后续用到再查。</p>
-<h3 id="第-3-章-PyTorch-基础"><a href="#第-3-章-PyTorch-基础" class="headerlink" title="第 3 章 PyTorch 基础"></a>第 3 章 PyTorch 基础</h3></body></html>]]></content>
+<h3 id="第-3-章-PyTorch-神经网络工具箱"><a href="#第-3-章-PyTorch-神经网络工具箱" class="headerlink" title="第 3 章 PyTorch 神经网络工具箱"></a>第 3 章 PyTorch 神经网络工具箱</h3></body></html>]]></content>
       <categories>
         <category>读书笔记</category>
         <category>IT</category>
