@@ -120,6 +120,19 @@
 </blockquote>
 </li>
 </ul>
+<h3 id="第-24-条：以-classmethod-形式的多态去通用地构建对象"><a href="#第-24-条：以-classmethod-形式的多态去通用地构建对象" class="headerlink" title="第 24 条：以 @classmethod 形式的多态去通用地构建对象"></a>第 24 条：以 @classmethod 形式的多态去通用地构建对象</h3><ul>
+<li>P66<blockquote>
+<p><em>在 Python 程序中，每个类只能有一个构造器，也就是 __init__ 方法。</em><br><em>通过 @classmethod 机制，可以用一种与构造器相仿的方式来构造类的对象。</em><br><em>通过类方法多态机制，我们能够以更加通用的方式来构建并拼接具体的子类。</em></p>
+</blockquote>
+</li>
+</ul>
+<p>讲真这条道理其实挺简单的，但是作者为了说明举了个比较复杂的例子。。</p>
+<h3 id="第-25-条：用-super-初始化父类"><a href="#第-25-条：用-super-初始化父类" class="headerlink" title="第 25 条：用 super 初始化父类"></a>第 25 条：用 super 初始化父类</h3><ul>
+<li>P70<blockquote>
+<p><em>Python 采用标准的方法解析顺序来解决超类初始化次序及钻石继承问题。</em><br><em>总是应该使用内置的 super 函数来初始化父类。</em></p>
+</blockquote>
+</li>
+</ul>
 </body></html>]]></content>
       <categories>
         <category>读书笔记</category>
