@@ -146,7 +146,14 @@
 </blockquote>
 </li>
 </ul>
-</body></html>]]></content>
+<h3 id="第-28-条：继承-collections-abc-以实现自定义的容器类型"><a href="#第-28-条：继承-collections-abc-以实现自定义的容器类型" class="headerlink" title="第 28 条：继承 collections.abc 以实现自定义的容器类型"></a>第 28 条：继承 collections.abc 以实现自定义的容器类型</h3><ul>
+<li>P83<blockquote>
+<p><em>如果要定制的子类比较简单，那就可以直接从 Python 的容器类型（如 list 或 dict）中继承。</em><br><em>想正确实现自定义的容器类型，可能需要编写大量的特殊方法。</em><br><em>编写自制的容器类型时，可以从 collections.abc 模块的抽象基类中继承，那些基类能够确保我们的子类具备适当的接口及行为。</em></p>
+</blockquote>
+</li>
+</ul>
+<p>说实话我感觉在日常代码中，实现自定义容器类型，貌似除了增加代码理解难度之外，没有明显的优势。<br>书中举例可以用来实现二叉树的下标、长度等操作，倒是一个巧妙的方法，让我想起了《算法第4版》这本书。</p>
+<h2 id="第-4-章-元类及属性"><a href="#第-4-章-元类及属性" class="headerlink" title="第 4 章 元类及属性"></a>第 4 章 元类及属性</h2></body></html>]]></content>
       <categories>
         <category>读书笔记</category>
         <category>IT</category>
