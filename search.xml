@@ -153,7 +153,26 @@
 </li>
 </ul>
 <p>说实话我感觉在日常代码中，实现自定义容器类型，貌似除了增加代码理解难度之外，没有明显的优势。<br>书中举例可以用来实现二叉树的下标、长度等操作，倒是一个巧妙的方法，让我想起了《算法第4版》这本书。</p>
-<h2 id="第-4-章-元类及属性"><a href="#第-4-章-元类及属性" class="headerlink" title="第 4 章 元类及属性"></a>第 4 章 元类及属性</h2></body></html>]]></content>
+<h2 id="第-4-章-元类及属性"><a href="#第-4-章-元类及属性" class="headerlink" title="第 4 章 元类及属性"></a>第 4 章 元类及属性</h2><h3 id="第-29-条：用纯属性取代-get-和-set-方法"><a href="#第-29-条：用纯属性取代-get-和-set-方法" class="headerlink" title="第 29 条：用纯属性取代 get 和 set 方法"></a>第 29 条：用纯属性取代 get 和 set 方法</h3><ul>
+<li>P88<blockquote>
+<p><em>编写新类时，应该用简单的 public 属性来定义其接口，而不要手工实现 set 和 get 方法。</em><br><em>如果访问对象的某个属性时，需要表现出特殊的行为，那就用 @property 来定义这种行为。</em><br><em>@property 方法应该遵循最小惊讶原则，而不应产生奇怪的副作用。</em><br><em>@property 方法需要执行得迅速一些，缓慢或复杂的工作，应该放在普通的方法里面。</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="第-30-条：考虑用-property-来代替属性重构"><a href="#第-30-条：考虑用-property-来代替属性重构" class="headerlink" title="第 30 条：考虑用 @property 来代替属性重构"></a>第 30 条：考虑用 @property 来代替属性重构</h3><ul>
+<li>P92<blockquote>
+<p><em>@property 可以为现有的实例属性添加新的功能。</em><br><em>可以用 @property 来逐步完善数据模型。</em><br><em>如果 @property 用得太过频繁，那就应该考虑彻底重构该类并修改相关的调用代码。</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="第-31-条：用描述符来改写需要复用的-property-方法"><a href="#第-31-条：用描述符来改写需要复用的-property-方法" class="headerlink" title="第 31 条：用描述符来改写需要复用的 @property 方法"></a>第 31 条：用描述符来改写需要复用的 @property 方法</h3><ul>
+<li>P96<blockquote>
+<p><em>如果想复用 @property 方法及其验证机制，那么可以自己定义描述符类。</em><br><em>WeakKeyDictionary 可以保证描述符类不会泄漏内存。</em><br><em>通过描述符协议来实现属性的获取和设置操作时，不要纠结于 __getattribute__ 的方法具体运作细节。</em></p>
+</blockquote>
+</li>
+</ul>
+<p>这条很古怪，作者举的例子也没有说服力，多门成绩编写同样的方法，不一定非要编写不同的类啊，不可以都继承自一个基类？</p>
+</body></html>]]></content>
       <categories>
         <category>读书笔记</category>
         <category>IT</category>
