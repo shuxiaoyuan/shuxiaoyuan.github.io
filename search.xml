@@ -7,7 +7,8 @@
 <a id="more"></a>
 
 <p>本书同一条目往往也同时包含了 Python2 版本的实现，在阅读时简单浏览或直接略过即可。</p>
-<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><p><a href="https://effectivepython.com/" target="_blank" rel="noopener">本书官网</a></p>
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><p><a href="https://pan.baidu.com/s/1Td0HN9nKy7wOYDO37XHOQw?pwd=4bjq" target="_blank" rel="noopener">本书电子版</a></p>
+<p><a href="https://effectivepython.com/" target="_blank" rel="noopener">本书官网</a></p>
 <p><a href="https://github.com/bslatkin/effectivepython" target="_blank" rel="noopener">本书Github地址</a></p>
 <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h2 id="第-1-章-用-Pythonic-方式来思考"><a href="#第-1-章-用-Pythonic-方式来思考" class="headerlink" title="第 1 章 用 Pythonic 方式来思考"></a>第 1 章 用 Pythonic 方式来思考</h2><h3 id="第-1-条：确认自己所用的-Python-版本"><a href="#第-1-条：确认自己所用的-Python-版本" class="headerlink" title="第 1 条：确认自己所用的 Python 版本"></a>第 1 条：确认自己所用的 Python 版本</h3><p>现在 Python 2 已经是历史了，这条可以忽略。</p>
 <h3 id="第-2-条：遵循-PEP8-风格指南"><a href="#第-2-条：遵循-PEP8-风格指南" class="headerlink" title="第 2 条：遵循 PEP8 风格指南"></a>第 2 条：遵循 PEP8 风格指南</h3><p>直接看官方文档就行：<a href="https://peps.python.org/pep-0008/" target="_blank" rel="noopener">PEP 8 – Style Guide for Python Code</a></p>
@@ -172,6 +173,18 @@
 </li>
 </ul>
 <p>这条很古怪，作者举的例子也没有说服力，多门成绩编写同样的方法，不一定非要编写不同的类啊，不可以都继承自一个基类？</p>
+<h3 id="第-32-条：用-getattr-、-getattribute-和-setattr-实现按需生成的属性"><a href="#第-32-条：用-getattr-、-getattribute-和-setattr-实现按需生成的属性" class="headerlink" title="第 32 条：用 __getattr__、__getattribute__ 和 __setattr__ 实现按需生成的属性"></a>第 32 条：用 __getattr__、__getattribute__ 和 __setattr__ 实现按需生成的属性</h3><ul>
+<li>P101<blockquote>
+<p><em>通过 __getattr__ 和 __setattr__，我们可以用惰性的方式来加载并保存对象的属性。</em><br><em>要理解 __getattr__ 和 __getattribute__ 的区别：前者只会在待访问的属性缺失时触发，而后者则会在每次访问属性时触发。</em><br><em>如果要在 __getattribute__ 和 __setattr__ 方法中访问实例属性，那么应该直接通过 super() （也就是 object 类的同名方法）来做，以避免无限递归。</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="第-33-条：用元类来验证子类"><a href="#第-33-条：用元类来验证子类" class="headerlink" title="第 33 条：用元类来验证子类"></a>第 33 条：用元类来验证子类</h3><ul>
+<li>P104<blockquote>
+<p><em>通过元类，我们可以在生成子类对象之前，先验证子类的定义是否合乎规范。</em><br><em>Python 系统把子类的整个 class 语句体处理完毕之后，就会调用其元类的 __new__ 方法。</em></p>
+</blockquote>
+</li>
+</ul>
 </body></html>]]></content>
       <categories>
         <category>读书笔记</category>
