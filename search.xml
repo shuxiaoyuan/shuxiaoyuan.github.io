@@ -185,6 +185,18 @@
 </blockquote>
 </li>
 </ul>
+<h3 id="第-34-条：用元类来注册子类"><a href="#第-34-条：用元类来注册子类" class="headerlink" title="第 34 条：用元类来注册子类"></a>第 34 条：用元类来注册子类</h3><ul>
+<li>P108<blockquote>
+<p><em>在构建模块化的 Python 程序时，类的注册是一种很有用的模式。</em><br><em>开发者每次从基类中继承子类时，基类的元类都可以自动运行注册代码。</em><br><em>通过元类来实现类的注册，可以确保所有子类都不会遗漏，从而避免后续的错误。</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="第-35-条：用元类来注解类的属性"><a href="#第-35-条：用元类来注解类的属性" class="headerlink" title="第 35 条：用元类来注解类的属性"></a>第 35 条：用元类来注解类的属性</h3><ul>
+<li>P111<blockquote>
+<p><em>借助元类，我们可以在某个类完全定义好之前，率先修改该类的属性。</em><br><em>描述符与元类能够有效地组合起来，以便对某种行为做出修饰，或在程序运行时探查相关信息。</em><br><em>如果把元类与描述符相结合，那就可以在不使用 weakref 模块的前提下避免内存泄漏。</em></p>
+</blockquote>
+</li>
+</ul>
 </body></html>]]></content>
       <categories>
         <category>读书笔记</category>
