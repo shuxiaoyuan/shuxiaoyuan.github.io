@@ -197,6 +197,19 @@
 </blockquote>
 </li>
 </ul>
+<h2 id="第-5-章-并发及并行"><a href="#第-5-章-并发及并行" class="headerlink" title="第 5 章 并发及并行"></a>第 5 章 并发及并行</h2><h3 id="第-36-条：用-subprocess-模块来管理子进程"><a href="#第-36-条：用-subprocess-模块来管理子进程" class="headerlink" title="第 36 条：用 subprocess 模块来管理子进程"></a>第 36 条：用 subprocess 模块来管理子进程</h3><ul>
+<li>P116<blockquote>
+<p><em>可以用 subprocess 模块运行子进程，并管理其输入流与输出流。</em><br><em>Python 解释器能够平行地运行多条子进程，这使得开发者可以充分利用 CPU 的处理能力。</em><br><em>可以给 communicate 方法传入 timeout 参数，以避免子进程死锁或失去响应（hanging，挂起）。</em></p>
+</blockquote>
+</li>
+</ul>
+<p>讲真这条没太看懂，应该是在 Python 中调用其他程序时可以用到。</p>
+<h3 id="第-37-条：可以用线程来执行阻塞式-I-O，但不要用它做平行计算"><a href="#第-37-条：可以用线程来执行阻塞式-I-O，但不要用它做平行计算" class="headerlink" title="第 37 条：可以用线程来执行阻塞式 I/O，但不要用它做平行计算"></a>第 37 条：可以用线程来执行阻塞式 I/O，但不要用它做平行计算</h3><ul>
+<li>P121<blockquote>
+<p><em>因为受到全局解释器锁（GIL）的限制，所以多条 Python 线程不能在多个 CPU 核心上面平行地执行字节码。</em><br><em>尽管受制于 GIL，但是 Python 的多线程功能依然很有用，它可以轻松地模拟出同一时刻执行多项任务的效果。</em><br><em>通过 Python 线程，我们可以平行地执行多个系统调用，这使得程序能够在执行阻塞式 I/O 操作的同时，执行一些运算操作。</em></p>
+</blockquote>
+</li>
+</ul>
 </body></html>]]></content>
       <categories>
         <category>读书笔记</category>
