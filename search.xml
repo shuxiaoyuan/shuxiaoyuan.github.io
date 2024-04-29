@@ -229,6 +229,19 @@
 </blockquote>
 </li>
 </ul>
+<h3 id="第-41-条：考虑用-concurrent-futures-来实现真正的平行计算"><a href="#第-41-条：考虑用-concurrent-futures-来实现真正的平行计算" class="headerlink" title="第 41 条：考虑用 concurrent.futures 来实现真正的平行计算"></a>第 41 条：考虑用 concurrent.futures 来实现真正的平行计算</h3><ul>
+<li>P144<blockquote>
+<p><em>把引发 CPU 性能瓶颈的那部分代码，用 C 语言扩展模块来改写，即可在尽量发挥 Python 特性的前提下，有效提升程序的执行速度。但是，这样做的工作量比较大，而且可能会引入 bug。</em><br><em>multiprocessing 模块提供了一些强大的工具。对于某些类型的任务来说，开发者只需编写少量代码，即可实现平行计算。</em><br><em>若想利用强大的 multiprocessing 模块，最恰当的做法，就是通过内置的 concurrent.futures 模块及其 ProcessPoolExecutor 类来使用它。</em><br><em>multiprocessing 模块所提供的那些高级功能，都特别复杂，所以开发者尽量不要直接使用它们。</em></p>
+</blockquote>
+</li>
+</ul>
+<h2 id="第-6-章-内置模块"><a href="#第-6-章-内置模块" class="headerlink" title="第 6 章 内置模块"></a>第 6 章 内置模块</h2><h3 id="第-42-条：用-functools-wraps-定义函数修饰器"><a href="#第-42-条：用-functools-wraps-定义函数修饰器" class="headerlink" title="第 42 条：用 functools.wraps 定义函数修饰器"></a>第 42 条：用 functools.wraps 定义函数修饰器</h3><ul>
+<li>P147<blockquote>
+<p><em>Python 为修饰器提供了专门的语法，它使得程序在运行的时候，能够用一个函数来修改另一个函数。</em><br><em>对于调试器这种依靠内省机制的工具，直接编写修饰器会引发奇怪的行为。</em><br><em>内置的 functools 模块提供了名为 wraps 的修饰器，开发者在定义自己的修饰器时，应该用 wraps 对其做一些处理，以避免一些问题。</em></p>
+</blockquote>
+</li>
+</ul>
+<p>廖雪峰写的也比较通俗易懂：<a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017451662295584" target="_blank" rel="noopener">装饰器</a></p>
 </body></html>]]></content>
       <categories>
         <category>读书笔记</category>
