@@ -242,6 +242,13 @@
 </li>
 </ul>
 <p>廖雪峰写的也比较通俗易懂：<a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017451662295584" target="_blank" rel="noopener">装饰器</a></p>
+<h3 id="第-43-条：考虑以-contextlib-和-with-语句来改写可复用的-try-finally-代码"><a href="#第-43-条：考虑以-contextlib-和-with-语句来改写可复用的-try-finally-代码" class="headerlink" title="第 43 条：考虑以 contextlib 和 with 语句来改写可复用的 try/finally 代码"></a>第 43 条：考虑以 contextlib 和 with 语句来改写可复用的 try/finally 代码</h3><ul>
+<li>P151<blockquote>
+<p><em>可以用 with 语句来改写 try/finally 块中的逻辑，以便提升复用程度，并使代码更加整洁。</em><br><em>内置的 contextlib 模块提供了名叫 contextmanager 的修饰器，开发者只需用它来修饰自己的函数，即可令该函数支持 with 语句。</em><br><em>情境管理器可以通过 yield 语句向 with 语句返回一个值，此值会赋给由 as 关键字所指定的变量。该机制阐明了这个特殊情境的编写动机，并令 with 块中的语句能够直接访问这个目标变量。</em></p>
+</blockquote>
+</li>
+</ul>
+<p>这条配合廖雪峰教程食用更佳：<a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1115615597164000" target="_blank" rel="noopener">contextlib</a></p>
 </body></html>]]></content>
       <categories>
         <category>读书笔记</category>
