@@ -249,6 +249,12 @@
 </li>
 </ul>
 <p>这条配合廖雪峰教程食用更佳：<a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1115615597164000" target="_blank" rel="noopener">contextlib</a></p>
+<h3 id="第-44-条：用-copyreg-实现可靠的-pickle-操作"><a href="#第-44-条：用-copyreg-实现可靠的-pickle-操作" class="headerlink" title="第 44 条：用 copyreg 实现可靠的 pickle 操作"></a>第 44 条：用 copyreg 实现可靠的 pickle 操作</h3><ul>
+<li>P157<blockquote>
+<p><em>内置的 pickle 模块，只适合用来在彼此信任的程序之间，对相关对象执行序列化和反序列化操作。</em><br><em>如果用法比较复杂，那么 pickle 模块的功能也许就会出问题。</em><br><em>我们可以把内置的 copyreg 模块同 pickle 结合起来使用，以便为旧数据添加缺失的属性值、进行类的版本管理，并给序列化之后的数据提供固定的引入路径。</em></p>
+</blockquote>
+</li>
+</ul>
 </body></html>]]></content>
       <categories>
         <category>读书笔记</category>
