@@ -255,6 +255,13 @@
 </blockquote>
 </li>
 </ul>
+<h3 id="第-45-条：应该用-datetime-模块来处理本地时间，而不是用-time-模块"><a href="#第-45-条：应该用-datetime-模块来处理本地时间，而不是用-time-模块" class="headerlink" title="第 45 条：应该用 datetime 模块来处理本地时间，而不是用 time 模块"></a>第 45 条：应该用 datetime 模块来处理本地时间，而不是用 time 模块</h3><ul>
+<li>P161<blockquote>
+<p><em>不要用 time 模块在不同时区之间进行转换。</em><br><em>如果要在不同时区之间，可靠地执行转换操作，那就应该把内置的 datetime 模块与开发者社区提供的 pytz 模块搭配起来使用。</em><br><em>开发者总是应该先把时间表示成 UTC 格式，然后对其执行各种转换操作，最后再把它转回本地时间。</em></p>
+</blockquote>
+</li>
+</ul>
+<p>本条将时间与时区的转换，时区转换一般业务用不到，可以参考廖雪峰教程：<a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017648783851616" target="_blank" rel="noopener">datetime</a></p>
 </body></html>]]></content>
       <categories>
         <category>读书笔记</category>
