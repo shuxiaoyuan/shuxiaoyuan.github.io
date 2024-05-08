@@ -262,6 +262,11 @@
 </li>
 </ul>
 <p>本条将时间与时区的转换，时区转换一般业务用不到，可以参考廖雪峰教程：<a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017648783851616" target="_blank" rel="noopener">datetime</a></p>
+<h3 id="第-46-条：使用内置算法与数据结构"><a href="#第-46-条：使用内置算法与数据结构" class="headerlink" title="第 46 条：使用内置算法与数据结构"></a>第 46 条：使用内置算法与数据结构</h3><p>本条介绍了 collections 模块中常见的数据结构、bisect 模块中的二分查找， 以及 itertools 模块中与迭代相关函数。有了这些，我们不必重复造轮子。<br>廖雪峰也简单介绍了这些，但不如书中全面：</p>
+<ul>
+<li><a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017681679479008" target="_blank" rel="noopener">collections</a> </li>
+<li><a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017783145987360" target="_blank" rel="noopener">itertools</a></li>
+</ul>
 </body></html>]]></content>
       <categories>
         <category>读书笔记</category>
