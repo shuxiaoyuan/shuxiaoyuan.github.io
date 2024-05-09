@@ -267,6 +267,14 @@
 <li><a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017681679479008" target="_blank" rel="noopener">collections</a> </li>
 <li><a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017783145987360" target="_blank" rel="noopener">itertools</a></li>
 </ul>
+<h3 id="第-47-条：在重视精确度的场合，应该使用-decimal"><a href="#第-47-条：在重视精确度的场合，应该使用-decimal" class="headerlink" title="第 47 条：在重视精确度的场合，应该使用 decimal"></a>第 47 条：在重视精确度的场合，应该使用 decimal</h3><ul>
+<li>P168<blockquote>
+<p><em>对于编程中可能用到的每一种数值，我们都可以拿对应的 Python 内置类型，或内置模块中的类表示。</em><br><em>Decimal 类非常适合用在那种对精度要求很高，且对舍入行为要求很严的场合，例如，设计货币计算的场合。</em></p>
+</blockquote>
+</li>
+</ul>
+<p>本条可以参考本博客的另一篇文章：<a href="https://shuxiaoyuan.github.io/2020/02/24/Python-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E7%94%A8-round-%EF%BC%9F">Python 四舍五入用 round() ？</a></p>
+<h3 id="第-48-条：学会安装由-Python-开发者社区所构建的模块"><a href="#第-48-条：学会安装由-Python-开发者社区所构建的模块" class="headerlink" title="第 48 条：学会安装由 Python 开发者社区所构建的模块"></a>第 48 条：学会安装由 Python 开发者社区所构建的模块</h3><p>这条讲用 pip 安装第三方包，现在已经是常识了，可以留意 Python 3.4 以后的版本才默认装有的 pip。</p>
 </body></html>]]></content>
       <categories>
         <category>读书笔记</category>
