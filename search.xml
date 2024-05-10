@@ -275,6 +275,13 @@
 </ul>
 <p>本条可以参考本博客的另一篇文章：<a href="https://shuxiaoyuan.github.io/2020/02/24/Python-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E7%94%A8-round-%EF%BC%9F">Python 四舍五入用 round() ？</a></p>
 <h3 id="第-48-条：学会安装由-Python-开发者社区所构建的模块"><a href="#第-48-条：学会安装由-Python-开发者社区所构建的模块" class="headerlink" title="第 48 条：学会安装由 Python 开发者社区所构建的模块"></a>第 48 条：学会安装由 Python 开发者社区所构建的模块</h3><p>这条讲用 pip 安装第三方包，现在已经是常识了，可以留意 Python 3.4 以后的版本才默认装有的 pip。</p>
+<h2 id="第-7-章-协作开发"><a href="#第-7-章-协作开发" class="headerlink" title="第 7 章 协作开发"></a>第 7 章 协作开发</h2><h3 id="第-49-条：为每个函数、类和模块编写文档字符串"><a href="#第-49-条：为每个函数、类和模块编写文档字符串" class="headerlink" title="第 49 条：为每个函数、类和模块编写文档字符串"></a>第 49 条：为每个函数、类和模块编写文档字符串</h3><p>本条讲了 Python 编写文档的规范。</p>
+<h3 id="第-50-条：用包来安排模块，并提供稳固的-API"><a href="#第-50-条：用包来安排模块，并提供稳固的-API" class="headerlink" title="第 50 条：用包来安排模块，并提供稳固的 API"></a>第 50 条：用包来安排模块，并提供稳固的 API</h3><ul>
+<li>P179<blockquote>
+<p><em>把外界可见的名称，列在名为 __all__ 的特殊属性里，即可为包提供一套明确的 API。</em><br><em>如果想隐藏某个包的内部实现，那么我们可以在包的 __init__.py 文件中，只把外界可见的那些名称引入进来，或是给仅限内部使用的那些名称添加下划线前缀。</em><br><em>如果软件包只在开发团队或代码库内部使用，那可能没有必要通过 __all__ 来明确地导出 API。</em></p>
+</blockquote>
+</li>
+</ul>
 </body></html>]]></content>
       <categories>
         <category>读书笔记</category>
