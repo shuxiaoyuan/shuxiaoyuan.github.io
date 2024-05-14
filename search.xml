@@ -282,7 +282,16 @@
 </blockquote>
 </li>
 </ul>
-</body></html>]]></content>
+<h3 id="第-51-条：为自编的模块定义根异常，以便将调用者与-API-相隔离"><a href="#第-51-条：为自编的模块定义根异常，以便将调用者与-API-相隔离" class="headerlink" title="第 51 条：为自编的模块定义根异常，以便将调用者与 API 相隔离"></a>第 51 条：为自编的模块定义根异常，以便将调用者与 API 相隔离</h3><p>本条讲了定义自己的根异常和其子异常类有哪些好处。</p>
+<h3 id="第-52-条：用适当的方式打破循环依赖关系"><a href="#第-52-条：用适当的方式打破循环依赖关系" class="headerlink" title="第 52 条：用适当的方式打破循环依赖关系"></a>第 52 条：用适当的方式打破循环依赖关系</h3><ul>
+<li>P187<blockquote>
+<p><em>如果两个模块必须相互调用对方，才能完成引入操作，那就会出现循环依赖现象，这可能导致程序在启动的时候崩溃。</em><br><em>打破循环依赖关系的最佳方案，是把导致两个模块相互依赖的那部分代码，重构为单独的模块，并把它放在依赖树的底部。</em><br><em>打破循环依赖关系的最简方案，是执行动态的模块引入操作，这样既可以缩减重构所花的精力，也可以尽量降低代码的复杂度。</em></p>
+</blockquote>
+</li>
+</ul>
+<p>还是按最佳方案来吧，动态模块引入可能会导致多次 import，产生莫名其妙的异常。</p>
+<h3 id="第-53-条：用虚拟环境隔离项目，并重建其依赖关系"><a href="#第-53-条：用虚拟环境隔离项目，并重建其依赖关系" class="headerlink" title="第 53 条：用虚拟环境隔离项目，并重建其依赖关系"></a>第 53 条：用虚拟环境隔离项目，并重建其依赖关系</h3><p>个人总结：<br>conda 是隔离环境的，不限于 Python。<br>venv 是 Python3.3 之后有的：<a href="https://docs.python.org/zh-cn/3.11/library/venv.html" target="_blank" rel="noopener">venv</a><br>pyenv 是切换不同 Python 版本的，在 Python3.6已被弃用：(venv)[<a href="https://docs.python.org/zh-cn/3.11/whatsnew/3.6.html#whatsnew36-venv]" target="_blank" rel="noopener">https://docs.python.org/zh-cn/3.11/whatsnew/3.6.html#whatsnew36-venv]</a><br>virtualenv 是第三方库，和 venv 类似，不过支持 Python2.x。</p>
+<h2 id="第-8-章-部署"><a href="#第-8-章-部署" class="headerlink" title="第 8 章 部署"></a>第 8 章 部署</h2></body></html>]]></content>
       <categories>
         <category>读书笔记</category>
         <category>IT</category>
