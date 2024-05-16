@@ -3,7 +3,7 @@
   <entry>
     <title>《Effective Python 编写高质量Python代码的59个有效方法》读书笔记</title>
     <url>/2024/03/29/%E3%80%8AEffective-Python-%E7%BC%96%E5%86%99%E9%AB%98%E8%B4%A8%E9%87%8FPython%E4%BB%A3%E7%A0%81%E7%9A%8459%E4%B8%AA%E6%9C%89%E6%95%88%E6%96%B9%E6%B3%95%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<html><head></head><body><p>《Effective Python 编写高质量Python代码的59个有效方法》读书笔记，持续更新中…</p>
+    <content><![CDATA[<html><head></head><body><p>《Effective Python 编写高质量Python代码的59个有效方法》读书笔记，已完结。</p>
 <a id="more"></a>
 
 <p>本书同一条目往往也同时包含了 Python2 版本的实现，在阅读时简单浏览或直接略过即可。</p>
@@ -290,8 +290,19 @@
 </li>
 </ul>
 <p>还是按最佳方案来吧，动态模块引入可能会导致多次 import，产生莫名其妙的异常。</p>
-<h3 id="第-53-条：用虚拟环境隔离项目，并重建其依赖关系"><a href="#第-53-条：用虚拟环境隔离项目，并重建其依赖关系" class="headerlink" title="第 53 条：用虚拟环境隔离项目，并重建其依赖关系"></a>第 53 条：用虚拟环境隔离项目，并重建其依赖关系</h3><p>个人总结：<br>conda 是隔离环境的，不限于 Python。<br>venv 是 Python3.3 之后有的：<a href="https://docs.python.org/zh-cn/3.11/library/venv.html" target="_blank" rel="noopener">venv</a><br>pyenv 是切换不同 Python 版本的，在 Python3.6已被弃用：(venv)[<a href="https://docs.python.org/zh-cn/3.11/whatsnew/3.6.html#whatsnew36-venv]" target="_blank" rel="noopener">https://docs.python.org/zh-cn/3.11/whatsnew/3.6.html#whatsnew36-venv]</a><br>virtualenv 是第三方库，和 venv 类似，不过支持 Python2.x。</p>
-<h2 id="第-8-章-部署"><a href="#第-8-章-部署" class="headerlink" title="第 8 章 部署"></a>第 8 章 部署</h2></body></html>]]></content>
+<h3 id="第-53-条：用虚拟环境隔离项目，并重建其依赖关系"><a href="#第-53-条：用虚拟环境隔离项目，并重建其依赖关系" class="headerlink" title="第 53 条：用虚拟环境隔离项目，并重建其依赖关系"></a>第 53 条：用虚拟环境隔离项目，并重建其依赖关系</h3><p>个人总结：<br>conda 是隔离环境的，不限于 Python。<br>venv 是 Python3.3 之后有的：<a href="https://docs.python.org/zh-cn/3.11/library/venv.html" target="_blank" rel="noopener">venv</a><br>pyenv 是切换不同 Python 版本的，在 Python3.6已被弃用：<a href="https://docs.python.org/zh-cn/3.11/whatsnew/3.6.html#whatsnew36-venv" target="_blank" rel="noopener">venv</a><br>virtualenv 是第三方库，和 venv 类似，不过支持 Python2.x。</p>
+<h2 id="第-8-章-部署"><a href="#第-8-章-部署" class="headerlink" title="第 8 章 部署"></a>第 8 章 部署</h2><h3 id="第-54-条：考虑用模块级别的代码来配置不同的部署环境"><a href="#第-54-条：考虑用模块级别的代码来配置不同的部署环境" class="headerlink" title="第 54 条：考虑用模块级别的代码来配置不同的部署环境"></a>第 54 条：考虑用模块级别的代码来配置不同的部署环境</h3><p>这条是讲可以根据不同部署环境写不同的代码。我感觉不如不同环境使用不同的配置合适。</p>
+<h3 id="第-55-条：通过-repr-字符串来输出调试信息"><a href="#第-55-条：通过-repr-字符串来输出调试信息" class="headerlink" title="第 55 条：通过 repr 字符串来输出调试信息"></a>第 55 条：通过 repr 字符串来输出调试信息</h3><ul>
+<li>P198<blockquote>
+<p><em>在格式化字符串里使用 %s，能够产生与 str 函数的返回值相仿的易读字符串，而在格式化字符串里使用 %r，则能够产生与 repr 函数的返回值相仿的可打印字符串。</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="第-56-条：用-unittest-来测试全部代码"><a href="#第-56-条：用-unittest-来测试全部代码" class="headerlink" title="第 56 条：用 unittest 来测试全部代码"></a>第 56 条：用 unittest 来测试全部代码</h3><p>本条讲了 Python 单元测试的方法。</p>
+<h3 id="第-57-条：考虑用-pdb-实现交互调试"><a href="#第-57-条：考虑用-pdb-实现交互调试" class="headerlink" title="第 57 条：考虑用 pdb 实现交互调试"></a>第 57 条：考虑用 pdb 实现交互调试</h3><p>讲真，在代码里写断点，手打命令，不如直接打断点好用。</p>
+<h3 id="第-58-条：先分析性能，然后再优化"><a href="#第-58-条：先分析性能，然后再优化" class="headerlink" title="第 58 条：先分析性能，然后再优化"></a>第 58 条：先分析性能，然后再优化</h3><p>本条讲 Python 中分析代码运行时间的工具。</p>
+<h3 id="第-59-条：用-tracemalloc-来掌握内存的使用及泄漏情况"><a href="#第-59-条：用-tracemalloc-来掌握内存的使用及泄漏情况" class="headerlink" title="第 59 条：用 tracemalloc 来掌握内存的使用及泄漏情况"></a>第 59 条：用 tracemalloc 来掌握内存的使用及泄漏情况</h3><p>这条一般场景也用不上。</p>
+</body></html>]]></content>
       <categories>
         <category>读书笔记</category>
         <category>IT</category>
