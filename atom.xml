@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://shuxiaoyuan.github.io/"/>
-  <updated>2024-05-16T13:29:15.329Z</updated>
+  <updated>2024-05-21T14:28:42.877Z</updated>
   <id>https://shuxiaoyuan.github.io/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>《Python Cookbook（第3版）中文版》读书笔记</title>
+    <link href="https://shuxiaoyuan.github.io/2024/05/19/%E3%80%8APython-Cookbook%EF%BC%88%E7%AC%AC3%E7%89%88%EF%BC%89%E4%B8%AD%E6%96%87%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    <id>https://shuxiaoyuan.github.io/2024/05/19/%E3%80%8APython-Cookbook%EF%BC%88%E7%AC%AC3%E7%89%88%EF%BC%89%E4%B8%AD%E6%96%87%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</id>
+    <published>2024-05-19T13:03:24.000Z</published>
+    <updated>2024-05-21T14:28:42.877Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;《Python Cookbook（第3版）中文版》读书笔记，持续更新中…&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="读书笔记" scheme="https://shuxiaoyuan.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="IT" scheme="https://shuxiaoyuan.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/IT/"/>
+    
+    
+      <category term="读书笔记" scheme="https://shuxiaoyuan.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>《Effective Python 编写高质量Python代码的59个有效方法》读书笔记</title>
     <link href="https://shuxiaoyuan.github.io/2024/03/29/%E3%80%8AEffective-Python-%E7%BC%96%E5%86%99%E9%AB%98%E8%B4%A8%E9%87%8FPython%E4%BB%A3%E7%A0%81%E7%9A%8459%E4%B8%AA%E6%9C%89%E6%95%88%E6%96%B9%E6%B3%95%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     <id>https://shuxiaoyuan.github.io/2024/03/29/%E3%80%8AEffective-Python-%E7%BC%96%E5%86%99%E9%AB%98%E8%B4%A8%E9%87%8FPython%E4%BB%A3%E7%A0%81%E7%9A%8459%E4%B8%AA%E6%9C%89%E6%95%88%E6%96%B9%E6%B3%95%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</id>
     <published>2024-03-29T08:02:27.000Z</published>
-    <updated>2024-05-16T13:29:15.329Z</updated>
+    <updated>2024-05-16T13:34:36.032Z</updated>
     
     <summary type="html">
     
