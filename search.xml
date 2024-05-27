@@ -17,6 +17,10 @@
 <h3 id="1-2-从任意长度的可迭代对象中分解元素"><a href="#1-2-从任意长度的可迭代对象中分解元素" class="headerlink" title="1.2 从任意长度的可迭代对象中分解元素"></a>1.2 从任意长度的可迭代对象中分解元素</h3><p>Python 的“*表达式”不仅可以用在函数的可变参数，还可以分解任意长度的可迭代对象中的元素。<br>这个可玩的花样太多，真的有点奇技淫巧了。</p>
 <h3 id="1-3-保存最后-N-个元素"><a href="#1-3-保存最后-N-个元素" class="headerlink" title="1.3 保存最后 N 个元素"></a>1.3 保存最后 N 个元素</h3><p>这条讲 Python 中队列用 collections.deque 实现。</p>
 <h3 id="1-4-找到最大或最小的-N-个元素"><a href="#1-4-找到最大或最小的-N-个元素" class="headerlink" title="1.4 找到最大或最小的 N 个元素"></a>1.4 找到最大或最小的 N 个元素</h3><p>topk 问题，用大顶堆或小顶堆实现。Python 中可以用 heapq 模块中的 nlargest() 和 nsmallest() 函数。</p>
+<h3 id="1-5-实现优先级队列"><a href="#1-5-实现优先级队列" class="headerlink" title="1.5 实现优先级队列"></a>1.5 实现优先级队列</h3><p>本条也还是用 heapq 实现，不过提到了比较两个元组的大小的方式。</p>
+<h3 id="1-6-在字典中将键映射到多个值上"><a href="#1-6-在字典中将键映射到多个值上" class="headerlink" title="1.6 在字典中将键映射到多个值上"></a>1.6 在字典中将键映射到多个值上</h3><p>本条讲 collections.defaultdict 的使用，可以参考：<a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017681679479008" target="_blank" rel="noopener">collections</a></p>
+<h3 id="1-7-让字典保持有序"><a href="#1-7-让字典保持有序" class="headerlink" title="1.7 让字典保持有序"></a>1.7 让字典保持有序</h3><p>本条讲 collections.OrderedDict 可以实现控制字典字段顺序。<br>但由于其内部维护了一个双向链表，所以大小是普通 dict 的 2 倍多，在数据量大时需注意。</p>
+<h3 id="1-8-与字典有关的计算问题"><a href="#1-8-与字典有关的计算问题" class="headerlink" title="1.8 与字典有关的计算问题"></a>1.8 与字典有关的计算问题</h3><p>本条讲 zip() 函数对 dict 的元素转为“值-键”元素列表形式，以便计算最大最小值等。</p>
 </body></html>]]></content>
       <categories>
         <category>读书笔记</category>
