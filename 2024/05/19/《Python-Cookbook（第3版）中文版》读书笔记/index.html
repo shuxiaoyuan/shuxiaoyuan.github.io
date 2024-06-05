@@ -52,7 +52,7 @@
 <meta property="og:description" content="《Python Cookbook（第3版）中文版》读书笔记，持续更新中…">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-19T13:03:24.000Z">
-<meta property="article:modified_time" content="2024-05-27T13:50:41.633Z">
+<meta property="article:modified_time" content="2024-06-05T13:33:52.101Z">
 <meta property="article:author" content="书缘">
 <meta property="article:tag" content="读书笔记">
 <meta name="twitter:card" content="summary">
@@ -247,7 +247,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-05-27 21:50:41" itemprop="dateModified" datetime="2024-05-27T21:50:41+08:00">2024-05-27</time>
+                <time title="修改时间：2024-06-05 21:33:52" itemprop="dateModified" datetime="2024-06-05T21:33:52+08:00">2024-06-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -273,7 +273,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>648</span>
+              <span>830</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -310,6 +310,9 @@
 <h3 id="1-6-在字典中将键映射到多个值上"><a href="#1-6-在字典中将键映射到多个值上" class="headerlink" title="1.6 在字典中将键映射到多个值上"></a>1.6 在字典中将键映射到多个值上</h3><p>本条讲 collections.defaultdict 的使用，可以参考：<a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017681679479008" target="_blank" rel="noopener">collections</a></p>
 <h3 id="1-7-让字典保持有序"><a href="#1-7-让字典保持有序" class="headerlink" title="1.7 让字典保持有序"></a>1.7 让字典保持有序</h3><p>本条讲 collections.OrderedDict 可以实现控制字典字段顺序。<br>但由于其内部维护了一个双向链表，所以大小是普通 dict 的 2 倍多，在数据量大时需注意。</p>
 <h3 id="1-8-与字典有关的计算问题"><a href="#1-8-与字典有关的计算问题" class="headerlink" title="1.8 与字典有关的计算问题"></a>1.8 与字典有关的计算问题</h3><p>本条讲 zip() 函数对 dict 的元素转为“值-键”元素列表形式，以便计算最大最小值等。</p>
+<h3 id="1-9-在两个字典中寻找相同点"><a href="#1-9-在两个字典中寻找相同点" class="headerlink" title="1.9 在两个字典中寻找相同点"></a>1.9 在两个字典中寻找相同点</h3><p>字典可以通过 &、- 等操作符求交集和差集等。</p>
+<h3 id="1-10-从序列中移除重复项且保持元素间顺序不变"><a href="#1-10-从序列中移除重复项且保持元素间顺序不变" class="headerlink" title="1.10 从序列中移除重复项且保持元素间顺序不变"></a>1.10 从序列中移除重复项且保持元素间顺序不变</h3><p>准备一个空集合，遍历序列，遍历过程中判断元素是否在集合中，若在则跳过，否则 yield 这个元素并添加到集合中。<br>如果元素是可变的，那就再提供一个该元素类型的 hash 函数，再按相同方法去重。</p>
+<h3 id="1-11-对切片命名"><a href="#1-11-对切片命名" class="headerlink" title="1.11 对切片命名"></a>1.11 对切片命名</h3><p>对切片命名比直接使用下标硬编码可读性高</p>
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script>
     </div>
 
@@ -428,7 +431,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#资源"><span class="nav-number">1.</span> <span class="nav-text">资源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">2.</span> <span class="nav-text">目录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第-1-章-数据结构和算法"><span class="nav-number">2.1.</span> <span class="nav-text">第 1 章 数据结构和算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-将序列分解为单独的变量"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.1 将序列分解为单独的变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-从任意长度的可迭代对象中分解元素"><span class="nav-number">2.1.2.</span> <span class="nav-text">1.2 从任意长度的可迭代对象中分解元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-保存最后-N-个元素"><span class="nav-number">2.1.3.</span> <span class="nav-text">1.3 保存最后 N 个元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-找到最大或最小的-N-个元素"><span class="nav-number">2.1.4.</span> <span class="nav-text">1.4 找到最大或最小的 N 个元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-实现优先级队列"><span class="nav-number">2.1.5.</span> <span class="nav-text">1.5 实现优先级队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-在字典中将键映射到多个值上"><span class="nav-number">2.1.6.</span> <span class="nav-text">1.6 在字典中将键映射到多个值上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-7-让字典保持有序"><span class="nav-number">2.1.7.</span> <span class="nav-text">1.7 让字典保持有序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-8-与字典有关的计算问题"><span class="nav-number">2.1.8.</span> <span class="nav-text">1.8 与字典有关的计算问题</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#资源"><span class="nav-number">1.</span> <span class="nav-text">资源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">2.</span> <span class="nav-text">目录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第-1-章-数据结构和算法"><span class="nav-number">2.1.</span> <span class="nav-text">第 1 章 数据结构和算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-将序列分解为单独的变量"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.1 将序列分解为单独的变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-从任意长度的可迭代对象中分解元素"><span class="nav-number">2.1.2.</span> <span class="nav-text">1.2 从任意长度的可迭代对象中分解元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-保存最后-N-个元素"><span class="nav-number">2.1.3.</span> <span class="nav-text">1.3 保存最后 N 个元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-找到最大或最小的-N-个元素"><span class="nav-number">2.1.4.</span> <span class="nav-text">1.4 找到最大或最小的 N 个元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-实现优先级队列"><span class="nav-number">2.1.5.</span> <span class="nav-text">1.5 实现优先级队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-在字典中将键映射到多个值上"><span class="nav-number">2.1.6.</span> <span class="nav-text">1.6 在字典中将键映射到多个值上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-7-让字典保持有序"><span class="nav-number">2.1.7.</span> <span class="nav-text">1.7 让字典保持有序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-8-与字典有关的计算问题"><span class="nav-number">2.1.8.</span> <span class="nav-text">1.8 与字典有关的计算问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-9-在两个字典中寻找相同点"><span class="nav-number">2.1.9.</span> <span class="nav-text">1.9 在两个字典中寻找相同点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-10-从序列中移除重复项且保持元素间顺序不变"><span class="nav-number">2.1.10.</span> <span class="nav-text">1.10 从序列中移除重复项且保持元素间顺序不变</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-11-对切片命名"><span class="nav-number">2.1.11.</span> <span class="nav-text">1.11 对切片命名</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -502,7 +505,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">50k</span>
+    <span title="站点总字数">51k</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
   </div>
