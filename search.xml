@@ -28,7 +28,18 @@
 <h3 id="1-13-通过公共键对字典列表排序"><a href="#1-13-通过公共键对字典列表排序" class="headerlink" title="1.13 通过公共键对字典列表排序"></a>1.13 通过公共键对字典列表排序</h3><p>用 operator 模块中的 itemgetter 函数实现根据字典的某（几）个属性对字典列表排序，比用 lambda 表达式快些。</p>
 <h3 id="1-14-对不原生支持比较操作的对象排序"><a href="#1-14-对不原生支持比较操作的对象排序" class="headerlink" title="1.14 对不原生支持比较操作的对象排序"></a>1.14 对不原生支持比较操作的对象排序</h3><p>这一条跟上一条类似，不过这条是针对对象列表的排序，使用 operator 模块中的 attrgetter() 要比 lambda 表达式快些。</p>
 <h3 id="1-15-根据字段将记录分组"><a href="#1-15-根据字段将记录分组" class="headerlink" title="1.15 根据字段将记录分组"></a>1.15 根据字段将记录分组</h3><p>itertools.groupby() 函数可以将按某个属性<strong>排好序</strong>的字典或对象进行分组，且为迭代器，比用字典省内存。</p>
-</body></html>]]></content>
+<h3 id="1-16-筛选序列中的元素"><a href="#1-16-筛选序列中的元素" class="headerlink" title="1.16 筛选序列中的元素"></a>1.16 筛选序列中的元素</h3><p>简单的筛选条件用列表推导或生成器表达式。<br>包含复杂筛选条件的可以将筛选逻辑写成函数然后使用内建的 filter() 函数。<br>itertools.compress() 可以将筛选条件列表分别应用于一个序列。</p>
+<h3 id="1-17-从字典中提取子集"><a href="#1-17-从字典中提取子集" class="headerlink" title="1.17 从字典中提取子集"></a>1.17 从字典中提取子集</h3><p>本条讲使用字典推导实现对字典的筛选。</p>
+<h3 id="1-18-将名称映射到序列的元素中"><a href="#1-18-将名称映射到序列的元素中" class="headerlink" title="1.18 将名称映射到序列的元素中"></a>1.18 将名称映射到序列的元素中</h3><p>这条讲 collections.namedtuple() （命名元组）的妙用，讲的很好很详细。</p>
+<blockquote>
+<p><em>命名元组支持所有普通元组所支持的操作，例如索引（indexing）和分解（unpacking）。</em><br><em>命名元组的主要作用在于将代码同它所控制的元素位置间解耦。</em></p>
+</blockquote>
+<p>命名元组是不可变的，这一点和类是个很大的区别。<br>命名元组的 _replace() 方法会创建一个全新的命名元组，并对相应的值做替换。<br>个人总结，对于不可变的对象，用命名元组比用类更合适。<br>另外可以参考廖雪峰教程：<a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017681679479008" target="_blank" rel="noopener">collections</a></p>
+<h3 id="1-19-同时对数据做转换和换算"><a href="#1-19-同时对数据做转换和换算" class="headerlink" title="1.19 同时对数据做转换和换算"></a>1.19 同时对数据做转换和换算</h3><p>sum()、min()、max() 等函数可以接受一个生成器表达式，例如：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">nums = [1, 2, 3, 4, 5]</span><br><span class="line">s = sum(x * x for x in nums) # 注意，此处生成器表达式作为函数参数时可省略括号。</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="1-20-将多个映射合并为单个映射"><a href="#1-20-将多个映射合并为单个映射" class="headerlink" title="1.20 将多个映射合并为单个映射"></a>1.20 将多个映射合并为单个映射</h3><p>可以用 ChainMap 和字典的 update() 方法。前者使用的是原始字典，后者是修改现有的一个字典。</p>
+<h2 id="第-2-章-字符串和文本"><a href="#第-2-章-字符串和文本" class="headerlink" title="第 2 章 字符串和文本"></a>第 2 章 字符串和文本</h2></body></html>]]></content>
       <categories>
         <category>读书笔记</category>
         <category>IT</category>
